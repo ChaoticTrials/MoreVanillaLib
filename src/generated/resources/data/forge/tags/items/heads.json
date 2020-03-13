@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:heads/creeper_head",
+    "#forge:heads/dragon_head",
+    "#forge:heads/player_head",
+    "#forge:heads/zombie_head"
+  ]
+}
