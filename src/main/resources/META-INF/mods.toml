@@ -1,0 +1,28 @@
+modLoader="javafml"
+loaderVersion="[31,)"
+[[mods]]
+modId="morevanillalib"
+version="${file.jarVersion}"
+displayName="Morevanillalib"
+updateJSONURL="https://raw.githubusercontent.com/MelanX/MoreVanillaLib/master/update/update.json"
+authors="MelanX"
+description='''
+Lib mod for my Vanilla mods:
+- MoreVanillaArmor
+- MoreVanillaTools
+- Vanilla Excavators
+- Vanilla Hammers
+'''
+[[dependencies.morevanillalib]]
+    modId="forge"
+    mandatory=true
+    versionRange="[31.1.18,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.morevanillalib]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.15.2, 1.16)"
+    ordering="NONE"
+    side="BOTH"
