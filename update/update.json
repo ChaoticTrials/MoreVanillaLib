@@ -1,0 +1,9 @@
+{
+  "homepage": "https://www.curseforge.com/minecraft/mc-mods/morevanillalib",
+  "promos": {
+    "1.15.2-latest": "1.0"
+  },
+  "1.15.2": {
+    "1.0": "Initial release"
+  }
+}
