@@ -2,7 +2,8 @@ package de.melanx.morevanillalib.util;
 
 public class TranslationHelper {
 
-    public String getGermanMaterial(String material) {
+    public static String getGermanMaterial(String path) {
+        String material = path.split("_")[0];
         switch (material) {
             case "bone":
                 return "Knochen";
