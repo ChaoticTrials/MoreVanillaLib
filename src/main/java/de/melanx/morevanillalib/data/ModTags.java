@@ -1,5 +1,6 @@
 package de.melanx.morevanillalib.data;
 
+import de.melanx.morevanillalib.MoreVanillaLib;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.BlockTagsProvider;
@@ -7,6 +8,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.ItemTagsProvider;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.Tag;
 import net.minecraft.util.ResourceLocation;
 
@@ -43,6 +45,8 @@ public class ModTags {
         public static final Tag<Item> ZOMBIE_HEAD = tag("heads/zombie_head");
         public static final Tag<Item> MAGMA_CREAM = tag("magma_cream");
 
+        public static final Tag<Item> FIERY = new net.minecraft.tags.ItemTags.Wrapper(new ResourceLocation(MoreVanillaLib.MODID, "fiery"));
+
         private static Tag<Item> tag(String name) {
             return new net.minecraft.tags.ItemTags.Wrapper(new ResourceLocation("forge", name));
         }
@@ -78,6 +82,7 @@ public class ModTags {
             getBuilder(Items.PLAYER_HEAD).add(net.minecraft.item.Items.PLAYER_HEAD);
             getBuilder(Items.ZOMBIE_HEAD).add(net.minecraft.item.Items.ZOMBIE_HEAD);
             getBuilder(Items.MAGMA_CREAM).add(net.minecraft.item.Items.MAGMA_CREAM);
+            getBuilder(Items.FIERY);
 
             copy(Blocks.BONE_BLOCK, ModTags.Items.BONE_BLOCK);
             copy(Blocks.STORAGE_BLOCKS_GLOWSTONE, Items.STORAGE_BLOCKS_GLOWSTONE);
