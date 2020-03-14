@@ -50,7 +50,7 @@ public class ToolUtil {
         event.getDrops().add(entityitem);
     }
 
-    private static void extraDrop(World world, BlockPos pos, IItemTier mat) {
+    public static void extraDrop(World world, BlockPos pos, IItemTier mat) {
         int chance = LibConfigHandler.extraDropChance.get();
         if (new Random().nextInt(1000) < chance && LibConfigHandler.extraDrop.get()) {
             ItemStack itemStack = mat.getRepairMaterial().getMatchingStacks()[0];
