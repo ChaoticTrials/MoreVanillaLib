@@ -30,16 +30,14 @@ public class ToolUtil {
     }
 
     public static void headDrop(LivingDropsEvent event, IItemProvider head) {
-        if (event.isRecentlyHit() && event.getSource().getTrueSource() != null && event.getSource().getTrueSource() instanceof PlayerEntity) {
-            ItemStack weapon = ((PlayerEntity) event.getSource().getTrueSource()).getHeldItemMainhand();
-            if (!weapon.isEmpty()) {
-                Random rand = event.getEntityLiving().world.rand;
-                int looting = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, weapon);
+        ItemStack weapon = ((PlayerEntity) event.getSource().getTrueSource()).getHeldItemMainhand();
+        if (!weapon.isEmpty()) {
+            Random rand = event.getEntityLiving().world.rand;
+            int looting = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, weapon);
 
-                int chance = LibConfigHandler.headDropChance.get();
-                if (LibConfigHandler.headDrop.get() && rand.nextInt(1000) < chance + looting) {
-                    addDrop(event, new ItemStack(head));
-                }
+            int chance = LibConfigHandler.headDropChance.get();
+            if (LibConfigHandler.headDrop.get() && rand.nextInt(1000) < chance + looting) {
+                addDrop(event, new ItemStack(head));
             }
         }
     }
@@ -56,6 +54,10 @@ public class ToolUtil {
             ItemStack itemStack = mat.getRepairMaterial().getMatchingStacks()[0];
             world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), itemStack));
         }
+    }
+
+    public static boolean isPlayerKill(LivingDropsEvent event) {
+        return event.isRecentlyHit() && event.getSource().getTrueSource() != null && event.getSource().getTrueSource() instanceof PlayerEntity;
     }
 
 }
