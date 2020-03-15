@@ -2,13 +2,10 @@ package de.melanx.morevanillalib.data;
 
 import de.melanx.morevanillalib.MoreVanillaLib;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.ItemTagsProvider;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.Tag;
 import net.minecraft.util.ResourceLocation;
 
@@ -45,10 +42,27 @@ public class ModTags {
         public static final Tag<Item> ZOMBIE_HEAD = tag("heads/zombie_head");
         public static final Tag<Item> MAGMA_CREAM = tag("magma_cream");
 
-        public static final Tag<Item> FIERY = new net.minecraft.tags.ItemTags.Wrapper(new ResourceLocation(MoreVanillaLib.MODID, "fiery"));
+        public static final Tag<Item> BONE_TOOLS = modTag("bone");
+        public static final Tag<Item> COAL_TOOLS = modTag("coal");
+        public static final Tag<Item> EMERALD_TOOLS = modTag("emerald");
+        public static final Tag<Item> ENDER_TOOLS = modTag("ender");
+        public static final Tag<Item> FIERY_TOOLS = modTag("fiery");
+        public static final Tag<Item> GLOWSTONE_TOOLS = modTag("glowstone");
+        public static final Tag<Item> LAPIS_TOOLS = modTag("lapis");
+        public static final Tag<Item> NETHER_TOOLS = modTag("nether");
+        public static final Tag<Item> OBSIDIAN_TOOLS = modTag("obsidian");
+        public static final Tag<Item> PAPER_TOOLS = modTag("paper");
+        public static final Tag<Item> PRISMARINE_TOOLS = modTag("prismarine");
+        public static final Tag<Item> QUARTZ_TOOLS = modTag("quartz");
+        public static final Tag<Item> REDSTONE_TOOLS = modTag("redstone");
+        public static final Tag<Item> SLIME_TOOLS = modTag("slime");
 
         private static Tag<Item> tag(String name) {
             return new net.minecraft.tags.ItemTags.Wrapper(new ResourceLocation("forge", name));
+        }
+
+        private static Tag<Item> modTag(String name) {
+            return new net.minecraft.tags.ItemTags.Wrapper(new ResourceLocation(MoreVanillaLib.MODID, name));
         }
     }
 
@@ -82,7 +96,21 @@ public class ModTags {
             getBuilder(Items.PLAYER_HEAD).add(net.minecraft.item.Items.PLAYER_HEAD);
             getBuilder(Items.ZOMBIE_HEAD).add(net.minecraft.item.Items.ZOMBIE_HEAD);
             getBuilder(Items.MAGMA_CREAM).add(net.minecraft.item.Items.MAGMA_CREAM);
-            getBuilder(Items.FIERY);
+
+            getBuilder(Items.BONE_TOOLS);
+            getBuilder(Items.COAL_TOOLS);
+            getBuilder(Items.EMERALD_TOOLS);
+            getBuilder(Items.ENDER_TOOLS);
+            getBuilder(Items.FIERY_TOOLS);
+            getBuilder(Items.GLOWSTONE_TOOLS);
+            getBuilder(Items.LAPIS_TOOLS);
+            getBuilder(Items.NETHER_TOOLS);
+            getBuilder(Items.OBSIDIAN_TOOLS);
+            getBuilder(Items.PAPER_TOOLS);
+            getBuilder(Items.PRISMARINE_TOOLS);
+            getBuilder(Items.QUARTZ_TOOLS);
+            getBuilder(Items.REDSTONE_TOOLS);
+            getBuilder(Items.SLIME_TOOLS);
 
             copy(Blocks.BONE_BLOCK, ModTags.Items.BONE_BLOCK);
             copy(Blocks.STORAGE_BLOCKS_GLOWSTONE, Items.STORAGE_BLOCKS_GLOWSTONE);
