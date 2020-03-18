@@ -22,12 +22,6 @@ public class LibConfigHandler {
     public static ForgeConfigSpec.IntValue headDropChance;
     public static ForgeConfigSpec.IntValue damageByPaperToolsChance;
 
-    public static ForgeConfigSpec.IntValue coalDoubleDropChance;
-    public static ForgeConfigSpec.IntValue emeraldDoubleDropChance;
-    public static ForgeConfigSpec.IntValue lapisDoubleDropChance;
-    public static ForgeConfigSpec.IntValue quartzDoubleDropChance;
-    public static ForgeConfigSpec.IntValue redstoneDoubleDropChance;
-
     public static ForgeConfigSpec.BooleanValue extraDrop;
     public static ForgeConfigSpec.BooleanValue extraDamage;
     public static ForgeConfigSpec.BooleanValue headDrop;
@@ -77,7 +71,7 @@ public class LibConfigHandler {
         builder.push("features");
         extraDrop = builder.comment("If set true, tools may drop an item when they'll be used.")
                 .define("extraDrop", true);
-        extraDamage = builder.comment("If set true, bone axe and sword make extra damage against skeletons.")
+        extraDamage = builder.comment("If set true, bone axe and sword make extra damage against special mobs.")
                 .define("extraDamage", true);
         headDrop = builder.comment("If set true, (wither) skeletons will drop their head with a defined chance if killed with bone axe or sword.")
                 .define("headDrop", true);
@@ -105,15 +99,6 @@ public class LibConfigHandler {
                 .defineInRange("headDrop", 50, 0, 1000);
         damageByPaperToolsChance = builder.comment("Sets the chance to take an half heart damage if using paper tools. [Default 100 = 10%]")
                 .defineInRange("damageByPaperTools", 100, 0, Integer.MAX_VALUE);
-
-            builder.push("extraDropValue").comment("The chance for dropping an additional resource of their corresponding ore. [Default 500 = 50%]");
-            coalDoubleDropChance = builder.defineInRange("coal", 500, 0, 1000);
-            emeraldDoubleDropChance = builder.comment("Default 1 = 0.1%").defineInRange("emerald", 1, 0, 1000);
-            lapisDoubleDropChance = builder.defineInRange("lapis", 500, 0, 1000);
-            quartzDoubleDropChance = builder.defineInRange("quartz", 500, 0, 1000);
-            redstoneDoubleDropChance = builder.defineInRange("redstone", 500, 0, 1000);
-            builder.pop();
-
         builder.pop();
 
         builder.push("amounts");

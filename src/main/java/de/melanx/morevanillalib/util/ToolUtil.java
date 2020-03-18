@@ -23,7 +23,7 @@ public class ToolUtil {
 
             int chance = LibConfigHandler.extraDamageChance.get();
             if (rand.nextInt(1000) < chance && LibConfigHandler.extraDamage.get()) {
-                float multiplier = rand.nextInt(26) / 10 + 1;
+                float multiplier = (float) rand.nextInt(26) / 10 + 1;
                 event.setAmount(event.getAmount() * multiplier);
             }
         }
