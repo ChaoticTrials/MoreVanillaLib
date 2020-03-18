@@ -84,21 +84,21 @@ public class Languages {
             add("jei." + MoreVanillaLib.MODID + ".extra_drop.desc", "Wenn du eins dieser Werkzeuge benutzt, wird zu einer %d%%%%igen Chance ein Reparaturitem fallengelassen.");
 
             // extra drop information
-            add("jei." + MoreVanillaLib.MODID + ".coal_drop.desc", "Wenn du diese Spitzhacke benutzt, bekommst du zu einer %d%%%%igen Chance ein Stück Kohle extra, wenn du Kohleerz abbaust.");
+            add("jei." + MoreVanillaLib.MODID + ".coal_drop.desc", "Wenn du diese Spitzhacke benutzt, bekommst du zu einer %d%%%%igen Chance ein St\u00FCck Kohle extra, wenn du Kohleerz abbaust.");
             add("jei." + MoreVanillaLib.MODID + ".emerald_drop.desc", "Wenn du diese Spitzhacke benutzt, bekommst du zu einer %d%%%%igen Chance einen Smaragd extra, wenn du Smaragderz abbaust.");
-            add("jei." + MoreVanillaLib.MODID + ".lapis_drop.desc", "Wenn du diese Spitzhacke benutzt, bekommst du zu einer %d%%%%igen Chance bis zu 3 Stück Lapis extra, wenn du Lapiserz abbaust.");
-            add("jei." + MoreVanillaLib.MODID + ".quartz_drop.desc", "Wenn du diese Spitzhacke benutzt, bekommst du zu einer %d%%%%igen Chance ein Stück Netherquartz extra, wenn du Netherquartzerz abbaust.");
-            add("jei." + MoreVanillaLib.MODID + ".redstone_drop.desc", "Wenn du diese Spitzhacke benutzt, bekommst du zu einer %d%%%%igen Chance bis zu 3 Stück Redstonestaub extra, wenn du Redstoneerz abbaust.");
+            add("jei." + MoreVanillaLib.MODID + ".lapis_drop.desc", "Wenn du diese Spitzhacke benutzt, bekommst du zu einer %d%%%%igen Chance bis zu 3 St\u00FCck Lapis extra, wenn du Lapiserz abbaust.");
+            add("jei." + MoreVanillaLib.MODID + ".quartz_drop.desc", "Wenn du diese Spitzhacke benutzt, bekommst du zu einer %d%%%%igen Chance ein St\u00FCck Netherquartz extra, wenn du Netherquartzerz abbaust.");
+            add("jei." + MoreVanillaLib.MODID + ".redstone_drop.desc", "Wenn du diese Spitzhacke benutzt, bekommst du zu einer %d%%%%igen Chance bis zu 3 St\u00FCck Redstonestaub extra, wenn du Redstoneerz abbaust.");
 
             // extra damage information
-            add("jei." + MoreVanillaLib.MODID + ".bone_damage.desc", "Wenn du ein (Wither-)Skelett mit einem dieser Werkzeuge tötest, machst du zu einer %d%%%%igen Chance bis zu 250%%%% mehr Schaden.");
-            add("jei." + MoreVanillaLib.MODID + ".ender_damage.desc", "Wenn du einen Enderman mit einem dieser Werkzeuge tötest, machst du zu einer %d%%%%igen Chance bis zu 250%%%% mehr Schaden.");
-            add("jei." + MoreVanillaLib.MODID + ".fiery_damage.desc", "Wenn du einen Magmaschleim mit einem dieser Werkzeuge tötest, machst du zu einer %d%%%%igen Chance bis zu 250%%%% mehr Schaden.");
-            add("jei." + MoreVanillaLib.MODID + ".prismarine_damage.desc", "Wenn du einen (Großen) Wächter mit einem dieser Werkzeuge tötest, machst du zu einer %d%%%%igen Chance bis zu 250%%%% mehr Schaden.");
-            add("jei." + MoreVanillaLib.MODID + ".slime_damage.desc", "Wenn du einen Schleim mit einem dieser Werkzeuge tötest, machst du zu einer %d%%%%igen Chance bis zu 250%%%% mehr Schaden.");
+            add("jei." + MoreVanillaLib.MODID + ".bone_damage.desc", "Wenn du ein (Wither-)Skelett mit einem dieser Werkzeuge t\u00F6test, machst du zu einer %d%%%%igen Chance bis zu 250%%%% mehr Schaden.");
+            add("jei." + MoreVanillaLib.MODID + ".ender_damage.desc", "Wenn du einen Enderman mit einem dieser Werkzeuge t\u00F6test, machst du zu einer %d%%%%igen Chance bis zu 250%%%% mehr Schaden.");
+            add("jei." + MoreVanillaLib.MODID + ".fiery_damage.desc", "Wenn du einen Magmaschleim mit einem dieser Werkzeuge t\u00F6test, machst du zu einer %d%%%%igen Chance bis zu 250%%%% mehr Schaden.");
+            add("jei." + MoreVanillaLib.MODID + ".prismarine_damage.desc", "Wenn du einen (Gro\u00DFen) W\u00FCchter mit einem dieser Werkzeuge t\u00F6test, machst du zu einer %d%%%%igen Chance bis zu 250%%%% mehr Schaden.");
+            add("jei." + MoreVanillaLib.MODID + ".slime_damage.desc", "Wenn du einen Schleim mit einem dieser Werkzeuge t\u00F6test, machst du zu einer %d%%%%igen Chance bis zu 250%%%% mehr Schaden.");
 
             // head drop information
-            add("jei." + MoreVanillaLib.MODID + ".bone_heads.desc", "Wenn du ein (Wither-)Skelett mit einem dieser Werkzeuge tötest, hast du eien %d%%%%ige Chance, einen Kopf zu bekommen.");
+            add("jei." + MoreVanillaLib.MODID + ".bone_heads.desc", "Wenn du ein (Wither-)Skelett mit einem dieser Werkzeuge t\u00F6test, hast du eien %d%%%%ige Chance, einen Kopf zu bekommen.");
 
             // damage information
             add("jei." + MoreVanillaLib.MODID + ".paper_damage.desc", "Wenn du diese Werkzeuge benutzt, besteht eine %d%%%%ige Chance, dass du %d bis %d Herzen Schaden bekommst.");
