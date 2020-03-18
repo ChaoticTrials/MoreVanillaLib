@@ -42,20 +42,21 @@ public class ModTags {
         public static final Tag<Item> ZOMBIE_HEAD = tag("heads/zombie_head");
         public static final Tag<Item> MAGMA_CREAM = tag("magma_cream");
 
-        public static final Tag<Item> BONE_TOOLS = modTag("bone");
-        public static final Tag<Item> COAL_TOOLS = modTag("coal");
-        public static final Tag<Item> EMERALD_TOOLS = modTag("emerald");
-        public static final Tag<Item> ENDER_TOOLS = modTag("ender");
-        public static final Tag<Item> FIERY_TOOLS = modTag("fiery");
-        public static final Tag<Item> GLOWSTONE_TOOLS = modTag("glowstone");
-        public static final Tag<Item> LAPIS_TOOLS = modTag("lapis");
-        public static final Tag<Item> NETHER_TOOLS = modTag("nether");
-        public static final Tag<Item> OBSIDIAN_TOOLS = modTag("obsidian");
-        public static final Tag<Item> PAPER_TOOLS = modTag("paper");
-        public static final Tag<Item> PRISMARINE_TOOLS = modTag("prismarine");
-        public static final Tag<Item> QUARTZ_TOOLS = modTag("quartz");
-        public static final Tag<Item> REDSTONE_TOOLS = modTag("redstone");
-        public static final Tag<Item> SLIME_TOOLS = modTag("slime");
+        public static final Tag<Item> BONE_TOOLS = modTag("tools/bone");
+        public static final Tag<Item> COAL_TOOLS = modTag("tools/coal");
+        public static final Tag<Item> EMERALD_TOOLS = modTag("tools/emerald");
+        public static final Tag<Item> ENDER_TOOLS = modTag("tools/ender");
+        public static final Tag<Item> FIERY_TOOLS = modTag("tools/fiery");
+        public static final Tag<Item> GLOWSTONE_TOOLS = modTag("tools/glowstone");
+        public static final Tag<Item> LAPIS_TOOLS = modTag("tools/lapis");
+        public static final Tag<Item> NETHER_TOOLS = modTag("tools/nether");
+        public static final Tag<Item> OBSIDIAN_TOOLS = modTag("tools/obsidian");
+        public static final Tag<Item> PAPER_TOOLS = modTag("tools/paper");
+        public static final Tag<Item> PRISMARINE_TOOLS = modTag("tools/prismarine");
+        public static final Tag<Item> QUARTZ_TOOLS = modTag("tools/quartz");
+        public static final Tag<Item> REDSTONE_TOOLS = modTag("tools/redstone");
+        public static final Tag<Item> SLIME_TOOLS = modTag("tools/slime");
+        public static final Tag<Item> ALL_TOOLS = modTag("tools");
 
         private static Tag<Item> tag(String name) {
             return new net.minecraft.tags.ItemTags.Wrapper(new ResourceLocation("forge", name));
@@ -111,6 +112,7 @@ public class ModTags {
             getBuilder(Items.QUARTZ_TOOLS);
             getBuilder(Items.REDSTONE_TOOLS);
             getBuilder(Items.SLIME_TOOLS);
+            getBuilder(Items.ALL_TOOLS).add(Items.BONE_TOOLS).add(Items.COAL_TOOLS).add(Items.EMERALD_TOOLS).add(Items.ENDER_TOOLS).add(Items.FIERY_TOOLS).add(Items.GLOWSTONE_TOOLS).add(Items.LAPIS_TOOLS).add(Items.NETHER_TOOLS).add(Items.OBSIDIAN_TOOLS).add(Items.PRISMARINE_TOOLS).add(Items.QUARTZ_TOOLS).add(Items.REDSTONE_TOOLS).add(Items.SLIME_TOOLS);
 
             copy(Blocks.BONE_BLOCK, ModTags.Items.BONE_BLOCK);
             copy(Blocks.STORAGE_BLOCKS_GLOWSTONE, Items.STORAGE_BLOCKS_GLOWSTONE);
