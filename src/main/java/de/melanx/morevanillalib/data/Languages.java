@@ -30,13 +30,14 @@ public class Languages {
             add("jei." + MoreVanillaLib.MODID + ".quartz_tools.desc", "Quartz Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s");
             add("jei." + MoreVanillaLib.MODID + ".redstone_tools.desc", "Redstone Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s");
             add("jei." + MoreVanillaLib.MODID + ".slime_tools.desc", "Slime Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s");
+            add("jei." + MoreVanillaLib.MODID + ".extra_drop.desc", "If you use one of these tools, the corresponding repairing item will be dropped with a chance of %s%.");
 
             // extra drop information
-            add("jei." + MoreVanillaLib.MODID + ".coal_drop.desc", "If you use these tools, there is a %s% chance to get a piece of coal dropped.");
-            add("jei." + MoreVanillaLib.MODID + ".emerald_drop.desc", "If you use these tools, there is a %s% chance to get a emerald gem dropped.");
-            add("jei." + MoreVanillaLib.MODID + ".lapis_drop.desc", "If you use these tools, there is a %s% chance to get a lapis gem dropped.");
-            add("jei." + MoreVanillaLib.MODID + ".quartz_drop.desc", "If you use these tools, there is a %s% chance to get a piece of quartz dropped.");
-            add("jei." + MoreVanillaLib.MODID + ".redstone_drop.desc", "If you use these tools, there is a %s% chance to get a redstone dust dropped.");
+            add("jei." + MoreVanillaLib.MODID + ".coal_drop.desc", "If you use this pickaxe, there is a %s% chance to get a piece of coal dropped if you mine a coal ore.");
+            add("jei." + MoreVanillaLib.MODID + ".emerald_drop.desc", "If you use this pickaxe, there is a %s% chance to get a emerald gem dropped if you mine an emerald ore.");
+            add("jei." + MoreVanillaLib.MODID + ".lapis_drop.desc", "If you use this pickaxe, there is a %s% chance to get a lapis gem dropped if you mine a lapis ore.");
+            add("jei." + MoreVanillaLib.MODID + ".quartz_drop.desc", "If you use this pickaxe, there is a %s% chance to get a piece of quartz dropped if you mine a nether quartz ore.");
+            add("jei." + MoreVanillaLib.MODID + ".redstone_drop.desc", "If you use this pickaxe, there is a %s% chance to get a redstone dust dropped if you mine a redstone ore.");
 
             // extra damage information
             add("jei." + MoreVanillaLib.MODID + ".bone_damage.desc", "If you kill a (wither) skeleton with these tools, you have a %s% chance to make up to 250% more damage.");

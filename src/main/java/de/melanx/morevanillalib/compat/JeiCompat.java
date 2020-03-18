@@ -44,19 +44,19 @@ public class JeiCompat implements IModPlugin {
         addDefaultInfoPage(registration, ModTags.Items.REDSTONE_TOOLS.getAllElements(), "redstone_tools", LibConfigHandler.redstoneDurability.get(), LibConfigHandler.redstoneDurability.get() * 5, LibConfigHandler.redstoneHarvestlevel.get(), getItemFromIngredient(BigBreakMaterials.REDSTONE.getRepairMaterial()));
         addDefaultInfoPage(registration, ModTags.Items.SLIME_TOOLS.getAllElements(), "slime_tools", LibConfigHandler.slimeDurability.get(), LibConfigHandler.slimeDurability.get() * 5, LibConfigHandler.slimeHarvestlevel.get(), getItemFromIngredient(BigBreakMaterials.SLIME.getRepairMaterial()));
 
-        if (LibConfigHandler.extraDrop.get()) {
-            float chance = (float) LibConfigHandler.extraDropChance.get() / 10;
-            if (LibConfigHandler.coalDoubleDrop.get())
-                addValueInfoPage(registration, ModTags.Items.COAL_TOOLS.getAllElements(), "coal_drop", chance);
-            if (LibConfigHandler.emeraldDoubleDrop.get())
-                addValueInfoPage(registration, ModTags.Items.EMERALD_TOOLS.getAllElements(), "emerald_drop", chance);
-            if (LibConfigHandler.lapisDoubleDrop.get())
-                addValueInfoPage(registration, ModTags.Items.LAPIS_TOOLS.getAllElements(), "lapis_drop", chance);
-            if (LibConfigHandler.quartzDoubleDrop.get())
-                addValueInfoPage(registration, ModTags.Items.QUARTZ_TOOLS.getAllElements(), "quartz_drop", chance);
-            if (LibConfigHandler.redstoneDoubleDrop.get())
-                addValueInfoPage(registration, ModTags.Items.REDSTONE_TOOLS.getAllElements(), "redstone_drop", chance);
-        }
+        addValueInfoPage(registration, ModTags.Items.ALL_TOOLS.getAllElements(), "extra_drop", (float) LibConfigHandler.extraDropChance.get() / 10);
+
+        float doubleDropChance = (float) LibConfigHandler.extraDropChance.get() / 10;
+        if (LibConfigHandler.coalDoubleDrop.get())
+            addValueInfoPage(registration, ModTags.Items.COAL_TOOLS.getAllElements(), "coal_drop", doubleDropChance);
+        if (LibConfigHandler.emeraldDoubleDrop.get())
+            addValueInfoPage(registration, ModTags.Items.EMERALD_TOOLS.getAllElements(), "emerald_drop", doubleDropChance);
+        if (LibConfigHandler.lapisDoubleDrop.get())
+            addValueInfoPage(registration, ModTags.Items.LAPIS_TOOLS.getAllElements(), "lapis_drop", doubleDropChance);
+        if (LibConfigHandler.quartzDoubleDrop.get())
+            addValueInfoPage(registration, ModTags.Items.QUARTZ_TOOLS.getAllElements(), "quartz_drop", doubleDropChance);
+        if (LibConfigHandler.redstoneDoubleDrop.get())
+            addValueInfoPage(registration, ModTags.Items.REDSTONE_TOOLS.getAllElements(), "redstone_drop", doubleDropChance);
 
         if (LibConfigHandler.extraDamage.get()) {
             float extraDamageChance = (float) LibConfigHandler.extraDamageChance.get() / 10;
