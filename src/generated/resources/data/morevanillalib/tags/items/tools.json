@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "#morevanillalib:tools/bone",
+    "#morevanillalib:tools/coal",
+    "#morevanillalib:tools/emerald",
+    "#morevanillalib:tools/ender",
+    "#morevanillalib:tools/fiery",
+    "#morevanillalib:tools/glowstone",
+    "#morevanillalib:tools/lapis",
+    "#morevanillalib:tools/nether",
+    "#morevanillalib:tools/obsidian",
+    "#morevanillalib:tools/prismarine",
+    "#morevanillalib:tools/quartz",
+    "#morevanillalib:tools/redstone",
+    "#morevanillalib:tools/slime"
+  ]
+}
