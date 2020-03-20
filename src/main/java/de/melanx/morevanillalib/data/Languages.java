@@ -13,7 +13,7 @@ public class Languages {
 
         @Override
         protected void addTranslations() {
-            add("death.attack.paperCut", "%1$s was struck down by paper.");
+            add("death.attack.paperCut", "%1$s was cut to death with paper");
 
             // default tool information
             add("jei." + MoreVanillaLib.MODID + ".bone_tools.desc", "Bone Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s");
