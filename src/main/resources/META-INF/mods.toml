@@ -3,7 +3,7 @@ loaderVersion="[31,)"
 [[mods]]
 modId="morevanillalib"
 version="${file.jarVersion}"
-displayName="Morevanillalib"
+displayName="MoreVanillaLib"
 updateJSONURL="https://raw.githubusercontent.com/MelanX/MoreVanillaLib/master/update/update.json"
 authors="MelanX"
 description='''
