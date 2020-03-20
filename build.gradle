@@ -77,3 +77,17 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
     compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api")
 }
+
+jar {
+    manifest {
+        attributes([
+                "Specification-Title": "morevanillalib",
+                "Specification-Vendor": "MelanX",
+                "Specification-Version": "1", // We are version 1 of ourselves
+                "Implementation-Title": project.name,
+                "Implementation-Version": "${version}",
+                "Implementation-Vendor" :"MelanX",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+}
