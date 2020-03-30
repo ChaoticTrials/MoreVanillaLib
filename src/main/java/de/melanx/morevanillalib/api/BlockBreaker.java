@@ -63,25 +63,24 @@ public class BlockBreaker {
     private static void spawnExtraDrops(IItemTier toolMaterial, World world, Block block, BlockPos pos, ItemStack heldItem) {
         if (EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, heldItem) >= 1) return;
 
-        ItemStack drop = ItemStack.EMPTY;
         switch ((BigBreakMaterials) toolMaterial) {
             case COAL:
                 if (block == Blocks.COAL_ORE) {
-                    drop = new ItemStack(Items.COAL);
+                    ItemStack drop = new ItemStack(Items.COAL);
                     int chance = LibConfigHandler.coalDoubleDropChance.get();
                     if (world.rand.nextInt(1000) < chance && LibConfigHandler.coalDoubleDrop.get())
                         world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));
                 }
             case EMERALD:
                 if (block == Blocks.EMERALD_ORE) {
-                    drop = new ItemStack(Items.EMERALD);
+                    ItemStack drop = new ItemStack(Items.EMERALD);
                     int chance = LibConfigHandler.emeraldDoubleDropChance.get();
                     if (world.rand.nextInt(1000) < chance && LibConfigHandler.emeraldDoubleDrop.get())
                         world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));
                 }
             case LAPIS:
                 if (block == Blocks.LAPIS_ORE) {
-                    drop = new ItemStack(Items.LAPIS_LAZULI);
+                    ItemStack drop = new ItemStack(Items.LAPIS_LAZULI);
                     int chance = LibConfigHandler.lapisDoubleDropChance.get();
                     if (world.rand.nextInt(1000) < chance && LibConfigHandler.lapisDoubleDrop.get()) {
                         int i = world.rand.nextInt(3);
@@ -91,14 +90,14 @@ public class BlockBreaker {
                 }
             case QUARTZ:
                 if (block == Blocks.NETHER_QUARTZ_ORE) {
-                    drop = new ItemStack(Items.QUARTZ);
+                    ItemStack drop = new ItemStack(Items.QUARTZ);
                     int chance = LibConfigHandler.quartzDoubleDropChance.get();
                     if (world.rand.nextInt(1000) < chance && LibConfigHandler.quartzDoubleDrop.get())
                         world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));
                 }
             case REDSTONE:
                 if (block == Blocks.REDSTONE_ORE) {
-                    drop = new ItemStack(Items.REDSTONE);
+                    ItemStack drop = new ItemStack(Items.REDSTONE);
                     int chance = LibConfigHandler.redstoneDoubleDropChance.get();
                     if (world.rand.nextInt(1000) < chance && LibConfigHandler.redstoneDoubleDrop.get()) {
                         int i = world.rand.nextInt(3);
@@ -107,7 +106,6 @@ public class BlockBreaker {
                     }
                 }
         }
-        world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));
     }
 
     private static void dropItems(World world, List<ItemStack> stacks, BlockPos pos) {
