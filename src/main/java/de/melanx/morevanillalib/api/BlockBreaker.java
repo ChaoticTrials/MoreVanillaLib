@@ -1,10 +1,16 @@
 package de.melanx.morevanillalib.api;
 
+import de.melanx.morevanillalib.LibConfigHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.*;
 import net.minecraft.world.World;
@@ -31,24 +37,77 @@ public class BlockBreaker {
     public static void breakInRadius(World world, PlayerEntity playerEntity, int radius, IBreakValidator breakValidator, boolean damageTool) {
         if (!world.isRemote) {
             List<BlockPos> brokenBlocks = getBreakBlocks(world, playerEntity, radius);
+            ItemStack heldItem = playerEntity.getHeldItemMainhand();
+            IItemTier toolMaterial = ((BigBreakItem) heldItem.getItem()).getToolMaterial();
             for (BlockPos pos : brokenBlocks) {
                 BlockState state = world.getBlockState(pos);
                 if (breakValidator.canBreak(state)) {
                     world.removeBlock(pos, false);
 
                     if (!playerEntity.isCreative()) {
-                        BlockPos offsetPos = new BlockPos(pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5);
-                        dropItems(world, Block.getDrops(state, (ServerWorld) world, pos, null, playerEntity, playerEntity.getHeldItemMainhand()), offsetPos);
-                        state.spawnAdditionalDrops(world, pos, playerEntity.getHeldItemMainhand());
+                        BlockPos offsetPos = new BlockPos(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
+                        dropItems(world, Block.getDrops(state, (ServerWorld) world, pos, null, playerEntity, heldItem), offsetPos);
+                        state.spawnAdditionalDrops(world, pos, heldItem);
+                        spawnExtraDrops(toolMaterial, world, state.getBlock(), pos, heldItem);
                     }
 
                     if (damageTool) {
-                        playerEntity.inventory.getCurrentItem().damageItem(1, playerEntity, player -> {
+                        heldItem.damageItem(1, playerEntity, player -> {
                         });
                     }
                 }
             }
         }
+    }
+
+    private static void spawnExtraDrops(IItemTier toolMaterial, World world, Block block, BlockPos pos, ItemStack heldItem) {
+        if (EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, heldItem) >= 1) return;
+
+        ItemStack drop = ItemStack.EMPTY;
+        switch ((BigBreakMaterials) toolMaterial) {
+            case COAL:
+                if (block == Blocks.COAL_ORE) {
+                    drop = new ItemStack(Items.COAL);
+                    int chance = LibConfigHandler.coalDoubleDropChance.get();
+                    if (world.rand.nextInt(1000) < chance && LibConfigHandler.coalDoubleDrop.get())
+                        world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));
+                }
+            case EMERALD:
+                if (block == Blocks.EMERALD_ORE) {
+                    drop = new ItemStack(Items.EMERALD);
+                    int chance = LibConfigHandler.emeraldDoubleDropChance.get();
+                    if (world.rand.nextInt(1000) < chance && LibConfigHandler.emeraldDoubleDrop.get())
+                        world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));
+                }
+            case LAPIS:
+                if (block == Blocks.LAPIS_ORE) {
+                    drop = new ItemStack(Items.LAPIS_LAZULI);
+                    int chance = LibConfigHandler.lapisDoubleDropChance.get();
+                    if (world.rand.nextInt(1000) < chance && LibConfigHandler.lapisDoubleDrop.get()) {
+                        int i = world.rand.nextInt(3);
+                        drop.setCount(i + 1);
+                        world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));
+                    }
+                }
+            case QUARTZ:
+                if (block == Blocks.NETHER_QUARTZ_ORE) {
+                    drop = new ItemStack(Items.QUARTZ);
+                    int chance = LibConfigHandler.quartzDoubleDropChance.get();
+                    if (world.rand.nextInt(1000) < chance && LibConfigHandler.quartzDoubleDrop.get())
+                        world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));
+                }
+            case REDSTONE:
+                if (block == Blocks.REDSTONE_ORE) {
+                    drop = new ItemStack(Items.REDSTONE);
+                    int chance = LibConfigHandler.redstoneDoubleDropChance.get();
+                    if (world.rand.nextInt(1000) < chance && LibConfigHandler.redstoneDoubleDrop.get()) {
+                        int i = world.rand.nextInt(3);
+                        drop.setCount(i + 1);
+                        world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));
+                    }
+                }
+        }
+        world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));
     }
 
     private static void dropItems(World world, List<ItemStack> stacks, BlockPos pos) {
