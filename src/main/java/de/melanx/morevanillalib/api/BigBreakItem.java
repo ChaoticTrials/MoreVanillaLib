@@ -1,12 +1,18 @@
 package de.melanx.morevanillalib.api;
 
+import de.melanx.morevanillalib.LibConfigHandler;
+import de.melanx.morevanillalib.util.LibDamageSource;
+import de.melanx.morevanillalib.util.ToolUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.Enchantments;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+
+import java.util.Random;
 
 public class BigBreakItem extends PickaxeItem {
     private IItemTier toolMaterial;
@@ -36,6 +42,17 @@ public class BigBreakItem extends PickaxeItem {
         }
 
         return true;
+    }
+
+    @Override
+    public boolean onBlockDestroyed(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity entityLiving) {
+        if (!world.isRemote && state.getBlockHardness(world, pos) != 0.0F) {
+            ToolUtil.extraDrop(world, pos, toolMaterial);
+            int chance = LibConfigHandler.damageByPaperToolsChance.get();
+            if (this.getToolMaterial() == BigBreakMaterials.PAPER && LibConfigHandler.damageByPaperTools.get() && new Random().nextInt(1000) < chance)
+                entityLiving.attackEntityFrom(LibDamageSource.PAPER_CUT, new Random().nextInt(LibConfigHandler.maxPaperDamage.get()) + LibConfigHandler.minPaperDamage.get());
+        }
+        return super.onBlockDestroyed(stack, world, state, pos, entityLiving);
     }
 
     @Override
