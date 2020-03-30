@@ -7,12 +7,14 @@ import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
+import java.util.Collection;
 import java.util.Random;
 
 public class ToolUtil {
@@ -51,8 +53,9 @@ public class ToolUtil {
     public static void extraDrop(World world, BlockPos pos, IItemTier mat) {
         int chance = LibConfigHandler.extraDropChance.get();
         if (new Random().nextInt(1000) < chance && LibConfigHandler.extraDrop.get()) {
-            ItemStack itemStack = mat.getRepairMaterial().getMatchingStacks()[0];
-            world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), itemStack));
+            Ingredient ingredient = mat.getRepairMaterial();
+            ItemStack stack = ingredient.acceptedItems[0].getStacks().iterator().next();
+            world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), stack));
         }
     }
 
