@@ -1,6 +1,7 @@
 package de.melanx.morevanillalib.api;
 
 import de.melanx.morevanillalib.LibConfigHandler;
+import de.melanx.morevanillalib.util.ToolUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -63,6 +64,7 @@ public class BlockBreaker {
     private static void spawnExtraDrops(IItemTier toolMaterial, World world, Block block, BlockPos pos, ItemStack heldItem) {
         if (EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, heldItem) >= 1) return;
 
+        ToolUtil.extraDrop(world, pos, toolMaterial);
         switch ((BigBreakMaterials) toolMaterial) {
             case COAL:
                 if (block == Blocks.COAL_ORE) {
