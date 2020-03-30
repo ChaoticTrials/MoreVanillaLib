@@ -1,9 +1,10 @@
 {
   "homepage": "https://www.curseforge.com/minecraft/mc-mods/morevanillalib",
   "promos": {
-    "1.15.2-latest": "1.0"
+    "1.15.2-latest": "1.0.1"
   },
   "1.15.2": {
+    "1.0.1": "Added gems/coal tag\nAdded russian translation (thanks to TheDirectorX)\nFixed display name\nFixed version number in mod list\nFixed paper damage\nFixed extra/special drops for 3x3\nFixed special drop for coal tools",
     "1.0": "Initial release"
   }
 }
