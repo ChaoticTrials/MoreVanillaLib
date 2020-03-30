@@ -6,6 +6,7 @@ import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.ItemTagsProvider;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.tags.Tag;
 import net.minecraft.util.ResourceLocation;
 
@@ -32,6 +33,7 @@ public class ModTags {
         public static final Tag<Item> PRISMARINE = tag("prismarine");
         public static final Tag<Item> SLIME_BLOCK = tag("slime_block");
 
+        public static final Tag<Item> GEMS_COAL = tag("gems/coal");
         public static final Tag<Item> PAPER = tag("paper");
 
         public static final Tag<Item> HEADS = tag("heads");
@@ -90,6 +92,7 @@ public class ModTags {
 
         @Override
         protected void registerTags() {
+            getBuilder(Items.GEMS_COAL).add(net.minecraft.item.Items.COAL);
             getBuilder(Items.PAPER).add(net.minecraft.item.Items.PAPER);
             getBuilder(Items.HEADS).add(Items.CREEPER_HEAD, Items.DRAGON_HEAD, Items.PLAYER_HEAD, Items.ZOMBIE_HEAD);
             getBuilder(Items.CREEPER_HEAD).add(net.minecraft.item.Items.CREEPER_HEAD);

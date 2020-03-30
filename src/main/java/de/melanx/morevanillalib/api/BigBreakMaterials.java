@@ -35,7 +35,7 @@ public enum BigBreakMaterials implements IItemTier {
         return Ingredient.fromTag(Tags.Items.BONES);
     }, ModTags.Items.BONE_BLOCK),
     COAL(LibConfigHandler.coalHarvestlevel.get(), LibConfigHandler.coalDurability.get(), 4.9F / 3.5F, 4, -2.6F, 17, () -> {
-        return Ingredient.fromItems(Items.COAL);
+        return Ingredient.fromTag(ModTags.Items.GEMS_COAL);
     }, Tags.Items.STORAGE_BLOCKS_COAL),
     EMERALD(LibConfigHandler.emeraldHarvestlevel.get(), LibConfigHandler.emeraldDurability.get(), 12.0F / 3.5f, 11, -3.0F, 25, () -> {
         return Ingredient.fromTag(Tags.Items.GEMS_EMERALD);
