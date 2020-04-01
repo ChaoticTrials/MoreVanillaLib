@@ -9,6 +9,8 @@ public class TranslationHelper {
                 return "Knochen";
             case "coal":
                 return "Kohle";
+            case "diamond":
+                return "Diamant";
             case "emerald":
                 return "Smaragd";
             case "ender":
@@ -17,6 +19,11 @@ public class TranslationHelper {
                 return "Feuer";
             case "glowstone":
                 return "Glowstone";
+            case "gold":
+            case "golden": // todo remove in 1.16
+                return "Gold";
+            case "iron":
+                return "Eisen";
             case "lapis":
                 return "Lapis";
             case "nether":
@@ -33,6 +40,11 @@ public class TranslationHelper {
                 return "Redstone";
             case "slime":
                 return "Schleim";
+            case "stone":
+                return "Stein";
+            case "wood":
+            case "wooden": // todo remove in 1.16
+                return "Holz";
             default:
                 return null;
         }
