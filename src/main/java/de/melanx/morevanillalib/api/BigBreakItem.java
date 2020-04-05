@@ -52,6 +52,9 @@ public class BigBreakItem extends PickaxeItem {
             if (this.getToolMaterial() == BigBreakMaterials.PAPER && LibConfigHandler.damageByPaperTools.get() && new Random().nextInt(1000) < chance)
                 entityLiving.attackEntityFrom(LibDamageSource.PAPER_CUT, new Random().nextInt(LibConfigHandler.maxPaperDamage.get()) + LibConfigHandler.minPaperDamage.get());
         }
+        if (!this.canHarvestBlock(state)) {
+            ToolUtil.extraDrop(world, pos, this.getToolMaterial());
+        }
         return super.onBlockDestroyed(stack, world, state, pos, entityLiving);
     }
 
