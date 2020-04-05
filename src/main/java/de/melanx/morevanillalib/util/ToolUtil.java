@@ -14,7 +14,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
-import java.util.Collection;
 import java.util.Random;
 
 public class ToolUtil {

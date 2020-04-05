@@ -6,7 +6,6 @@ import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.ItemTagsProvider;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.tags.Tag;
 import net.minecraft.util.ResourceLocation;
 
