@@ -4,6 +4,7 @@
     "1.15.2-latest": "1.0.2"
   },
   "1.15.2": {
+    "1.1": "Added global double drop boolean\nAdded configurable harvest level for vanilla materials\nAdded tags for vanilla materials\nAdded double drop chance for diamond hammer/excavator\nAdded miningspeed to config\nMoved config to defaultconfigs path\nReformatted config values -> new config needed",
     "1.0.2": "Re-added prefix to materials\nAdded vanilla translations for German",
     "1.0.1": "Added gems/coal tag\nAdded russian translation (thanks to TheDirectorX)\nFixed display name\nFixed version number in mod list\nFixed paper damage\nFixed extra/special drops for 3x3\nFixed special drop for coal tools",
     "1.0": "Initial release"
