@@ -81,6 +81,26 @@ public class LibConfigHandler {
     public static ForgeConfigSpec.IntValue redstoneHarvestlevel;
     public static ForgeConfigSpec.IntValue slimeHarvestlevel;
 
+    public static ForgeConfigSpec.DoubleValue woodMiningSpeed;
+    public static ForgeConfigSpec.DoubleValue stoneMiningSpeed;
+    public static ForgeConfigSpec.DoubleValue ironMiningSpeed;
+    public static ForgeConfigSpec.DoubleValue goldMiningSpeed;
+    public static ForgeConfigSpec.DoubleValue diamondMiningSpeed;
+    public static ForgeConfigSpec.DoubleValue boneMiningSpeed;
+    public static ForgeConfigSpec.DoubleValue coalMiningSpeed;
+    public static ForgeConfigSpec.DoubleValue emeraldMiningSpeed;
+    public static ForgeConfigSpec.DoubleValue enderMiningSpeed;
+    public static ForgeConfigSpec.DoubleValue fieryMiningSpeed;
+    public static ForgeConfigSpec.DoubleValue glowstoneMiningSpeed;
+    public static ForgeConfigSpec.DoubleValue lapisMiningSpeed;
+    public static ForgeConfigSpec.DoubleValue netherMiningSpeed;
+    public static ForgeConfigSpec.DoubleValue obsidianMiningSpeed;
+    public static ForgeConfigSpec.DoubleValue paperMiningSpeed;
+    public static ForgeConfigSpec.DoubleValue prismarineMiningSpeed;
+    public static ForgeConfigSpec.DoubleValue quartzMiningSpeed;
+    public static ForgeConfigSpec.DoubleValue redstoneMiningSpeed;
+    public static ForgeConfigSpec.DoubleValue slimeMiningSpeed;
+
     public static void init(ForgeConfigSpec.Builder builder) {
         builder.push("features");
         extraDrop = builder.comment("If set true, tools may drop an item when they'll be used.")
@@ -172,6 +192,28 @@ public class LibConfigHandler {
             quartzDurability = builder.defineInRange("quartz", 155, 1, Integer.MAX_VALUE);
             redstoneDurability = builder.defineInRange("redstone", 193, 1, Integer.MAX_VALUE);
             slimeDurability = builder.defineInRange("slime", 1500, 1, Integer.MAX_VALUE);
+            builder.pop();
+
+            builder.push("miningspeed").comment("The mining speed of the tools. Will be devided by 3.5 for hammers/excavators.");
+            woodMiningSpeed = builder.defineInRange("wood", 2.0, 0, Integer.MAX_VALUE);
+            stoneMiningSpeed = builder.defineInRange("stone", 4.0, 0, Integer.MAX_VALUE);
+            ironMiningSpeed = builder.defineInRange("iron", 6.0, 0, Integer.MAX_VALUE);
+            goldMiningSpeed = builder.defineInRange("gold", 11.0, 0, Integer.MAX_VALUE);
+            diamondMiningSpeed = builder.defineInRange("diamond", 8.0, 0, Integer.MAX_VALUE);
+            boneMiningSpeed = builder.defineInRange("bone", 4.9, 0, Integer.MAX_VALUE);
+            coalMiningSpeed = builder.defineInRange("coal", 4.9, 0, Integer.MAX_VALUE);
+            emeraldMiningSpeed = builder.defineInRange("emerald", 8.2, 0, Integer.MAX_VALUE);
+            enderMiningSpeed = builder.defineInRange("ender", 5.7, 0, Integer.MAX_VALUE);
+            fieryMiningSpeed = builder.defineInRange("fiery", 7.0, 0, Integer.MAX_VALUE);
+            glowstoneMiningSpeed = builder.defineInRange("glowstone", 5.0, 0, Integer.MAX_VALUE);
+            lapisMiningSpeed = builder.defineInRange("lapis", 6.2, 0, Integer.MAX_VALUE);
+            netherMiningSpeed = builder.defineInRange("nether", 4.9, 0, Integer.MAX_VALUE);
+            obsidianMiningSpeed = builder.defineInRange("obsidian", 8.2, 0, Integer.MAX_VALUE);
+            paperMiningSpeed = builder.defineInRange("paper", 1.8, 0, Integer.MAX_VALUE);
+            prismarineMiningSpeed = builder.defineInRange("prismarine", 7.0, 0, Integer.MAX_VALUE);
+            quartzMiningSpeed = builder.defineInRange("quartz", 4.9, 0, Integer.MAX_VALUE);
+            redstoneMiningSpeed = builder.defineInRange("redstone", 6.2, 0, Integer.MAX_VALUE);
+            slimeMiningSpeed = builder.defineInRange("slime", 6.2, 0, Integer.MAX_VALUE);
             builder.pop();
 
         builder.pop();
