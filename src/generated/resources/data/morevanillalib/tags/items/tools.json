@@ -1,6 +1,11 @@
 {
   "replace": false,
   "values": [
+    "#morevanillalib:tools/wood",
+    "#morevanillalib:tools/stone",
+    "#morevanillalib:tools/iron",
+    "#morevanillalib:tools/gold",
+    "#morevanillalib:tools/diamond",
     "#morevanillalib:tools/bone",
     "#morevanillalib:tools/coal",
     "#morevanillalib:tools/emerald",

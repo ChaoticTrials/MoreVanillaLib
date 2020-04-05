@@ -43,6 +43,11 @@ public class ModTags {
         public static final Tag<Item> ZOMBIE_HEAD = tag("heads/zombie_head");
         public static final Tag<Item> MAGMA_CREAM = tag("magma_cream");
 
+        public static final Tag<Item> WOOD_TOOLS = modTag("tools/wood");
+        public static final Tag<Item> STONE_TOOLS = modTag("tools/stone");
+        public static final Tag<Item> IRON_TOOLS = modTag("tools/iron");
+        public static final Tag<Item> GOLD_TOOLS = modTag("tools/gold");
+        public static final Tag<Item> DIAMOND_TOOLS = modTag("tools/diamond");
         public static final Tag<Item> BONE_TOOLS = modTag("tools/bone");
         public static final Tag<Item> COAL_TOOLS = modTag("tools/coal");
         public static final Tag<Item> EMERALD_TOOLS = modTag("tools/emerald");
@@ -100,6 +105,11 @@ public class ModTags {
             getBuilder(Items.ZOMBIE_HEAD).add(net.minecraft.item.Items.ZOMBIE_HEAD);
             getBuilder(Items.MAGMA_CREAM).add(net.minecraft.item.Items.MAGMA_CREAM);
 
+            getBuilder(Items.WOOD_TOOLS);
+            getBuilder(Items.STONE_TOOLS);
+            getBuilder(Items.IRON_TOOLS);
+            getBuilder(Items.GOLD_TOOLS);
+            getBuilder(Items.DIAMOND_TOOLS);
             getBuilder(Items.BONE_TOOLS);
             getBuilder(Items.COAL_TOOLS);
             getBuilder(Items.EMERALD_TOOLS);
@@ -114,7 +124,7 @@ public class ModTags {
             getBuilder(Items.QUARTZ_TOOLS);
             getBuilder(Items.REDSTONE_TOOLS);
             getBuilder(Items.SLIME_TOOLS);
-            getBuilder(Items.ALL_TOOLS).add(Items.BONE_TOOLS).add(Items.COAL_TOOLS).add(Items.EMERALD_TOOLS).add(Items.ENDER_TOOLS).add(Items.FIERY_TOOLS).add(Items.GLOWSTONE_TOOLS).add(Items.LAPIS_TOOLS).add(Items.NETHER_TOOLS).add(Items.OBSIDIAN_TOOLS).add(Items.PRISMARINE_TOOLS).add(Items.QUARTZ_TOOLS).add(Items.REDSTONE_TOOLS).add(Items.SLIME_TOOLS);
+            getBuilder(Items.ALL_TOOLS).add(Items.WOOD_TOOLS).add(Items.STONE_TOOLS).add(Items.IRON_TOOLS).add(Items.GOLD_TOOLS).add(Items.DIAMOND_TOOLS).add(Items.BONE_TOOLS).add(Items.COAL_TOOLS).add(Items.EMERALD_TOOLS).add(Items.ENDER_TOOLS).add(Items.FIERY_TOOLS).add(Items.GLOWSTONE_TOOLS).add(Items.LAPIS_TOOLS).add(Items.NETHER_TOOLS).add(Items.OBSIDIAN_TOOLS).add(Items.PRISMARINE_TOOLS).add(Items.QUARTZ_TOOLS).add(Items.REDSTONE_TOOLS).add(Items.SLIME_TOOLS);
 
             copy(Blocks.BONE_BLOCK, ModTags.Items.BONE_BLOCK);
             copy(Blocks.STORAGE_BLOCKS_GLOWSTONE, Items.STORAGE_BLOCKS_GLOWSTONE);
