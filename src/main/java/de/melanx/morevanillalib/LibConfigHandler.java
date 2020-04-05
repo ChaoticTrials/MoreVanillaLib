@@ -29,6 +29,7 @@ public class LibConfigHandler {
     public static ForgeConfigSpec.IntValue redstoneDoubleDropChance;
 
     public static ForgeConfigSpec.BooleanValue extraDrop;
+    public static ForgeConfigSpec.BooleanValue doubleDrop;
     public static ForgeConfigSpec.BooleanValue extraDamage;
     public static ForgeConfigSpec.BooleanValue headDrop;
     public static ForgeConfigSpec.BooleanValue damageByPaperTools;
@@ -82,6 +83,8 @@ public class LibConfigHandler {
         builder.push("features");
         extraDrop = builder.comment("If set true, tools may drop an item when they'll be used.")
                 .define("extraDrop", true);
+        doubleDrop = builder.comment("If set to true the corresponding ore of the tool drops an additional resource.")
+                .define("doubleDrop", true);
         extraDamage = builder.comment("If set true, bone axe and sword make extra damage against special mobs.")
                 .define("extraDamage", true);
         headDrop = builder.comment("If set true, (wither) skeletons will drop their head with a defined chance if killed with bone axe or sword.")
@@ -91,7 +94,7 @@ public class LibConfigHandler {
         autoSmelt = builder.comment("If set true, using Fiery tools to mine blocks will smelt them.")
                 .define("autoSmelt", true);
 
-            builder.push("extraDropBool").comment("If set to true the corresponding ore  of the tool drops an additional resource.");
+            builder.push("doubleDropBool");
             coalDoubleDrop = builder.define("coal", true);
             emeraldDoubleDrop = builder.define("emerald", true);
             lapisDoubleDrop = builder.define("lapis", true);
@@ -102,23 +105,24 @@ public class LibConfigHandler {
         builder.pop();
 
         builder.push("chances");
-        extraDropChance = builder.comment("Sets the chance of an extra drop when using a tool. [Default 5 = 0.5%]")
-                .defineInRange("extraDrop", 5, 0, 1000);
-        extraDamageChance = builder.comment("Sets the chance of extra damage when using bone axe or sword on a (wither) skeleton. [Default 200 = 20%]")
-                .defineInRange("extraDamage", 200, 0, 1000);
-        headDropChance = builder.comment("Sets the chance of an head drop when using bone axe or sword. [Default 50 = 5%]")
-                .defineInRange("headDrop", 50, 0, 1000);
-        damageByPaperToolsChance = builder.comment("Sets the chance to take an half heart damage if using paper tools. [Default 100 = 10%]")
-                .defineInRange("damageByPaperTools", 100, 0, Integer.MAX_VALUE);
+            builder.push("extraDropValue");
+            extraDropChance = builder.comment("Sets the chance of an extra drop when using a tool. [Default 5 = 0.5%]")
+                    .defineInRange("extraDrop", 5, 0, 1000);
+            extraDamageChance = builder.comment("Sets the chance of extra damage when using bone axe or sword on a (wither) skeleton. [Default 200 = 20%]")
+                    .defineInRange("extraDamage", 200, 0, 1000);
+            headDropChance = builder.comment("Sets the chance of an head drop when using bone axe or sword. [Default 50 = 5%]")
+                    .defineInRange("headDrop", 50, 0, 1000);
+            damageByPaperToolsChance = builder.comment("Sets the chance to take an half heart damage if using paper tools. [Default 100 = 10%]")
+                    .defineInRange("damageByPaperTools", 100, 0, Integer.MAX_VALUE);
+            builder.pop();
 
-            builder.push("extraDropValue").comment("The chance for dropping an additional resource of their corresponding ore. [Default 500 = 50%]");
+            builder.push("doubleDropValue").comment("The chance for dropping an additional resource of their corresponding ore. [Default 500 = 50%]");
             coalDoubleDropChance = builder.defineInRange("coal", 500, 0, 1000);
             emeraldDoubleDropChance = builder.comment("Default 1 = 0.1%").defineInRange("emerald", 1, 0, 1000);
             lapisDoubleDropChance = builder.defineInRange("lapis", 500, 0, 1000);
             quartzDoubleDropChance = builder.defineInRange("quartz", 500, 0, 1000);
             redstoneDoubleDropChance = builder.defineInRange("redstone", 500, 0, 1000);
             builder.pop();
-
         builder.pop();
 
         builder.push("amounts");
