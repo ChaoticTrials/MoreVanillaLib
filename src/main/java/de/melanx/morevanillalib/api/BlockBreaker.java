@@ -67,6 +67,14 @@ public class BlockBreaker {
         ToolUtil.extraDrop(world, pos, toolMaterial);
         if (LibConfigHandler.doubleDrop.get()) {
             switch ((BigBreakMaterials) toolMaterial) {
+                case DIAMOND:
+                    if (block == Blocks.DIAMOND_ORE) {
+                        ItemStack drop = new ItemStack(Items.DIAMOND);
+                        int chance = LibConfigHandler.diamondDoubleDropChance.get();
+                        if (world.rand.nextInt(1000) < chance && LibConfigHandler.diamondDoubleDrop.get()) {
+                            world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));
+                        }
+                    }
                 case COAL:
                     if (block == Blocks.COAL_ORE) {
                         ItemStack drop = new ItemStack(Items.COAL);

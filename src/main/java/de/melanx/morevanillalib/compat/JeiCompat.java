@@ -47,6 +47,8 @@ public class JeiCompat implements IModPlugin {
         addValueInfoPage(registration, ModTags.Items.ALL_TOOLS.getAllElements(), "extra_drop", (double) LibConfigHandler.extraDropChance.get() / 10);
 
         double doubleDropChance = (double) LibConfigHandler.extraDropChance.get() / 10;
+        if (LibConfigHandler.diamondDoubleDrop.get())
+            addValueInfoPage(registration, ModTags.Items.DIAMOND_TOOLS.getAllElements(), "diamond_drop", doubleDropChance);
         if (LibConfigHandler.coalDoubleDrop.get())
             addValueInfoPage(registration, ModTags.Items.COAL_TOOLS.getAllElements(), "coal_drop", doubleDropChance);
         if (LibConfigHandler.emeraldDoubleDrop.get())

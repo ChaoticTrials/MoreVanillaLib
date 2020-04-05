@@ -22,6 +22,7 @@ public class LibConfigHandler {
     public static ForgeConfigSpec.IntValue headDropChance;
     public static ForgeConfigSpec.IntValue damageByPaperToolsChance;
 
+    public static ForgeConfigSpec.IntValue diamondDoubleDropChance;
     public static ForgeConfigSpec.IntValue coalDoubleDropChance;
     public static ForgeConfigSpec.IntValue emeraldDoubleDropChance;
     public static ForgeConfigSpec.IntValue lapisDoubleDropChance;
@@ -35,6 +36,7 @@ public class LibConfigHandler {
     public static ForgeConfigSpec.BooleanValue damageByPaperTools;
     public static ForgeConfigSpec.BooleanValue autoSmelt;
 
+    public static ForgeConfigSpec.BooleanValue diamondDoubleDrop;
     public static ForgeConfigSpec.BooleanValue coalDoubleDrop;
     public static ForgeConfigSpec.BooleanValue emeraldDoubleDrop;
     public static ForgeConfigSpec.BooleanValue lapisDoubleDrop;
@@ -95,6 +97,7 @@ public class LibConfigHandler {
                 .define("autoSmelt", true);
 
             builder.push("doubleDropBool");
+            diamondDoubleDrop = builder.comment("Diamond available for hammers/excavators").define("diamond",true);
             coalDoubleDrop = builder.define("coal", true);
             emeraldDoubleDrop = builder.define("emerald", true);
             lapisDoubleDrop = builder.define("lapis", true);
@@ -117,6 +120,7 @@ public class LibConfigHandler {
             builder.pop();
 
             builder.push("doubleDropValue").comment("The chance for dropping an additional resource of their corresponding ore. [Default 500 = 50%]");
+            diamondDoubleDropChance = builder.comment("Default 1 = 0.1%").defineInRange("diamond", 1, 0, 1000);
             coalDoubleDropChance = builder.defineInRange("coal", 500, 0, 1000);
             emeraldDoubleDropChance = builder.comment("Default 1 = 0.1%").defineInRange("emerald", 1, 0, 1000);
             lapisDoubleDropChance = builder.defineInRange("lapis", 500, 0, 1000);
