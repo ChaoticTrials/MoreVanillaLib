@@ -58,6 +58,11 @@ public class LibConfigHandler {
     public static ForgeConfigSpec.IntValue redstoneDurability;
     public static ForgeConfigSpec.IntValue slimeDurability;
 
+    public static ForgeConfigSpec.IntValue woodHarvestlevel;
+    public static ForgeConfigSpec.IntValue stoneHarvestlevel;
+    public static ForgeConfigSpec.IntValue ironHarvestlevel;
+    public static ForgeConfigSpec.IntValue goldHarvestlevel;
+    public static ForgeConfigSpec.IntValue diamondHarvestlevel;
     public static ForgeConfigSpec.IntValue boneHarvestlevel;
     public static ForgeConfigSpec.IntValue coalHarvestlevel;
     public static ForgeConfigSpec.IntValue emeraldHarvestlevel;
@@ -123,6 +128,11 @@ public class LibConfigHandler {
                 .defineInRange("maxPaperDamage", 5, 0, Integer.MAX_VALUE);
 
             builder.push("harvestlevels").comment("The harvestlevel of the tools (0 = wood; 1 = stone; 2 = iron; 3 = diamond; 4 = higher)");
+            woodHarvestlevel = builder.defineInRange("wood", 0, 0, 4);
+            stoneHarvestlevel = builder.defineInRange("stone", 1, 0, 4);
+            ironHarvestlevel = builder.defineInRange("iron", 2, 0, 4);
+            goldHarvestlevel = builder.defineInRange("gold", 0, 0, 4);
+            diamondHarvestlevel = builder.defineInRange("diamond", 3, 0, 4);
             boneHarvestlevel = builder.defineInRange("bone", 1, 0, 4);
             coalHarvestlevel = builder.defineInRange("coal", 1, 0, 4);
             emeraldHarvestlevel = builder.defineInRange("emerald", 3, 0, 4);

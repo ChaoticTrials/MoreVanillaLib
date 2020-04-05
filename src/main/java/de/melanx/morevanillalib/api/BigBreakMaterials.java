@@ -15,19 +15,19 @@ import java.util.function.Supplier;
 
 public enum BigBreakMaterials implements IItemTier {
 
-    WOOD(0, 59, 2.0F / 3.5f, 3, -2.5F, 15, () -> {
+    WOOD(LibConfigHandler.woodHarvestlevel.get(), 59, 2.0F / 3.5f, 3, -2.5F, 15, () -> {
         return Ingredient.fromTag(ItemTags.PLANKS);
     }, "wooden", ItemTags.PLANKS, ItemTags.LOGS), // todo "wood" in 1.16
-    STONE(1, 131, 4.0F / 3.5f, 4, -2.6F, 5, () -> {
+    STONE(LibConfigHandler.stoneHarvestlevel.get(), 131, 4.0F / 3.5f, 4, -2.6F, 5, () -> {
         return Ingredient.fromTag(Tags.Items.COBBLESTONE);
     }, "stone", Tags.Items.COBBLESTONE, Tags.Items.STONE),
-    IRON(2, 250, 6.0F / 3.5f, 5, -2.8F, 14, () -> {
+    IRON(LibConfigHandler.ironHarvestlevel.get(), 250, 6.0F / 3.5f, 5, -2.8F, 14, () -> {
         return Ingredient.fromTag(Tags.Items.INGOTS_IRON);
     }, "iron", Tags.Items.INGOTS_IRON, Tags.Items.STORAGE_BLOCKS_IRON),
-    GOLD(0, 32, 12.0F / 3.5f, 5, -2.5F, 22, () -> {
+    GOLD(LibConfigHandler.goldHarvestlevel.get(), 32, 12.0F / 3.5f, 5, -2.5F, 22, () -> {
         return Ingredient.fromTag(Tags.Items.INGOTS_GOLD);
     }, "golden", Tags.Items.INGOTS_GOLD, Tags.Items.STORAGE_BLOCKS_GOLD), // todo "gold" in 1.16
-    DIAMOND(3, 1561, 8.0F / 3.5f, 10, -3.0F, 10, () -> {
+    DIAMOND(LibConfigHandler.diamondHarvestlevel.get(), 1561, 8.0F / 3.5f, 10, -3.0F, 10, () -> {
         return Ingredient.fromTag(Tags.Items.GEMS_DIAMOND);
     }, "diamond", Tags.Items.GEMS_DIAMOND, Tags.Items.STORAGE_BLOCKS_DIAMOND),
 
