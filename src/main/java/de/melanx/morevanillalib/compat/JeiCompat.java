@@ -15,12 +15,38 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @JeiPlugin
 public class JeiCompat implements IModPlugin {
-    private static final ResourceLocation PLUGIN_UID = new ResourceLocation(MoreVanillaLib.MODID, "plugin/main");
+    public static final ResourceLocation PLUGIN_UID = new ResourceLocation(MoreVanillaLib.MODID, "plugin/main");
+
+    private static void addInfoPage(IRecipeRegistration reg, Collection<Item> items, String name) {
+        String key = getDescKey(new ResourceLocation(MoreVanillaLib.MODID, name));
+        List<ItemStack> stacks = items.stream().map(ItemStack::new).collect(Collectors.toList());
+        reg.addIngredientInfo(stacks, VanillaTypes.ITEM, key);
+    }
+
+    public static void addValueInfoPage(IRecipeRegistration reg, Item item, String name, Object... values) {
+        Collection<Item> items = Collections.singletonList(item);
+        addValueInfoPage(reg, items, name, values);
+    }
+
+    private static void addValueInfoPage(IRecipeRegistration reg, Collection<Item> items, String name, Object... values) {
+        String key = getDescKey(new ResourceLocation(MoreVanillaLib.MODID, name));
+        List<ItemStack> stacks = items.stream().map(ItemStack::new).collect(Collectors.toList());
+        reg.addIngredientInfo(stacks, VanillaTypes.ITEM, I18n.format(key, values));
+    }
+
+    private static String getDescKey(ResourceLocation name) {
+        return "jei." + name.getNamespace() + "." + name.getPath() + ".desc";
+    }
+
+    private static Item getItemFromIngredient(Ingredient ingredient) {
+        return ingredient.getMatchingStacks()[0].getItem();
+    }
 
     @Override
     public ResourceLocation getPluginUid() {
@@ -44,21 +70,8 @@ public class JeiCompat implements IModPlugin {
         addValueInfoPage(registration, ModTags.Items.REDSTONE_TOOLS.getAllElements(), "redstone_tools", LibConfigHandler.redstoneDurability.get(), LibConfigHandler.redstoneDurability.get() * 5, LibConfigHandler.redstoneHarvestlevel.get(), getItemFromIngredient(BigBreakMaterials.REDSTONE.getRepairMaterial()));
         addValueInfoPage(registration, ModTags.Items.SLIME_TOOLS.getAllElements(), "slime_tools", LibConfigHandler.slimeDurability.get(), LibConfigHandler.slimeDurability.get() * 5, LibConfigHandler.slimeHarvestlevel.get(), getItemFromIngredient(BigBreakMaterials.SLIME.getRepairMaterial()));
 
-        addValueInfoPage(registration, ModTags.Items.ALL_TOOLS.getAllElements(), "extra_drop", (double) LibConfigHandler.extraDropChance.get() / 10);
-
-        double doubleDropChance = (double) LibConfigHandler.extraDropChance.get() / 10;
-        if (LibConfigHandler.diamondDoubleDrop.get())
-            addValueInfoPage(registration, ModTags.Items.DIAMOND_TOOLS.getAllElements(), "diamond_drop", doubleDropChance);
-        if (LibConfigHandler.coalDoubleDrop.get())
-            addValueInfoPage(registration, ModTags.Items.COAL_TOOLS.getAllElements(), "coal_drop", doubleDropChance);
-        if (LibConfigHandler.emeraldDoubleDrop.get())
-            addValueInfoPage(registration, ModTags.Items.EMERALD_TOOLS.getAllElements(), "emerald_drop", doubleDropChance);
-        if (LibConfigHandler.lapisDoubleDrop.get())
-            addValueInfoPage(registration, ModTags.Items.LAPIS_TOOLS.getAllElements(), "lapis_drop", doubleDropChance);
-        if (LibConfigHandler.quartzDoubleDrop.get())
-            addValueInfoPage(registration, ModTags.Items.QUARTZ_TOOLS.getAllElements(), "quartz_drop", doubleDropChance);
-        if (LibConfigHandler.redstoneDoubleDrop.get())
-            addValueInfoPage(registration, ModTags.Items.REDSTONE_TOOLS.getAllElements(), "redstone_drop", doubleDropChance);
+        if (LibConfigHandler.extraDrop.get())
+            addValueInfoPage(registration, ModTags.Items.ALL_TOOLS.getAllElements(), "extra_drop", (double) LibConfigHandler.extraDropChance.get() / 10);
 
         if (LibConfigHandler.extraDamage.get()) {
             double extraDamageChance = (double) LibConfigHandler.extraDamageChance.get() / 10;
@@ -80,25 +93,6 @@ public class JeiCompat implements IModPlugin {
         if (LibConfigHandler.autoSmelt.get()) {
             addInfoPage(registration, ModTags.Items.FIERY_TOOLS.getAllElements(), "fiery_smelt");
         }
-    }
 
-    private static void addInfoPage(IRecipeRegistration reg, Collection<Item> items, String name) {
-        String key = getDescKey(new ResourceLocation(MoreVanillaLib.MODID, name));
-        List<ItemStack> stacks = items.stream().map(ItemStack::new).collect(Collectors.toList());
-        reg.addIngredientInfo(stacks, VanillaTypes.ITEM, key);
-    }
-
-    private static void addValueInfoPage(IRecipeRegistration reg, Collection<Item> items, String name, Object... values) {
-        String key = getDescKey(new ResourceLocation(MoreVanillaLib.MODID, name));
-        List<ItemStack> stacks = items.stream().map(ItemStack::new).collect(Collectors.toList());
-        reg.addIngredientInfo(stacks, VanillaTypes.ITEM, I18n.format(key, values));
-    }
-
-    private static String getDescKey(ResourceLocation name) {
-        return "jei." + name.getNamespace() + "." + name.getPath() + ".desc";
-    }
-
-    private static Item getItemFromIngredient(Ingredient ingredient) {
-        return ingredient.getMatchingStacks()[0].getItem();
     }
 }

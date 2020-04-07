@@ -32,12 +32,13 @@ public class Languages {
             add("jei." + MoreVanillaLib.MODID + ".slime_tools.desc", "Slime Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s");
             add("jei." + MoreVanillaLib.MODID + ".extra_drop.desc", "If you use one of these tools, the corresponding repairing item will be dropped with a chance of %d%%%%.");
 
-            // extra drop information
-            add("jei." + MoreVanillaLib.MODID + ".coal_drop.desc", "If you use this pickaxe, there is a %d%%%% chance to get a piece of coal dropped if you mine a coal ore.");
-            add("jei." + MoreVanillaLib.MODID + ".emerald_drop.desc", "If you use this pickaxe, there is a %d%%%% chance to get a emerald gem dropped if you mine an emerald ore.");
-            add("jei." + MoreVanillaLib.MODID + ".lapis_drop.desc", "If you use this pickaxe, there is a %d%%%% chance to get up to 3 lapis gem dropped if you mine a lapis ore.");
-            add("jei." + MoreVanillaLib.MODID + ".quartz_drop.desc", "If you use this pickaxe, there is a %d%%%% chance to get a piece of quartz dropped if you mine a nether quartz ore.");
-            add("jei." + MoreVanillaLib.MODID + ".redstone_drop.desc", "If you use this pickaxe, there is a %d%%%% chance to get up to 3 redstone dust dropped if you mine a redstone ore.");
+            // double drop information
+            add("jei." + MoreVanillaLib.MODID + ".diamond_double_drop.desc", "If you use this tool, there is a %d%%%% chance to get a diamond dropped if you mine a diamond ore.");
+            add("jei." + MoreVanillaLib.MODID + ".coal_double_drop.desc", "If you use this tool, there is a %d%%%% chance to get a piece of coal dropped if you mine a coal ore.");
+            add("jei." + MoreVanillaLib.MODID + ".emerald_double_drop.desc", "If you use this tool, there is a %d%%%% chance to get an emerald gem dropped if you mine an emerald ore.");
+            add("jei." + MoreVanillaLib.MODID + ".lapis_double_drop.desc", "If you use this tool, there is a %d%%%% chance to get up to 3 lapis gem dropped if you mine a lapis ore.");
+            add("jei." + MoreVanillaLib.MODID + ".quartz_double_drop.desc", "If you use this tool, there is a %d%%%% chance to get a piece of quartz dropped if you mine a nether quartz ore.");
+            add("jei." + MoreVanillaLib.MODID + ".redstone_double_drop.desc", "If you use this tool, there is a %d%%%% chance to get up to 3 redstone dust dropped if you mine a redstone ore.");
 
             // extra damage information
             add("jei." + MoreVanillaLib.MODID + ".bone_damage.desc", "If you kill a (wither) skeleton with these tools, you have a %d%%%% chance to make up to 250%%%% more damage.");
@@ -84,11 +85,12 @@ public class Languages {
             add("jei." + MoreVanillaLib.MODID + ".extra_drop.desc", "Wenn du eins dieser Werkzeuge benutzt, wird zu einer %d%%%%igen Chance ein Reparaturitem fallengelassen.");
 
             // extra drop information
-            add("jei." + MoreVanillaLib.MODID + ".coal_drop.desc", "Wenn du diese Spitzhacke benutzt, bekommst du zu einer %d%%%%igen Chance ein St\u00FCck Kohle extra, wenn du Kohleerz abbaust.");
-            add("jei." + MoreVanillaLib.MODID + ".emerald_drop.desc", "Wenn du diese Spitzhacke benutzt, bekommst du zu einer %d%%%%igen Chance einen Smaragd extra, wenn du Smaragderz abbaust.");
-            add("jei." + MoreVanillaLib.MODID + ".lapis_drop.desc", "Wenn du diese Spitzhacke benutzt, bekommst du zu einer %d%%%%igen Chance bis zu 3 St\u00FCck Lapis extra, wenn du Lapiserz abbaust.");
-            add("jei." + MoreVanillaLib.MODID + ".quartz_drop.desc", "Wenn du diese Spitzhacke benutzt, bekommst du zu einer %d%%%%igen Chance ein St\u00FCck Netherquartz extra, wenn du Netherquartzerz abbaust.");
-            add("jei." + MoreVanillaLib.MODID + ".redstone_drop.desc", "Wenn du diese Spitzhacke benutzt, bekommst du zu einer %d%%%%igen Chance bis zu 3 St\u00FCck Redstonestaub extra, wenn du Redstoneerz abbaust.");
+            add("jei." + MoreVanillaLib.MODID + ".diamond_double_drop.desc", "Wenn du dieses Werkzeug benutzt, bekommst zu zu einer %d%%%%igen Chance einen Diamanten extra, wenn du Diamanterz abbaust.");
+            add("jei." + MoreVanillaLib.MODID + ".coal_double_drop.desc", "Wenn du dieses Werkzeug benutzt, bekommst du zu einer %d%%%%igen Chance ein St\u00FCck Kohle extra, wenn du Kohleerz abbaust.");
+            add("jei." + MoreVanillaLib.MODID + ".emerald_double_drop.desc", "Wenn du dieses Werkzeug benutzt, bekommst du zu einer %d%%%%igen Chance einen Smaragd extra, wenn du Smaragderz abbaust.");
+            add("jei." + MoreVanillaLib.MODID + ".lapis_double_drop.desc", "Wenn du dieses Werkzeug benutzt, bekommst du zu einer %d%%%%igen Chance bis zu 3 St\u00FCck Lapis extra, wenn du Lapiserz abbaust.");
+            add("jei." + MoreVanillaLib.MODID + ".quartz_double_drop.desc", "Wenn du dieses Werkzeug benutzt, bekommst du zu einer %d%%%%igen Chance ein St\u00FCck Netherquartz extra, wenn du Netherquartzerz abbaust.");
+            add("jei." + MoreVanillaLib.MODID + ".redstone_double_drop.desc", "Wenn du dieses Werkzeug benutzt, bekommst du zu einer %d%%%%igen Chance bis zu 3 St\u00FCck Redstonestaub extra, wenn du Redstoneerz abbaust.");
 
             // extra damage information
             add("jei." + MoreVanillaLib.MODID + ".bone_damage.desc", "Wenn du ein (Wither-)Skelett mit einem dieser Werkzeuge t\u00F6test, machst du zu einer %d%%%%igen Chance bis zu 250%%%% mehr Schaden.");
