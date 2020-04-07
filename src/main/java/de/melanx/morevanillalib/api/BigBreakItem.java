@@ -11,6 +11,7 @@ import net.minecraft.item.*;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ToolType;
 
 import java.util.Random;
 
@@ -43,6 +44,12 @@ public class BigBreakItem extends PickaxeItem {
         }
 
         return true;
+    }
+
+    @Override
+    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        ToolUtil.extraDrop(attacker.getEntityWorld(), target.getPosition(), this.getToolMaterial());
+        return super.hitEntity(stack, target, attacker);
     }
 
     @Override
