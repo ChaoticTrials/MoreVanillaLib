@@ -1,6 +1,7 @@
 {
   "replace": false,
   "entries": [
-    "morevanillalib:auto_smelt"
+    "morevanillalib:auto_smelt",
+    "morevanillalib:glowstone_drops"
   ]
 }

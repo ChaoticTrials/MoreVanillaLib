@@ -35,6 +35,7 @@ public class LibConfigHandler {
     public static ForgeConfigSpec.BooleanValue headDrop;
     public static ForgeConfigSpec.BooleanValue damageByPaperTools;
     public static ForgeConfigSpec.BooleanValue autoSmelt;
+    public static ForgeConfigSpec.BooleanValue glowstoneDrops;
 
     public static ForgeConfigSpec.BooleanValue diamondDoubleDrop;
     public static ForgeConfigSpec.BooleanValue coalDoubleDrop;
@@ -115,6 +116,8 @@ public class LibConfigHandler {
                 .define("damageByPaperTools", true);
         autoSmelt = builder.comment("If set true, using Fiery tools to mine blocks will smelt them.")
                 .define("autoSmelt", true);
+        glowstoneDrops = builder.comment("If set true, glowstone tools will always drop 4 glowstone dust when breaking glowstone blocks.")
+                .define("glowstoneDrops", true);
 
             builder.push("doubleDropBool");
             diamondDoubleDrop = builder.comment("Diamond available for hammers/excavators").define("diamond",true);

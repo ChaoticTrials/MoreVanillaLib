@@ -1,6 +1,7 @@
 package de.melanx.morevanillalib;
 
-import de.melanx.morevanillalib.util.AutoSmeltModifier;
+import de.melanx.morevanillalib.util.modifier.AutoSmeltModifier;
+import de.melanx.morevanillalib.util.modifier.GlowstoneToolModifier;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
@@ -36,6 +37,7 @@ public class MoreVanillaLib {
         @SubscribeEvent
         public static void registerModifierSerializiers(@Nonnull final RegistryEvent.Register<GlobalLootModifierSerializer<?>> event) {
             event.getRegistry().register(new AutoSmeltModifier.Serializer().setRegistryName(new ResourceLocation(MODID, "auto_smelt")));
+            event.getRegistry().register(new GlowstoneToolModifier.Serializer().setRegistryName(new ResourceLocation(MODID, "glowstone_drops")));
         }
     }
 }

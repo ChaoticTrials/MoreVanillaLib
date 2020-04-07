@@ -55,6 +55,7 @@ public class Languages {
 
             // auto smelt information
             add("jei." + MoreVanillaLib.MODID + ".fiery_smelt.desc", "If you break blocks which can be smelted with these tools, you get the drops as smelted items.");
+            add("jei." + MoreVanillaLib.MODID + ".glowstone_drops.desc", "If you break glowstone with these tools, you always get 4 glowstone dust.");
         }
     }
 
@@ -107,6 +108,7 @@ public class Languages {
 
             // auto smelt information
             add("jei." + MoreVanillaLib.MODID + ".fiery_smelt.desc", "Wenn du mit einem dieser Werkzeuge einen Block abbaust, werden die fallengelassenen Items direkt geschmolzen.");
+            add("jei." + MoreVanillaLib.MODID + ".glowstone_drops.desc", "Wenn du mit einem dieser Werkzeuge Glowstone abbaust, werden immer 4 Glowstonestaub fallengelassen.");
         }
     }
 

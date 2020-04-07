@@ -1,0 +1,31 @@
+{
+  "function": "morevanillatools:glowstone_drops",
+  "conditions": [
+    {
+      "condition": "minecraft:match_tool",
+      "predicate": {
+        "tag": "morevanillalib:tools/glowstone"
+      }
+    },
+    {
+      "condition": "minecraft:inverted",
+      "term": {
+        "condition": "minecraft:match_tool",
+        "predicate": {
+          "enchantments": [
+            {
+              "enchantment": "minecraft:silk_touch",
+              "levels": {
+                "min": 1
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "condition": "minecraft:block_state_property",
+      "block": "minecraft:glowstone"
+    }
+  ]
+}

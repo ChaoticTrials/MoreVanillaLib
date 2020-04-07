@@ -14,6 +14,7 @@
   "jei.morevanillalib.fiery_damage.desc": "Wenn du einen Magmaschleim mit einem dieser Werkzeuge t\u00F6test, machst du zu einer %d%%%%igen Chance bis zu 250%%%% mehr Schaden.",
   "jei.morevanillalib.fiery_smelt.desc": "Wenn du mit einem dieser Werkzeuge einen Block abbaust, werden die fallengelassenen Items direkt geschmolzen.",
   "jei.morevanillalib.fiery_tools.desc": "Feuerwerkzeuge\nHaltbarkeit: %s (Hammer/Ausgraber: %s)\nAbbaulevel: %s\nReparaturitem: %s",
+  "jei.morevanillalib.glowstone_drops.desc": "Wenn du mit einem dieser Werkzeuge Glowstone abbaust, werden immer 4 Glowstonestaub fallengelassen.",
   "jei.morevanillalib.glowstone_tools.desc": "Glowstonewerkzeuge\nHaltbarkeit: %s (Hammer/Ausgraber: %s)\nAbbaulevel: %s\nReparaturitem: %s",
   "jei.morevanillalib.lapis_double_drop.desc": "Wenn du dieses Werkzeug benutzt, bekommst du zu einer %d%%%%igen Chance bis zu 3 St\u00FCck Lapis extra, wenn du Lapiserz abbaust.",
   "jei.morevanillalib.lapis_tools.desc": "Lapiswerkzeuge\nHaltbarkeit: %s (Hammer/Ausgraber: %s)\nAbbaulevel: %s\nReparaturitem: %s",

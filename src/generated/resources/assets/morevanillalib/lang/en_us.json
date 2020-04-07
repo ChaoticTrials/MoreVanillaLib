@@ -14,6 +14,7 @@
   "jei.morevanillalib.fiery_damage.desc": "If you kill a magma slime with these tools, you have a %d%%%% chance to make up to 250%%%% more damage.",
   "jei.morevanillalib.fiery_smelt.desc": "If you break blocks which can be smelted with these tools, you get the drops as smelted items.",
   "jei.morevanillalib.fiery_tools.desc": "Fiery Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s",
+  "jei.morevanillalib.glowstone_drops.desc": "If you break glowstone with these tools, you always get 4 glowstone dust.",
   "jei.morevanillalib.glowstone_tools.desc": "Glowstone Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s",
   "jei.morevanillalib.lapis_double_drop.desc": "If you use this tool, there is a %d%%%% chance to get up to 3 lapis gem dropped if you mine a lapis ore.",
   "jei.morevanillalib.lapis_tools.desc": "Lapis Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s",

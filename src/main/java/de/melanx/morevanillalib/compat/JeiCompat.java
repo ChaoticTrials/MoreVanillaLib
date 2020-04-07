@@ -94,5 +94,8 @@ public class JeiCompat implements IModPlugin {
             addInfoPage(registration, ModTags.Items.FIERY_TOOLS.getAllElements(), "fiery_smelt");
         }
 
+        if (LibConfigHandler.glowstoneDrops.get()) {
+            addInfoPage(registration, ModTags.Items.GLOWSTONE_TOOLS.getAllElements(), "glowstone_drops");
+        }
     }
 }
