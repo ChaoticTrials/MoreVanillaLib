@@ -5,6 +5,7 @@ import de.melanx.morevanillalib.util.ToolUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.OreBlock;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.item.ItemEntity;
@@ -40,6 +41,8 @@ public class BlockBreaker {
             List<BlockPos> brokenBlocks = getBreakBlocks(world, playerEntity, radius);
             ItemStack heldItem = playerEntity.getHeldItemMainhand();
             IItemTier toolMaterial = ((BigBreakItem) heldItem.getItem()).getToolMaterial();
+            int silktouch = EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, heldItem);
+            int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, heldItem);
             for (BlockPos pos : brokenBlocks) {
                 BlockState state = world.getBlockState(pos);
                 if (breakValidator.canBreak(state)) {
@@ -49,6 +52,9 @@ public class BlockBreaker {
                         BlockPos offsetPos = new BlockPos(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
                         dropItems(world, Block.getDrops(state, (ServerWorld) world, pos, null, playerEntity, heldItem), offsetPos);
                         state.spawnAdditionalDrops(world, pos, heldItem);
+                        if (state.getBlock() instanceof OreBlock) {
+                            state.getBlock().dropXpOnBlockBreak(world, pos, ((OreBlock) state.getBlock()).getExpDrop(state, world, pos, fortune, silktouch));
+                        }
                         spawnExtraDrops(toolMaterial, world, state.getBlock(), pos, heldItem);
                     }
 
