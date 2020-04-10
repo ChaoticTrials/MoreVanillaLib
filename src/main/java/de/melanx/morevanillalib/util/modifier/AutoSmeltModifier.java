@@ -23,19 +23,19 @@ public class AutoSmeltModifier extends LootModifier {
         super(conditionsIn);
     }
 
-    @Nonnull
-    @Override
-    protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
-        if (!LibConfigHandler.autoSmelt.get()) return generatedLoot;
-        return generatedLoot.stream().map(stack -> smelt(stack, context)).collect(Collectors.toList());
-    }
-
     private static ItemStack smelt(ItemStack stack, LootContext context) {
         return context.getWorld().getRecipeManager().getRecipe(IRecipeType.SMELTING, new Inventory(stack), context.getWorld())
                 .map(FurnaceRecipe::getRecipeOutput)
                 .filter(itemStack -> !itemStack.isEmpty())
                 .map(itemStack -> ItemHandlerHelper.copyStackWithSize(itemStack, stack.getCount() * itemStack.getCount()))
                 .orElse(stack);
+    }
+
+    @Nonnull
+    @Override
+    protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
+        if (!LibConfigHandler.autoSmelt.get()) return generatedLoot;
+        return generatedLoot.stream().map(stack -> smelt(stack, context)).collect(Collectors.toList());
     }
 
     public static class Serializer extends GlobalLootModifierSerializer<AutoSmeltModifier> {

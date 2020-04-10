@@ -53,7 +53,7 @@ public class BlockBreaker {
                         dropItems(world, Block.getDrops(state, (ServerWorld) world, pos, null, playerEntity, heldItem), offsetPos);
                         state.spawnAdditionalDrops(world, pos, heldItem);
                         if (state.getBlock() instanceof OreBlock) {
-                            state.getBlock().dropXpOnBlockBreak(world, pos, ((OreBlock) state.getBlock()).getExpDrop(state, world, pos, fortune, silktouch));
+                            state.getBlock().dropXpOnBlockBreak(world, pos, state.getBlock().getExpDrop(state, world, pos, fortune, silktouch));
                         }
                         spawnExtraDrops(toolMaterial, world, state.getBlock(), pos, heldItem);
                     }

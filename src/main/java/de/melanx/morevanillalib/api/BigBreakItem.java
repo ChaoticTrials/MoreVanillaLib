@@ -11,12 +11,11 @@ import net.minecraft.item.*;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ToolType;
 
 import java.util.Random;
 
 public class BigBreakItem extends PickaxeItem {
-    private IItemTier toolMaterial;
+    private final IItemTier toolMaterial;
 
     public BigBreakItem(IItemTier toolMaterial, float attackSpeed) {
         super(toolMaterial, 0, attackSpeed, new Item.Properties().group(ItemGroup.TOOLS));
