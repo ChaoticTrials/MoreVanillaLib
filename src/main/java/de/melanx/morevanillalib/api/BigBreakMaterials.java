@@ -14,64 +14,26 @@ import java.util.function.Supplier;
 
 public enum BigBreakMaterials implements IItemTier {
 
-    WOOD(LibConfigHandler.woodHarvestlevel.get(), 59, LibConfigHandler.woodMiningSpeed.get(), 3, -2.5F, 15, () -> {
-        return Ingredient.fromTag(ItemTags.PLANKS);
-    }, "wooden", ItemTags.PLANKS, ItemTags.LOGS), // todo "wood" in 1.16
-    STONE(LibConfigHandler.stoneHarvestlevel.get(), 131, LibConfigHandler.stoneMiningSpeed.get(), 4, -2.6F, 5, () -> {
-        return Ingredient.fromTag(Tags.Items.COBBLESTONE);
-    }, "stone", Tags.Items.COBBLESTONE, Tags.Items.STONE),
-    IRON(LibConfigHandler.ironHarvestlevel.get(), 250, LibConfigHandler.ironMiningSpeed.get(), 5, -2.8F, 14, () -> {
-        return Ingredient.fromTag(Tags.Items.INGOTS_IRON);
-    }, "iron", Tags.Items.INGOTS_IRON, Tags.Items.STORAGE_BLOCKS_IRON),
-    GOLD(LibConfigHandler.goldHarvestlevel.get(), 32, LibConfigHandler.goldMiningSpeed.get(), 5, -2.5F, 22, () -> {
-        return Ingredient.fromTag(Tags.Items.INGOTS_GOLD);
-    }, "golden", Tags.Items.INGOTS_GOLD, Tags.Items.STORAGE_BLOCKS_GOLD), // todo "gold" in 1.16
-    DIAMOND(LibConfigHandler.diamondHarvestlevel.get(), 1561, LibConfigHandler.diamondMiningSpeed.get(), 10, -3.0F, 10, () -> {
-        return Ingredient.fromTag(Tags.Items.GEMS_DIAMOND);
-    }, "diamond", Tags.Items.GEMS_DIAMOND, Tags.Items.STORAGE_BLOCKS_DIAMOND),
+    WOOD(LibConfigHandler.woodHarvestlevel.get(), 59, LibConfigHandler.woodMiningSpeed.get(), 3, -2.5F, 15, () -> RepairMaterialsList.wood, "wooden", ItemTags.PLANKS, ItemTags.LOGS), // todo "wood" in 1.16
+    STONE(LibConfigHandler.stoneHarvestlevel.get(), 131, LibConfigHandler.stoneMiningSpeed.get(), 4, -2.6F, 5, () -> RepairMaterialsList.stone, "stone", Tags.Items.COBBLESTONE, Tags.Items.STONE),
+    IRON(LibConfigHandler.ironHarvestlevel.get(), 250, LibConfigHandler.ironMiningSpeed.get(), 5, -2.8F, 14, () -> RepairMaterialsList.iron, "iron", Tags.Items.INGOTS_IRON, Tags.Items.STORAGE_BLOCKS_IRON),
+    GOLD(LibConfigHandler.goldHarvestlevel.get(), 32, LibConfigHandler.goldMiningSpeed.get(), 5, -2.5F, 22, () -> RepairMaterialsList.gold, "golden", Tags.Items.INGOTS_GOLD, Tags.Items.STORAGE_BLOCKS_GOLD), // todo "gold" in 1.16
+    DIAMOND(LibConfigHandler.diamondHarvestlevel.get(), 1561, LibConfigHandler.diamondMiningSpeed.get(), 10, -3.0F, 10, () -> RepairMaterialsList.diamond, "diamond", Tags.Items.GEMS_DIAMOND, Tags.Items.STORAGE_BLOCKS_DIAMOND),
 
-    BONE(LibConfigHandler.boneHarvestlevel.get(), LibConfigHandler.boneDurability.get(), LibConfigHandler.boneMiningSpeed.get(), 4, -2.0F, 17, () -> {
-        return Ingredient.fromTag(Tags.Items.BONES);
-    }, "bone", ModTags.Items.BONE_BLOCK),
-    COAL(LibConfigHandler.coalHarvestlevel.get(), LibConfigHandler.coalDurability.get(), LibConfigHandler.coalMiningSpeed.get(), 4, -2.6F, 17, () -> {
-        return Ingredient.fromTag(ModTags.Items.GEMS_COAL);
-    }, "coal", Tags.Items.STORAGE_BLOCKS_COAL),
-    EMERALD(LibConfigHandler.emeraldHarvestlevel.get(), LibConfigHandler.emeraldDurability.get(), LibConfigHandler.emeraldMiningSpeed.get(), 11, -3.0F, 25, () -> {
-        return Ingredient.fromTag(Tags.Items.GEMS_EMERALD);
-    }, "emerald", Tags.Items.GEMS_EMERALD, Tags.Items.STORAGE_BLOCKS_EMERALD),
-    ENDER(LibConfigHandler.enderHarvestlevel.get(), LibConfigHandler.enderDurability.get(), LibConfigHandler.enderMiningSpeed.get(), 10, -3.3F, 10, () -> {
-        return Ingredient.fromTag(Tags.Items.ENDER_PEARLS);
-    }, "ender", ModTags.Items.DRAGON_HEAD, Tags.Items.END_STONES),
-    FIERY(LibConfigHandler.fieryHarvestlevel.get(), LibConfigHandler.fieryDurability.get(), LibConfigHandler.fieryMiningSpeed.get(), 6, -2.3F, 15, () -> {
-        return Ingredient.fromTag(ModTags.Items.MAGMA_BLOCK);
-    }, "fiery", ModTags.Items.MAGMA_BLOCK),
-    GLOWSTONE(LibConfigHandler.glowstoneHarvestlevel.get(), LibConfigHandler.glowstoneDurability.get(), LibConfigHandler.glowstoneMiningSpeed.get(), 5, -2.3F, 35, () -> {
-        return Ingredient.fromTag(ModTags.Items.STORAGE_BLOCKS_GLOWSTONE);
-    }, "glowstone", ModTags.Items.STORAGE_BLOCKS_GLOWSTONE),
-    LAPIS(LibConfigHandler.lapisHarvestlevel.get(), LibConfigHandler.lapisDurability.get(), LibConfigHandler.lapisMiningSpeed.get(), 3, -2.5F, 20, () -> {
-        return Ingredient.fromTag(Tags.Items.GEMS_LAPIS);
-    }, "lapis", Tags.Items.STORAGE_BLOCKS_LAPIS),
-    NETHER(LibConfigHandler.netherHarvestlevel.get(), LibConfigHandler.netherDurability.get(), LibConfigHandler.netherMiningSpeed.get(), 4, -2.1F, 66, () -> {
-        return Ingredient.fromTag(ModTags.Items.NETHER_BRICKS);
-    }, "nether", ModTags.Items.NETHER_BRICKS),
-    OBSIDIAN(LibConfigHandler.obsidianHarvestlevel.get(), LibConfigHandler.obsidianDurability.get(), LibConfigHandler.obsidianMiningSpeed.get(), 7, -3.5F, 15, () -> {
-        return Ingredient.fromTag(Tags.Items.OBSIDIAN);
-    }, "obsidian", Tags.Items.OBSIDIAN),
-    PAPER(LibConfigHandler.paperHarvestlevel.get(), LibConfigHandler.paperDurability.get(), LibConfigHandler.paperMiningSpeed.get(), 0, -3.0F, 17, () -> {
-        return Ingredient.fromTag(ModTags.Items.PAPER);
-    }, "paper", ModTags.Items.PAPER),
-    PRISMARINE(LibConfigHandler.prismarineHarvestlevel.get(), LibConfigHandler.prismarineDurability.get(), LibConfigHandler.prismarineMiningSpeed.get(), 6, -2.3F, 20, () -> {
-        return Ingredient.fromTag(Tags.Items.DUSTS_PRISMARINE);
-    }, "prismarine", ModTags.Items.PRISMARINE),
-    QUARTZ(LibConfigHandler.quartzHarvestlevel.get(), LibConfigHandler.quartzDurability.get(), LibConfigHandler.quartzMiningSpeed.get(), 5, -2.0F, 18, () -> {
-        return Ingredient.fromTag(Tags.Items.GEMS_QUARTZ);
-    }, "quartz", Tags.Items.STORAGE_BLOCKS_QUARTZ),
-    REDSTONE(LibConfigHandler.redstoneHarvestlevel.get(), LibConfigHandler.redstoneDurability.get(), LibConfigHandler.redstoneMiningSpeed.get(), 3, -2.5F, 20, () -> {
-        return Ingredient.fromTag(Tags.Items.DUSTS_REDSTONE);
-    }, "redstone", Tags.Items.STORAGE_BLOCKS_REDSTONE),
-    SLIME(LibConfigHandler.slimeHarvestlevel.get(), LibConfigHandler.slimeDurability.get(), LibConfigHandler.slimeMiningSpeed.get(), 7, -3.0F, 20, () -> {
-        return Ingredient.fromTag(Tags.Items.SLIMEBALLS);
-    }, "slime", ModTags.Items.SLIME_BLOCK);
+    BONE(LibConfigHandler.boneHarvestlevel.get(), LibConfigHandler.boneDurability.get(), LibConfigHandler.boneMiningSpeed.get(), 4, -2.0F, 17, () -> RepairMaterialsList.bone, "bone", ModTags.Items.BONE_BLOCK),
+    COAL(LibConfigHandler.coalHarvestlevel.get(), LibConfigHandler.coalDurability.get(), LibConfigHandler.coalMiningSpeed.get(), 4, -2.6F, 17, () -> RepairMaterialsList.coal, "coal", Tags.Items.STORAGE_BLOCKS_COAL),
+    EMERALD(LibConfigHandler.emeraldHarvestlevel.get(), LibConfigHandler.emeraldDurability.get(), LibConfigHandler.emeraldMiningSpeed.get(), 11, -3.0F, 25, () -> RepairMaterialsList.emerald, "emerald", Tags.Items.GEMS_EMERALD, Tags.Items.STORAGE_BLOCKS_EMERALD),
+    ENDER(LibConfigHandler.enderHarvestlevel.get(), LibConfigHandler.enderDurability.get(), LibConfigHandler.enderMiningSpeed.get(), 10, -3.3F, 10, () -> RepairMaterialsList.ender, "ender", ModTags.Items.DRAGON_HEAD, Tags.Items.END_STONES),
+    FIERY(LibConfigHandler.fieryHarvestlevel.get(), LibConfigHandler.fieryDurability.get(), LibConfigHandler.fieryMiningSpeed.get(), 6, -2.3F, 15, () -> RepairMaterialsList.fiery, "fiery", ModTags.Items.MAGMA_BLOCK),
+    GLOWSTONE(LibConfigHandler.glowstoneHarvestlevel.get(), LibConfigHandler.glowstoneDurability.get(), LibConfigHandler.glowstoneMiningSpeed.get(), 5, -2.3F, 35, () -> RepairMaterialsList.glowstone, "glowstone", ModTags.Items.STORAGE_BLOCKS_GLOWSTONE),
+    LAPIS(LibConfigHandler.lapisHarvestlevel.get(), LibConfigHandler.lapisDurability.get(), LibConfigHandler.lapisMiningSpeed.get(), 3, -2.5F, 20, () -> RepairMaterialsList.lapis, "lapis", Tags.Items.STORAGE_BLOCKS_LAPIS),
+    NETHER(LibConfigHandler.netherHarvestlevel.get(), LibConfigHandler.netherDurability.get(), LibConfigHandler.netherMiningSpeed.get(), 4, -2.1F, 66, () -> RepairMaterialsList.nether, "nether", ModTags.Items.NETHER_BRICKS),
+    OBSIDIAN(LibConfigHandler.obsidianHarvestlevel.get(), LibConfigHandler.obsidianDurability.get(), LibConfigHandler.obsidianMiningSpeed.get(), 7, -3.5F, 15, () -> RepairMaterialsList.obsidian, "obsidian", Tags.Items.OBSIDIAN),
+    PAPER(LibConfigHandler.paperHarvestlevel.get(), LibConfigHandler.paperDurability.get(), LibConfigHandler.paperMiningSpeed.get(), 0, -3.0F, 17, () -> RepairMaterialsList.paper, "paper", ModTags.Items.PAPER),
+    PRISMARINE(LibConfigHandler.prismarineHarvestlevel.get(), LibConfigHandler.prismarineDurability.get(), LibConfigHandler.prismarineMiningSpeed.get(), 6, -2.3F, 20, () -> RepairMaterialsList.prismarine, "prismarine", ModTags.Items.PRISMARINE),
+    QUARTZ(LibConfigHandler.quartzHarvestlevel.get(), LibConfigHandler.quartzDurability.get(), LibConfigHandler.quartzMiningSpeed.get(), 5, -2.0F, 18, () -> RepairMaterialsList.quartz, "quartz", Tags.Items.STORAGE_BLOCKS_QUARTZ),
+    REDSTONE(LibConfigHandler.redstoneHarvestlevel.get(), LibConfigHandler.redstoneDurability.get(), LibConfigHandler.redstoneMiningSpeed.get(), 3, -2.5F, 20, () -> RepairMaterialsList.redstone, "redstone", Tags.Items.STORAGE_BLOCKS_REDSTONE),
+    SLIME(LibConfigHandler.slimeHarvestlevel.get(), LibConfigHandler.slimeDurability.get(), LibConfigHandler.slimeMiningSpeed.get(), 7, -3.0F, 20, () -> RepairMaterialsList.slime, "slime", ModTags.Items.SLIME_BLOCK);
 
     private final int harvestLevel;
     private final int durability;
