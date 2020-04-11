@@ -4,6 +4,7 @@ import de.melanx.morevanillalib.LibConfigHandler;
 import de.melanx.morevanillalib.data.ModTags;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemTier;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.Tag;
@@ -14,11 +15,11 @@ import java.util.function.Supplier;
 
 public enum BigBreakMaterials implements IItemTier {
 
-    WOOD(LibConfigHandler.woodHarvestlevel.get(), 59, LibConfigHandler.woodMiningSpeed.get(), 3, -2.5F, 15, () -> RepairMaterialsList.wood, "wooden", ItemTags.PLANKS, ItemTags.LOGS), // todo "wood" in 1.16
-    STONE(LibConfigHandler.stoneHarvestlevel.get(), 131, LibConfigHandler.stoneMiningSpeed.get(), 4, -2.6F, 5, () -> RepairMaterialsList.stone, "stone", Tags.Items.COBBLESTONE, Tags.Items.STONE),
-    IRON(LibConfigHandler.ironHarvestlevel.get(), 250, LibConfigHandler.ironMiningSpeed.get(), 5, -2.8F, 14, () -> RepairMaterialsList.iron, "iron", Tags.Items.INGOTS_IRON, Tags.Items.STORAGE_BLOCKS_IRON),
-    GOLD(LibConfigHandler.goldHarvestlevel.get(), 32, LibConfigHandler.goldMiningSpeed.get(), 5, -2.5F, 22, () -> RepairMaterialsList.gold, "golden", Tags.Items.INGOTS_GOLD, Tags.Items.STORAGE_BLOCKS_GOLD), // todo "gold" in 1.16
-    DIAMOND(LibConfigHandler.diamondHarvestlevel.get(), 1561, LibConfigHandler.diamondMiningSpeed.get(), 10, -3.0F, 10, () -> RepairMaterialsList.diamond, "diamond", Tags.Items.GEMS_DIAMOND, Tags.Items.STORAGE_BLOCKS_DIAMOND),
+    WOOD(LibConfigHandler.woodHarvestlevel.get(), ItemTier.WOOD.getMaxUses(), LibConfigHandler.woodMiningSpeed.get(), 3, -2.5F, ItemTier.WOOD.getEnchantability(), () -> RepairMaterialsList.wood, "wooden", ItemTags.LOGS), // todo "wood" in 1.16
+    STONE(LibConfigHandler.stoneHarvestlevel.get(), ItemTier.STONE.getMaxUses(), LibConfigHandler.stoneMiningSpeed.get(), 4, -2.6F, ItemTier.STONE.getEnchantability(), () -> RepairMaterialsList.stone, "stone", Tags.Items.STONE),
+    IRON(LibConfigHandler.ironHarvestlevel.get(), ItemTier.IRON.getMaxUses(), LibConfigHandler.ironMiningSpeed.get(), 5, -2.8F, ItemTier.IRON.getEnchantability(), () -> RepairMaterialsList.iron, "iron", Tags.Items.STORAGE_BLOCKS_IRON),
+    GOLD(LibConfigHandler.goldHarvestlevel.get(), ItemTier.GOLD.getMaxUses(), LibConfigHandler.goldMiningSpeed.get(), 5, -2.5F, ItemTier.GOLD.getEnchantability(), () -> RepairMaterialsList.gold, "golden", Tags.Items.STORAGE_BLOCKS_GOLD), // todo "gold" in 1.16
+    DIAMOND(LibConfigHandler.diamondHarvestlevel.get(), ItemTier.DIAMOND.getMaxUses(), LibConfigHandler.diamondMiningSpeed.get(), 10, -3.0F, ItemTier.DIAMOND.getEnchantability(), () -> RepairMaterialsList.diamond, "diamond", Tags.Items.STORAGE_BLOCKS_DIAMOND),
 
     BONE(ToolMaterials.BONE.getHarvestLevel(), ToolMaterials.BONE.getMaxUses(), ToolMaterials.BONE.getEfficiency(), 4, -2.0F, ToolMaterials.BONE.getEnchantability(), () -> RepairMaterialsList.bone, "bone", ModTags.Items.BONE_BLOCK),
     COAL(ToolMaterials.COAL.getHarvestLevel(), ToolMaterials.COAL.getMaxUses(), ToolMaterials.COAL.getEfficiency(), 4, -2.6F, ToolMaterials.COAL.getEnchantability(), () -> RepairMaterialsList.coal, "coal", Tags.Items.STORAGE_BLOCKS_COAL),
