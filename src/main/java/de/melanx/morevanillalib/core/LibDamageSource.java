@@ -1,4 +1,4 @@
-package de.melanx.morevanillalib.util;
+package de.melanx.morevanillalib.core;
 
 import net.minecraft.util.DamageSource;
 

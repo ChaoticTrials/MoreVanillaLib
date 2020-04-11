@@ -1,7 +1,7 @@
 package de.melanx.morevanillalib.api;
 
 import de.melanx.morevanillalib.LibConfigHandler;
-import de.melanx.morevanillalib.util.LibDamageSource;
+import de.melanx.morevanillalib.core.LibDamageSource;
 import de.melanx.morevanillalib.util.ToolUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.Enchantments;

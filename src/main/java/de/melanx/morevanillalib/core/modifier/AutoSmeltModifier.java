@@ -1,4 +1,4 @@
-package de.melanx.morevanillalib.util.modifier;
+package de.melanx.morevanillalib.core.modifier;
 
 import com.google.gson.JsonObject;
 import de.melanx.morevanillalib.LibConfigHandler;

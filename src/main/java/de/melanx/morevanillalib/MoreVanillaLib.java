@@ -1,7 +1,10 @@
 package de.melanx.morevanillalib;
 
-import de.melanx.morevanillalib.util.modifier.AutoSmeltModifier;
-import de.melanx.morevanillalib.util.modifier.GlowstoneToolModifier;
+import de.melanx.morevanillalib.core.ModItemGroup;
+import de.melanx.morevanillalib.core.Registration;
+import de.melanx.morevanillalib.core.modifier.AutoSmeltModifier;
+import de.melanx.morevanillalib.core.modifier.GlowstoneToolModifier;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
@@ -22,6 +25,7 @@ public class MoreVanillaLib {
 
     public static final String MODID = "morevanillalib";
     public static final Logger LOGGER = LogManager.getLogger(MODID);
+    public static final ItemGroup modGroup = new ModItemGroup();
     public static MoreVanillaLib instance;
 
     public MoreVanillaLib() {
@@ -29,6 +33,7 @@ public class MoreVanillaLib {
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, LibConfigHandler.SERVER_CONFIG);
         LibConfigHandler.loadConfig(LibConfigHandler.SERVER_CONFIG, FMLPaths.GAMEDIR.get().resolve(FMLConfig.defaultConfigPath()).resolve(MODID + "-server.toml"));
         MinecraftForge.EVENT_BUS.register(this);
+        Registration.init();
     }
 
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
