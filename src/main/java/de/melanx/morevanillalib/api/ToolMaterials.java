@@ -21,7 +21,7 @@ public enum ToolMaterials implements IItemTier {
     GLOWSTONE(LibConfigHandler.glowstoneDurability.get(), LibConfigHandler.glowstoneMiningSpeed.get(), 2.5F, LibConfigHandler.glowstoneHarvestlevel.get(), 35, () -> RepairMaterialsList.glowstone, Tags.Items.DUSTS_GLOWSTONE),
     LAPIS(LibConfigHandler.lapisDurability.get(), LibConfigHandler.lapisMiningSpeed.get(), 1.5F, LibConfigHandler.lapisHarvestlevel.get(), 20, () -> RepairMaterialsList.lapis, Tags.Items.GEMS_LAPIS),
     NETHER(LibConfigHandler.netherDurability.get(), LibConfigHandler.netherMiningSpeed.get(), 2, LibConfigHandler.netherHarvestlevel.get(), 66, () -> RepairMaterialsList.nether, Tags.Items.NETHERRACK),
-    OBSIDIAN(LibConfigHandler.obsidianDurability.get(), LibConfigHandler.obsidianMiningSpeed.get(), 2.5F, LibConfigHandler.obsidianHarvestlevel.get(), 15, () -> RepairMaterialsList.obsidian, Tags.Items.OBSIDIAN), // todo add obsidian shards
+    OBSIDIAN(LibConfigHandler.obsidianDurability.get(), LibConfigHandler.obsidianMiningSpeed.get(), 2.5F, LibConfigHandler.obsidianHarvestlevel.get(), 15, () -> RepairMaterialsList.obsidian, ModTags.Items.DUSTS_OBSIDIAN),
     PAPER(LibConfigHandler.paperDurability.get(), LibConfigHandler.paperMiningSpeed.get(), 0, LibConfigHandler.paperHarvestlevel.get(), 17, () -> RepairMaterialsList.paper, ModTags.Items.PAPER),
     PRISMARINE(LibConfigHandler.prismarineDurability.get(), LibConfigHandler.prismarineMiningSpeed.get(), 3, LibConfigHandler.prismarineHarvestlevel.get(), 20, () -> RepairMaterialsList.prismarine, Tags.Items.DUSTS_PRISMARINE),
     QUARTZ(LibConfigHandler.quartzDurability.get(), LibConfigHandler.quartzMiningSpeed.get(), 2, LibConfigHandler.quartzHarvestlevel.get(), 18, () -> RepairMaterialsList.quartz, Tags.Items.GEMS_QUARTZ),

@@ -1,6 +1,7 @@
 package de.melanx.morevanillalib.data;
 
 import de.melanx.morevanillalib.MoreVanillaLib;
+import de.melanx.morevanillalib.core.Registration;
 import net.minecraft.block.Block;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
@@ -8,11 +9,13 @@ import net.minecraft.data.ItemTagsProvider;
 import net.minecraft.item.Item;
 import net.minecraft.tags.Tag;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.Tags;
 
 public class ModTags {
 
     public static class Blocks {
         public static final Tag<Block> BONE_BLOCK = tag("bone_block");
+        public static final Tag<Block> CLEAN_ENDSTONE = tag("clean_endstone");
         public static final Tag<Block> STORAGE_BLOCKS_GLOWSTONE = tag("storage_blocks/glowstone");
         public static final Tag<Block> MAGMA_BLOCK = tag("magma_block");
         public static final Tag<Block> NETHER_BRICKS = tag("netherbricks");
@@ -26,14 +29,17 @@ public class ModTags {
 
     public static class Items {
         public static final Tag<Item> BONE_BLOCK = tag("bone_block");
+        public static final Tag<Item> CLEAN_ENDSTONE = tag("clean_endstone");
         public static final Tag<Item> STORAGE_BLOCKS_GLOWSTONE = tag("storage_blocks/glowstone");
         public static final Tag<Item> MAGMA_BLOCK = tag("magma_block");
         public static final Tag<Item> NETHER_BRICKS = tag("netherbricks");
         public static final Tag<Item> PRISMARINE = tag("prismarine");
         public static final Tag<Item> SLIME_BLOCK = tag("slime_block");
 
+        public static final Tag<Item> DUSTS_OBSIDIAN = tag("dusts/obsidian");
         public static final Tag<Item> GEMS_COAL = tag("gems/coal");
         public static final Tag<Item> PAPER = tag("paper");
+        public static final Tag<Item> PAPER_BUNDLE = tag("paper_bundle");
 
         public static final Tag<Item> HEADS = tag("heads");
 
@@ -81,11 +87,14 @@ public class ModTags {
         @Override
         protected void registerTags() {
             getBuilder(Blocks.BONE_BLOCK).add(net.minecraft.block.Blocks.BONE_BLOCK);
+            getBuilder(Blocks.CLEAN_ENDSTONE).add(Registration.clean_endstone.get());
             getBuilder(Blocks.STORAGE_BLOCKS_GLOWSTONE).add(net.minecraft.block.Blocks.GLOWSTONE);
             getBuilder(Blocks.MAGMA_BLOCK).add(net.minecraft.block.Blocks.MAGMA_BLOCK);
             getBuilder(Blocks.NETHER_BRICKS).add(net.minecraft.block.Blocks.NETHER_BRICKS);
             getBuilder(Blocks.PRISMARINE).add(net.minecraft.block.Blocks.PRISMARINE_BRICKS);
             getBuilder(Blocks.SLIME_BLOCK).add(net.minecraft.block.Blocks.SLIME_BLOCK);
+
+            getBuilder(Tags.Blocks.END_STONES).add(Blocks.CLEAN_ENDSTONE);
         }
     }
 
@@ -96,8 +105,10 @@ public class ModTags {
 
         @Override
         protected void registerTags() {
+            getBuilder(Items.DUSTS_OBSIDIAN).add(Registration.obsidian_shard.get());
             getBuilder(Items.GEMS_COAL).add(net.minecraft.item.Items.COAL);
             getBuilder(Items.PAPER).add(net.minecraft.item.Items.PAPER);
+            getBuilder(Items.PAPER_BUNDLE).add(Registration.paper_bundle.get());
             getBuilder(Items.HEADS).add(Items.CREEPER_HEAD, Items.DRAGON_HEAD, Items.PLAYER_HEAD, Items.ZOMBIE_HEAD);
             getBuilder(Items.CREEPER_HEAD).add(net.minecraft.item.Items.CREEPER_HEAD);
             getBuilder(Items.DRAGON_HEAD).add(net.minecraft.item.Items.DRAGON_HEAD);
@@ -126,7 +137,8 @@ public class ModTags {
             getBuilder(Items.SLIME_TOOLS);
             getBuilder(Items.ALL_TOOLS).add(Items.WOOD_TOOLS).add(Items.STONE_TOOLS).add(Items.IRON_TOOLS).add(Items.GOLD_TOOLS).add(Items.DIAMOND_TOOLS).add(Items.BONE_TOOLS).add(Items.COAL_TOOLS).add(Items.EMERALD_TOOLS).add(Items.ENDER_TOOLS).add(Items.FIERY_TOOLS).add(Items.GLOWSTONE_TOOLS).add(Items.LAPIS_TOOLS).add(Items.NETHER_TOOLS).add(Items.OBSIDIAN_TOOLS).add(Items.PRISMARINE_TOOLS).add(Items.QUARTZ_TOOLS).add(Items.REDSTONE_TOOLS).add(Items.SLIME_TOOLS);
 
-            copy(Blocks.BONE_BLOCK, ModTags.Items.BONE_BLOCK);
+            copy(Blocks.BONE_BLOCK, Items.BONE_BLOCK);
+            copy(Blocks.CLEAN_ENDSTONE, Items.CLEAN_ENDSTONE);
             copy(Blocks.STORAGE_BLOCKS_GLOWSTONE, Items.STORAGE_BLOCKS_GLOWSTONE);
             copy(Blocks.MAGMA_BLOCK, Items.MAGMA_BLOCK);
             copy(Blocks.NETHER_BRICKS, Items.NETHER_BRICKS);
