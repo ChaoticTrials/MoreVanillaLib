@@ -1,5 +1,8 @@
 {
+  "block.morevanillalib.clean_endstone": "Reiner Endstein",
   "death.attack.paperCut": "%1$s wurde durch Papier niedergestreckt.",
+  "item.morevanillalib.obsidian_shard": "Obsidianscherbe",
+  "item.morevanillalib.paper_bundle": "Papierb\u00FCndel",
   "jei.morevanillalib.bone_damage.desc": "Wenn du ein (Wither-)Skelett mit einem dieser Werkzeuge t\u00F6test, machst du zu einer %d%%%%igen Chance bis zu 250%%%% mehr Schaden.",
   "jei.morevanillalib.bone_heads.desc": "Wenn du ein (Wither-)Skelett mit einem dieser Werkzeuge t\u00F6test, hast du eien %d%%%%ige Chance, einen Kopf zu bekommen.",
   "jei.morevanillalib.bone_tools.desc": "Knochenwerkzeuge\nHaltbarkeit: %s (Hammer/Ausgraber: %s)\nAbbaulevel: %s\nReparaturitem: %s",

@@ -1,5 +1,9 @@
 {
+  "block.morevanillalib.clean_endstone": "Clean Endstone",
   "death.attack.paperCut": "%1$s was cut to death with paper",
+  "item.morevanillalib.obsidian_shard": "Obsidian Shard",
+  "item.morevanillalib.paper_bundle": "Bundle of Paper",
+  "itemGroup.morevanillalib": "MoreVanillaLib",
   "jei.morevanillalib.bone_damage.desc": "If you kill a (wither) skeleton with these tools, you have a %d%%%% chance to make up to 250%%%% more damage.",
   "jei.morevanillalib.bone_heads.desc": "If you kill a (wither) skeleton, there is a %d%%%% chance to get a head dropped.",
   "jei.morevanillalib.bone_tools.desc": "Bone Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s",

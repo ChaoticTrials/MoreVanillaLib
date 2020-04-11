@@ -1,6 +1,7 @@
 package de.melanx.morevanillalib.data;
 
 import de.melanx.morevanillalib.MoreVanillaLib;
+import de.melanx.morevanillalib.core.Registration;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.LanguageProvider;
 
@@ -13,7 +14,13 @@ public class Languages {
 
         @Override
         protected void addTranslations() {
+            add("itemGroup.morevanillalib", "MoreVanillaLib");
             add("death.attack.paperCut", "%1$s was cut to death with paper");
+
+            // items
+            add(Registration.clean_endstone.get(), "Clean Endstone");
+            add(Registration.obsidian_shard.get(), "Obsidian Shard");
+            add(Registration.paper_bundle.get(), "Bundle of Paper");
 
             // default tool information
             add("jei." + MoreVanillaLib.MODID + ".bone_tools.desc", "Bone Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s");
@@ -67,6 +74,11 @@ public class Languages {
         @Override
         protected void addTranslations() {
             add("death.attack.paperCut", "%1$s wurde durch Papier niedergestreckt.");
+
+            // items
+            add(Registration.clean_endstone.get(), "Reiner Endstein");
+            add(Registration.obsidian_shard.get(), "Obsidianscherbe");
+            add(Registration.paper_bundle.get(), "Papierb\u00FCndel");
 
             // default tool information
             add("jei." + MoreVanillaLib.MODID + ".bone_tools.desc", "Knochenwerkzeuge\nHaltbarkeit: %s (Hammer/Ausgraber: %s)\nAbbaulevel: %s\nReparaturitem: %s");
