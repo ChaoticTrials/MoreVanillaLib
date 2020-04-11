@@ -16,6 +16,7 @@ public class DataCreator {
         if (event.includeServer()) {
             generator.addProvider(new ModTags.BlockTags(generator));
             generator.addProvider(new ModTags.ItemTags(generator));
+            generator.addProvider(new Recipes(generator));
         }
         if (event.includeClient()) {
             generator.addProvider(new Languages.English(generator));

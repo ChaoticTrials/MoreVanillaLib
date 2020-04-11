@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "minecraft:end_stone"
+  },
+  "result": "morevanillalib:clean_endstone",
+  "experience": 0.1,
+  "cookingtime": 100
+}
