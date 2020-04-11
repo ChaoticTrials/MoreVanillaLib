@@ -2,7 +2,6 @@ package de.melanx.morevanillalib.api;
 
 import de.melanx.morevanillalib.data.ModTags;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.Tag;

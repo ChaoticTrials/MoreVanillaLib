@@ -2,7 +2,6 @@ package de.melanx.morevanillalib.data;
 
 import de.melanx.morevanillalib.MoreVanillaLib;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.ItemTagsProvider;
