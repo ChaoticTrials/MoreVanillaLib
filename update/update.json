@@ -1,9 +1,10 @@
 {
   "homepage": "https://www.curseforge.com/minecraft/mc-mods/morevanillalib",
   "promos": {
-    "1.15.2-latest": "1.1.2"
+    "1.15.2-latest": "1.2"
   },
   "1.15.2": {
+    "1.2": "Added Clean End Stone\nAdded Obsidian Shard\nAdded Bundle of Paper\nMoved normal tool materials to lib\nChanged Prismarine tag",
     "1.1.2": "Added xp drops",
     "1.1.1": "Added glowstone tools drop 4 glowstone dust when breaking glowstone\nFixed a bit more confusing stuff with extra/double drop\nFixed hammer/excavator on hitting extra drops\nFixed a lang key missing translation",
     "1.1": "Added global double drop boolean\nAdded configurable harvest level for vanilla materials\nAdded tags for vanilla materials\nAdded double drop chance for diamond hammer/excavator\nAdded miningspeed to config\nMoved config to defaultconfigs path\nReformatted config values -> new config needed",
