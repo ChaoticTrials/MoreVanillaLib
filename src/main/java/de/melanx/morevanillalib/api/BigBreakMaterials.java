@@ -23,14 +23,14 @@ public enum BigBreakMaterials implements IItemTier {
 
     BONE(ToolMaterials.BONE.getHarvestLevel(), ToolMaterials.BONE.getMaxUses(), ToolMaterials.BONE.getEfficiency(), 4, -2.0F, ToolMaterials.BONE.getEnchantability(), () -> RepairMaterialsList.bone, "bone", ModTags.Items.BONE_BLOCK),
     COAL(ToolMaterials.COAL.getHarvestLevel(), ToolMaterials.COAL.getMaxUses(), ToolMaterials.COAL.getEfficiency(), 4, -2.6F, ToolMaterials.COAL.getEnchantability(), () -> RepairMaterialsList.coal, "coal", Tags.Items.STORAGE_BLOCKS_COAL),
-    EMERALD(ToolMaterials.EMERALD.getHarvestLevel(), ToolMaterials.EMERALD.getMaxUses(), ToolMaterials.EMERALD.getEfficiency(), 11, -3.0F, ToolMaterials.EMERALD.getEnchantability(), () -> RepairMaterialsList.emerald, "emerald", Tags.Items.GEMS_EMERALD, Tags.Items.STORAGE_BLOCKS_EMERALD),
-    ENDER(ToolMaterials.ENDER.getHarvestLevel(), ToolMaterials.ENDER.getMaxUses(), ToolMaterials.ENDER.getEfficiency(), 10, -3.3F, ToolMaterials.ENDER.getEnchantability(), () -> RepairMaterialsList.ender, "ender", ModTags.Items.DRAGON_HEAD, Tags.Items.END_STONES),
+    EMERALD(ToolMaterials.EMERALD.getHarvestLevel(), ToolMaterials.EMERALD.getMaxUses(), ToolMaterials.EMERALD.getEfficiency(), 11, -3.0F, ToolMaterials.EMERALD.getEnchantability(), () -> RepairMaterialsList.emerald, "emerald", Tags.Items.STORAGE_BLOCKS_EMERALD),
+    ENDER(ToolMaterials.ENDER.getHarvestLevel(), ToolMaterials.ENDER.getMaxUses(), ToolMaterials.ENDER.getEfficiency(), 10, -3.3F, ToolMaterials.ENDER.getEnchantability(), () -> RepairMaterialsList.ender, "ender", Tags.Items.END_STONES), // todo add something compressed/harder to obtain
     FIERY(ToolMaterials.FIERY.getHarvestLevel(), ToolMaterials.FIERY.getMaxUses(), ToolMaterials.FIERY.getEfficiency(), 6, -2.3F, ToolMaterials.FIERY.getEnchantability(), () -> RepairMaterialsList.fiery, "fiery", ModTags.Items.MAGMA_BLOCK),
     GLOWSTONE(ToolMaterials.GLOWSTONE.getHarvestLevel(), ToolMaterials.GLOWSTONE.getMaxUses(), ToolMaterials.GLOWSTONE.getEfficiency(), 5, -2.3F, ToolMaterials.GLOWSTONE.getEnchantability(), () -> RepairMaterialsList.glowstone, "glowstone", ModTags.Items.STORAGE_BLOCKS_GLOWSTONE),
     LAPIS(ToolMaterials.LAPIS.getHarvestLevel(), ToolMaterials.LAPIS.getMaxUses(), ToolMaterials.LAPIS.getEfficiency(), 3, -2.5F, ToolMaterials.LAPIS.getEnchantability(), () -> RepairMaterialsList.lapis, "lapis", Tags.Items.STORAGE_BLOCKS_LAPIS),
     NETHER(ToolMaterials.NETHER.getHarvestLevel(), ToolMaterials.NETHER.getMaxUses(), ToolMaterials.NETHER.getEfficiency(), 4, -2.1F, ToolMaterials.NETHER.getEnchantability(), () -> RepairMaterialsList.nether, "nether", ModTags.Items.NETHER_BRICKS),
     OBSIDIAN(ToolMaterials.OBSIDIAN.getHarvestLevel(), ToolMaterials.OBSIDIAN.getMaxUses(), ToolMaterials.OBSIDIAN.getEfficiency(), 7, -3.5F, ToolMaterials.OBSIDIAN.getEnchantability(), () -> RepairMaterialsList.obsidian, "obsidian", Tags.Items.OBSIDIAN),
-    PAPER(ToolMaterials.PAPER.getHarvestLevel(), ToolMaterials.PAPER.getMaxUses(), ToolMaterials.PAPER.getEfficiency(), 0, -3.0F, ToolMaterials.PAPER.getEnchantability(), () -> RepairMaterialsList.paper, "paper", ModTags.Items.PAPER),
+    PAPER(ToolMaterials.PAPER.getHarvestLevel(), ToolMaterials.PAPER.getMaxUses(), ToolMaterials.PAPER.getEfficiency(), 0, -3.0F, ToolMaterials.PAPER.getEnchantability(), () -> RepairMaterialsList.paper, "paper", ModTags.Items.PAPER), // todo add bundle of paper
     PRISMARINE(ToolMaterials.PRISMARINE.getHarvestLevel(), ToolMaterials.PRISMARINE.getMaxUses(), ToolMaterials.PRISMARINE.getEfficiency(), 6, -2.3F, ToolMaterials.PRISMARINE.getEnchantability(), () -> RepairMaterialsList.prismarine, "prismarine", ModTags.Items.PRISMARINE),
     QUARTZ(ToolMaterials.QUARTZ.getHarvestLevel(), ToolMaterials.QUARTZ.getMaxUses(), ToolMaterials.QUARTZ.getEfficiency(), 5, -2.0F, ToolMaterials.QUARTZ.getEnchantability(), () -> RepairMaterialsList.quartz, "quartz", Tags.Items.STORAGE_BLOCKS_QUARTZ),
     REDSTONE(ToolMaterials.REDSTONE.getHarvestLevel(), ToolMaterials.REDSTONE.getMaxUses(), ToolMaterials.REDSTONE.getEfficiency(), 3, -2.5F, ToolMaterials.REDSTONE.getEnchantability(), () -> RepairMaterialsList.redstone, "redstone", Tags.Items.STORAGE_BLOCKS_REDSTONE),
@@ -44,34 +44,18 @@ public enum BigBreakMaterials implements IItemTier {
     private final int enchantability;
     private final LazyValue<Ingredient> repairMaterial;
     private final String prefix;
-    private final Tag<Item> tagIngredient1;
-    private final Tag<Item> tagIngredient2;
-    private final int durability_modifier = 5;
+    private final Tag<Item> tagIngredient;
 
-    BigBreakMaterials(int harvestLevel, int durability, double efficiency, float attackDamage, float attackSpeed, int enchantability, Supplier<Ingredient> repairMaterial, String prefix, Tag<Item> ingredient1, Tag<Item> ingredient2) {
+    BigBreakMaterials(int harvestLevel, int durability, double efficiency, float attackDamage, float attackSpeed, int enchantability, Supplier<Ingredient> repairMaterial, String prefix, Tag<Item> ingredient) {
         this.harvestLevel = harvestLevel;
-        this.durability = durability * durability_modifier;
+        this.durability = durability * 5;
         this.efficiency = (float) efficiency / 3.5F;
         this.attackDamage = attackDamage;
         this.attackSpeed = attackSpeed;
         this.enchantability = enchantability;
         this.repairMaterial = new LazyValue<>(repairMaterial);
         this.prefix = prefix;
-        this.tagIngredient1 = ingredient1;
-        this.tagIngredient2 = ingredient2;
-    }
-
-    BigBreakMaterials(int harvestLevel, int durability, double efficiency, float attackDamage, float attackSpeed, int enchantability, Supplier<Ingredient> repairMaterial, String prefix, Tag<Item> ingredient1) {
-        this.harvestLevel = harvestLevel;
-        this.durability = durability * durability_modifier;
-        this.efficiency = (float) efficiency / 3.5F;
-        this.attackDamage = attackDamage;
-        this.attackSpeed = attackSpeed;
-        this.enchantability = enchantability;
-        this.repairMaterial = new LazyValue<>(repairMaterial);
-        this.prefix = prefix;
-        this.tagIngredient1 = ingredient1;
-        this.tagIngredient2 = null;
+        this.tagIngredient = ingredient;
     }
 
     @Override
@@ -105,12 +89,8 @@ public enum BigBreakMaterials implements IItemTier {
         return this.prefix;
     }
 
-    public Tag<Item> getTagIngredient1() {
-        return this.tagIngredient1;
-    }
-
-    public Tag<Item> getTagIngredient2() {
-        return this.tagIngredient2;
+    public Tag<Item> getTagIngredient() {
+        return this.tagIngredient;
     }
 
     public float getAttackSpeed() {

@@ -51,16 +51,16 @@ public class LibConfigHandler {
     public static ForgeConfigSpec.IntValue coalDurability;
     public static ForgeConfigSpec.IntValue emeraldDurability;
     public static ForgeConfigSpec.IntValue enderDurability;
-    public static ForgeConfigSpec.IntValue fieryDurability;
-    public static ForgeConfigSpec.IntValue glowstoneDurability;
-    public static ForgeConfigSpec.IntValue lapisDurability;
-    public static ForgeConfigSpec.IntValue netherDurability;
-    public static ForgeConfigSpec.IntValue obsidianDurability;
+    public static ForgeConfigSpec.IntValue fieryDurability; // todo
+    public static ForgeConfigSpec.IntValue glowstoneDurability; // todo
+    public static ForgeConfigSpec.IntValue lapisDurability; // todo
+    public static ForgeConfigSpec.IntValue netherDurability; // todo
+    public static ForgeConfigSpec.IntValue obsidianDurability; // todo
     public static ForgeConfigSpec.IntValue paperDurability;
-    public static ForgeConfigSpec.IntValue prismarineDurability;
-    public static ForgeConfigSpec.IntValue quartzDurability;
-    public static ForgeConfigSpec.IntValue redstoneDurability;
-    public static ForgeConfigSpec.IntValue slimeDurability;
+    public static ForgeConfigSpec.IntValue prismarineDurability; // todo
+    public static ForgeConfigSpec.IntValue quartzDurability; // todo
+    public static ForgeConfigSpec.IntValue redstoneDurability; // todo
+    public static ForgeConfigSpec.IntValue slimeDurability; // todo
 
     public static ForgeConfigSpec.IntValue woodHarvestlevel;
     public static ForgeConfigSpec.IntValue stoneHarvestlevel;

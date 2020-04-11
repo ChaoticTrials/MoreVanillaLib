@@ -17,7 +17,7 @@ public class RepairMaterialsList {
     public static final Ingredient diamond = getTagIngredient(Tags.Items.GEMS_DIAMOND);
 
     public static final Ingredient bone = getTagIngredient(Tags.Items.BONES);
-    public static final Ingredient coal = Ingredient.fromItems(Items.COAL);
+    public static final Ingredient coal = getTagIngredient(ModTags.Items.GEMS_COAL);
     public static final Ingredient emerald = getTagIngredient(Tags.Items.GEMS_EMERALD);
     public static final Ingredient ender = getTagIngredient(Tags.Items.ENDER_PEARLS);
     public static final Ingredient fiery = getTagIngredient(ModTags.Items.MAGMA_BLOCK);
@@ -25,7 +25,7 @@ public class RepairMaterialsList {
     public static final Ingredient lapis = getTagIngredient(Tags.Items.GEMS_LAPIS);
     public static final Ingredient nether = getTagIngredient(ModTags.Items.NETHER_BRICKS);
     public static final Ingredient obsidian = getTagIngredient(Tags.Items.OBSIDIAN);
-    public static final Ingredient paper = Ingredient.fromItems(Items.PAPER);
+    public static final Ingredient paper = getTagIngredient(ModTags.Items.PAPER);
     public static final Ingredient prismarine = getTagIngredient(Tags.Items.DUSTS_PRISMARINE);
     public static final Ingredient quartz = getTagIngredient(Tags.Items.GEMS_QUARTZ);
     public static final Ingredient redstone = getTagIngredient(Tags.Items.DUSTS_REDSTONE);
