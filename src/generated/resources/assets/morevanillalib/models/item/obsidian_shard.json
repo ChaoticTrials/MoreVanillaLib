@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "morevanillalib:item/obsidian_shard"
+  }
+}

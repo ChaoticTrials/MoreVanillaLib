@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "morevanillalib:clean_endstone_blasting"
+      "morevanillalib:clean_end_stone_blasting"
     ]
   },
   "criteria": {
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "morevanillalib:clean_endstone_blasting"
+        "recipe": "morevanillalib:clean_end_stone_blasting"
       }
     }
   },

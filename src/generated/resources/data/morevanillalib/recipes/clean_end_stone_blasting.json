@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "minecraft:end_stone"
   },
-  "result": "morevanillalib:clean_endstone",
+  "result": "morevanillalib:clean_end_stone",
   "experience": 0.1,
   "cookingtime": 100
 }

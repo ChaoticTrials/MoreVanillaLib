@@ -18,8 +18,8 @@ public class Registration {
     public static final Block.Properties blockProps = Block.Properties.create(Material.ROCK).hardnessAndResistance(4.0F, 11.0F);
     public static final Item.Properties itemProps = new Item.Properties().group(MoreVanillaLib.modGroup);
 
-    public static final RegistryObject<Block> clean_endstone = BLOCKS.register("clean_endstone", () -> new Block(blockProps));
-    public static final RegistryObject<Item> clean_endstone_item = ITEMS.register("clean_endstone", () -> new BlockItem(clean_endstone.get(), itemProps));
+    public static final RegistryObject<Block> clean_endstone = BLOCKS.register("clean_end_stone", () -> new Block(blockProps));
+    public static final RegistryObject<Item> clean_endstone_item = ITEMS.register("clean_end_stone", () -> new BlockItem(clean_endstone.get(), itemProps));
     public static final RegistryObject<Item> obsidian_shard = ITEMS.register("obsidian_shard", () -> new Item(itemProps));
     public static final RegistryObject<Item> paper_bundle = ITEMS.register("paper_bundle", () -> new Item(itemProps));
 
