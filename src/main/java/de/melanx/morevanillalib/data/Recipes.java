@@ -1,5 +1,6 @@
 package de.melanx.morevanillalib.data;
 
+import de.melanx.morevanillalib.MoreVanillaLib;
 import de.melanx.morevanillalib.core.Registration;
 import net.minecraft.data.*;
 import net.minecraft.item.Item;
@@ -8,6 +9,7 @@ import net.minecraft.item.crafting.CookingRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tags.Tag;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
 
 import java.util.function.Consumer;
@@ -20,27 +22,29 @@ public class Recipes extends RecipeProvider {
 
     @Override
     protected void registerRecipes(Consumer<IFinishedRecipe> consumer) {
-        compress(Items.OBSIDIAN, ModTags.Items.DUSTS_OBSIDIAN).build(consumer);
-        compress(Registration.paper_bundle.get(), ModTags.Items.PAPER).build(consumer);
-        decompress(Registration.obsidian_shard.get(), Tags.Items.OBSIDIAN).build(consumer);
-        decompress(Items.PAPER, ModTags.Items.PAPER_BUNDLE).build(consumer);
+        compress(Items.OBSIDIAN, ModTags.Items.DUSTS_OBSIDIAN, consumer);
+        compress(Registration.paper_bundle.get(), ModTags.Items.PAPER, consumer);
+        decompress(Registration.obsidian_shard.get(), Tags.Items.OBSIDIAN, consumer);
+        decompress(Items.PAPER, ModTags.Items.PAPER_BUNDLE, consumer);
         registerSmeltingRecipes(consumer, "_smelting", IRecipeSerializer.SMELTING, 0.1F, 200);
         registerSmeltingRecipes(consumer, "_blasting", IRecipeSerializer.BLASTING, 0.1F, 100);
     }
 
-    private ShapedRecipeBuilder compress(Item result, Tag<Item> ingredient) {
-        return ShapedRecipeBuilder.shapedRecipe(result)
+    private void compress(Item result, Tag<Item> ingredient, Consumer<IFinishedRecipe> consumer) {
+        ShapedRecipeBuilder.shapedRecipe(result)
                 .key('X', ingredient)
                 .patternLine("XXX")
                 .patternLine("XXX")
                 .patternLine("XXX")
-                .addCriterion("has_material", hasItem(ingredient));
+                .addCriterion("has_material", hasItem(ingredient))
+                .build(consumer, new ResourceLocation(MoreVanillaLib.MODID, result.getRegistryName().getPath()));
     }
 
-    private ShapelessRecipeBuilder decompress(Item result, Tag<Item> ingredient) {
-        return ShapelessRecipeBuilder.shapelessRecipe(result, 9)
+    private void decompress(Item result, Tag<Item> ingredient, Consumer<IFinishedRecipe> consumer) {
+        ShapelessRecipeBuilder.shapelessRecipe(result, 9)
                 .addIngredient(ingredient)
-                .addCriterion("has_material", hasItem(ingredient));
+                .addCriterion("has_material", hasItem(ingredient))
+                .build(consumer, new ResourceLocation(MoreVanillaLib.MODID, result.getRegistryName().getPath()));
     }
 
     private void registerSmeltingRecipes(Consumer<IFinishedRecipe> consumer, String method, CookingRecipeSerializer<?> serializer, float xp, int time) {
