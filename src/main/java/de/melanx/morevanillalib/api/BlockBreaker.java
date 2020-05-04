@@ -5,7 +5,6 @@ import de.melanx.morevanillalib.util.ToolUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.OreBlock;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.item.ItemEntity;
@@ -52,9 +51,7 @@ public class BlockBreaker {
                         BlockPos offsetPos = new BlockPos(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
                         dropItems(world, Block.getDrops(state, (ServerWorld) world, pos, null, playerEntity, heldItem), offsetPos);
                         state.spawnAdditionalDrops(world, pos, heldItem);
-                        if (state.getBlock() instanceof OreBlock) {
-                            state.getBlock().dropXpOnBlockBreak(world, pos, state.getBlock().getExpDrop(state, world, pos, fortune, silktouch));
-                        }
+                        state.getBlock().dropXpOnBlockBreak(world, pos, state.getBlock().getExpDrop(state, world, pos, fortune, silktouch));
                         spawnExtraDrops(toolMaterial, world, state.getBlock(), pos, heldItem);
                     }
 
