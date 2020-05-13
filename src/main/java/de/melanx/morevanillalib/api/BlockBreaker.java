@@ -12,10 +12,10 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.*;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,16 +45,19 @@ public class BlockBreaker {
             for (BlockPos pos : brokenBlocks) {
                 BlockState state = world.getBlockState(pos);
                 if (breakValidator.canBreak(state)) {
-                    world.removeBlock(pos, false);
-
-                    if (!playerEntity.isCreative()) {
-                        BlockPos offsetPos = new BlockPos(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
-                        dropItems(world, Block.getDrops(state, (ServerWorld) world, pos, null, playerEntity, heldItem), offsetPos);
-                        state.spawnAdditionalDrops(world, pos, heldItem);
-                        state.getBlock().dropXpOnBlockBreak(world, pos, state.getBlock().getExpDrop(state, world, pos, fortune, silktouch));
-                        spawnExtraDrops(toolMaterial, world, state.getBlock(), pos, heldItem);
+                    if (playerEntity.abilities.isCreativeMode) {
+                        if (state.removedByPlayer(world, pos, playerEntity, true, state.getFluidState()))
+                            state.getBlock().onPlayerDestroy(world, pos, state);
+                    } else {
+                        heldItem.getItem().onBlockDestroyed(heldItem, world, state, pos, playerEntity);
+                        TileEntity tileEntity = world.getTileEntity(pos);
+                        if (state.removedByPlayer(world, pos, playerEntity, true, state.getFluidState())) {
+                            state.getBlock().onPlayerDestroy(world, pos, state);
+                            state.getBlock().harvestBlock(world, playerEntity, pos, state, tileEntity, heldItem);
+                            state.getBlock().dropXpOnBlockBreak(world, pos, state.getBlock().getExpDrop(state, world, pos, fortune, silktouch));
+                            spawnExtraDrops(toolMaterial, world, state.getBlock(), pos, heldItem);
+                        }
                     }
-
                     if (damageTool) {
                         heldItem.damageItem(1, playerEntity, player -> {
                         });
