@@ -1,9 +1,10 @@
 {
   "homepage": "https://www.curseforge.com/minecraft/mc-mods/morevanillalib",
   "promos": {
-    "1.15.2-latest": "1.2.2"
+    "1.15.2-latest": "1.2.3"
   },
   "1.15.2": {
+    "1.2.3": "Added localized names for repairing item\nUpdated ru_ru (TheDirectorX)\nFixed redstone ore doesn't drop xp\nFixed shulker inventory will be cleared\nFixed OreExcavation support",
     "1.2.2": "Fixed paper recipe being overridden",
     "1.2.1": "Fixed clean end stone drops nothing",
     "1.2": "Added Clean End Stone\nAdded Obsidian Shard\nAdded Bundle of Paper\nMoved normal tool materials to lib\nChanged Prismarine tag",
