@@ -9,9 +9,11 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.network.play.server.SChangeBlockPacket;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.*;
@@ -51,17 +53,17 @@ public class BlockBreaker {
                     } else {
                         heldItem.getItem().onBlockDestroyed(heldItem, world, state, pos, playerEntity);
                         TileEntity tileEntity = world.getTileEntity(pos);
-                        if (state.removedByPlayer(world, pos, playerEntity, true, state.getFluidState())) {
-                            state.getBlock().onPlayerDestroy(world, pos, state);
-                            state.getBlock().harvestBlock(world, playerEntity, pos, state, tileEntity, heldItem);
-                            state.getBlock().dropXpOnBlockBreak(world, pos, state.getBlock().getExpDrop(state, world, pos, fortune, silktouch));
-                            spawnExtraDrops(toolMaterial, world, state.getBlock(), pos, heldItem);
-                        }
+                        state.getBlock().onPlayerDestroy(world, pos, state);
+                        state.getBlock().harvestBlock(world, playerEntity, pos, state, tileEntity, heldItem);
+                        state.getBlock().dropXpOnBlockBreak(world, pos, state.getBlock().getExpDrop(state, world, pos, fortune, silktouch));
+                        spawnExtraDrops(toolMaterial, world, state.getBlock(), pos, heldItem);
                     }
                     if (damageTool) {
                         heldItem.damageItem(1, playerEntity, player -> {
                         });
                     }
+                    world.playEvent(2001, pos, Block.getStateId(state));
+                    ((ServerPlayerEntity) playerEntity).connection.sendPacket(new SChangeBlockPacket(world, pos));
                 }
             }
         }
