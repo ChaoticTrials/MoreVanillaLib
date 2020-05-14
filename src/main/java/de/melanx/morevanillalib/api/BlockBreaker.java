@@ -47,6 +47,7 @@ public class BlockBreaker {
             for (BlockPos pos : brokenBlocks) {
                 BlockState state = world.getBlockState(pos);
                 if (breakValidator.canBreak(state)) {
+                    world.removeBlock(pos, false);
                     if (playerEntity.abilities.isCreativeMode) {
                         if (state.removedByPlayer(world, pos, playerEntity, true, state.getFluidState()))
                             state.getBlock().onPlayerDestroy(world, pos, state);
