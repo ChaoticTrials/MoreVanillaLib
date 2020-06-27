@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[31,)"
+loaderVersion="[32,)"
 [[mods]]
 modId="morevanillalib"
 version="${file.jarVersion}"
@@ -8,7 +8,6 @@ updateJSONURL="https://raw.githubusercontent.com/MelanX/MoreVanillaLib/master/up
 authors="MelanX"
 description='''
 Lib mod for my Vanilla mods:
-- MoreVanillaArmor
 - MoreVanillaTools
 - Vanilla Excavators
 - Vanilla Hammers
@@ -16,13 +15,13 @@ Lib mod for my Vanilla mods:
 [[dependencies.morevanillalib]]
     modId="forge"
     mandatory=true
-    versionRange="[31.1.18,)"
+    versionRange="[32,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.morevanillalib]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.15.2, 1.16)"
+    versionRange="[1.16.1,)"
     ordering="NONE"
     side="BOTH"

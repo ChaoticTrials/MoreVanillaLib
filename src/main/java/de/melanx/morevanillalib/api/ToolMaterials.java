@@ -5,6 +5,7 @@ import de.melanx.morevanillalib.data.ModTags;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.tags.ITag;
 import net.minecraft.tags.Tag;
 import net.minecraft.util.LazyValue;
 import net.minecraftforge.common.Tags;
@@ -34,9 +35,9 @@ public enum ToolMaterials implements IItemTier {
     private final int harvestLevel;
     private final int enchantability;
     private final LazyValue<Ingredient> repairMaterial;
-    private final Tag<Item> ingredient;
+    private final ITag.INamedTag<Item> ingredient;
 
-    ToolMaterials(int durability, double efficiency, float attackDamage, int harvestLevel, int enchantability, Supplier<Ingredient> repairMaterial, Tag<Item> ingredient) {
+    ToolMaterials(int durability, double efficiency, float attackDamage, int harvestLevel, int enchantability, Supplier<Ingredient> repairMaterial, ITag.INamedTag<Item> ingredient) {
         this.durability = durability;
         this.efficiency = (float) efficiency;
         this.attackDamage = attackDamage;
@@ -76,7 +77,7 @@ public enum ToolMaterials implements IItemTier {
         return this.repairMaterial.getValue();
     }
 
-    public Tag<Item> getIngredient() {
+    public ITag.INamedTag<Item> getIngredient() {
         return this.ingredient;
     }
 

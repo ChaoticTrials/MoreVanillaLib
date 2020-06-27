@@ -17,6 +17,7 @@ import net.minecraft.network.play.server.SChangeBlockPacket;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.*;
+import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
@@ -147,9 +148,9 @@ public class BlockBreaker {
     public static List<BlockPos> getBreakBlocks(World world, PlayerEntity player, int radius) {
         ArrayList<BlockPos> potentialBrokenBlocks = new ArrayList<>();
 
-        Vec3d eyePosition = player.getEyePosition(1);
-        Vec3d rotation = player.getLook(1);
-        Vec3d combined = eyePosition.add(rotation.x * 5, rotation.y * 5, rotation.z * 5);
+        Vector3d eyePosition = player.getEyePosition(1);
+        Vector3d rotation = player.getLook(1);
+        Vector3d combined = eyePosition.add(rotation.x * 5, rotation.y * 5, rotation.z * 5);
 
         BlockRayTraceResult rayTraceResult = world.rayTraceBlocks(new RayTraceContext(eyePosition, combined, RayTraceContext.BlockMode.OUTLINE, RayTraceContext.FluidMode.NONE, player));
 

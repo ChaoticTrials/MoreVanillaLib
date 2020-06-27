@@ -3,6 +3,7 @@ package de.melanx.morevanillalib.api;
 import de.melanx.morevanillalib.data.ModTags;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.Tag;
 import net.minecraftforge.common.Tags;
@@ -30,7 +31,7 @@ public class RepairMaterialsList {
     public static final Ingredient redstone = getTagIngredient(Tags.Items.DUSTS_REDSTONE);
     public static final Ingredient slime = getTagIngredient(Tags.Items.SLIMEBALLS);
 
-    private static Ingredient getTagIngredient(Tag<Item> tag) {
+    private static Ingredient getTagIngredient(ITag.INamedTag<Item> tag) {
         return Ingredient.fromTag(tag);
     }
 

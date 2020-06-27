@@ -8,6 +8,7 @@ import net.minecraft.item.Items;
 import net.minecraft.item.crafting.CookingRecipeSerializer;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.tags.ITag;
 import net.minecraft.tags.Tag;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.Tags;
@@ -30,7 +31,7 @@ public class Recipes extends RecipeProvider {
         registerSmeltingRecipes(consumer, "_blasting", IRecipeSerializer.BLASTING, 0.1F, 100);
     }
 
-    private void compress(Item result, Tag<Item> ingredient, Consumer<IFinishedRecipe> consumer) {
+    private void compress(Item result, ITag.INamedTag<Item> ingredient, Consumer<IFinishedRecipe> consumer) {
         ShapedRecipeBuilder.shapedRecipe(result)
                 .key('X', ingredient)
                 .patternLine("XXX")
@@ -40,7 +41,7 @@ public class Recipes extends RecipeProvider {
                 .build(consumer, new ResourceLocation(MoreVanillaLib.MODID, result.getRegistryName().getPath()));
     }
 
-    private void decompress(Item result, Tag<Item> ingredient, Consumer<IFinishedRecipe> consumer) {
+    private void decompress(Item result, ITag.INamedTag<Item> ingredient, Consumer<IFinishedRecipe> consumer) {
         ShapelessRecipeBuilder.shapelessRecipe(result, 9)
                 .addIngredient(ingredient)
                 .addCriterion("has_material", hasItem(ingredient))

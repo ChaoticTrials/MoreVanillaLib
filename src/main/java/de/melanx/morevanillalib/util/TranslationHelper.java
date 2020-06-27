@@ -20,7 +20,6 @@ public class TranslationHelper {
             case "glowstone":
                 return "Glowstone";
             case "gold":
-            case "golden": // todo remove in 1.16
                 return "Gold";
             case "iron":
                 return "Eisen";
@@ -43,7 +42,6 @@ public class TranslationHelper {
             case "stone":
                 return "Stein";
             case "wood":
-            case "wooden": // todo remove in 1.16
                 return "Holz";
             default:
                 return null;

@@ -6,6 +6,7 @@ import net.minecraft.item.IItemTier;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemTier;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.Tag;
 import net.minecraft.util.LazyValue;
@@ -15,10 +16,10 @@ import java.util.function.Supplier;
 
 public enum BigBreakMaterials implements IItemTier {
 
-    WOOD(LibConfigHandler.woodHarvestlevel.get(), ItemTier.WOOD.getMaxUses(), LibConfigHandler.woodMiningSpeed.get(), 3, -2.5F, ItemTier.WOOD.getEnchantability(), () -> RepairMaterialsList.wood, "wooden", ItemTags.LOGS), // todo "wood" in 1.16
+    WOOD(LibConfigHandler.woodHarvestlevel.get(), ItemTier.WOOD.getMaxUses(), LibConfigHandler.woodMiningSpeed.get(), 3, -2.5F, ItemTier.WOOD.getEnchantability(), () -> RepairMaterialsList.wood, "wood", ItemTags.LOGS),
     STONE(LibConfigHandler.stoneHarvestlevel.get(), ItemTier.STONE.getMaxUses(), LibConfigHandler.stoneMiningSpeed.get(), 4, -2.6F, ItemTier.STONE.getEnchantability(), () -> RepairMaterialsList.stone, "stone", Tags.Items.STONE),
     IRON(LibConfigHandler.ironHarvestlevel.get(), ItemTier.IRON.getMaxUses(), LibConfigHandler.ironMiningSpeed.get(), 5, -2.8F, ItemTier.IRON.getEnchantability(), () -> RepairMaterialsList.iron, "iron", Tags.Items.STORAGE_BLOCKS_IRON),
-    GOLD(LibConfigHandler.goldHarvestlevel.get(), ItemTier.GOLD.getMaxUses(), LibConfigHandler.goldMiningSpeed.get(), 5, -2.5F, ItemTier.GOLD.getEnchantability(), () -> RepairMaterialsList.gold, "golden", Tags.Items.STORAGE_BLOCKS_GOLD), // todo "gold" in 1.16
+    GOLD(LibConfigHandler.goldHarvestlevel.get(), ItemTier.GOLD.getMaxUses(), LibConfigHandler.goldMiningSpeed.get(), 5, -2.5F, ItemTier.GOLD.getEnchantability(), () -> RepairMaterialsList.gold, "gold", Tags.Items.STORAGE_BLOCKS_GOLD),
     DIAMOND(LibConfigHandler.diamondHarvestlevel.get(), ItemTier.DIAMOND.getMaxUses(), LibConfigHandler.diamondMiningSpeed.get(), 10, -3.0F, ItemTier.DIAMOND.getEnchantability(), () -> RepairMaterialsList.diamond, "diamond", Tags.Items.STORAGE_BLOCKS_DIAMOND),
 
     BONE(ToolMaterials.BONE.getHarvestLevel(), ToolMaterials.BONE.getMaxUses(), ToolMaterials.BONE.getEfficiency(), 4, -2.0F, ToolMaterials.BONE.getEnchantability(), () -> RepairMaterialsList.bone, "bone", ModTags.Items.BONE_BLOCK),
@@ -44,9 +45,9 @@ public enum BigBreakMaterials implements IItemTier {
     private final int enchantability;
     private final LazyValue<Ingredient> repairMaterial;
     private final String prefix;
-    private final Tag<Item> tagIngredient;
+    private final ITag.INamedTag<Item> tagIngredient;
 
-    BigBreakMaterials(int harvestLevel, int durability, double efficiency, float attackDamage, float attackSpeed, int enchantability, Supplier<Ingredient> repairMaterial, String prefix, Tag<Item> ingredient) {
+    BigBreakMaterials(int harvestLevel, int durability, double efficiency, float attackDamage, float attackSpeed, int enchantability, Supplier<Ingredient> repairMaterial, String prefix, ITag.INamedTag<Item> ingredient) {
         this.harvestLevel = harvestLevel;
         this.durability = durability * 5;
         this.efficiency = (float) efficiency / 3.5F;
@@ -89,7 +90,7 @@ public enum BigBreakMaterials implements IItemTier {
         return this.prefix;
     }
 
-    public Tag<Item> getTagIngredient() {
+    public ITag.INamedTag<Item> getTagIngredient() {
         return this.tagIngredient;
     }
 
