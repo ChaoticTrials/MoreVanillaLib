@@ -6,7 +6,6 @@ import net.minecraft.item.IItemTier;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tags.ITag;
-import net.minecraft.tags.Tag;
 import net.minecraft.util.LazyValue;
 import net.minecraftforge.common.Tags;
 
