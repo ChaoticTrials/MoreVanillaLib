@@ -59,26 +59,32 @@ public class JeiCompat implements IModPlugin {
         addValueInfoPage(registration, ModTags.Items.WOOD_TOOLS.func_230236_b_(), "wood_tools",
                 ItemTier.WOOD.getMaxUses(),
                 ItemTier.WOOD.getMaxUses() * 5,
+                LibConfigHandler.woodHarvestlevel.get(),
                 getItemFromIngredient(ItemTier.WOOD.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.STONE_TOOLS.func_230236_b_(), "stone_tools",
                 ItemTier.STONE.getMaxUses(),
                 ItemTier.STONE.getMaxUses() * 5,
+                LibConfigHandler.stoneHarvestlevel.get(),
                 getItemFromIngredient(ItemTier.STONE.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.IRON_TOOLS.func_230236_b_(), "iron_tools",
                 ItemTier.IRON.getMaxUses(),
                 ItemTier.IRON.getMaxUses() * 5,
+                LibConfigHandler.ironHarvestlevel.get(),
                 getItemFromIngredient(ItemTier.IRON.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.GOLD_TOOLS.func_230236_b_(), "gold_tools",
                 ItemTier.GOLD.getMaxUses(),
                 ItemTier.GOLD.getMaxUses() * 5,
+                LibConfigHandler.goldHarvestlevel.get(),
                 getItemFromIngredient(ItemTier.GOLD.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.DIAMOND_TOOLS.func_230236_b_(), "diamond_tools",
                 ItemTier.DIAMOND.getMaxUses(),
                 ItemTier.DIAMOND.getMaxUses() * 5,
+                LibConfigHandler.diamondHarvestlevel.get(),
                 getItemFromIngredient(ItemTier.DIAMOND.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.NETHERITE_TOOLS.func_230236_b_(), "netherite_tools",
                 ItemTier.NETHERITE.getMaxUses(),
                 ItemTier.NETHERITE.getMaxUses() * 5,
+                LibConfigHandler.netheriteHarvestlevel.get(),
                 getItemFromIngredient(ItemTier.NETHERITE.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.BONE_TOOLS.func_230236_b_(), "bone_tools",
                 LibConfigHandler.boneDurability.get(),
