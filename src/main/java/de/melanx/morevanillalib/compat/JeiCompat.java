@@ -11,6 +11,7 @@ import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemTier;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.ResourceLocation;
 
@@ -55,6 +56,30 @@ public class JeiCompat implements IModPlugin {
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
+        addValueInfoPage(registration, ModTags.Items.WOOD_TOOLS.func_230236_b_(), "wood_tools",
+                ItemTier.WOOD.getMaxUses(),
+                ItemTier.WOOD.getMaxUses() * 5,
+                getItemFromIngredient(ItemTier.WOOD.getRepairMaterial()).getName().getString());
+        addValueInfoPage(registration, ModTags.Items.STONE_TOOLS.func_230236_b_(), "stone_tools",
+                ItemTier.STONE.getMaxUses(),
+                ItemTier.STONE.getMaxUses() * 5,
+                getItemFromIngredient(ItemTier.STONE.getRepairMaterial()).getName().getString());
+        addValueInfoPage(registration, ModTags.Items.IRON_TOOLS.func_230236_b_(), "iron_tools",
+                ItemTier.IRON.getMaxUses(),
+                ItemTier.IRON.getMaxUses() * 5,
+                getItemFromIngredient(ItemTier.IRON.getRepairMaterial()).getName().getString());
+        addValueInfoPage(registration, ModTags.Items.GOLD_TOOLS.func_230236_b_(), "gold_tools",
+                ItemTier.GOLD.getMaxUses(),
+                ItemTier.GOLD.getMaxUses() * 5,
+                getItemFromIngredient(ItemTier.GOLD.getRepairMaterial()).getName().getString());
+        addValueInfoPage(registration, ModTags.Items.DIAMOND_TOOLS.func_230236_b_(), "diamond_tools",
+                ItemTier.DIAMOND.getMaxUses(),
+                ItemTier.DIAMOND.getMaxUses() * 5,
+                getItemFromIngredient(ItemTier.DIAMOND.getRepairMaterial()).getName().getString());
+        addValueInfoPage(registration, ModTags.Items.WOOD_TOOLS.func_230236_b_(), "netherite_tools", // todo change to netherite tools
+                ItemTier.NETHERITE.getMaxUses(),
+                ItemTier.NETHERITE.getMaxUses() * 5,
+                getItemFromIngredient(ItemTier.NETHERITE.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.BONE_TOOLS.func_230236_b_(), "bone_tools",
                 LibConfigHandler.boneDurability.get(),
                 LibConfigHandler.boneDurability.get() * 5,
