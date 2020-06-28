@@ -76,7 +76,7 @@ public class JeiCompat implements IModPlugin {
                 ItemTier.DIAMOND.getMaxUses(),
                 ItemTier.DIAMOND.getMaxUses() * 5,
                 getItemFromIngredient(ItemTier.DIAMOND.getRepairMaterial()).getName().getString());
-        addValueInfoPage(registration, ModTags.Items.WOOD_TOOLS.func_230236_b_(), "netherite_tools", // todo change to netherite tools
+        addValueInfoPage(registration, ModTags.Items.NETHERITE_TOOLS.func_230236_b_(), "netherite_tools",
                 ItemTier.NETHERITE.getMaxUses(),
                 ItemTier.NETHERITE.getMaxUses() * 5,
                 getItemFromIngredient(ItemTier.NETHERITE.getRepairMaterial()).getName().getString());

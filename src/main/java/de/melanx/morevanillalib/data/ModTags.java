@@ -61,6 +61,7 @@ public class ModTags {
         public static final ITag.INamedTag<Item> GLOWSTONE_TOOLS = modTag("tools/glowstone");
         public static final ITag.INamedTag<Item> LAPIS_TOOLS = modTag("tools/lapis");
         public static final ITag.INamedTag<Item> NETHER_TOOLS = modTag("tools/nether");
+        public static final ITag.INamedTag<Item> NETHERITE_TOOLS = modTag("tools/netherite");
         public static final ITag.INamedTag<Item> OBSIDIAN_TOOLS = modTag("tools/obsidian");
         public static final ITag.INamedTag<Item> PAPER_TOOLS = modTag("tools/paper");
         public static final ITag.INamedTag<Item> PRISMARINE_TOOLS = modTag("tools/prismarine");
