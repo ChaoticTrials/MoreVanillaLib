@@ -32,7 +32,7 @@ public class ItemModels extends ItemModelProvider {
                 .parent(new ModelFile.UncheckedModelFile(modLoc("block/" + path)));
     }
 
-    private void generateItem(Item item) {
+    public void generateItem(Item item) {
         String path = item.getRegistryName().getPath();
         getBuilder(path).parent(getExistingFile(mcLoc("item/handheld")))
                 .texture("layer0", "item/" + path);
