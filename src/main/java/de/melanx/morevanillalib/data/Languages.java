@@ -23,6 +23,13 @@ public class Languages {
             add(Registration.paper_bundle.get(), "Bundle of Paper");
 
             // default tool information
+            add("jei." + MoreVanillaLib.MODID + ".wood_tools.desc", "Wood Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s");
+            add("jei." + MoreVanillaLib.MODID + ".stone_tools.desc", "Stone Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s");
+            add("jei." + MoreVanillaLib.MODID + ".iron_tools.desc", "Iron Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s");
+            add("jei." + MoreVanillaLib.MODID + ".gold_tools.desc", "Gold Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s");
+            add("jei." + MoreVanillaLib.MODID + ".diamond_tools.desc", "Diamond Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s");
+            add("jei." + MoreVanillaLib.MODID + ".netherite_tools.desc", "Netherite Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s");
+
             add("jei." + MoreVanillaLib.MODID + ".bone_tools.desc", "Bone Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s");
             add("jei." + MoreVanillaLib.MODID + ".coal_tools.desc", "Coal Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s");
             add("jei." + MoreVanillaLib.MODID + ".emerald_tools.desc", "Emerald Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s");
@@ -81,6 +88,13 @@ public class Languages {
             add(Registration.paper_bundle.get(), "Papierb\u00FCndel");
 
             // default tool information
+            add("jei." + MoreVanillaLib.MODID + ".wood_tools.desc", "Holzwerkzeuge\nHaltbarkeit: %s (Hammer/Ausgraber: %s)\nAbbaulevel: %s\nReparaturitem: %s");
+            add("jei." + MoreVanillaLib.MODID + ".stone_tools.desc", "Steinwerkezuge\nHaltbarkeit: %s (Hammer/Ausgraber: %s)\nAbbaulevel: %s\nReparaturitem: %s");
+            add("jei." + MoreVanillaLib.MODID + ".iron_tools.desc", "Eisenwerkzeuge\nHaltbarkeit: %s (Hammer/Ausgraber: %s)\nAbbaulevel: %s\nReparaturitem: %s");
+            add("jei." + MoreVanillaLib.MODID + ".gold_tools.desc", "Goldwerkzeuge\nHaltbarkeit: %s (Hammer/Ausgraber: %s)\nAbbaulevel: %s\nReparaturitem: %s");
+            add("jei." + MoreVanillaLib.MODID + ".diamond_tools.desc", "Diamantwerkzeuge\nHaltbarkeit: %s (Hammer/Ausgraber: %s)\nAbbaulevel: %s\nReparaturitem: %s");
+            add("jei." + MoreVanillaLib.MODID + ".netherite_tools.desc", "Netheritwerkzeuge\nHaltbarkeit: %s (Hammer/Ausgraber: %s)\nAbbaulevel: %s\nReparaturitem: %s");
+
             add("jei." + MoreVanillaLib.MODID + ".bone_tools.desc", "Knochenwerkzeuge\nHaltbarkeit: %s (Hammer/Ausgraber: %s)\nAbbaulevel: %s\nReparaturitem: %s");
             add("jei." + MoreVanillaLib.MODID + ".coal_tools.desc", "Kohlewerkezuge\nHaltbarkeit: %s (Hammer/Ausgraber: %s)\nAbbaulevel: %s\nReparaturitem: %s");
             add("jei." + MoreVanillaLib.MODID + ".emerald_tools.desc", "Smaragdwerkzeuge\nHaltbarkeit: %s (Hammer/Ausgraber: %s)\nAbbaulevel: %s\nReparaturitem: %s");

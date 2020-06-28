@@ -10,6 +10,7 @@
   "jei.morevanillalib.coal_double_drop.desc": "If you use this tool, there is a %d%% chance to get a piece of coal dropped if you mine a coal ore.",
   "jei.morevanillalib.coal_tools.desc": "Coal Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s",
   "jei.morevanillalib.diamond_double_drop.desc": "If you use this tool, there is a %d%% chance to get a diamond dropped if you mine a diamond ore.",
+  "jei.morevanillalib.diamond_tools.desc": "Diamond Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s",
   "jei.morevanillalib.emerald_double_drop.desc": "If you use this tool, there is a %d%% chance to get an emerald gem dropped if you mine an emerald ore.",
   "jei.morevanillalib.emerald_tools.desc": "Emerald Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s",
   "jei.morevanillalib.ender_damage.desc": "If you kill an enderman with these tools, you have a %d%% chance to make up to 250%% more damage.",
@@ -20,9 +21,12 @@
   "jei.morevanillalib.fiery_tools.desc": "Fiery Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s",
   "jei.morevanillalib.glowstone_drops.desc": "If you break glowstone with these tools, you always get 4 glowstone dust.",
   "jei.morevanillalib.glowstone_tools.desc": "Glowstone Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s",
+  "jei.morevanillalib.gold_tools.desc": "Gold Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s",
+  "jei.morevanillalib.iron_tools.desc": "Iron Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s",
   "jei.morevanillalib.lapis_double_drop.desc": "If you use this tool, there is a %d%% chance to get up to 3 lapis gem dropped if you mine a lapis ore.",
   "jei.morevanillalib.lapis_tools.desc": "Lapis Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s",
   "jei.morevanillalib.nether_tools.desc": "Nether Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s",
+  "jei.morevanillalib.netherite_tools.desc": "Netherite Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s",
   "jei.morevanillalib.obsidian_tools.desc": "Obsidian Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s",
   "jei.morevanillalib.paper_damage.desc": "If you use these tools, there is a %d%% chance to get %d to %d hearts damage.",
   "jei.morevanillalib.paper_tools.desc": "Paper Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s",
@@ -33,5 +37,7 @@
   "jei.morevanillalib.redstone_double_drop.desc": "If you use this tool, there is a %d%% chance to get up to 3 redstone dust dropped if you mine a redstone ore.",
   "jei.morevanillalib.redstone_tools.desc": "Redstone Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s",
   "jei.morevanillalib.slime_damage.desc": "If you kill a slime with these tools, you have a %d%% chance to make up to 250%% more damage.",
-  "jei.morevanillalib.slime_tools.desc": "Slime Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s"
+  "jei.morevanillalib.slime_tools.desc": "Slime Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s",
+  "jei.morevanillalib.stone_tools.desc": "Stone Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s",
+  "jei.morevanillalib.wood_tools.desc": "Wood Tools\nDurability: %s (Hammer/Excavator: %s)\nHarvest Level: %s\nRepairing Item: %s"
 }
