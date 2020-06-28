@@ -25,7 +25,7 @@ public class DataCreator {
         }
         if (event.includeClient()) {
             generator.addProvider(new BlockStates(generator, helper));
-            generator.addProvider(new ItemModels(generator, helper));
+            generator.addProvider(new ItemModels(generator, MoreVanillaLib.MODID, helper));
             generator.addProvider(new Languages.English(generator));
             generator.addProvider(new Languages.German(generator));
         }

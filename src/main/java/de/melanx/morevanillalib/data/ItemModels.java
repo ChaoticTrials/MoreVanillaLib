@@ -1,6 +1,5 @@
 package de.melanx.morevanillalib.data;
 
-import de.melanx.morevanillalib.MoreVanillaLib;
 import de.melanx.morevanillalib.core.Registration;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.BlockItem;
@@ -12,8 +11,8 @@ import net.minecraftforge.fml.RegistryObject;
 
 public class ItemModels extends ItemModelProvider {
 
-    public ItemModels(DataGenerator generator, ExistingFileHelper helper) {
-        super(generator, MoreVanillaLib.MODID, helper);
+    public ItemModels(DataGenerator generator, String modid, ExistingFileHelper helper) {
+        super(generator, modid, helper);
     }
 
     @Override
@@ -41,9 +40,5 @@ public class ItemModels extends ItemModelProvider {
     @Override
     public String getName() {
         return "Item Models";
-    }
-
-    public ItemModels getInstance() {
-        return this;
     }
 }
