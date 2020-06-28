@@ -1,6 +1,8 @@
 {
   "block.morevanillalib.clean_end_stone": "Reiner Endstein",
   "death.attack.paperCut": "%1$s wurde durch Papier niedergestreckt.",
+  "enchantment.morevanillalib.repairing_luck": "Gl\u00FCck der billigen Reparatur",
+  "enchantment.morevanillalib.repairing_luck.desc": "Verringert die Reperaturkosten im Amboss auf ein Minimum.",
   "item.morevanillalib.obsidian_shard": "Obsidianscherbe",
   "item.morevanillalib.paper_bundle": "Papierb\u00FCndel",
   "jei.morevanillalib.bone_damage.desc": "Wenn du ein (Wither-)Skelett mit einem dieser Werkzeuge t\u00F6test, machst du zu einer %d%%igen Chance bis zu 250%% mehr Schaden.",

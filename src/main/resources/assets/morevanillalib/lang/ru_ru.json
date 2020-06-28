@@ -53,5 +53,8 @@
   "jei.morevanillalib.redstone_tools.desc": "Редстоуновые инструменты\nПрочность: %s (Молот/Большая лопата: %s)\nУровень добычи: %s\nПредмет для починки: %s",
 
   "jei.morevanillalib.slime_damage.desc": "У вас есть %d%% шанс нанести на 250%% больше урона слизню с помощью этих инструментов.",
-  "jei.morevanillalib.slime_tools.desc": "Слизневые инструменты\nПрочность: %s (Молот/Большая лопата: %s)\nУровень добычи: %s\nПредмет для починки: %s"
+  "jei.morevanillalib.slime_tools.desc": "Слизневые инструменты\nПрочность: %s (Молот/Большая лопата: %s)\nУровень добычи: %s\nПредмет для починки: %s",
+
+  "enchantment.morevanillalib.repairing_luck": "Удача дешёвого ремонта",
+  "enchantment.morevanillalib.repairing_luck.desc": "Снижает затраты на ремонт в наковальне до минимума."
 }

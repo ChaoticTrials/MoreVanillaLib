@@ -14,8 +14,10 @@ public class Languages {
 
         @Override
         protected void addTranslations() {
-            add("itemGroup.morevanillalib", "MoreVanillaLib");
+            add("itemGroup." + MoreVanillaLib.MODID, "MoreVanillaLib");
             add("death.attack.paperCut", "%1$s was cut to death with paper");
+            add("enchantment." + MoreVanillaLib.MODID + ".repairing_luck", "Luck of Cheap Repairing");
+            add("enchantment." + MoreVanillaLib.MODID + ".repairing_luck.desc", "Reduces the repair costs in the anvil to a minimum.");
 
             // items
             add(Registration.clean_endstone.get(), "Clean Endstone");
@@ -81,6 +83,8 @@ public class Languages {
         @Override
         protected void addTranslations() {
             add("death.attack.paperCut", "%1$s wurde durch Papier niedergestreckt.");
+            add("enchantment." + MoreVanillaLib.MODID + ".repairing_luck", "Gl\u00FCck der billigen Reparatur");
+            add("enchantment." + MoreVanillaLib.MODID + ".repairing_luck.desc", "Verringert die Reperaturkosten im Amboss auf ein Minimum.");
 
             // items
             add(Registration.clean_endstone.get(), "Reiner Endstein");

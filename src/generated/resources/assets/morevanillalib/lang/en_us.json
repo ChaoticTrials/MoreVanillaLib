@@ -1,6 +1,8 @@
 {
   "block.morevanillalib.clean_end_stone": "Clean Endstone",
   "death.attack.paperCut": "%1$s was cut to death with paper",
+  "enchantment.morevanillalib.repairing_luck": "Luck of Cheap Repairing",
+  "enchantment.morevanillalib.repairing_luck.desc": "Reduces the repair costs in the anvil to a minimum.",
   "item.morevanillalib.obsidian_shard": "Obsidian Shard",
   "item.morevanillalib.paper_bundle": "Bundle of Paper",
   "itemGroup.morevanillalib": "MoreVanillaLib",
