@@ -27,6 +27,8 @@ public class TranslationHelper {
                 return "Lapis";
             case "nether":
                 return "Nether";
+            case "netherite":
+                return "Netherit";
             case "obsidian":
                 return "Obsidian";
             case "paper":

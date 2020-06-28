@@ -67,6 +67,7 @@ public class LibConfigHandler {
     public static ForgeConfigSpec.IntValue ironHarvestlevel;
     public static ForgeConfigSpec.IntValue goldHarvestlevel;
     public static ForgeConfigSpec.IntValue diamondHarvestlevel;
+    public static ForgeConfigSpec.IntValue netheriteHarvestlevel;
     public static ForgeConfigSpec.IntValue boneHarvestlevel;
     public static ForgeConfigSpec.IntValue coalHarvestlevel;
     public static ForgeConfigSpec.IntValue emeraldHarvestlevel;
@@ -87,6 +88,7 @@ public class LibConfigHandler {
     public static ForgeConfigSpec.DoubleValue ironMiningSpeed;
     public static ForgeConfigSpec.DoubleValue goldMiningSpeed;
     public static ForgeConfigSpec.DoubleValue diamondMiningSpeed;
+    public static ForgeConfigSpec.DoubleValue netheriteMiningSpeed;
     public static ForgeConfigSpec.DoubleValue boneMiningSpeed;
     public static ForgeConfigSpec.DoubleValue coalMiningSpeed;
     public static ForgeConfigSpec.DoubleValue emeraldMiningSpeed;
@@ -164,6 +166,7 @@ public class LibConfigHandler {
             ironHarvestlevel = builder.defineInRange("iron", 2, 0, 4);
             goldHarvestlevel = builder.defineInRange("gold", 0, 0, 4);
             diamondHarvestlevel = builder.defineInRange("diamond", 3, 0, 4);
+            netheriteHarvestlevel = builder.defineInRange("netherite", 4, 0, 4);
             boneHarvestlevel = builder.defineInRange("bone", 1, 0, 4);
             coalHarvestlevel = builder.defineInRange("coal", 1, 0, 4);
             emeraldHarvestlevel = builder.defineInRange("emerald", 3, 0, 4);
@@ -201,8 +204,9 @@ public class LibConfigHandler {
             woodMiningSpeed = builder.defineInRange("wood", 2.0, 0, Integer.MAX_VALUE);
             stoneMiningSpeed = builder.defineInRange("stone", 4.0, 0, Integer.MAX_VALUE);
             ironMiningSpeed = builder.defineInRange("iron", 6.0, 0, Integer.MAX_VALUE);
-            goldMiningSpeed = builder.defineInRange("gold", 11.0, 0, Integer.MAX_VALUE);
+            goldMiningSpeed = builder.defineInRange("gold", 12.0, 0, Integer.MAX_VALUE);
             diamondMiningSpeed = builder.defineInRange("diamond", 8.0, 0, Integer.MAX_VALUE);
+            netheriteMiningSpeed = builder.defineInRange("netherite", 9.0, 0, Integer.MAX_VALUE);
             boneMiningSpeed = builder.defineInRange("bone", 4.9, 0, Integer.MAX_VALUE);
             coalMiningSpeed = builder.defineInRange("coal", 4.9, 0, Integer.MAX_VALUE);
             emeraldMiningSpeed = builder.defineInRange("emerald", 8.2, 0, Integer.MAX_VALUE);

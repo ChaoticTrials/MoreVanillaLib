@@ -8,7 +8,6 @@ import net.minecraft.item.ItemTier;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.Tag;
 import net.minecraft.util.LazyValue;
 import net.minecraftforge.common.Tags;
 
@@ -21,6 +20,7 @@ public enum BigBreakMaterials implements IItemTier {
     IRON(LibConfigHandler.ironHarvestlevel.get(), ItemTier.IRON.getMaxUses(), LibConfigHandler.ironMiningSpeed.get(), 5, -2.8F, ItemTier.IRON.getEnchantability(), () -> RepairMaterialsList.iron, "iron", Tags.Items.STORAGE_BLOCKS_IRON),
     GOLD(LibConfigHandler.goldHarvestlevel.get(), ItemTier.GOLD.getMaxUses(), LibConfigHandler.goldMiningSpeed.get(), 5, -2.5F, ItemTier.GOLD.getEnchantability(), () -> RepairMaterialsList.gold, "gold", Tags.Items.STORAGE_BLOCKS_GOLD),
     DIAMOND(LibConfigHandler.diamondHarvestlevel.get(), ItemTier.DIAMOND.getMaxUses(), LibConfigHandler.diamondMiningSpeed.get(), 10, -3.0F, ItemTier.DIAMOND.getEnchantability(), () -> RepairMaterialsList.diamond, "diamond", Tags.Items.STORAGE_BLOCKS_DIAMOND),
+    NETHERITE(LibConfigHandler.netheriteHarvestlevel.get(), ItemTier.NETHERITE.getMaxUses(), LibConfigHandler.netheriteMiningSpeed.get(), 11, -3.5F, ItemTier.NETHERITE.getEnchantability(), () -> RepairMaterialsList.netherite, "netherite", ModTags.Items.STORAGE_BLOCKS_NETHERITE),
 
     BONE(ToolMaterials.BONE.getHarvestLevel(), ToolMaterials.BONE.getMaxUses(), ToolMaterials.BONE.getEfficiency(), 4, -2.0F, ToolMaterials.BONE.getEnchantability(), () -> RepairMaterialsList.bone, "bone", ModTags.Items.BONE_BLOCK),
     COAL(ToolMaterials.COAL.getHarvestLevel(), ToolMaterials.COAL.getMaxUses(), ToolMaterials.COAL.getEfficiency(), 4, -2.6F, ToolMaterials.COAL.getEnchantability(), () -> RepairMaterialsList.coal, "coal", Tags.Items.STORAGE_BLOCKS_COAL),

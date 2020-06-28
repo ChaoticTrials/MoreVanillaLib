@@ -69,6 +69,10 @@ public class ModTags {
         public static final ITag.INamedTag<Item> SLIME_TOOLS = modTag("tools/slime");
         public static final ITag.INamedTag<Item> ALL_TOOLS = modTag("tools");
 
+        // todo remove when forge adds it
+        public static final ITag.INamedTag<Item> INGOTS_NETHERITE = tag("ingots/netherite");
+        public static final ITag.INamedTag<Item> STORAGE_BLOCKS_NETHERITE = tag("storage_blocks/netherite");
+
         private static ITag.INamedTag<Item> tag(String name) {
             return net.minecraft.tags.ItemTags.makeWrapperTag("forge:" + name);
         }
