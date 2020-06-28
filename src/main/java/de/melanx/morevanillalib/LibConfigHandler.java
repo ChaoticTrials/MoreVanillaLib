@@ -160,27 +160,27 @@ public class LibConfigHandler {
         maxPaperDamage = builder.comment("The maximum amount of damage. Default: 5 = 2.5 hearts")
                 .defineInRange("maxPaperDamage", 5, 0, Integer.MAX_VALUE);
 
-            builder.push("harvestlevels").comment("The harvestlevel of the tools (0 = wood; 1 = stone; 2 = iron; 3 = diamond; 4 = higher)");
-            woodHarvestlevel = builder.defineInRange("wood", 0, 0, 4);
-            stoneHarvestlevel = builder.defineInRange("stone", 1, 0, 4);
-            ironHarvestlevel = builder.defineInRange("iron", 2, 0, 4);
-            goldHarvestlevel = builder.defineInRange("gold", 0, 0, 4);
-            diamondHarvestlevel = builder.defineInRange("diamond", 3, 0, 4);
-            netheriteHarvestlevel = builder.defineInRange("netherite", 4, 0, 4);
-            boneHarvestlevel = builder.defineInRange("bone", 1, 0, 4);
-            coalHarvestlevel = builder.defineInRange("coal", 1, 0, 4);
-            emeraldHarvestlevel = builder.defineInRange("emerald", 3, 0, 4);
-            enderHarvestlevel = builder.defineInRange("ender", 3, 0, 4);
-            fieryHarvestlevel = builder.defineInRange("fiery", 2, 0, 4);
-            glowstoneHarvestlevel = builder.defineInRange("glowstone", 2, 0, 4);
-            lapisHarvestlevel = builder.defineInRange("lapis", 2, 0, 4);
-            netherHarvestlevel = builder.defineInRange("nether", 1, 0, 4);
-            obsidianHarvestlevel = builder.defineInRange("obsidian", 4, 0, 4);
-            paperHarvestlevel = builder.defineInRange("paper", 0, 0, 4);
-            prismarineHarvestlevel = builder.defineInRange("prismarine", 3, 0, 4);
-            quartzHarvestlevel = builder.defineInRange("quartz", 2, 0, 4);
-            redstoneHarvestlevel = builder.defineInRange("redstone", 2, 0, 4);
-            slimeHarvestlevel = builder.defineInRange("slime", 2, 0, 4);
+            builder.push("harvestlevels").comment("The harvestlevel of the tools (0 = wood; 1 = stone; 2 = iron; 3 = diamond; 4-5 = higher)");
+            woodHarvestlevel = builder.defineInRange("wood", 0, 0, 5);
+            stoneHarvestlevel = builder.defineInRange("stone", 1, 0, 5);
+            ironHarvestlevel = builder.defineInRange("iron", 2, 0, 5);
+            goldHarvestlevel = builder.defineInRange("gold", 0, 0, 5);
+            diamondHarvestlevel = builder.defineInRange("diamond", 3, 0, 5);
+            netheriteHarvestlevel = builder.defineInRange("netherite", 4, 0, 5);
+            boneHarvestlevel = builder.defineInRange("bone", 1, 0, 5);
+            coalHarvestlevel = builder.defineInRange("coal", 1, 0, 5);
+            emeraldHarvestlevel = builder.defineInRange("emerald", 3, 0, 5);
+            enderHarvestlevel = builder.defineInRange("ender", 3, 0, 5);
+            fieryHarvestlevel = builder.defineInRange("fiery", 2, 0, 5);
+            glowstoneHarvestlevel = builder.defineInRange("glowstone", 2, 0, 5);
+            lapisHarvestlevel = builder.defineInRange("lapis", 2, 0, 5);
+            netherHarvestlevel = builder.defineInRange("nether", 1, 0, 5);
+            obsidianHarvestlevel = builder.defineInRange("obsidian", 4, 0, 5);
+            paperHarvestlevel = builder.defineInRange("paper", 0, 0, 5);
+            prismarineHarvestlevel = builder.defineInRange("prismarine", 3, 0, 5);
+            quartzHarvestlevel = builder.defineInRange("quartz", 2, 0, 5);
+            redstoneHarvestlevel = builder.defineInRange("redstone", 2, 0, 5);
+            slimeHarvestlevel = builder.defineInRange("slime", 2, 0, 5);
             builder.pop();
 
             builder.push("durabilities").comment("The durability of the tools");
