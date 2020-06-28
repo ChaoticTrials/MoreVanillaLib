@@ -42,4 +42,8 @@ public class ItemModels extends ItemModelProvider {
     public String getName() {
         return "Item Models";
     }
+
+    public ItemModels getInstance() {
+        return this;
+    }
 }
