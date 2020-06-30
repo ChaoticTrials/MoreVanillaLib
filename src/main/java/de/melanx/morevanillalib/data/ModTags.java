@@ -3,10 +3,12 @@ package de.melanx.morevanillalib.data;
 import de.melanx.morevanillalib.MoreVanillaLib;
 import de.melanx.morevanillalib.core.Registration;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.ItemTagsProvider;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.tags.ITag;
 import net.minecraftforge.common.Tags;
 
@@ -20,6 +22,9 @@ public class ModTags {
         public static final ITag.INamedTag<Block> NETHER_BRICKS = tag("netherbricks");
         public static final ITag.INamedTag<Block> PRISMARINE = tag("prismarine");
         public static final ITag.INamedTag<Block> SLIME_BLOCK = tag("slime_block");
+
+        // todo remove when forge adds it
+        public static final ITag.INamedTag<Block> STORAGE_BLOCKS_NETHERITE = tag("storage_blocks/netherite");
 
         private static ITag.INamedTag<Block> tag(String name) {
             return net.minecraft.tags.BlockTags.makeWrapperTag("forge:" + name);
@@ -99,6 +104,9 @@ public class ModTags {
             func_240522_a_(Blocks.SLIME_BLOCK).func_240534_a_(net.minecraft.block.Blocks.SLIME_BLOCK);
 
             func_240522_a_(Tags.Blocks.END_STONES).addTags(Blocks.CLEAN_ENDSTONE);
+
+            // todo remove when forge adds it
+            func_240522_a_(Blocks.STORAGE_BLOCKS_NETHERITE).func_240534_a_(net.minecraft.block.Blocks.field_235397_ng_);
         }
     }
 
@@ -133,13 +141,14 @@ public class ModTags {
             func_240522_a_(Items.GLOWSTONE_TOOLS);
             func_240522_a_(Items.LAPIS_TOOLS);
             func_240522_a_(Items.NETHER_TOOLS);
+            func_240522_a_(Items.NETHERITE_TOOLS);
             func_240522_a_(Items.OBSIDIAN_TOOLS);
             func_240522_a_(Items.PAPER_TOOLS);
             func_240522_a_(Items.PRISMARINE_TOOLS);
             func_240522_a_(Items.QUARTZ_TOOLS);
             func_240522_a_(Items.REDSTONE_TOOLS);
             func_240522_a_(Items.SLIME_TOOLS);
-            func_240522_a_(Items.ALL_TOOLS).addTags(Items.WOOD_TOOLS, Items.STONE_TOOLS, Items.IRON_TOOLS, Items.GOLD_TOOLS, Items.DIAMOND_TOOLS, Items.BONE_TOOLS, Items.COAL_TOOLS, Items.EMERALD_TOOLS, Items.ENDER_TOOLS, Items.FIERY_TOOLS, Items.GLOWSTONE_TOOLS, Items.LAPIS_TOOLS, Items.NETHER_TOOLS, Items.OBSIDIAN_TOOLS, Items.PRISMARINE_TOOLS, Items.QUARTZ_TOOLS, Items.REDSTONE_TOOLS, Items.SLIME_TOOLS);
+            func_240522_a_(Items.ALL_TOOLS).addTags(Items.WOOD_TOOLS, Items.STONE_TOOLS, Items.IRON_TOOLS, Items.GOLD_TOOLS, Items.DIAMOND_TOOLS, Items.BONE_TOOLS, Items.COAL_TOOLS, Items.EMERALD_TOOLS, Items.ENDER_TOOLS, Items.FIERY_TOOLS, Items.GLOWSTONE_TOOLS, Items.LAPIS_TOOLS, Items.NETHER_TOOLS, Items.NETHERITE_TOOLS, Items.OBSIDIAN_TOOLS, Items.PRISMARINE_TOOLS, Items.QUARTZ_TOOLS, Items.REDSTONE_TOOLS, Items.SLIME_TOOLS);
 
             func_240521_a_(Blocks.BONE_BLOCK, Items.BONE_BLOCK);
             func_240521_a_(Blocks.CLEAN_ENDSTONE, Items.CLEAN_ENDSTONE);
@@ -148,6 +157,10 @@ public class ModTags {
             func_240521_a_(Blocks.NETHER_BRICKS, Items.NETHER_BRICKS);
             func_240521_a_(Blocks.PRISMARINE, Items.PRISMARINE);
             func_240521_a_(Blocks.SLIME_BLOCK, Items.SLIME_BLOCK);
+
+            // todo remove when forge adds it
+            func_240522_a_(Items.INGOTS_NETHERITE).func_240534_a_(net.minecraft.item.Items.field_234759_km_);
+            func_240521_a_(Blocks.STORAGE_BLOCKS_NETHERITE, Items.STORAGE_BLOCKS_NETHERITE);
         }
     }
 
