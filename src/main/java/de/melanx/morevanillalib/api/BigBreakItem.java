@@ -39,7 +39,7 @@ public class BigBreakItem extends PickaxeItem {
                 boolean isEffective = player.getHeldItemMainhand().canHarvestBlock(breakState);
                 boolean verifyHardness = hardness < originHardness * 5 && hardness > 0;
                 return isEffective && verifyHardness;
-            }, true);
+            });
         }
 
         return true;

@@ -2,10 +2,11 @@
   "homepage": "https://www.curseforge.com/minecraft/mc-mods/morevanillalib",
   "promos": {
     "1.15.2-latest": "1.2.4",
-    "1.16.1-latest": "1.2.5"
+    "1.16.1-latest": "1.2.6"
   },
   "1.16.1": {
-    "1.2.5": "Port to 1.16.1"
+    "1.2.5": "Port to 1.16.1",
+    "1.2.6": "Fix taking 19 durability for excavators/hammers instead of 9"
   },
   "1.15.2": {
     "1.2.4": "Hotfix dupe bug",

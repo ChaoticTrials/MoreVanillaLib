@@ -41,7 +41,7 @@ public class BlockBreaker {
      * @param radius         radius to break
      * @param breakValidator check to see if a block can be broken
      */
-    public static void breakInRadius(World world, PlayerEntity playerEntity, int radius, IBreakValidator breakValidator, boolean damageTool) {
+    public static void breakInRadius(World world, PlayerEntity playerEntity, int radius, IBreakValidator breakValidator) {
         if (!world.isRemote) {
             List<BlockPos> brokenBlocks = getBreakBlocks(world, playerEntity, radius);
             ItemStack heldItem = playerEntity.getHeldItemMainhand();
@@ -62,10 +62,6 @@ public class BlockBreaker {
                         state.getBlock().harvestBlock(world, playerEntity, pos, state, tileEntity, heldItem);
                         state.getBlock().dropXpOnBlockBreak(world, pos, state.getBlock().getExpDrop(state, world, pos, fortune, silktouch));
                         spawnExtraDrops(toolMaterial, world, state.getBlock(), pos, heldItem);
-                    }
-                    if (damageTool) {
-                        heldItem.damageItem(1, playerEntity, player -> {
-                        });
                     }
                     world.playEvent(2001, pos, Block.getStateId(state));
                     ((ServerPlayerEntity) playerEntity).connection.sendPacket(new SChangeBlockPacket(world, pos));
