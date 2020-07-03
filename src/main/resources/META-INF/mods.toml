@@ -4,7 +4,7 @@ loaderVersion="[32,)"
 modId="morevanillalib"
 version="${file.jarVersion}"
 displayName="MoreVanillaLib"
-updateJSONURL="https://raw.githubusercontent.com/MelanX/MoreVanillaLib/master/update/update.json"
+updateJSONURL="https://raw.githubusercontent.com/MelanX/mod-updatechecker-files/master/morevanillalib.json"
 authors="MelanX"
 description='''
 Lib mod for my Vanilla mods:
