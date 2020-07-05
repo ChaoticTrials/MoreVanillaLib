@@ -14,7 +14,7 @@ import java.util.function.Supplier;
 public enum ToolMaterials implements IItemTier {
 
     BONE(LibConfigHandler.boneDurability.get(), LibConfigHandler.boneMiningSpeed.get(), 2, LibConfigHandler.boneHarvestlevel.get(), 17, () -> RepairMaterialsList.bone, Tags.Items.BONES),
-    COAL(LibConfigHandler.coalDurability.get(), LibConfigHandler.coalMiningSpeed.get(), 2, LibConfigHandler.coalHarvestlevel.get(), 17, () -> RepairMaterialsList.coal, Tags.Items.STORAGE_BLOCKS_COAL),
+    COAL(LibConfigHandler.coalDurability.get(), LibConfigHandler.coalMiningSpeed.get(), 2, LibConfigHandler.coalHarvestlevel.get(), 17, () -> RepairMaterialsList.coal, ModTags.Items.GEMS_COAL),
     EMERALD(LibConfigHandler.emeraldDurability.get(), LibConfigHandler.emeraldMiningSpeed.get(), 4, LibConfigHandler.emeraldHarvestlevel.get(), 25, () -> RepairMaterialsList.emerald, Tags.Items.GEMS_EMERALD),
     ENDER(LibConfigHandler.enderDurability.get(), LibConfigHandler.enderMiningSpeed.get(), 5, LibConfigHandler.enderHarvestlevel.get(), 10, () -> RepairMaterialsList.ender, Tags.Items.END_STONES),
     FIERY(LibConfigHandler.fieryDurability.get(), LibConfigHandler.fieryMiningSpeed.get(), 2, LibConfigHandler.fieryHarvestlevel.get(), 15, () -> RepairMaterialsList.fiery, ModTags.Items.MAGMA_CREAM),
