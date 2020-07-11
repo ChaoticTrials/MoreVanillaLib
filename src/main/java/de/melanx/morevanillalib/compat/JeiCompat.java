@@ -36,6 +36,7 @@ public class JeiCompat implements IModPlugin {
     }
 
     private static void addValueInfoPage(IRecipeRegistration reg, Collection<Item> items, String name, Object... values) {
+        if (items.isEmpty()) return;
         String key = getDescKey(new ResourceLocation(MoreVanillaLib.MODID, name));
         List<ItemStack> stacks = items.stream().map(ItemStack::new).collect(Collectors.toList());
         reg.addIngredientInfo(stacks, VanillaTypes.ITEM, I18n.format(key, values));
