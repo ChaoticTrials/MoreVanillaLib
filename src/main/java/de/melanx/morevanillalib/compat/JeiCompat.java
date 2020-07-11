@@ -25,6 +25,7 @@ public class JeiCompat implements IModPlugin {
     public static final ResourceLocation PLUGIN_UID = new ResourceLocation(MoreVanillaLib.MODID, "plugin/main");
 
     private static void addInfoPage(IRecipeRegistration reg, Collection<Item> items, String name) {
+        if (items.isEmpty()) return;
         String key = getDescKey(new ResourceLocation(MoreVanillaLib.MODID, name));
         List<ItemStack> stacks = items.stream().map(ItemStack::new).collect(Collectors.toList());
         reg.addIngredientInfo(stacks, VanillaTypes.ITEM, key);
