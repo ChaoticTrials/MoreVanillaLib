@@ -61,6 +61,7 @@ public class LibConfigHandler {
     public static ForgeConfigSpec.IntValue quartzDurability;
     public static ForgeConfigSpec.IntValue redstoneDurability;
     public static ForgeConfigSpec.IntValue slimeDurability;
+    public static ForgeConfigSpec.IntValue durabilityMulitplier;
 
     public static ForgeConfigSpec.IntValue woodHarvestlevel;
     public static ForgeConfigSpec.IntValue stoneHarvestlevel;
@@ -198,6 +199,8 @@ public class LibConfigHandler {
             quartzDurability = builder.defineInRange("quartz", 137, 1, Integer.MAX_VALUE);
             redstoneDurability = builder.defineInRange("redstone", 173, 1, Integer.MAX_VALUE);
             slimeDurability = builder.defineInRange("slime", 183, 1, Integer.MAX_VALUE);
+            durabilityMulitplier = builder.comment("The multiplier for Hammers and Excavators")
+                    .defineInRange("multiplier", 7, 1, Integer.MAX_VALUE);
             builder.pop();
 
             builder.push("miningspeed").comment("The mining speed of the tools. Will be devided by 3.5 for hammers/excavators.");

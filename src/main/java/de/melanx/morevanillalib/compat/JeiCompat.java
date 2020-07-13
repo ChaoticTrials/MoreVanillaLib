@@ -3,6 +3,7 @@ package de.melanx.morevanillalib.compat;
 import de.melanx.morevanillalib.LibConfigHandler;
 import de.melanx.morevanillalib.MoreVanillaLib;
 import de.melanx.morevanillalib.api.BigBreakMaterials;
+import de.melanx.morevanillalib.api.ToolMaterials;
 import de.melanx.morevanillalib.data.ModTags;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -60,102 +61,101 @@ public class JeiCompat implements IModPlugin {
     public void registerRecipes(IRecipeRegistration registration) {
         addValueInfoPage(registration, ModTags.Items.WOOD_TOOLS.func_230236_b_(), "wood_tools",
                 ItemTier.WOOD.getMaxUses(),
-                ItemTier.WOOD.getMaxUses() * 5,
+                BigBreakMaterials.WOOD.getMaxUses(),
                 LibConfigHandler.woodHarvestlevel.get(),
                 getItemFromIngredient(ItemTier.WOOD.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.STONE_TOOLS.func_230236_b_(), "stone_tools",
                 ItemTier.STONE.getMaxUses(),
-                ItemTier.STONE.getMaxUses() * 5,
+                BigBreakMaterials.STONE.getMaxUses(),
                 LibConfigHandler.stoneHarvestlevel.get(),
                 getItemFromIngredient(ItemTier.STONE.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.IRON_TOOLS.func_230236_b_(), "iron_tools",
                 ItemTier.IRON.getMaxUses(),
-                ItemTier.IRON.getMaxUses() * 5,
+                BigBreakMaterials.IRON.getMaxUses(),
                 LibConfigHandler.ironHarvestlevel.get(),
                 getItemFromIngredient(ItemTier.IRON.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.GOLD_TOOLS.func_230236_b_(), "gold_tools",
                 ItemTier.GOLD.getMaxUses(),
-                ItemTier.GOLD.getMaxUses() * 5,
+                BigBreakMaterials.GOLD.getMaxUses(),
                 LibConfigHandler.goldHarvestlevel.get(),
                 getItemFromIngredient(ItemTier.GOLD.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.DIAMOND_TOOLS.func_230236_b_(), "diamond_tools",
                 ItemTier.DIAMOND.getMaxUses(),
-                ItemTier.DIAMOND.getMaxUses() * 5,
+                BigBreakMaterials.DIAMOND.getMaxUses(),
                 LibConfigHandler.diamondHarvestlevel.get(),
                 getItemFromIngredient(ItemTier.DIAMOND.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.NETHERITE_TOOLS.func_230236_b_(), "netherite_tools",
                 ItemTier.NETHERITE.getMaxUses(),
-                ItemTier.NETHERITE.getMaxUses() * 5,
+                BigBreakMaterials.NETHERITE.getMaxUses(),
                 LibConfigHandler.netheriteHarvestlevel.get(),
                 getItemFromIngredient(ItemTier.NETHERITE.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.BONE_TOOLS.func_230236_b_(), "bone_tools",
-                LibConfigHandler.boneDurability.get(),
-                LibConfigHandler.boneDurability.get() * 5,
+                ToolMaterials.BONE.getMaxUses(),
+                BigBreakMaterials.BONE.getMaxUses(),
                 LibConfigHandler.boneHarvestlevel.get(),
                 getItemFromIngredient(BigBreakMaterials.BONE.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.COAL_TOOLS.func_230236_b_(), "coal_tools",
-                LibConfigHandler.coalDurability.get(),
-                LibConfigHandler.coalDurability.get() * 5,
+                ToolMaterials.COAL.getMaxUses(),
+                BigBreakMaterials.COAL.getMaxUses(),
                 LibConfigHandler.coalHarvestlevel.get(),
                 getItemFromIngredient(BigBreakMaterials.COAL.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.EMERALD_TOOLS.func_230236_b_(), "emerald_tools",
-                LibConfigHandler.emeraldDurability.get(),
-                LibConfigHandler.emeraldDurability.get() * 5,
+                ToolMaterials.EMERALD.getMaxUses(),
+                BigBreakMaterials.EMERALD.getMaxUses(),
                 LibConfigHandler.emeraldHarvestlevel.get(),
                 getItemFromIngredient(BigBreakMaterials.EMERALD.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.ENDER_TOOLS.func_230236_b_(), "ender_tools",
-                LibConfigHandler.enderDurability.get(),
-                LibConfigHandler.enderDurability.get() * 5,
+                ToolMaterials.ENDER.getMaxUses(),
+                BigBreakMaterials.ENDER.getMaxUses(),
                 LibConfigHandler.enderHarvestlevel.get(),
                 getItemFromIngredient(BigBreakMaterials.ENDER.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.FIERY_TOOLS.func_230236_b_(), "fiery_tools",
-                LibConfigHandler.fieryDurability.get(),
-                LibConfigHandler.fieryDurability.get() * 5,
+                ToolMaterials.FIERY.getMaxUses(),
+                BigBreakMaterials.FIERY.getMaxUses(),
                 LibConfigHandler.fieryHarvestlevel.get(),
                 getItemFromIngredient(BigBreakMaterials.FIERY.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.GLOWSTONE_TOOLS.func_230236_b_(), "glowstone_tools",
-                LibConfigHandler.glowstoneDurability.get(),
-                LibConfigHandler.glowstoneDurability.get() * 5,
+                ToolMaterials.GLOWSTONE.getMaxUses(),
+                BigBreakMaterials.GLOWSTONE.getMaxUses(),
                 LibConfigHandler.glowstoneHarvestlevel.get(),
                 getItemFromIngredient(BigBreakMaterials.GLOWSTONE.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.LAPIS_TOOLS.func_230236_b_(), "lapis_tools",
-                LibConfigHandler.lapisDurability.get(),
-                LibConfigHandler.lapisDurability.get() * 5,
+                ToolMaterials.LAPIS.getMaxUses(),
+                BigBreakMaterials.LAPIS.getMaxUses(),
                 LibConfigHandler.lapisHarvestlevel.get(),
                 getItemFromIngredient(BigBreakMaterials.LAPIS.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.NETHER_TOOLS.func_230236_b_(), "nether_tools",
-                LibConfigHandler.netherDurability.get(),
-                LibConfigHandler.netherDurability.get() * 5,
+                ToolMaterials.NETHER.getMaxUses(),
+                BigBreakMaterials.NETHER.getMaxUses(),
                 LibConfigHandler.netherHarvestlevel.get(),
                 getItemFromIngredient(BigBreakMaterials.NETHER.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.OBSIDIAN_TOOLS.func_230236_b_(), "obsidian_tools",
-                LibConfigHandler.obsidianDurability.get(),
-                LibConfigHandler.obsidianDurability.get() * 5,
+                ToolMaterials.OBSIDIAN.getMaxUses(),
+                BigBreakMaterials.OBSIDIAN.getMaxUses(),
                 LibConfigHandler.obsidianHarvestlevel.get(),
                 getItemFromIngredient(BigBreakMaterials.OBSIDIAN.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.PAPER_TOOLS.func_230236_b_(), "paper_tools",
-                LibConfigHandler.paperDurability.get(),
-                LibConfigHandler.paperDurability.get() * 5,
+                ToolMaterials.PAPER.getMaxUses(),
+                BigBreakMaterials.PAPER.getMaxUses(),
                 LibConfigHandler.paperHarvestlevel.get(),
                 getItemFromIngredient(BigBreakMaterials.PAPER.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.PRISMARINE_TOOLS.func_230236_b_(), "prismarine_tools",
-                LibConfigHandler.prismarineDurability.get(),
-                LibConfigHandler.prismarineDurability.get() * 5,
+                ToolMaterials.PRISMARINE.getMaxUses(),
+                BigBreakMaterials.PRISMARINE.getMaxUses(),
                 LibConfigHandler.prismarineHarvestlevel.get(),
                 getItemFromIngredient(BigBreakMaterials.PRISMARINE.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.QUARTZ_TOOLS.func_230236_b_(), "quartz_tools",
-                LibConfigHandler.quartzDurability.get(),
-                LibConfigHandler.quartzDurability.get() * 5,
+                ToolMaterials.QUARTZ.getMaxUses(),
+                BigBreakMaterials.QUARTZ.getMaxUses(),
                 LibConfigHandler.quartzHarvestlevel.get(),
                 getItemFromIngredient(BigBreakMaterials.QUARTZ.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.REDSTONE_TOOLS.func_230236_b_(), "redstone_tools",
-                LibConfigHandler.redstoneDurability.get(),
-                LibConfigHandler.redstoneDurability.get() * 5,
-                LibConfigHandler.redstoneHarvestlevel.get(),
+                ToolMaterials.REDSTONE.getMaxUses(),
+                BigBreakMaterials.REDSTONE.getMaxUses(),
                 getItemFromIngredient(BigBreakMaterials.REDSTONE.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.SLIME_TOOLS.func_230236_b_(), "slime_tools",
-                LibConfigHandler.slimeDurability.get(),
-                LibConfigHandler.slimeDurability.get() * 5,
+                ToolMaterials.SLIME.getMaxUses(),
+                BigBreakMaterials.SLIME.getMaxUses(),
                 LibConfigHandler.slimeHarvestlevel.get(),
                 getItemFromIngredient(BigBreakMaterials.SLIME.getRepairMaterial()).getName().getString());
 

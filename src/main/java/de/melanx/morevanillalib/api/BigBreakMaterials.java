@@ -49,7 +49,7 @@ public enum BigBreakMaterials implements IItemTier {
 
     BigBreakMaterials(int harvestLevel, int durability, double efficiency, float attackDamage, float attackSpeed, int enchantability, Supplier<Ingredient> repairMaterial, String prefix, ITag.INamedTag<Item> ingredient) {
         this.harvestLevel = harvestLevel;
-        this.durability = durability * 5;
+        this.durability = durability * LibConfigHandler.durabilityMulitplier.get();
         this.efficiency = (float) efficiency / 3.5F;
         this.attackDamage = attackDamage;
         this.attackSpeed = attackSpeed;
@@ -61,6 +61,7 @@ public enum BigBreakMaterials implements IItemTier {
 
     @Override
     public int getMaxUses() {
+        if (this.durability < 0) return Integer.MAX_VALUE;
         return this.durability;
     }
 
