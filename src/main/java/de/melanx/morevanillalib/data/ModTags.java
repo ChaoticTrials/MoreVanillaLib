@@ -3,12 +3,10 @@ package de.melanx.morevanillalib.data;
 import de.melanx.morevanillalib.MoreVanillaLib;
 import de.melanx.morevanillalib.core.Registration;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.ItemTagsProvider;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraft.tags.ITag;
 import net.minecraftforge.common.Tags;
 
@@ -44,8 +42,6 @@ public class ModTags {
         public static final ITag.INamedTag<Item> GEMS_COAL = tag("gems/coal");
         public static final ITag.INamedTag<Item> PAPER = tag("paper");
         public static final ITag.INamedTag<Item> PAPER_BUNDLE = tag("paper_bundle");
-
-        public static final ITag.INamedTag<Item> HEADS = tag("heads");
 
         public static final ITag.INamedTag<Item> CREEPER_HEAD = tag("heads/creeper_head");
         public static final ITag.INamedTag<Item> DRAGON_HEAD = tag("heads/dragon_head");
@@ -121,7 +117,7 @@ public class ModTags {
             getOrCreateBuilder(Items.GEMS_COAL).add(net.minecraft.item.Items.COAL);
             getOrCreateBuilder(Items.PAPER).add(net.minecraft.item.Items.PAPER);
             getOrCreateBuilder(Items.PAPER_BUNDLE).add(Registration.paper_bundle.get());
-            getOrCreateBuilder(Items.HEADS).addTags(Items.CREEPER_HEAD, Items.DRAGON_HEAD, Items.PLAYER_HEAD, Items.ZOMBIE_HEAD);
+            getOrCreateBuilder(Tags.Items.HEADS).addTags(Items.CREEPER_HEAD, Items.DRAGON_HEAD, Items.PLAYER_HEAD, Items.ZOMBIE_HEAD);
             getOrCreateBuilder(Items.CREEPER_HEAD).add(net.minecraft.item.Items.CREEPER_HEAD);
             getOrCreateBuilder(Items.DRAGON_HEAD).add(net.minecraft.item.Items.DRAGON_HEAD);
             getOrCreateBuilder(Items.PLAYER_HEAD).add(net.minecraft.item.Items.PLAYER_HEAD);
