@@ -47,7 +47,7 @@ public class BigBreakItem extends PickaxeItem {
 
     @Override
     public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        ToolUtil.extraDrop(attacker.getEntityWorld(), target.func_233580_cy_(), this.getToolMaterial());
+        ToolUtil.extraDrop(attacker.getEntityWorld(), target.getPosition(), this.getToolMaterial());
         return super.hitEntity(stack, target, attacker);
     }
 

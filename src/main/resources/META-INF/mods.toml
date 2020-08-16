@@ -1,5 +1,7 @@
 modLoader="javafml"
 loaderVersion="[32,)"
+license="MIT License"
+
 [[mods]]
 modId="morevanillalib"
 version="${file.jarVersion}"
@@ -12,6 +14,7 @@ Lib mod for my Vanilla mods:
 - Vanilla Excavators
 - Vanilla Hammers
 '''
+
 [[dependencies.morevanillalib]]
     modId="forge"
     mandatory=true

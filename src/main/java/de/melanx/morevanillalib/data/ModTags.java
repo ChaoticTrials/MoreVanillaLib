@@ -95,18 +95,18 @@ public class ModTags {
 
         @Override
         protected void registerTags() {
-            func_240522_a_(Blocks.BONE_BLOCK).func_240534_a_(net.minecraft.block.Blocks.BONE_BLOCK);
-            func_240522_a_(Blocks.CLEAN_ENDSTONE).func_240534_a_(Registration.clean_endstone.get());
-            func_240522_a_(Blocks.STORAGE_BLOCKS_GLOWSTONE).func_240534_a_(net.minecraft.block.Blocks.GLOWSTONE);
-            func_240522_a_(Blocks.MAGMA_BLOCK).func_240534_a_(net.minecraft.block.Blocks.MAGMA_BLOCK);
-            func_240522_a_(Blocks.NETHER_BRICKS).func_240534_a_(net.minecraft.block.Blocks.NETHER_BRICKS);
-            func_240522_a_(Blocks.PRISMARINE).func_240534_a_(net.minecraft.block.Blocks.PRISMARINE_BRICKS);
-            func_240522_a_(Blocks.SLIME_BLOCK).func_240534_a_(net.minecraft.block.Blocks.SLIME_BLOCK);
+            getOrCreateBuilder(Blocks.BONE_BLOCK).add(net.minecraft.block.Blocks.BONE_BLOCK);
+            getOrCreateBuilder(Blocks.CLEAN_ENDSTONE).add(Registration.clean_endstone.get());
+            getOrCreateBuilder(Blocks.STORAGE_BLOCKS_GLOWSTONE).add(net.minecraft.block.Blocks.GLOWSTONE);
+            getOrCreateBuilder(Blocks.MAGMA_BLOCK).add(net.minecraft.block.Blocks.MAGMA_BLOCK);
+            getOrCreateBuilder(Blocks.NETHER_BRICKS).add(net.minecraft.block.Blocks.NETHER_BRICKS);
+            getOrCreateBuilder(Blocks.PRISMARINE).add(net.minecraft.block.Blocks.PRISMARINE_BRICKS);
+            getOrCreateBuilder(Blocks.SLIME_BLOCK).add(net.minecraft.block.Blocks.SLIME_BLOCK);
 
-            func_240522_a_(Tags.Blocks.END_STONES).addTags(Blocks.CLEAN_ENDSTONE);
+            getOrCreateBuilder(Tags.Blocks.END_STONES).addTags(Blocks.CLEAN_ENDSTONE);
 
             // todo remove when forge adds it
-            func_240522_a_(Blocks.STORAGE_BLOCKS_NETHERITE).func_240534_a_(net.minecraft.block.Blocks.field_235397_ng_);
+            getOrCreateBuilder(Blocks.STORAGE_BLOCKS_NETHERITE).add(net.minecraft.block.Blocks.NETHERITE_BLOCK);
         }
     }
 
@@ -117,50 +117,50 @@ public class ModTags {
 
         @Override
         protected void registerTags() {
-            func_240522_a_(Items.DUSTS_OBSIDIAN).func_240534_a_(Registration.obsidian_shard.get());
-            func_240522_a_(Items.GEMS_COAL).func_240534_a_(net.minecraft.item.Items.COAL);
-            func_240522_a_(Items.PAPER).func_240534_a_(net.minecraft.item.Items.PAPER);
-            func_240522_a_(Items.PAPER_BUNDLE).func_240534_a_(Registration.paper_bundle.get());
-            func_240522_a_(Items.HEADS).addTags(Items.CREEPER_HEAD, Items.DRAGON_HEAD, Items.PLAYER_HEAD, Items.ZOMBIE_HEAD);
-            func_240522_a_(Items.CREEPER_HEAD).func_240534_a_(net.minecraft.item.Items.CREEPER_HEAD);
-            func_240522_a_(Items.DRAGON_HEAD).func_240534_a_(net.minecraft.item.Items.DRAGON_HEAD);
-            func_240522_a_(Items.PLAYER_HEAD).func_240534_a_(net.minecraft.item.Items.PLAYER_HEAD);
-            func_240522_a_(Items.ZOMBIE_HEAD).func_240534_a_(net.minecraft.item.Items.ZOMBIE_HEAD);
-            func_240522_a_(Items.MAGMA_CREAM).func_240534_a_(net.minecraft.item.Items.MAGMA_CREAM);
+            getOrCreateBuilder(Items.DUSTS_OBSIDIAN).add(Registration.obsidian_shard.get());
+            getOrCreateBuilder(Items.GEMS_COAL).add(net.minecraft.item.Items.COAL);
+            getOrCreateBuilder(Items.PAPER).add(net.minecraft.item.Items.PAPER);
+            getOrCreateBuilder(Items.PAPER_BUNDLE).add(Registration.paper_bundle.get());
+            getOrCreateBuilder(Items.HEADS).addTags(Items.CREEPER_HEAD, Items.DRAGON_HEAD, Items.PLAYER_HEAD, Items.ZOMBIE_HEAD);
+            getOrCreateBuilder(Items.CREEPER_HEAD).add(net.minecraft.item.Items.CREEPER_HEAD);
+            getOrCreateBuilder(Items.DRAGON_HEAD).add(net.minecraft.item.Items.DRAGON_HEAD);
+            getOrCreateBuilder(Items.PLAYER_HEAD).add(net.minecraft.item.Items.PLAYER_HEAD);
+            getOrCreateBuilder(Items.ZOMBIE_HEAD).add(net.minecraft.item.Items.ZOMBIE_HEAD);
+            getOrCreateBuilder(Items.MAGMA_CREAM).add(net.minecraft.item.Items.MAGMA_CREAM);
 
-            func_240522_a_(Items.WOOD_TOOLS);
-            func_240522_a_(Items.STONE_TOOLS);
-            func_240522_a_(Items.IRON_TOOLS);
-            func_240522_a_(Items.GOLD_TOOLS);
-            func_240522_a_(Items.DIAMOND_TOOLS);
-            func_240522_a_(Items.BONE_TOOLS);
-            func_240522_a_(Items.COAL_TOOLS);
-            func_240522_a_(Items.EMERALD_TOOLS);
-            func_240522_a_(Items.ENDER_TOOLS);
-            func_240522_a_(Items.FIERY_TOOLS);
-            func_240522_a_(Items.GLOWSTONE_TOOLS);
-            func_240522_a_(Items.LAPIS_TOOLS);
-            func_240522_a_(Items.NETHER_TOOLS);
-            func_240522_a_(Items.NETHERITE_TOOLS);
-            func_240522_a_(Items.OBSIDIAN_TOOLS);
-            func_240522_a_(Items.PAPER_TOOLS);
-            func_240522_a_(Items.PRISMARINE_TOOLS);
-            func_240522_a_(Items.QUARTZ_TOOLS);
-            func_240522_a_(Items.REDSTONE_TOOLS);
-            func_240522_a_(Items.SLIME_TOOLS);
-            func_240522_a_(Items.ALL_TOOLS).addTags(Items.WOOD_TOOLS, Items.STONE_TOOLS, Items.IRON_TOOLS, Items.GOLD_TOOLS, Items.DIAMOND_TOOLS, Items.BONE_TOOLS, Items.COAL_TOOLS, Items.EMERALD_TOOLS, Items.ENDER_TOOLS, Items.FIERY_TOOLS, Items.GLOWSTONE_TOOLS, Items.LAPIS_TOOLS, Items.NETHER_TOOLS, Items.NETHERITE_TOOLS, Items.OBSIDIAN_TOOLS, Items.PRISMARINE_TOOLS, Items.QUARTZ_TOOLS, Items.REDSTONE_TOOLS, Items.SLIME_TOOLS);
+            getOrCreateBuilder(Items.WOOD_TOOLS);
+            getOrCreateBuilder(Items.STONE_TOOLS);
+            getOrCreateBuilder(Items.IRON_TOOLS);
+            getOrCreateBuilder(Items.GOLD_TOOLS);
+            getOrCreateBuilder(Items.DIAMOND_TOOLS);
+            getOrCreateBuilder(Items.BONE_TOOLS);
+            getOrCreateBuilder(Items.COAL_TOOLS);
+            getOrCreateBuilder(Items.EMERALD_TOOLS);
+            getOrCreateBuilder(Items.ENDER_TOOLS);
+            getOrCreateBuilder(Items.FIERY_TOOLS);
+            getOrCreateBuilder(Items.GLOWSTONE_TOOLS);
+            getOrCreateBuilder(Items.LAPIS_TOOLS);
+            getOrCreateBuilder(Items.NETHER_TOOLS);
+            getOrCreateBuilder(Items.NETHERITE_TOOLS);
+            getOrCreateBuilder(Items.OBSIDIAN_TOOLS);
+            getOrCreateBuilder(Items.PAPER_TOOLS);
+            getOrCreateBuilder(Items.PRISMARINE_TOOLS);
+            getOrCreateBuilder(Items.QUARTZ_TOOLS);
+            getOrCreateBuilder(Items.REDSTONE_TOOLS);
+            getOrCreateBuilder(Items.SLIME_TOOLS);
+            getOrCreateBuilder(Items.ALL_TOOLS).addTags(Items.WOOD_TOOLS, Items.STONE_TOOLS, Items.IRON_TOOLS, Items.GOLD_TOOLS, Items.DIAMOND_TOOLS, Items.BONE_TOOLS, Items.COAL_TOOLS, Items.EMERALD_TOOLS, Items.ENDER_TOOLS, Items.FIERY_TOOLS, Items.GLOWSTONE_TOOLS, Items.LAPIS_TOOLS, Items.NETHER_TOOLS, Items.NETHERITE_TOOLS, Items.OBSIDIAN_TOOLS, Items.PRISMARINE_TOOLS, Items.QUARTZ_TOOLS, Items.REDSTONE_TOOLS, Items.SLIME_TOOLS);
 
-            func_240521_a_(Blocks.BONE_BLOCK, Items.BONE_BLOCK);
-            func_240521_a_(Blocks.CLEAN_ENDSTONE, Items.CLEAN_ENDSTONE);
-            func_240521_a_(Blocks.STORAGE_BLOCKS_GLOWSTONE, Items.STORAGE_BLOCKS_GLOWSTONE);
-            func_240521_a_(Blocks.MAGMA_BLOCK, Items.MAGMA_BLOCK);
-            func_240521_a_(Blocks.NETHER_BRICKS, Items.NETHER_BRICKS);
-            func_240521_a_(Blocks.PRISMARINE, Items.PRISMARINE);
-            func_240521_a_(Blocks.SLIME_BLOCK, Items.SLIME_BLOCK);
+            copy(Blocks.BONE_BLOCK, Items.BONE_BLOCK);
+            copy(Blocks.CLEAN_ENDSTONE, Items.CLEAN_ENDSTONE);
+            copy(Blocks.STORAGE_BLOCKS_GLOWSTONE, Items.STORAGE_BLOCKS_GLOWSTONE);
+            copy(Blocks.MAGMA_BLOCK, Items.MAGMA_BLOCK);
+            copy(Blocks.NETHER_BRICKS, Items.NETHER_BRICKS);
+            copy(Blocks.PRISMARINE, Items.PRISMARINE);
+            copy(Blocks.SLIME_BLOCK, Items.SLIME_BLOCK);
 
             // todo remove when forge adds it
-            func_240522_a_(Items.INGOTS_NETHERITE).func_240534_a_(net.minecraft.item.Items.field_234759_km_);
-            func_240521_a_(Blocks.STORAGE_BLOCKS_NETHERITE, Items.STORAGE_BLOCKS_NETHERITE);
+            getOrCreateBuilder(Items.INGOTS_NETHERITE).add(net.minecraft.item.Items.NETHERITE_INGOT);
+            copy(Blocks.STORAGE_BLOCKS_NETHERITE, Items.STORAGE_BLOCKS_NETHERITE);
         }
     }
 

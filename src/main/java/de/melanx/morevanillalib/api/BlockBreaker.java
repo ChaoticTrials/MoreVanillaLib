@@ -22,6 +22,7 @@ import net.minecraft.util.math.RayTraceContext;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
+import net.minecraft.world.server.ServerWorld;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +61,7 @@ public class BlockBreaker {
                         TileEntity tileEntity = world.getTileEntity(pos);
                         state.getBlock().onPlayerDestroy(world, pos, state);
                         state.getBlock().harvestBlock(world, playerEntity, pos, state, tileEntity, heldItem);
-                        state.getBlock().dropXpOnBlockBreak(world, pos, state.getBlock().getExpDrop(state, world, pos, fortune, silktouch));
+                        state.getBlock().dropXpOnBlockBreak((ServerWorld) world, pos, state.getBlock().getExpDrop(state, world, pos, fortune, silktouch));
                         spawnExtraDrops(toolMaterial, world, state.getBlock(), pos, heldItem);
                     }
                     world.playEvent(2001, pos, Block.getStateId(state));
