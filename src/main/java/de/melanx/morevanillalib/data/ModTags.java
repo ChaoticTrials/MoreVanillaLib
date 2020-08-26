@@ -21,9 +21,6 @@ public class ModTags {
         public static final ITag.INamedTag<Block> PRISMARINE = tag("prismarine");
         public static final ITag.INamedTag<Block> SLIME_BLOCK = tag("slime_block");
 
-        // todo remove when forge adds it
-        public static final ITag.INamedTag<Block> STORAGE_BLOCKS_NETHERITE = tag("storage_blocks/netherite");
-
         private static ITag.INamedTag<Block> tag(String name) {
             return net.minecraft.tags.BlockTags.makeWrapperTag("forge:" + name);
         }
@@ -71,10 +68,6 @@ public class ModTags {
         public static final ITag.INamedTag<Item> SLIME_TOOLS = modTag("tools/slime");
         public static final ITag.INamedTag<Item> ALL_TOOLS = modTag("tools");
 
-        // todo remove when forge adds it
-        public static final ITag.INamedTag<Item> INGOTS_NETHERITE = tag("ingots/netherite");
-        public static final ITag.INamedTag<Item> STORAGE_BLOCKS_NETHERITE = tag("storage_blocks/netherite");
-
         private static ITag.INamedTag<Item> tag(String name) {
             return net.minecraft.tags.ItemTags.makeWrapperTag("forge:" + name);
         }
@@ -100,9 +93,6 @@ public class ModTags {
             getOrCreateBuilder(Blocks.SLIME_BLOCK).add(net.minecraft.block.Blocks.SLIME_BLOCK);
 
             getOrCreateBuilder(Tags.Blocks.END_STONES).addTags(Blocks.CLEAN_ENDSTONE);
-
-            // todo remove when forge adds it
-            getOrCreateBuilder(Blocks.STORAGE_BLOCKS_NETHERITE).add(net.minecraft.block.Blocks.NETHERITE_BLOCK);
         }
     }
 
@@ -153,10 +143,6 @@ public class ModTags {
             copy(Blocks.NETHER_BRICKS, Items.NETHER_BRICKS);
             copy(Blocks.PRISMARINE, Items.PRISMARINE);
             copy(Blocks.SLIME_BLOCK, Items.SLIME_BLOCK);
-
-            // todo remove when forge adds it
-            getOrCreateBuilder(Items.INGOTS_NETHERITE).add(net.minecraft.item.Items.NETHERITE_INGOT);
-            copy(Blocks.STORAGE_BLOCKS_NETHERITE, Items.STORAGE_BLOCKS_NETHERITE);
         }
     }
 

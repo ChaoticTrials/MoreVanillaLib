@@ -14,7 +14,7 @@ public class RepairMaterialsList {
     public static final Ingredient iron = getTagIngredient(Tags.Items.INGOTS_IRON);
     public static final Ingredient gold = getTagIngredient(Tags.Items.INGOTS_GOLD);
     public static final Ingredient diamond = getTagIngredient(Tags.Items.GEMS_DIAMOND);
-    public static final Ingredient netherite = getTagIngredient(ModTags.Items.INGOTS_NETHERITE);
+    public static final Ingredient netherite = getTagIngredient(Tags.Items.INGOTS_NETHERITE);
 
     public static final Ingredient bone = getTagIngredient(Tags.Items.BONES);
     public static final Ingredient coal = getTagIngredient(ModTags.Items.GEMS_COAL);
@@ -34,5 +34,4 @@ public class RepairMaterialsList {
     private static Ingredient getTagIngredient(ITag.INamedTag<Item> tag) {
         return Ingredient.fromTag(tag);
     }
-
 }
