@@ -1,6 +1,8 @@
 package de.melanx.morevanillalib.util;
 
+import com.google.common.collect.Sets;
 import de.melanx.morevanillalib.LibConfigHandler;
+import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.item.ItemEntity;
@@ -15,8 +17,12 @@ import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
 import java.util.Random;
+import java.util.Set;
 
 public class ToolUtil {
+
+    public static final Set<Material> PICKAXE_MATERIALS = Sets.newHashSet(Material.ROCK, Material.ANVIL, Material.IRON);
+    public static final Set<Material> AXE_MATERIALS = Sets.newHashSet(Material.WOOD, Material.NETHER_WOOD, Material.PLANTS, Material.TALL_PLANTS, Material.BAMBOO, Material.GOURD);
 
     public static void moreDamage(LivingDamageEvent event) {
         if (event.getSource().getTrueSource() instanceof PlayerEntity) {

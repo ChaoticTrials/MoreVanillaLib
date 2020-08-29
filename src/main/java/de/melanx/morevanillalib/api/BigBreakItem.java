@@ -1,9 +1,11 @@
 package de.melanx.morevanillalib.api;
 
+import com.google.common.collect.ImmutableSet;
 import de.melanx.morevanillalib.LibConfigHandler;
 import de.melanx.morevanillalib.core.LibDamageSource;
 import de.melanx.morevanillalib.util.ToolUtil;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -11,15 +13,19 @@ import net.minecraft.item.*;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ToolType;
 
 import java.util.Random;
+import java.util.Set;
 
-public class BigBreakItem extends PickaxeItem {
+public class BigBreakItem extends ToolItem {
     private final IItemTier toolMaterial;
+    private final Set<Material> effectiveOnMaterial;
 
-    public BigBreakItem(IItemTier toolMaterial, float attackSpeed) {
-        super(toolMaterial, 0, attackSpeed, new Item.Properties().group(ItemGroup.TOOLS));
+    public BigBreakItem(IItemTier toolMaterial, float attackSpeed, Set<Material> effectiveOnMaterial, ToolType toolType) {
+        super(0, attackSpeed, toolMaterial, ImmutableSet.of(), new Item.Properties().group(ItemGroup.TOOLS).addToolType(toolType, toolMaterial.getHarvestLevel()));
         this.toolMaterial = toolMaterial;
+        this.effectiveOnMaterial = effectiveOnMaterial;
     }
 
     @Override
@@ -65,6 +71,11 @@ public class BigBreakItem extends PickaxeItem {
     }
 
     @Override
+    public float getDestroySpeed(ItemStack stack, BlockState state) {
+        return effectiveOnMaterial.contains(state.getMaterial()) ? this.efficiency : super.getDestroySpeed(stack, state);
+    }
+
+    @Override
     public void onCreated(ItemStack stack, World world, PlayerEntity player) {
         if (this.getToolMaterial() == BigBreakMaterials.SLIME)
             stack.addEnchantment(Enchantments.KNOCKBACK, 3);
@@ -91,5 +102,4 @@ public class BigBreakItem extends PickaxeItem {
     public IItemTier getToolMaterial() {
         return toolMaterial;
     }
-
 }
