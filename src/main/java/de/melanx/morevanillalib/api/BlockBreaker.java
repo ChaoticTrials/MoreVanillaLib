@@ -52,7 +52,6 @@ public class BlockBreaker {
             for (BlockPos pos : brokenBlocks) {
                 BlockState state = world.getBlockState(pos);
                 if (breakValidator.canBreak(state)) {
-                    world.removeBlock(pos, false);
                     if (playerEntity.abilities.isCreativeMode) {
                         if (state.removedByPlayer(world, pos, playerEntity, true, state.getFluidState()))
                             state.getBlock().onPlayerDestroy(world, pos, state);
@@ -64,6 +63,7 @@ public class BlockBreaker {
                         state.getBlock().dropXpOnBlockBreak((ServerWorld) world, pos, state.getBlock().getExpDrop(state, world, pos, fortune, silktouch));
                         spawnExtraDrops(toolMaterial, world, state.getBlock(), pos, heldItem);
                     }
+                    world.removeBlock(pos, false);
                     world.playEvent(2001, pos, Block.getStateId(state));
                     ((ServerPlayerEntity) playerEntity).connection.sendPacket(new SChangeBlockPacket(world, pos));
                 }
@@ -183,6 +183,7 @@ public class BlockBreaker {
                     }
                 }
             }
+            potentialBrokenBlocks.remove(origin);
         }
 
         return potentialBrokenBlocks;
