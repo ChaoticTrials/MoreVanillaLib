@@ -45,7 +45,7 @@ public enum BigBreakMaterials implements IItemTier {
     private final int enchantability;
     private final LazyValue<Ingredient> repairMaterial;
     private final String prefix;
-    private final ITag.INamedTag<Item> tagIngredient;
+    private final ITag.INamedTag<Item> tagIngredient; // todo 1.17 change to ingredient
 
     BigBreakMaterials(int harvestLevel, int durability, double efficiency, float attackDamage, float attackSpeed, int enchantability, Supplier<Ingredient> repairMaterial, String prefix, ITag.INamedTag<Item> ingredient) {
         this.harvestLevel = harvestLevel;
