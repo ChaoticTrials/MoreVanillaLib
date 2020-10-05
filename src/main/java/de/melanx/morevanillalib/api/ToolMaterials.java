@@ -13,20 +13,20 @@ import java.util.function.Supplier;
 
 public enum ToolMaterials implements IItemTier {
 
-    BONE(LibConfigHandler.boneDurability.get(), LibConfigHandler.boneMiningSpeed.get(), 2, LibConfigHandler.boneHarvestlevel.get(), 17, () -> RepairMaterialsList.bone, Tags.Items.BONES),
-    COAL(LibConfigHandler.coalDurability.get(), LibConfigHandler.coalMiningSpeed.get(), 2, LibConfigHandler.coalHarvestlevel.get(), 17, () -> RepairMaterialsList.coal, ModTags.Items.GEMS_COAL),
-    EMERALD(LibConfigHandler.emeraldDurability.get(), LibConfigHandler.emeraldMiningSpeed.get(), 4, LibConfigHandler.emeraldHarvestlevel.get(), 25, () -> RepairMaterialsList.emerald, Tags.Items.GEMS_EMERALD),
-    ENDER(LibConfigHandler.enderDurability.get(), LibConfigHandler.enderMiningSpeed.get(), 5, LibConfigHandler.enderHarvestlevel.get(), 10, () -> RepairMaterialsList.ender, Tags.Items.END_STONES),
-    FIERY(LibConfigHandler.fieryDurability.get(), LibConfigHandler.fieryMiningSpeed.get(), 2, LibConfigHandler.fieryHarvestlevel.get(), 15, () -> RepairMaterialsList.fiery, ModTags.Items.MAGMA_CREAM),
-    GLOWSTONE(LibConfigHandler.glowstoneDurability.get(), LibConfigHandler.glowstoneMiningSpeed.get(), 2.5F, LibConfigHandler.glowstoneHarvestlevel.get(), 35, () -> RepairMaterialsList.glowstone, Tags.Items.DUSTS_GLOWSTONE),
-    LAPIS(LibConfigHandler.lapisDurability.get(), LibConfigHandler.lapisMiningSpeed.get(), 1.5F, LibConfigHandler.lapisHarvestlevel.get(), 20, () -> RepairMaterialsList.lapis, Tags.Items.GEMS_LAPIS),
-    NETHER(LibConfigHandler.netherDurability.get(), LibConfigHandler.netherMiningSpeed.get(), 2, LibConfigHandler.netherHarvestlevel.get(), 66, () -> RepairMaterialsList.nether, Tags.Items.NETHERRACK),
-    OBSIDIAN(LibConfigHandler.obsidianDurability.get(), LibConfigHandler.obsidianMiningSpeed.get(), 2.5F, LibConfigHandler.obsidianHarvestlevel.get(), 15, () -> RepairMaterialsList.obsidian, ModTags.Items.DUSTS_OBSIDIAN),
-    PAPER(LibConfigHandler.paperDurability.get(), LibConfigHandler.paperMiningSpeed.get(), 0, LibConfigHandler.paperHarvestlevel.get(), 17, () -> RepairMaterialsList.paper, ModTags.Items.PAPER),
-    PRISMARINE(LibConfigHandler.prismarineDurability.get(), LibConfigHandler.prismarineMiningSpeed.get(), 3, LibConfigHandler.prismarineHarvestlevel.get(), 20, () -> RepairMaterialsList.prismarine, Tags.Items.DUSTS_PRISMARINE),
-    QUARTZ(LibConfigHandler.quartzDurability.get(), LibConfigHandler.quartzMiningSpeed.get(), 2, LibConfigHandler.quartzHarvestlevel.get(), 18, () -> RepairMaterialsList.quartz, Tags.Items.GEMS_QUARTZ),
-    REDSTONE(LibConfigHandler.redstoneDurability.get(), LibConfigHandler.redstoneMiningSpeed.get(), 1.5F, LibConfigHandler.redstoneHarvestlevel.get(), 20, () -> RepairMaterialsList.redstone, Tags.Items.DUSTS_REDSTONE),
-    SLIME(LibConfigHandler.slimeDurability.get(), LibConfigHandler.slimeMiningSpeed.get(), 2, LibConfigHandler.slimeHarvestlevel.get(), 20, () -> RepairMaterialsList.slime, Tags.Items.SLIMEBALLS);
+    BONE(LibConfigHandler.boneDurability.get(), LibConfigHandler.boneMiningSpeed.get(), 2, LibConfigHandler.boneHarvestlevel.get(), 17, () -> Ingredient.fromTag(Tags.Items.BONES), Tags.Items.BONES),
+    COAL(LibConfigHandler.coalDurability.get(), LibConfigHandler.coalMiningSpeed.get(), 2, LibConfigHandler.coalHarvestlevel.get(), 17, () -> Ingredient.fromTag(ModTags.Items.GEMS_COAL), ModTags.Items.GEMS_COAL),
+    EMERALD(LibConfigHandler.emeraldDurability.get(), LibConfigHandler.emeraldMiningSpeed.get(), 4, LibConfigHandler.emeraldHarvestlevel.get(), 25, () -> Ingredient.fromTag(Tags.Items.GEMS_EMERALD), Tags.Items.GEMS_EMERALD),
+    ENDER(LibConfigHandler.enderDurability.get(), LibConfigHandler.enderMiningSpeed.get(), 5, LibConfigHandler.enderHarvestlevel.get(), 10, () -> Ingredient.fromTag(Tags.Items.ENDER_PEARLS), Tags.Items.END_STONES),
+    FIERY(LibConfigHandler.fieryDurability.get(), LibConfigHandler.fieryMiningSpeed.get(), 2, LibConfigHandler.fieryHarvestlevel.get(), 15, () -> Ingredient.fromTag(ModTags.Items.MAGMA_BLOCK), ModTags.Items.MAGMA_CREAM),
+    GLOWSTONE(LibConfigHandler.glowstoneDurability.get(), LibConfigHandler.glowstoneMiningSpeed.get(), 2.5F, LibConfigHandler.glowstoneHarvestlevel.get(), 35, () -> Ingredient.fromTag(Tags.Items.DUSTS_GLOWSTONE), Tags.Items.DUSTS_GLOWSTONE),
+    LAPIS(LibConfigHandler.lapisDurability.get(), LibConfigHandler.lapisMiningSpeed.get(), 1.5F, LibConfigHandler.lapisHarvestlevel.get(), 20, () -> Ingredient.fromTag(Tags.Items.GEMS_LAPIS), Tags.Items.GEMS_LAPIS),
+    NETHER(LibConfigHandler.netherDurability.get(), LibConfigHandler.netherMiningSpeed.get(), 2, LibConfigHandler.netherHarvestlevel.get(), 66, () -> Ingredient.fromTag(ModTags.Items.NETHER_BRICKS), Tags.Items.NETHERRACK),
+    OBSIDIAN(LibConfigHandler.obsidianDurability.get(), LibConfigHandler.obsidianMiningSpeed.get(), 2.5F, LibConfigHandler.obsidianHarvestlevel.get(), 15, () -> Ingredient.fromTag(Tags.Items.OBSIDIAN), ModTags.Items.DUSTS_OBSIDIAN),
+    PAPER(LibConfigHandler.paperDurability.get(), LibConfigHandler.paperMiningSpeed.get(), 0, LibConfigHandler.paperHarvestlevel.get(), 17, () -> Ingredient.fromTag(ModTags.Items.PAPER), ModTags.Items.PAPER),
+    PRISMARINE(LibConfigHandler.prismarineDurability.get(), LibConfigHandler.prismarineMiningSpeed.get(), 3, LibConfigHandler.prismarineHarvestlevel.get(), 20, () -> Ingredient.fromTag(Tags.Items.DUSTS_PRISMARINE), Tags.Items.DUSTS_PRISMARINE),
+    QUARTZ(LibConfigHandler.quartzDurability.get(), LibConfigHandler.quartzMiningSpeed.get(), 2, LibConfigHandler.quartzHarvestlevel.get(), 18, () -> Ingredient.fromTag(Tags.Items.GEMS_QUARTZ), Tags.Items.GEMS_QUARTZ),
+    REDSTONE(LibConfigHandler.redstoneDurability.get(), LibConfigHandler.redstoneMiningSpeed.get(), 1.5F, LibConfigHandler.redstoneHarvestlevel.get(), 20, () -> Ingredient.fromTag(Tags.Items.DUSTS_REDSTONE), Tags.Items.DUSTS_REDSTONE),
+    SLIME(LibConfigHandler.slimeDurability.get(), LibConfigHandler.slimeMiningSpeed.get(), 2, LibConfigHandler.slimeHarvestlevel.get(), 20, () -> Ingredient.fromTag(Tags.Items.SLIMEBALLS), Tags.Items.SLIMEBALLS);
 
     private final int durability;
     private final float efficiency;
