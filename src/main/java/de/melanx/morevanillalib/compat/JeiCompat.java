@@ -1,5 +1,6 @@
 package de.melanx.morevanillalib.compat;
 
+import de.melanx.morevanillalib.LibCommonConfig;
 import de.melanx.morevanillalib.LibConfigHandler;
 import de.melanx.morevanillalib.MoreVanillaLib;
 import de.melanx.morevanillalib.api.BigBreakMaterials;
@@ -91,7 +92,7 @@ public class JeiCompat implements IModPlugin {
                 BigBreakMaterials.NETHERITE.getMaxUses(),
                 LibConfigHandler.netheriteHarvestlevel.get(),
                 getItemFromIngredient(ItemTier.NETHERITE.getRepairMaterial()).getName().getString());
-        if (!LibConfigHandler.vanilla.get()) {
+        if (!LibCommonConfig.vanilla.get()) {
             addValueInfoPage(registration, ModTags.Items.BONE_TOOLS.getAllElements(), "bone_tools",
                     ToolMaterials.BONE.getMaxUses(),
                     BigBreakMaterials.BONE.getMaxUses(),

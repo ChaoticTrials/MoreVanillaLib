@@ -31,7 +31,9 @@ public class MoreVanillaLib {
     public MoreVanillaLib() {
         instance = this;
         ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, LibConfigHandler.SERVER_CONFIG);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, LibCommonConfig.COMMON_CONFIG);
         LibConfigHandler.loadConfig(LibConfigHandler.SERVER_CONFIG, FMLPaths.GAMEDIR.get().resolve(FMLConfig.defaultConfigPath()).resolve(MODID + "-server.toml"));
+        LibCommonConfig.loadConfig(LibCommonConfig.COMMON_CONFIG, FMLPaths.CONFIGDIR.get().resolve(MODID + "-common.toml"));
         MinecraftForge.EVENT_BUS.register(this);
         Registration.init();
     }

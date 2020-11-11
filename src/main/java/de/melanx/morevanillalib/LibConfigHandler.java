@@ -13,7 +13,6 @@ public class LibConfigHandler {
 
     static {
         init(SERVER_BUILDER);
-
         SERVER_CONFIG = SERVER_BUILDER.build();
     }
 
@@ -29,7 +28,6 @@ public class LibConfigHandler {
     public static ForgeConfigSpec.IntValue quartzDoubleDropChance;
     public static ForgeConfigSpec.IntValue redstoneDoubleDropChance;
 
-    public static ForgeConfigSpec.BooleanValue vanilla;
     public static ForgeConfigSpec.BooleanValue extraDrop;
     public static ForgeConfigSpec.BooleanValue doubleDrop;
     public static ForgeConfigSpec.BooleanValue extraDamage;
@@ -108,8 +106,6 @@ public class LibConfigHandler {
 
     public static void init(ForgeConfigSpec.Builder builder) {
         builder.push("features");
-        vanilla = builder.comment("If set true, only hammers and excavators corresponding to the vanilla tool materials will be added.")
-                .define("vanillaOnly", false);
         extraDrop = builder.comment("If set true, tools may drop an item when they'll be used.")
                 .define("extraDrop", true);
         doubleDrop = builder.comment("If set to true the corresponding ore of the tool drops an additional resource.")
@@ -235,12 +231,8 @@ public class LibConfigHandler {
 
     public static void loadConfig(ForgeConfigSpec spec, Path path) {
         MoreVanillaLib.LOGGER.debug("Loading config file {}", path);
-
         final CommentedFileConfig configData = CommentedFileConfig.builder(path).sync().autosave().writingMode(WritingMode.REPLACE).build();
-
         configData.load();
-
         spec.setConfig(configData);
     }
-
 }

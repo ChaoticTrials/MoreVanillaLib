@@ -1,6 +1,7 @@
 package de.melanx.morevanillalib.core.crafting;
 
 import com.google.gson.JsonObject;
+import de.melanx.morevanillalib.LibCommonConfig;
 import de.melanx.morevanillalib.LibConfigHandler;
 import de.melanx.morevanillalib.MoreVanillaLib;
 import net.minecraft.util.ResourceLocation;
@@ -22,7 +23,7 @@ public class VanillaCondition implements ICondition {
 
     @Override
     public boolean test() {
-        return LibConfigHandler.vanilla.get();
+        return LibCommonConfig.vanilla.get();
     }
 
     public static final IConditionSerializer<VanillaCondition> SERIALIZER = new IConditionSerializer<VanillaCondition>() {
