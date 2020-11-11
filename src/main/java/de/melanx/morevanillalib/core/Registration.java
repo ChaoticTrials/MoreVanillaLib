@@ -1,12 +1,14 @@
 package de.melanx.morevanillalib.core;
 
 import de.melanx.morevanillalib.MoreVanillaLib;
+import de.melanx.morevanillalib.core.crafting.VanillaCondition;
 import de.melanx.morevanillalib.enchantments.LuckOfCheapRepairing;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -35,5 +37,7 @@ public class Registration {
         MoreVanillaLib.LOGGER.debug("Blocks registered.");
         ENCHANTMENTS.register(bus);
         MoreVanillaLib.LOGGER.debug("Enchantments registered.");
+
+        CraftingHelper.register(VanillaCondition.SERIALIZER);
     }
 }
