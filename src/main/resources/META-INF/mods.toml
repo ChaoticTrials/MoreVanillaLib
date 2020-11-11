@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[33,)"
+loaderVersion="[35,)"
 license="MIT License"
 
 [[mods]]
@@ -18,13 +18,13 @@ Lib mod for my Vanilla mods:
 [[dependencies.morevanillalib]]
     modId="forge"
     mandatory=true
-    versionRange="[33.0.18,)"
+    versionRange="[35,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.morevanillalib]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.2,)"
+    versionRange="[1.16.4, 1.17)"
     ordering="NONE"
     side="BOTH"

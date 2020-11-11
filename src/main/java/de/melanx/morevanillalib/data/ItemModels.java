@@ -9,6 +9,8 @@ import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.fml.RegistryObject;
 
+import javax.annotation.Nonnull;
+
 public class ItemModels extends ItemModelProvider {
 
     public ItemModels(DataGenerator generator, String modid, ExistingFileHelper helper) {
@@ -37,6 +39,7 @@ public class ItemModels extends ItemModelProvider {
                 .texture("layer0", "item/" + path);
     }
 
+    @Nonnull
     @Override
     public String getName() {
         return "Item Models";
