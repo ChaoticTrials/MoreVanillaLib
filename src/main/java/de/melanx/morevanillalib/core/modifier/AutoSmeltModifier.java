@@ -43,5 +43,10 @@ public class AutoSmeltModifier extends LootModifier {
         public AutoSmeltModifier read(ResourceLocation name, JsonObject json, ILootCondition[] conditionsIn) {
             return new AutoSmeltModifier(conditionsIn);
         }
+
+        @Override
+        public JsonObject write(AutoSmeltModifier instance) {
+            return null;
+        }
     }
 }

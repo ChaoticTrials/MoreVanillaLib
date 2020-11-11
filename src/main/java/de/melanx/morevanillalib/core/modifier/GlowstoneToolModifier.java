@@ -36,6 +36,11 @@ public class GlowstoneToolModifier extends LootModifier {
         public GlowstoneToolModifier read(ResourceLocation name, JsonObject json, ILootCondition[] conditionsIn) {
             return new GlowstoneToolModifier(conditionsIn);
         }
+
+        @Override
+        public JsonObject write(GlowstoneToolModifier instance) {
+            return null;
+        }
     }
 
 }
