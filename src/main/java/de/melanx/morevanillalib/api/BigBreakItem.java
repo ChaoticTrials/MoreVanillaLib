@@ -1,20 +1,29 @@
 package de.melanx.morevanillalib.api;
 
 import com.google.common.collect.ImmutableSet;
+import de.melanx.morevanillalib.LibCommonConfig;
 import de.melanx.morevanillalib.LibConfigHandler;
+import de.melanx.morevanillalib.MoreVanillaLib;
 import de.melanx.morevanillalib.core.LibDamageSource;
 import de.melanx.morevanillalib.util.ToolUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
@@ -101,5 +110,14 @@ public class BigBreakItem extends ToolItem {
 
     public IItemTier getToolMaterial() {
         return toolMaterial;
+    }
+
+    @Override
+    public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<ITextComponent> tooltip, @Nonnull ITooltipFlag flagIn) {
+        if (((BigBreakMaterials) this.toolMaterial).isVanilla() && LibCommonConfig.vanilla.get()) {
+            tooltip.add(new TranslationTextComponent(MoreVanillaLib .MODID + ".disabled_item").mergeStyle(TextFormatting.DARK_RED));
+        } else {
+            super.addInformation(stack, worldIn, tooltip, flagIn);
+        }
     }
 }
