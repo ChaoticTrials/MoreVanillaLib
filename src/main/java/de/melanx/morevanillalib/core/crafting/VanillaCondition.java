@@ -2,7 +2,6 @@ package de.melanx.morevanillalib.core.crafting;
 
 import com.google.gson.JsonObject;
 import de.melanx.morevanillalib.LibCommonConfig;
-import de.melanx.morevanillalib.LibConfigHandler;
 import de.melanx.morevanillalib.MoreVanillaLib;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.crafting.conditions.ICondition;

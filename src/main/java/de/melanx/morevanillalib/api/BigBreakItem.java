@@ -98,7 +98,17 @@ public class BigBreakItem extends ToolItem {
     }
 
     @Override
-    public void fillItemGroup(ItemGroup group, NonNullList<ItemStack> items) {
+    public void fillItemGroup(@Nonnull ItemGroup group, @Nonnull NonNullList<ItemStack> items) {
+        if (LibCommonConfig.vanilla.get()) {
+            if (((BigBreakMaterials) this.getTier()).isVanilla()) {
+                addItem(group, items);
+            }
+        } else {
+            addItem(group, items);
+        }
+    }
+
+    private void addItem(ItemGroup group, NonNullList<ItemStack> items) {
         if (group == ItemGroup.TOOLS || group == ItemGroup.SEARCH) {
             ItemStack item = new ItemStack(this);
             if (this.getToolMaterial() == BigBreakMaterials.SLIME) {
@@ -114,8 +124,8 @@ public class BigBreakItem extends ToolItem {
 
     @Override
     public void addInformation(@Nonnull ItemStack stack, @Nullable World worldIn, @Nonnull List<ITextComponent> tooltip, @Nonnull ITooltipFlag flagIn) {
-        if (((BigBreakMaterials) this.toolMaterial).isVanilla() && LibCommonConfig.vanilla.get()) {
-            tooltip.add(new TranslationTextComponent(MoreVanillaLib .MODID + ".disabled_item").mergeStyle(TextFormatting.DARK_RED));
+        if (!((BigBreakMaterials) this.toolMaterial).isVanilla() && LibCommonConfig.vanilla.get()) {
+            tooltip.add(new TranslationTextComponent("tooltip." + MoreVanillaLib.MODID + ".disabled_item").mergeStyle(TextFormatting.DARK_RED));
         } else {
             super.addInformation(stack, worldIn, tooltip, flagIn);
         }

@@ -40,5 +40,6 @@
   "jei.morevanillalib.slime_damage.desc": "Wenn du einen Schleim mit einem dieser Werkzeuge t\u00F6test, machst du zu einer %d%%igen Chance bis zu 250%% mehr Schaden.",
   "jei.morevanillalib.slime_tools.desc": "Schleimwerkzeuge\nHaltbarkeit: %s (Hammer/Ausgraber: %s)\nAbbaulevel: %s\nReparaturitem: %s",
   "jei.morevanillalib.stone_tools.desc": "Steinwerkezuge\nHaltbarkeit: %s (Hammer/Ausgraber: %s)\nAbbaulevel: %s\nReparaturitem: %s",
-  "jei.morevanillalib.wood_tools.desc": "Holzwerkzeuge\nHaltbarkeit: %s (Hammer/Ausgraber: %s)\nAbbaulevel: %s\nReparaturitem: %s"
+  "jei.morevanillalib.wood_tools.desc": "Holzwerkzeuge\nHaltbarkeit: %s (Hammer/Ausgraber: %s)\nAbbaulevel: %s\nReparaturitem: %s",
+  "tooltip.morevanillalib.disabled_item": "Dieses Werkzeug ist in den Einstellungen deaktiviert."
 }
