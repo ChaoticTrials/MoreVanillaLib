@@ -156,6 +156,7 @@ public class JeiCompat implements IModPlugin {
             addValueInfoPage(registration, ModTags.Items.REDSTONE_TOOLS.getAllElements(), "redstone_tools",
                     ToolMaterials.REDSTONE.getMaxUses(),
                     BigBreakMaterials.REDSTONE.getMaxUses(),
+                    LibConfigHandler.redstoneHarvestlevel.get(),
                     getItemFromIngredient(BigBreakMaterials.REDSTONE.getRepairMaterial()).getName().getString());
             addValueInfoPage(registration, ModTags.Items.SLIME_TOOLS.getAllElements(), "slime_tools",
                     ToolMaterials.SLIME.getMaxUses(),
