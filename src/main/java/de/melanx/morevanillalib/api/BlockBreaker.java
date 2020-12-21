@@ -42,9 +42,9 @@ public class BlockBreaker {
      * @param radius         radius to break
      * @param breakValidator check to see if a block can be broken
      */
-    public static void breakInRadius(World world, PlayerEntity playerEntity, int radius, IBreakValidator breakValidator) {
+    public static void breakInRadius(World world, PlayerEntity playerEntity, int radius, BlockPos originPos, IBreakValidator breakValidator) {
         if (!world.isRemote) {
-            List<BlockPos> brokenBlocks = getBreakBlocks(world, playerEntity, radius);
+            List<BlockPos> brokenBlocks = getBreakBlocks(world, playerEntity, radius, originPos);
             ItemStack heldItem = playerEntity.getHeldItemMainhand();
             IItemTier toolMaterial = ((BigBreakItem) heldItem.getItem()).getToolMaterial();
             int silktouch = EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, heldItem);
@@ -145,7 +145,7 @@ public class BlockBreaker {
      * @param radius radius to break in
      * @return a list of blocks that would be broken with the given radius and tool
      */
-    public static List<BlockPos> getBreakBlocks(World world, PlayerEntity player, int radius) {
+    public static List<BlockPos> getBreakBlocks(World world, PlayerEntity player, int radius, BlockPos originPosition) {
         ArrayList<BlockPos> potentialBrokenBlocks = new ArrayList<>();
 
         Vector3d eyePosition = player.getEyePosition(1);
@@ -166,24 +166,22 @@ public class BlockBreaker {
                 }
             }
 
-            BlockPos origin = rayTraceResult.getPos();
-
             for (BlockPos pos : positions) {
                 if (axis == Direction.Axis.Y) {
                     if (pos.getY() == 0) {
-                        potentialBrokenBlocks.add(origin.add(pos));
+                        potentialBrokenBlocks.add(originPosition.add(pos));
                     }
                 } else if (axis == Direction.Axis.X) {
                     if (pos.getX() == 0) {
-                        potentialBrokenBlocks.add(origin.add(pos));
+                        potentialBrokenBlocks.add(originPosition.add(pos));
                     }
                 } else if (axis == Direction.Axis.Z) {
                     if (pos.getZ() == 0) {
-                        potentialBrokenBlocks.add(origin.add(pos));
+                        potentialBrokenBlocks.add(originPosition.add(pos));
                     }
                 }
             }
-            potentialBrokenBlocks.remove(origin);
+            potentialBrokenBlocks.remove(originPosition);
         }
 
         return potentialBrokenBlocks;

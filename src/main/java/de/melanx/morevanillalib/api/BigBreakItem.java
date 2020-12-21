@@ -49,7 +49,7 @@ public class BigBreakItem extends ToolItem {
         // only do a 3x3 break if the player's tool is effective on the block they are breaking
         // this makes it so breaking gravel doesn't break nearby stone
         if (player.getHeldItemMainhand().canHarvestBlock(world.getBlockState(pos))) {
-            BlockBreaker.breakInRadius(world, player, radius, (breakState) -> {
+            BlockBreaker.breakInRadius(world, player, radius, pos, (breakState) -> {
                 double hardness = breakState.getBlockHardness(null, null);
                 boolean isEffective = player.getHeldItemMainhand().canHarvestBlock(breakState);
                 boolean verifyHardness = hardness < originHardness * 5 && hardness > 0;
