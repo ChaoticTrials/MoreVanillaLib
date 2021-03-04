@@ -65,6 +65,10 @@ repositories {
         name = "Progwml6 maven"
         url = "https://dvs1.progwml6.com/files/maven/"
     }
+    maven {
+        name = "MelanX Maven"
+        url = "https://maven.melanx.de/"
+    }
 }
 
 jar {
@@ -115,6 +119,10 @@ dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
     runtimeOnly fg.deobf("mezz.jei:jei-1.16.2:${jei_version}")
     compileOnly fg.deobf("mezz.jei:jei-1.16.2:${jei_version}:api")
+
+    // for testing
+    runtimeOnly fg.deobf("de.melanx.vanillahammers:vanillahammers-1.16.4:2.2.0")
+    runtimeOnly fg.deobf("de.melanx.vanillaexcavators:vanillaexcavators-1.16.4:2.2.0")
 }
 
 private static String getVersion(String group, String artifact, String baseVersion) {

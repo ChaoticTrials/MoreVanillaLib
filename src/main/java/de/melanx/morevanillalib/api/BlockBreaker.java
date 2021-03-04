@@ -13,6 +13,7 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.network.IPacket;
 import net.minecraft.network.play.server.SChangeBlockPacket;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
@@ -23,6 +24,8 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.world.BlockEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,38 +37,53 @@ public class BlockBreaker {
     }
 
     /**
-     * Breaks blocks within the given radius on the axis the playerEntity is facing.
-     * If the playerEntity is facing the X axis and the radius is 1, a 3x3 area will be destroyed on the X axis.
+     * Breaks blocks within the given radius on the axis the player is facing.
+     * If the player is facing the X axis and the radius is 1, a 3x3 area will be destroyed on the X axis.
      *
-     * @param world          world the playerEntity is in
-     * @param playerEntity   the playerEntity
+     * @param world          world the player is in
+     * @param player         the player
      * @param radius         radius to break
      * @param breakValidator check to see if a block can be broken
      */
-    public static void breakInRadius(World world, PlayerEntity playerEntity, int radius, BlockPos originPos, IBreakValidator breakValidator) {
+    public static void breakInRadius(World world, PlayerEntity player, int radius, BlockPos originPos, IBreakValidator breakValidator) {
         if (!world.isRemote) {
-            List<BlockPos> brokenBlocks = getBreakBlocks(world, playerEntity, radius, originPos);
-            ItemStack heldItem = playerEntity.getHeldItemMainhand();
+            List<BlockPos> brokenBlocks = getBreakBlocks(world, player, radius, originPos);
+            ItemStack heldItem = player.getHeldItemMainhand();
             IItemTier toolMaterial = ((BigBreakItem) heldItem.getItem()).getToolMaterial();
-            int silktouch = EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, heldItem);
-            int fortune = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, heldItem);
             for (BlockPos pos : brokenBlocks) {
                 BlockState state = world.getBlockState(pos);
                 if (breakValidator.canBreak(state)) {
-                    if (playerEntity.abilities.isCreativeMode) {
-                        if (state.removedByPlayer(world, pos, playerEntity, true, state.getFluidState()))
+                    ServerPlayerEntity serverPlayer = (ServerPlayerEntity) player;
+                    if (player.abilities.isCreativeMode) {
+                        if (state.removedByPlayer(world, pos, player, true, state.getFluidState()))
                             state.getBlock().onPlayerDestroy(world, pos, state);
                     } else {
-                        heldItem.getItem().onBlockDestroyed(heldItem, world, state, pos, playerEntity);
-                        TileEntity tileEntity = world.getTileEntity(pos);
-                        state.getBlock().onPlayerDestroy(world, pos, state);
-                        state.getBlock().harvestBlock(world, playerEntity, pos, state, tileEntity, heldItem);
-                        state.getBlock().dropXpOnBlockBreak((ServerWorld) world, pos, state.getBlock().getExpDrop(state, world, pos, fortune, silktouch));
-                        spawnExtraDrops(toolMaterial, world, state.getBlock(), pos, heldItem);
+                        BlockEvent.BreakEvent event = new BlockEvent.BreakEvent(world, pos, state, player);
+                        MinecraftForge.EVENT_BUS.post(event);
+
+                        if (event.isCanceled()) {
+                            // Forge copy
+                            serverPlayer.connection.sendPacket(new SChangeBlockPacket(world, pos));
+                            TileEntity tile = world.getTileEntity(pos);
+                            if (tile != null) {
+                                IPacket<?> packet = tile.getUpdatePacket();
+                                if (packet != null) {
+                                    serverPlayer.connection.sendPacket(packet);
+                                }
+                            }
+                        } else {
+                            heldItem.getItem().onBlockDestroyed(heldItem, world, state, pos, player);
+                            TileEntity tileEntity = world.getTileEntity(pos);
+                            state.getBlock().onPlayerDestroy(world, pos, state);
+                            state.getBlock().harvestBlock(world, player, pos, state, tileEntity, heldItem);
+                            state.getBlock().dropXpOnBlockBreak((ServerWorld) world, pos, event.getExpToDrop());
+                            spawnExtraDrops(toolMaterial, world, state.getBlock(), pos, heldItem);
+
+                            world.removeBlock(pos, false);
+                            world.playEvent(2001, pos, Block.getStateId(state));
+                            serverPlayer.connection.sendPacket(new SChangeBlockPacket(world, pos));
+                        }
                     }
-                    world.removeBlock(pos, false);
-                    world.playEvent(2001, pos, Block.getStateId(state));
-                    ((ServerPlayerEntity) playerEntity).connection.sendPacket(new SChangeBlockPacket(world, pos));
                 }
             }
         }
