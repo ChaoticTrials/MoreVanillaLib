@@ -28,8 +28,8 @@ public class ToolUtil {
         if (event.getSource().getTrueSource() instanceof PlayerEntity) {
             Random rand = event.getEntityLiving().world.rand;
 
-            int chance = LibConfigHandler.extraDamageChance.get();
-            if (rand.nextInt(1000) < chance && LibConfigHandler.extraDamage.get()) {
+            double chance = LibConfigHandler.extraDamageChance.get();
+            if (rand.nextDouble() < chance && LibConfigHandler.extraDamage.get()) {
                 float multiplier = (float) rand.nextInt(26) / 10 + 1;
                 event.setAmount(event.getAmount() * multiplier);
             }
@@ -42,8 +42,8 @@ public class ToolUtil {
             Random rand = event.getEntityLiving().world.rand;
             int looting = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, weapon);
 
-            int chance = LibConfigHandler.headDropChance.get();
-            if (LibConfigHandler.headDrop.get() && rand.nextInt(1000) < chance + looting) {
+            double chance = LibConfigHandler.headDropChance.get();
+            if (LibConfigHandler.headDrop.get() && rand.nextDouble() < chance + looting) {
                 addDrop(event, new ItemStack(head));
             }
         }
@@ -56,8 +56,8 @@ public class ToolUtil {
     }
 
     public static void extraDrop(World world, BlockPos pos, IItemTier mat) {
-        int chance = LibConfigHandler.extraDropChance.get();
-        if (new Random().nextInt(1000) < chance && LibConfigHandler.extraDrop.get()) {
+        double chance = LibConfigHandler.extraDropChance.get();
+        if (new Random().nextDouble() < chance && LibConfigHandler.extraDrop.get()) {
             Ingredient ingredient = mat.getRepairMaterial();
             ItemStack stack = ingredient.acceptedItems[0].getStacks().iterator().next();
             world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), stack));

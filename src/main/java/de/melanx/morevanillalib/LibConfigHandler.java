@@ -16,17 +16,17 @@ public class LibConfigHandler {
         SERVER_CONFIG = SERVER_BUILDER.build();
     }
 
-    public static ForgeConfigSpec.IntValue extraDropChance;
-    public static ForgeConfigSpec.IntValue extraDamageChance;
-    public static ForgeConfigSpec.IntValue headDropChance;
-    public static ForgeConfigSpec.IntValue damageByPaperToolsChance;
+    public static ForgeConfigSpec.DoubleValue extraDropChance;
+    public static ForgeConfigSpec.DoubleValue extraDamageChance;
+    public static ForgeConfigSpec.DoubleValue headDropChance;
+    public static ForgeConfigSpec.DoubleValue damageByPaperToolsChance;
 
-    public static ForgeConfigSpec.IntValue diamondDoubleDropChance;
-    public static ForgeConfigSpec.IntValue coalDoubleDropChance;
-    public static ForgeConfigSpec.IntValue emeraldDoubleDropChance;
-    public static ForgeConfigSpec.IntValue lapisDoubleDropChance;
-    public static ForgeConfigSpec.IntValue quartzDoubleDropChance;
-    public static ForgeConfigSpec.IntValue redstoneDoubleDropChance;
+    public static ForgeConfigSpec.DoubleValue diamondDoubleDropChance;
+    public static ForgeConfigSpec.DoubleValue coalDoubleDropChance;
+    public static ForgeConfigSpec.DoubleValue emeraldDoubleDropChance;
+    public static ForgeConfigSpec.DoubleValue lapisDoubleDropChance;
+    public static ForgeConfigSpec.DoubleValue quartzDoubleDropChance;
+    public static ForgeConfigSpec.DoubleValue redstoneDoubleDropChance;
 
     public static ForgeConfigSpec.BooleanValue extraDrop;
     public static ForgeConfigSpec.BooleanValue doubleDrop;
@@ -121,36 +121,36 @@ public class LibConfigHandler {
         glowstoneDrops = builder.comment("If set true, glowstone tools will always drop 4 glowstone dust when breaking glowstone blocks.")
                 .define("glowstoneDrops", true);
 
-            builder.push("doubleDropBool");
-            diamondDoubleDrop = builder.comment("Diamond available for hammers/excavators").define("diamond",true);
-            coalDoubleDrop = builder.define("coal", true);
-            emeraldDoubleDrop = builder.define("emerald", true);
-            lapisDoubleDrop = builder.define("lapis", true);
-            quartzDoubleDrop = builder.define("quartz", true);
-            redstoneDoubleDrop = builder.define("redstone", true);
-            builder.pop();
+        builder.push("doubleDropBool");
+        diamondDoubleDrop = builder.comment("Diamond available for hammers/excavators").define("diamond", true);
+        coalDoubleDrop = builder.define("coal", true);
+        emeraldDoubleDrop = builder.define("emerald", true);
+        lapisDoubleDrop = builder.define("lapis", true);
+        quartzDoubleDrop = builder.define("quartz", true);
+        redstoneDoubleDrop = builder.define("redstone", true);
+        builder.pop();
 
         builder.pop();
 
         builder.push("chances");
-            builder.push("extraDropValue");
-            extraDropChance = builder.comment("Sets the chance of an extra drop when using a tool. [Default 5 = 0.5%]")
-                    .defineInRange("extraDrop", 5, 0, 1000);
-            extraDamageChance = builder.comment("Sets the chance of extra damage when using bone axe or sword on a (wither) skeleton. [Default 200 = 20%]")
-                    .defineInRange("extraDamage", 200, 0, 1000);
-            headDropChance = builder.comment("Sets the chance of an head drop when using bone axe or sword. [Default 50 = 5%]")
-                    .defineInRange("headDrop", 50, 0, 1000);
-            damageByPaperToolsChance = builder.comment("Sets the chance to take an half heart damage if using paper tools. [Default 100 = 10%]")
-                    .defineInRange("damageByPaperTools", 100, 0, Integer.MAX_VALUE);
-            builder.pop();
+        builder.push("extraDropValue");
+        extraDropChance = builder.comment("Sets the chance of an extra drop when using a tool. [Default 0.005 = 0.5%]")
+                .defineInRange("extraDrop", 0.005, 0, 1);
+        extraDamageChance = builder.comment("Sets the chance of extra damage when using bone axe or sword on a (wither) skeleton. [Default 0.2 = 20%]")
+                .defineInRange("extraDamage", 0.2, 0, 1);
+        headDropChance = builder.comment("Sets the chance of an head drop when using bone axe or sword. [Default 0.05 = 5%]")
+                .defineInRange("headDrop", 0.05, 0, 1);
+        damageByPaperToolsChance = builder.comment("Sets the chance to take an half heart damage if using paper tools. [Default 0.1 = 10%]")
+                .defineInRange("damageByPaperTools", 0.1, 0, Integer.MAX_VALUE);
+        builder.pop();
 
-            builder.push("doubleDropValue").comment("The chance for dropping an additional resource of their corresponding ore. [Default 500 = 50%]");
-            diamondDoubleDropChance = builder.comment("Default 1 = 0.1%").defineInRange("diamond", 1, 0, 1000);
-            coalDoubleDropChance = builder.defineInRange("coal", 500, 0, 1000);
-            emeraldDoubleDropChance = builder.comment("Default 1 = 0.1%").defineInRange("emerald", 1, 0, 1000);
-            lapisDoubleDropChance = builder.defineInRange("lapis", 500, 0, 1000);
-            quartzDoubleDropChance = builder.defineInRange("quartz", 500, 0, 1000);
-        redstoneDoubleDropChance = builder.defineInRange("redstone", 500, 0, 1000);
+        builder.push("doubleDropValue").comment("The chance for dropping an additional resource of their corresponding ore. [Default 0.5 = 50%]");
+        diamondDoubleDropChance = builder.comment("Default 1 = 0.1%").defineInRange("diamond", 0.001, 0, 1000);
+        coalDoubleDropChance = builder.defineInRange("coal", 0.5, 0, 1000);
+        emeraldDoubleDropChance = builder.comment("Default 1 = 0.1%").defineInRange("emerald", 0.001, 0, 1000);
+        lapisDoubleDropChance = builder.defineInRange("lapis", 0.5, 0, 1000);
+        quartzDoubleDropChance = builder.defineInRange("quartz", 0.5, 0, 1000);
+        redstoneDoubleDropChance = builder.defineInRange("redstone", 0.5, 0, 1000);
         builder.pop();
         builder.pop();
 
@@ -167,63 +167,63 @@ public class LibConfigHandler {
         goldHarvestlevel = builder.defineInRange("gold", 0, 0, 10);
         diamondHarvestlevel = builder.defineInRange("diamond", 3, 0, 10);
         netheriteHarvestlevel = builder.defineInRange("netherite", 4, 0, 10);
-        boneHarvestlevel = builder.defineInRange("bone", 1, 0, 10);
-        coalHarvestlevel = builder.defineInRange("coal", 1, 0, 10);
+        boneHarvestlevel = builder.defineInRange("bone", 0, 0, 10);
+        coalHarvestlevel = builder.defineInRange("coal", 0, 0, 10);
         emeraldHarvestlevel = builder.defineInRange("emerald", 3, 0, 10);
-        enderHarvestlevel = builder.defineInRange("ender", 3, 0, 10);
-        fieryHarvestlevel = builder.defineInRange("fiery", 2, 0, 10);
-        glowstoneHarvestlevel = builder.defineInRange("glowstone", 2, 0, 10);
+        enderHarvestlevel = builder.defineInRange("ender", 2, 0, 10);
+        fieryHarvestlevel = builder.defineInRange("fiery", 1, 0, 10);
+        glowstoneHarvestlevel = builder.defineInRange("glowstone", 1, 0, 10);
         lapisHarvestlevel = builder.defineInRange("lapis", 2, 0, 10);
         netherHarvestlevel = builder.defineInRange("nether", 1, 0, 10);
-        obsidianHarvestlevel = builder.defineInRange("obsidian", 4, 0, 10);
+        obsidianHarvestlevel = builder.defineInRange("obsidian", 3, 0, 10);
         paperHarvestlevel = builder.defineInRange("paper", 0, 0, 10);
-        prismarineHarvestlevel = builder.defineInRange("prismarine", 3, 0, 10);
-        quartzHarvestlevel = builder.defineInRange("quartz", 2, 0, 10);
+        prismarineHarvestlevel = builder.defineInRange("prismarine", 2, 0, 10);
+        quartzHarvestlevel = builder.defineInRange("quartz", 1, 0, 10);
         redstoneHarvestlevel = builder.defineInRange("redstone", 2, 0, 10);
-        slimeHarvestlevel = builder.defineInRange("slime", 2, 0, 10);
+        slimeHarvestlevel = builder.defineInRange("slime", 1, 0, 10);
         builder.pop();
 
         builder.push("durabilities").comment("The durability of the tools");
-        boneDurability = builder.defineInRange("bone", 206, 1, Integer.MAX_VALUE);
-        coalDurability = builder.defineInRange("coal", 155, 1, Integer.MAX_VALUE);
+        boneDurability = builder.defineInRange("bone", 176, 1, Integer.MAX_VALUE);
+        coalDurability = builder.defineInRange("coal", 145, 1, Integer.MAX_VALUE);
         emeraldDurability = builder.defineInRange("emerald", 1859, 1, Integer.MAX_VALUE);
-        enderDurability = builder.defineInRange("ender", 1859, 1, Integer.MAX_VALUE);
-        fieryDurability = builder.defineInRange("fiery", 148, 1, Integer.MAX_VALUE);
-        glowstoneDurability = builder.defineInRange("glowstone", 173, 1, Integer.MAX_VALUE);
+        enderDurability = builder.defineInRange("ender", 666, 1, Integer.MAX_VALUE);
+        fieryDurability = builder.defineInRange("fiery", 127, 1, Integer.MAX_VALUE);
+        glowstoneDurability = builder.defineInRange("glowstone", 123, 1, Integer.MAX_VALUE);
         lapisDurability = builder.defineInRange("lapis", 173, 1, Integer.MAX_VALUE);
-            netherDurability = builder.defineInRange("nether", 280, 1, Integer.MAX_VALUE);
-            obsidianDurability = builder.defineInRange("obsidian", 1337, 1, Integer.MAX_VALUE);
-            paperDurability = builder.defineInRange("paper", 13, 1, Integer.MAX_VALUE);
-            prismarineDurability = builder.defineInRange("prismarine", 265, 1, Integer.MAX_VALUE);
-            quartzDurability = builder.defineInRange("quartz", 137, 1, Integer.MAX_VALUE);
-            redstoneDurability = builder.defineInRange("redstone", 173, 1, Integer.MAX_VALUE);
-            slimeDurability = builder.defineInRange("slime", 183, 1, Integer.MAX_VALUE);
-            durabilityMulitplier = builder.comment("The multiplier for Hammers and Excavators")
-                    .defineInRange("multiplier", 7, 1, Integer.MAX_VALUE);
-            builder.pop();
+        netherDurability = builder.defineInRange("nether", 188, 1, Integer.MAX_VALUE);
+        obsidianDurability = builder.defineInRange("obsidian", 1337, 1, Integer.MAX_VALUE);
+        paperDurability = builder.defineInRange("paper", 13, 1, Integer.MAX_VALUE);
+        prismarineDurability = builder.defineInRange("prismarine", 225, 1, Integer.MAX_VALUE);
+        quartzDurability = builder.defineInRange("quartz", 117, 1, Integer.MAX_VALUE);
+        redstoneDurability = builder.defineInRange("redstone", 173, 1, Integer.MAX_VALUE);
+        slimeDurability = builder.defineInRange("slime", 123, 1, Integer.MAX_VALUE);
+        durabilityMulitplier = builder.comment("The multiplier for Hammers and Excavators")
+                .defineInRange("multiplier", 7, 1, Integer.MAX_VALUE);
+        builder.pop();
 
-            builder.push("miningspeed").comment("The mining speed of the tools. Will be devided by 3.5 for hammers/excavators.");
-            woodMiningSpeed = builder.defineInRange("wood", 2.0, 0, Integer.MAX_VALUE);
-            stoneMiningSpeed = builder.defineInRange("stone", 4.0, 0, Integer.MAX_VALUE);
-            ironMiningSpeed = builder.defineInRange("iron", 6.0, 0, Integer.MAX_VALUE);
-            goldMiningSpeed = builder.defineInRange("gold", 12.0, 0, Integer.MAX_VALUE);
-            diamondMiningSpeed = builder.defineInRange("diamond", 8.0, 0, Integer.MAX_VALUE);
-            netheriteMiningSpeed = builder.defineInRange("netherite", 9.0, 0, Integer.MAX_VALUE);
-            boneMiningSpeed = builder.defineInRange("bone", 4.9, 0, Integer.MAX_VALUE);
-            coalMiningSpeed = builder.defineInRange("coal", 4.9, 0, Integer.MAX_VALUE);
-            emeraldMiningSpeed = builder.defineInRange("emerald", 8.2, 0, Integer.MAX_VALUE);
-            enderMiningSpeed = builder.defineInRange("ender", 5.7, 0, Integer.MAX_VALUE);
-            fieryMiningSpeed = builder.defineInRange("fiery", 7.0, 0, Integer.MAX_VALUE);
-            glowstoneMiningSpeed = builder.defineInRange("glowstone", 5.0, 0, Integer.MAX_VALUE);
-            lapisMiningSpeed = builder.defineInRange("lapis", 6.2, 0, Integer.MAX_VALUE);
-            netherMiningSpeed = builder.defineInRange("nether", 4.9, 0, Integer.MAX_VALUE);
-            obsidianMiningSpeed = builder.defineInRange("obsidian", 8.2, 0, Integer.MAX_VALUE);
-            paperMiningSpeed = builder.defineInRange("paper", 1.8, 0, Integer.MAX_VALUE);
-            prismarineMiningSpeed = builder.defineInRange("prismarine", 7.0, 0, Integer.MAX_VALUE);
-            quartzMiningSpeed = builder.defineInRange("quartz", 4.9, 0, Integer.MAX_VALUE);
-            redstoneMiningSpeed = builder.defineInRange("redstone", 6.2, 0, Integer.MAX_VALUE);
-            slimeMiningSpeed = builder.defineInRange("slime", 6.2, 0, Integer.MAX_VALUE);
-            builder.pop();
+        builder.push("miningspeed").comment("The mining speed of the tools. Will be devided by 3.5 for hammers/excavators.");
+        woodMiningSpeed = builder.defineInRange("wood", 2.0, 0, Integer.MAX_VALUE);
+        stoneMiningSpeed = builder.defineInRange("stone", 4.0, 0, Integer.MAX_VALUE);
+        ironMiningSpeed = builder.defineInRange("iron", 6.0, 0, Integer.MAX_VALUE);
+        goldMiningSpeed = builder.defineInRange("gold", 12.0, 0, Integer.MAX_VALUE);
+        diamondMiningSpeed = builder.defineInRange("diamond", 8.0, 0, Integer.MAX_VALUE);
+        netheriteMiningSpeed = builder.defineInRange("netherite", 9.0, 0, Integer.MAX_VALUE);
+        boneMiningSpeed = builder.defineInRange("bone", 3.9, 0, Integer.MAX_VALUE);
+        coalMiningSpeed = builder.defineInRange("coal", 3.9, 0, Integer.MAX_VALUE);
+        emeraldMiningSpeed = builder.defineInRange("emerald", 8.2, 0, Integer.MAX_VALUE);
+        enderMiningSpeed = builder.defineInRange("ender", 3.7, 0, Integer.MAX_VALUE);
+        fieryMiningSpeed = builder.defineInRange("fiery", 4.0, 0, Integer.MAX_VALUE);
+        glowstoneMiningSpeed = builder.defineInRange("glowstone", 3.0, 0, Integer.MAX_VALUE);
+        lapisMiningSpeed = builder.defineInRange("lapis", 6.2, 0, Integer.MAX_VALUE);
+        netherMiningSpeed = builder.defineInRange("nether", 3.9, 0, Integer.MAX_VALUE);
+        obsidianMiningSpeed = builder.defineInRange("obsidian", 4.7, 0, Integer.MAX_VALUE);
+        paperMiningSpeed = builder.defineInRange("paper", 1.8, 0, Integer.MAX_VALUE);
+        prismarineMiningSpeed = builder.defineInRange("prismarine", 6.0, 0, Integer.MAX_VALUE);
+        quartzMiningSpeed = builder.defineInRange("quartz", 3.9, 0, Integer.MAX_VALUE);
+        redstoneMiningSpeed = builder.defineInRange("redstone", 6.2, 0, Integer.MAX_VALUE);
+        slimeMiningSpeed = builder.defineInRange("slime", 5.2, 0, Integer.MAX_VALUE);
+        builder.pop();
 
         builder.pop();
 

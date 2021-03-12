@@ -165,10 +165,10 @@ public class JeiCompat implements IModPlugin {
                     getItemFromIngredient(BigBreakMaterials.SLIME.getRepairMaterial()).getName().getString());
 
             if (LibConfigHandler.extraDrop.get())
-                addValueInfoPage(registration, ModTags.Items.ALL_TOOLS.getAllElements(), "extra_drop", (double) LibConfigHandler.extraDropChance.get() / 10);
+                addValueInfoPage(registration, ModTags.Items.ALL_TOOLS.getAllElements(), "extra_drop", LibConfigHandler.extraDropChance.get() * 100);
 
             if (LibConfigHandler.extraDamage.get()) {
-                double extraDamageChance = (double) LibConfigHandler.extraDamageChance.get() / 10;
+                double extraDamageChance = LibConfigHandler.extraDamageChance.get() * 100;
                 addValueInfoPage(registration, ModTags.Items.BONE_TOOLS.getAllElements(), "bone_damage", extraDamageChance);
                 addValueInfoPage(registration, ModTags.Items.ENDER_TOOLS.getAllElements(), "ender_damage", extraDamageChance);
                 addValueInfoPage(registration, ModTags.Items.FIERY_TOOLS.getAllElements(), "fiery_damage", extraDamageChance);
@@ -178,12 +178,12 @@ public class JeiCompat implements IModPlugin {
 
             if (LibConfigHandler.headDrop.get()) {
                 addValueInfoPage(registration, ModTags.Items.BONE_TOOLS.getAllElements(), "bone_heads",
-                        (double) LibConfigHandler.headDropChance.get() / 10);
+                        LibConfigHandler.headDropChance.get() * 100);
             }
 
             if (LibConfigHandler.damageByPaperTools.get()) {
                 addValueInfoPage(registration, ModTags.Items.PAPER_TOOLS.getAllElements(), "paper_damage",
-                        (double) LibConfigHandler.damageByPaperToolsChance.get() / 10,
+                        LibConfigHandler.damageByPaperToolsChance.get() * 100,
                         (double) LibConfigHandler.minPaperDamage.get() / 2,
                         (double) LibConfigHandler.maxPaperDamage.get() / 2);
             }
