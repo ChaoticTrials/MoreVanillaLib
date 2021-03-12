@@ -57,7 +57,7 @@ public class ToolUtil {
 
     public static void extraDrop(World world, BlockPos pos, IItemTier mat) {
         double chance = LibConfigHandler.extraDropChance.get();
-        if (new Random().nextDouble() < chance && LibConfigHandler.extraDrop.get()) {
+        if (world.rand.nextDouble() < chance && LibConfigHandler.extraDrop.get()) {
             Ingredient ingredient = mat.getRepairMaterial();
             ItemStack stack = ingredient.acceptedItems[0].getStacks().iterator().next();
             world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), stack));

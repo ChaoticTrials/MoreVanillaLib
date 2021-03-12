@@ -24,7 +24,6 @@ import net.minecraftforge.common.ToolType;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
 
 public class BigBreakItem extends ToolItem {
@@ -71,7 +70,7 @@ public class BigBreakItem extends ToolItem {
         if (!world.isRemote && state.getBlockHardness(world, pos) != 0.0F) {
             double chance = LibConfigHandler.damageByPaperToolsChance.get();
             if (this.getToolMaterial() == BigBreakMaterials.PAPER && LibConfigHandler.damageByPaperTools.get() && world.rand.nextDouble() < chance)
-                entityLiving.attackEntityFrom(LibDamageSource.PAPER_CUT, new Random().nextInt(LibConfigHandler.maxPaperDamage.get()) + LibConfigHandler.minPaperDamage.get());
+                entityLiving.attackEntityFrom(LibDamageSource.PAPER_CUT, world.rand.nextInt(LibConfigHandler.maxPaperDamage.get()) + LibConfigHandler.minPaperDamage.get());
         }
         if (!this.canHarvestBlock(state)) {
             ToolUtil.extraDrop(world, pos, this.getToolMaterial());

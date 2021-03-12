@@ -46,7 +46,7 @@ public class TranslationHelper {
             case "wood":
                 return "Holz";
             default:
-                return null;
+                throw new IllegalArgumentException("No correct value given.");
         }
     }
 
