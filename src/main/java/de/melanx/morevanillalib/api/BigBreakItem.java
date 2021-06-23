@@ -1,19 +1,16 @@
 package de.melanx.morevanillalib.api;
 
-import com.google.common.collect.ImmutableSet;
 import de.melanx.morevanillalib.MoreVanillaLib;
 import de.melanx.morevanillalib.config.FeatureConfig;
 import de.melanx.morevanillalib.util.ToolUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ToolItem;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
@@ -26,12 +23,12 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Set;
 
-public class BigBreakItem extends ToolItem {
+public class BigBreakItem extends BaseToolItem {
     private final IConfigurableTier toolMaterial;
     private final Set<Material> effectiveOnMaterial;
 
     public BigBreakItem(IConfigurableTier toolMaterial, Set<Material> effectiveOnMaterial, ToolType toolType) {
-        super(0, toolMaterial.getAttackSpeed(), toolMaterial, ImmutableSet.of(), new Item.Properties().group(ItemGroup.TOOLS).addToolType(toolType, toolMaterial.getHarvestLevel()));
+        super(toolMaterial, new Item.Properties().group(ItemGroup.TOOLS).addToolType(toolType, toolMaterial.getHarvestLevel()));
         this.toolMaterial = toolMaterial;
         this.effectiveOnMaterial = effectiveOnMaterial;
     }
@@ -86,12 +83,6 @@ public class BigBreakItem extends ToolItem {
     }
 
     @Override
-    public void onCreated(ItemStack stack, World world, PlayerEntity player) {
-        if (this.getToolMaterial() == BigBreakMaterials.SLIME)
-            stack.addEnchantment(Enchantments.KNOCKBACK, 3);
-    }
-
-    @Override
     public int getBurnTime(ItemStack stack) {
         if (this.getToolMaterial() == BigBreakMaterials.WOOD) {
             return 400;
@@ -114,15 +105,8 @@ public class BigBreakItem extends ToolItem {
     private void addItem(ItemGroup group, NonNullList<ItemStack> items) {
         if (group == ItemGroup.TOOLS || group == ItemGroup.SEARCH) {
             ItemStack item = new ItemStack(this);
-            if (this.getToolMaterial() == BigBreakMaterials.SLIME) {
-                item.addEnchantment(Enchantments.KNOCKBACK, 3);
-            }
             items.add(item);
         }
-    }
-
-    public IConfigurableTier getToolMaterial() {
-        return toolMaterial;
     }
 
     @Override

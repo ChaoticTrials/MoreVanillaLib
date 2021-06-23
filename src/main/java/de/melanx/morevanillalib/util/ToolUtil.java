@@ -1,7 +1,9 @@
 package de.melanx.morevanillalib.util;
 
 import com.google.common.collect.Sets;
+import de.melanx.morevanillalib.api.IConfigurableTier;
 import de.melanx.morevanillalib.config.FeatureConfig;
+import de.melanx.morevanillalib.config.ToolValueConfig;
 import de.melanx.morevanillalib.core.LibDamageSource;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -10,7 +12,9 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ToolItem;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.IItemProvider;
 import net.minecraft.util.math.BlockPos;
@@ -72,5 +76,14 @@ public class ToolUtil {
 
     public static void paperDamage(LivingEntity entity) {
         entity.attackEntityFrom(LibDamageSource.PAPER_CUT, Math.max(FeatureConfig.PaperDamage.minDamage, entity.world.rand.nextFloat() * FeatureConfig.PaperDamage.maxDamage));
+    }
+
+    public static boolean isSlimeTool(Item weapon) {
+        if (weapon instanceof ToolItem && ((ToolItem) weapon).getTier() instanceof IConfigurableTier) {
+            IConfigurableTier tier = (IConfigurableTier) ((ToolItem) weapon).getTier();
+            return tier == ToolValueConfig.NormalTools.slime || tier == ToolValueConfig.RangedTools.slime || tier == ToolValueConfig.AIOTs.slime;
+        }
+
+        return false;
     }
 }

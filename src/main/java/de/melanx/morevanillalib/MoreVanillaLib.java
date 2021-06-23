@@ -8,6 +8,7 @@ import io.github.noeppi_noeppi.libx.mod.registration.ModXRegistration;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -35,6 +36,8 @@ public class MoreVanillaLib extends ModXRegistration {
         instance = this;
         ModValueMappers.registerValueMappers();
         ConfigManager.registerConfig(new ResourceLocation("morevanillalib", "tools"), ToolValueConfig.class, false);
+
+        MinecraftForge.EVENT_BUS.register(new EventListener());
     }
 
     @Override
