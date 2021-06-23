@@ -1,50 +1,31 @@
 package de.melanx.morevanillalib.data;
 
+import de.melanx.morevanillalib.ModContent;
 import de.melanx.morevanillalib.MoreVanillaLib;
-import de.melanx.morevanillalib.core.Registration;
+import io.github.noeppi_noeppi.libx.data.provider.BlockTagProviderBase;
+import io.github.noeppi_noeppi.libx.data.provider.ItemTagProviderBase;
 import net.minecraft.block.Block;
-import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.ItemTagsProvider;
 import net.minecraft.item.Item;
 import net.minecraft.tags.ITag;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class ModTags {
 
     public static class Blocks {
-        public static final ITag.INamedTag<Block> BONE_BLOCK = tag("bone_block");
         public static final ITag.INamedTag<Block> CLEAN_ENDSTONE = tag("clean_endstone");
-        public static final ITag.INamedTag<Block> STORAGE_BLOCKS_GLOWSTONE = tag("storage_blocks/glowstone");
-        public static final ITag.INamedTag<Block> MAGMA_BLOCK = tag("magma_block");
-        public static final ITag.INamedTag<Block> NETHER_BRICKS = tag("netherbricks");
-        public static final ITag.INamedTag<Block> PRISMARINE = tag("prismarine");
-        public static final ITag.INamedTag<Block> SLIME_BLOCK = tag("slime_block");
 
-        private static ITag.INamedTag<Block> tag(String name) {
+        private static ITag.INamedTag<Block> tag(@SuppressWarnings("SameParameterValue") String name) {
             return net.minecraft.tags.BlockTags.makeWrapperTag("forge:" + name);
         }
     }
 
     public static class Items {
-        public static final ITag.INamedTag<Item> BONE_BLOCK = tag("bone_block");
         public static final ITag.INamedTag<Item> CLEAN_ENDSTONE = tag("clean_endstone");
-        public static final ITag.INamedTag<Item> STORAGE_BLOCKS_GLOWSTONE = tag("storage_blocks/glowstone");
-        public static final ITag.INamedTag<Item> MAGMA_BLOCK = tag("magma_block");
-        public static final ITag.INamedTag<Item> NETHER_BRICKS = tag("netherbricks");
-        public static final ITag.INamedTag<Item> PRISMARINE = tag("prismarine");
-        public static final ITag.INamedTag<Item> SLIME_BLOCK = tag("slime_block");
 
         public static final ITag.INamedTag<Item> DUSTS_OBSIDIAN = tag("dusts/obsidian");
-        public static final ITag.INamedTag<Item> GEMS_COAL = tag("gems/coal");
-        public static final ITag.INamedTag<Item> PAPER = tag("paper");
         public static final ITag.INamedTag<Item> PAPER_BUNDLE = tag("paper_bundle");
-
-        public static final ITag.INamedTag<Item> CREEPER_HEAD = tag("heads/creeper_head");
-        public static final ITag.INamedTag<Item> DRAGON_HEAD = tag("heads/dragon_head");
-        public static final ITag.INamedTag<Item> PLAYER_HEAD = tag("heads/player_head");
-        public static final ITag.INamedTag<Item> ZOMBIE_HEAD = tag("heads/zombie_head");
-        public static final ITag.INamedTag<Item> MAGMA_CREAM = tag("magma_cream");
 
         public static final ITag.INamedTag<Item> WOOD_TOOLS = modTag("tools/wood");
         public static final ITag.INamedTag<Item> STONE_TOOLS = modTag("tools/stone");
@@ -77,42 +58,29 @@ public class ModTags {
         }
     }
 
-    public static class BlockTags extends BlockTagsProvider {
-        public BlockTags(DataGenerator generator) {
-            super(generator);
+    public static class BlockTags extends BlockTagProviderBase {
+        public BlockTags(DataGenerator generator, ExistingFileHelper helper) {
+            super(MoreVanillaLib.getInstance(), generator, helper);
         }
 
         @Override
-        protected void registerTags() {
-            getOrCreateBuilder(Blocks.BONE_BLOCK).add(net.minecraft.block.Blocks.BONE_BLOCK);
-            getOrCreateBuilder(Blocks.CLEAN_ENDSTONE).add(Registration.clean_endstone.get());
-            getOrCreateBuilder(Blocks.STORAGE_BLOCKS_GLOWSTONE).add(net.minecraft.block.Blocks.GLOWSTONE);
-            getOrCreateBuilder(Blocks.MAGMA_BLOCK).add(net.minecraft.block.Blocks.MAGMA_BLOCK);
-            getOrCreateBuilder(Blocks.NETHER_BRICKS).add(net.minecraft.block.Blocks.NETHER_BRICKS);
-            getOrCreateBuilder(Blocks.PRISMARINE).add(net.minecraft.block.Blocks.PRISMARINE_BRICKS);
-            getOrCreateBuilder(Blocks.SLIME_BLOCK).add(net.minecraft.block.Blocks.SLIME_BLOCK);
+        protected void setup() {
+            getOrCreateBuilder(Blocks.CLEAN_ENDSTONE).add(ModContent.cleanEndStone);
 
+            //noinspection unchecked
             getOrCreateBuilder(Tags.Blocks.END_STONES).addTags(Blocks.CLEAN_ENDSTONE);
         }
     }
 
-    public static class ItemTags extends ItemTagsProvider {
-        public ItemTags(DataGenerator generator, BlockTagsProvider blockTags) {
-            super(generator, blockTags);
+    public static class ItemTags extends ItemTagProviderBase {
+        public ItemTags(DataGenerator generator, BlockTagProviderBase blockTags, ExistingFileHelper helper) {
+            super(MoreVanillaLib.getInstance(), generator, helper, blockTags);
         }
 
         @Override
-        protected void registerTags() {
-            getOrCreateBuilder(Items.DUSTS_OBSIDIAN).add(Registration.obsidian_shard.get());
-            getOrCreateBuilder(Items.GEMS_COAL).add(net.minecraft.item.Items.COAL);
-            getOrCreateBuilder(Items.PAPER).add(net.minecraft.item.Items.PAPER);
-            getOrCreateBuilder(Items.PAPER_BUNDLE).add(Registration.paper_bundle.get());
-            getOrCreateBuilder(Tags.Items.HEADS).addTags(Items.CREEPER_HEAD, Items.DRAGON_HEAD, Items.PLAYER_HEAD, Items.ZOMBIE_HEAD);
-            getOrCreateBuilder(Items.CREEPER_HEAD).add(net.minecraft.item.Items.CREEPER_HEAD);
-            getOrCreateBuilder(Items.DRAGON_HEAD).add(net.minecraft.item.Items.DRAGON_HEAD);
-            getOrCreateBuilder(Items.PLAYER_HEAD).add(net.minecraft.item.Items.PLAYER_HEAD);
-            getOrCreateBuilder(Items.ZOMBIE_HEAD).add(net.minecraft.item.Items.ZOMBIE_HEAD);
-            getOrCreateBuilder(Items.MAGMA_CREAM).add(net.minecraft.item.Items.MAGMA_CREAM);
+        protected void setup() {
+            getOrCreateBuilder(Items.DUSTS_OBSIDIAN).add(ModContent.obsidianShard);
+            getOrCreateBuilder(Items.PAPER_BUNDLE).add(ModContent.paperBundle);
 
             getOrCreateBuilder(Items.WOOD_TOOLS);
             getOrCreateBuilder(Items.STONE_TOOLS);
@@ -134,15 +102,10 @@ public class ModTags {
             getOrCreateBuilder(Items.QUARTZ_TOOLS);
             getOrCreateBuilder(Items.REDSTONE_TOOLS);
             getOrCreateBuilder(Items.SLIME_TOOLS);
+            //noinspection unchecked
             getOrCreateBuilder(Items.ALL_TOOLS).addTags(Items.WOOD_TOOLS, Items.STONE_TOOLS, Items.IRON_TOOLS, Items.GOLD_TOOLS, Items.DIAMOND_TOOLS, Items.BONE_TOOLS, Items.COAL_TOOLS, Items.EMERALD_TOOLS, Items.ENDER_TOOLS, Items.FIERY_TOOLS, Items.GLOWSTONE_TOOLS, Items.LAPIS_TOOLS, Items.NETHER_TOOLS, Items.NETHERITE_TOOLS, Items.OBSIDIAN_TOOLS, Items.PRISMARINE_TOOLS, Items.QUARTZ_TOOLS, Items.REDSTONE_TOOLS, Items.SLIME_TOOLS);
 
-            copy(Blocks.BONE_BLOCK, Items.BONE_BLOCK);
             copy(Blocks.CLEAN_ENDSTONE, Items.CLEAN_ENDSTONE);
-            copy(Blocks.STORAGE_BLOCKS_GLOWSTONE, Items.STORAGE_BLOCKS_GLOWSTONE);
-            copy(Blocks.MAGMA_BLOCK, Items.MAGMA_BLOCK);
-            copy(Blocks.NETHER_BRICKS, Items.NETHER_BRICKS);
-            copy(Blocks.PRISMARINE, Items.PRISMARINE);
-            copy(Blocks.SLIME_BLOCK, Items.SLIME_BLOCK);
         }
     }
 

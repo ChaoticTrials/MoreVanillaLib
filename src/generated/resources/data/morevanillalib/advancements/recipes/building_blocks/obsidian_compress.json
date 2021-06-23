@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "morevanillalib:obsidian"
+      "morevanillalib:obsidian_compress"
     ]
   },
   "criteria": {
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "morevanillalib:obsidian"
+        "recipe": "morevanillalib:obsidian_compress"
       }
     }
   },

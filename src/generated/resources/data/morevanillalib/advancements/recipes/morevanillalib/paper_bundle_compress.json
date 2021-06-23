@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "morevanillalib:obsidian_shard"
+      "morevanillalib:paper_bundle_compress"
     ]
   },
   "criteria": {
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "forge:obsidian"
+            "tag": "forge:paper"
           }
         ]
       }
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "morevanillalib:obsidian_shard"
+        "recipe": "morevanillalib:paper_bundle_compress"
       }
     }
   },

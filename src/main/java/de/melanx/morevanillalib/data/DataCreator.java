@@ -1,7 +1,7 @@
 package de.melanx.morevanillalib.data;
 
 import de.melanx.morevanillalib.MoreVanillaLib;
-import net.minecraft.data.BlockTagsProvider;
+import io.github.noeppi_noeppi.libx.data.provider.BlockTagProviderBase;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -17,17 +17,15 @@ public class DataCreator {
         ExistingFileHelper helper = event.getExistingFileHelper();
 
         if (event.includeServer()) {
-            BlockTagsProvider blockTags = new ModTags.BlockTags(generator);
+            BlockTagProviderBase blockTags = new ModTags.BlockTags(generator, helper);
             generator.addProvider(blockTags);
-            generator.addProvider(new ModTags.ItemTags(generator, blockTags));
-            generator.addProvider(new LootTables(generator));
-            generator.addProvider(new Recipes(generator));
+            generator.addProvider(new ModTags.ItemTags(generator, blockTags, helper));
+            generator.addProvider(new LootTableProvider(generator));
+            generator.addProvider(new RecipeProvider(generator));
         }
         if (event.includeClient()) {
-            generator.addProvider(new BlockStates(generator, helper));
-            generator.addProvider(new ItemModels(generator, MoreVanillaLib.MODID, helper));
-            generator.addProvider(new Languages.English(generator));
-            generator.addProvider(new Languages.German(generator));
+            generator.addProvider(new BlockStateProvider(generator, helper));
+            generator.addProvider(new ItemModelProvider(generator, helper));
         }
     }
 

@@ -26,5 +26,4 @@ public class LuckOfCheapRepairing extends Enchantment {
     public int getMinEnchantability(int enchantmentLevel) {
         return 18;
     }
-
 }

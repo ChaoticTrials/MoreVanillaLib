@@ -5,6 +5,7 @@ import net.minecraft.data.IFinishedRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.util.ResourceLocation;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.function.Consumer;
 
@@ -29,7 +30,7 @@ public class WrapperResult implements IFinishedRecipe {
     }
 
     @Override
-    public void serialize(JsonObject json) {
+    public void serialize(@Nonnull JsonObject json) {
         delegate.serialize(json);
         if (transform != null) {
             transform.accept(json);

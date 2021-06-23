@@ -1,6 +1,6 @@
 package de.melanx.morevanillalib.api;
 
-import de.melanx.morevanillalib.LibConfigHandler;
+import de.melanx.morevanillalib.config.FeatureConfig;
 import de.melanx.morevanillalib.util.ToolUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -93,35 +93,33 @@ public class BlockBreaker {
         if (EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, heldItem) >= 1) return;
 
         ToolUtil.extraDrop(world, pos, toolMaterial);
-        if (LibConfigHandler.doubleDrop.get()) {
+        if (FeatureConfig.DoubleDrop.enabledAll) {
             switch ((BigBreakMaterials) toolMaterial) {
+                // TODO check ore tag, not just block
+                // TODO use loot modifier
                 case DIAMOND:
                     if (block == Blocks.DIAMOND_ORE) {
                         ItemStack drop = new ItemStack(Items.DIAMOND);
-                        double chance = LibConfigHandler.diamondDoubleDropChance.get();
-                        if (world.rand.nextDouble() < chance && LibConfigHandler.diamondDoubleDrop.get()) {
+                        if (FeatureConfig.DoubleDrop.Diamond.enabled && world.rand.nextDouble() < FeatureConfig.DoubleDrop.Diamond.chance) {
                             world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));
                         }
                     }
                 case COAL:
                     if (block == Blocks.COAL_ORE) {
                         ItemStack drop = new ItemStack(Items.COAL);
-                        double chance = LibConfigHandler.coalDoubleDropChance.get();
-                        if (world.rand.nextDouble() < chance && LibConfigHandler.coalDoubleDrop.get())
+                        if (FeatureConfig.DoubleDrop.Coal.enabled && world.rand.nextDouble() < FeatureConfig.DoubleDrop.Coal.chance)
                             world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));
                     }
                 case EMERALD:
                     if (block == Blocks.EMERALD_ORE) {
                         ItemStack drop = new ItemStack(Items.EMERALD);
-                        double chance = LibConfigHandler.emeraldDoubleDropChance.get();
-                        if (world.rand.nextDouble() < chance && LibConfigHandler.emeraldDoubleDrop.get())
+                        if (FeatureConfig.DoubleDrop.Emerald.enabled && world.rand.nextDouble() < FeatureConfig.DoubleDrop.Emerald.chance)
                             world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));
                     }
                 case LAPIS:
                     if (block == Blocks.LAPIS_ORE) {
                         ItemStack drop = new ItemStack(Items.LAPIS_LAZULI);
-                        double chance = LibConfigHandler.lapisDoubleDropChance.get();
-                        if (world.rand.nextDouble() < chance && LibConfigHandler.lapisDoubleDrop.get()) {
+                        if (FeatureConfig.DoubleDrop.Lapis.enabled && world.rand.nextDouble() < FeatureConfig.DoubleDrop.Lapis.chance) {
                             int i = world.rand.nextInt(3);
                             drop.setCount(i + 1);
                             world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));
@@ -130,15 +128,13 @@ public class BlockBreaker {
                 case QUARTZ:
                     if (block == Blocks.NETHER_QUARTZ_ORE) {
                         ItemStack drop = new ItemStack(Items.QUARTZ);
-                        double chance = LibConfigHandler.quartzDoubleDropChance.get();
-                        if (world.rand.nextDouble() < chance && LibConfigHandler.quartzDoubleDrop.get())
+                        if (FeatureConfig.DoubleDrop.Quartz.enabled && world.rand.nextDouble() < FeatureConfig.DoubleDrop.Quartz.chance)
                             world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));
                     }
                 case REDSTONE:
                     if (block == Blocks.REDSTONE_ORE) {
                         ItemStack drop = new ItemStack(Items.REDSTONE);
-                        double chance = LibConfigHandler.redstoneDoubleDropChance.get();
-                        if (world.rand.nextDouble() < chance && LibConfigHandler.redstoneDoubleDrop.get()) {
+                        if (FeatureConfig.DoubleDrop.Redstone.enabled && world.rand.nextDouble() < FeatureConfig.DoubleDrop.Redstone.chance) {
                             int i = world.rand.nextInt(3);
                             drop.setCount(i + 1);
                             world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));

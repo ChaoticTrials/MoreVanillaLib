@@ -1,10 +1,9 @@
 package de.melanx.morevanillalib.compat;
 
-import de.melanx.morevanillalib.LibCommonConfig;
-import de.melanx.morevanillalib.LibConfigHandler;
 import de.melanx.morevanillalib.MoreVanillaLib;
 import de.melanx.morevanillalib.api.BigBreakMaterials;
 import de.melanx.morevanillalib.api.ToolMaterials;
+import de.melanx.morevanillalib.config.FeatureConfig;
 import de.melanx.morevanillalib.data.ModTags;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -65,110 +64,110 @@ public class JeiCompat implements IModPlugin {
         addValueInfoPage(registration, ModTags.Items.WOOD_TOOLS.getAllElements(), "wood_tools",
                 ItemTier.WOOD.getMaxUses(),
                 BigBreakMaterials.WOOD.getMaxUses(),
-                LibConfigHandler.woodHarvestlevel.get(),
+                ItemTier.WOOD.getHarvestLevel(),
                 getItemFromIngredient(ItemTier.WOOD.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.STONE_TOOLS.getAllElements(), "stone_tools",
                 ItemTier.STONE.getMaxUses(),
                 BigBreakMaterials.STONE.getMaxUses(),
-                LibConfigHandler.stoneHarvestlevel.get(),
+                ItemTier.STONE.getHarvestLevel(),
                 getItemFromIngredient(ItemTier.STONE.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.IRON_TOOLS.getAllElements(), "iron_tools",
                 ItemTier.IRON.getMaxUses(),
                 BigBreakMaterials.IRON.getMaxUses(),
-                LibConfigHandler.ironHarvestlevel.get(),
+                ItemTier.IRON.getHarvestLevel(),
                 getItemFromIngredient(ItemTier.IRON.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.GOLD_TOOLS.getAllElements(), "gold_tools",
                 ItemTier.GOLD.getMaxUses(),
                 BigBreakMaterials.GOLD.getMaxUses(),
-                LibConfigHandler.goldHarvestlevel.get(),
+                ItemTier.GOLD.getHarvestLevel(),
                 getItemFromIngredient(ItemTier.GOLD.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.DIAMOND_TOOLS.getAllElements(), "diamond_tools",
                 ItemTier.DIAMOND.getMaxUses(),
                 BigBreakMaterials.DIAMOND.getMaxUses(),
-                LibConfigHandler.diamondHarvestlevel.get(),
+                ItemTier.DIAMOND.getHarvestLevel(),
                 getItemFromIngredient(ItemTier.DIAMOND.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.NETHERITE_TOOLS.getAllElements(), "netherite_tools",
                 ItemTier.NETHERITE.getMaxUses(),
                 BigBreakMaterials.NETHERITE.getMaxUses(),
-                LibConfigHandler.netheriteHarvestlevel.get(),
+                ItemTier.NETHERITE.getHarvestLevel(),
                 getItemFromIngredient(ItemTier.NETHERITE.getRepairMaterial()).getName().getString());
-        if (!LibCommonConfig.vanilla.get()) {
+        if (!FeatureConfig.vanillaOnly) {
             addValueInfoPage(registration, ModTags.Items.BONE_TOOLS.getAllElements(), "bone_tools",
                     ToolMaterials.BONE.getMaxUses(),
                     BigBreakMaterials.BONE.getMaxUses(),
-                    LibConfigHandler.boneHarvestlevel.get(),
+                    ToolMaterials.BONE.getHarvestLevel(),
                     getItemFromIngredient(BigBreakMaterials.BONE.getRepairMaterial()).getName().getString());
             addValueInfoPage(registration, ModTags.Items.COAL_TOOLS.getAllElements(), "coal_tools",
                     ToolMaterials.COAL.getMaxUses(),
                     BigBreakMaterials.COAL.getMaxUses(),
-                    LibConfigHandler.coalHarvestlevel.get(),
+                    ToolMaterials.COAL.getHarvestLevel(),
                     getItemFromIngredient(BigBreakMaterials.COAL.getRepairMaterial()).getName().getString());
             addValueInfoPage(registration, ModTags.Items.EMERALD_TOOLS.getAllElements(), "emerald_tools",
                     ToolMaterials.EMERALD.getMaxUses(),
                     BigBreakMaterials.EMERALD.getMaxUses(),
-                    LibConfigHandler.emeraldHarvestlevel.get(),
+                    ToolMaterials.EMERALD.getHarvestLevel(),
                     getItemFromIngredient(BigBreakMaterials.EMERALD.getRepairMaterial()).getName().getString());
             addValueInfoPage(registration, ModTags.Items.ENDER_TOOLS.getAllElements(), "ender_tools",
                     ToolMaterials.ENDER.getMaxUses(),
                     BigBreakMaterials.ENDER.getMaxUses(),
-                    LibConfigHandler.enderHarvestlevel.get(),
+                    ToolMaterials.ENDER.getHarvestLevel(),
                     getItemFromIngredient(BigBreakMaterials.ENDER.getRepairMaterial()).getName().getString());
             addValueInfoPage(registration, ModTags.Items.FIERY_TOOLS.getAllElements(), "fiery_tools",
                     ToolMaterials.FIERY.getMaxUses(),
                     BigBreakMaterials.FIERY.getMaxUses(),
-                    LibConfigHandler.fieryHarvestlevel.get(),
+                    ToolMaterials.FIERY.getHarvestLevel(),
                     getItemFromIngredient(BigBreakMaterials.FIERY.getRepairMaterial()).getName().getString());
             addValueInfoPage(registration, ModTags.Items.GLOWSTONE_TOOLS.getAllElements(), "glowstone_tools",
                     ToolMaterials.GLOWSTONE.getMaxUses(),
                     BigBreakMaterials.GLOWSTONE.getMaxUses(),
-                    LibConfigHandler.glowstoneHarvestlevel.get(),
+                    ToolMaterials.GLOWSTONE.getHarvestLevel(),
                     getItemFromIngredient(BigBreakMaterials.GLOWSTONE.getRepairMaterial()).getName().getString());
             addValueInfoPage(registration, ModTags.Items.LAPIS_TOOLS.getAllElements(), "lapis_tools",
                     ToolMaterials.LAPIS.getMaxUses(),
                     BigBreakMaterials.LAPIS.getMaxUses(),
-                    LibConfigHandler.lapisHarvestlevel.get(),
+                    ToolMaterials.LAPIS.getHarvestLevel(),
                     getItemFromIngredient(BigBreakMaterials.LAPIS.getRepairMaterial()).getName().getString());
             addValueInfoPage(registration, ModTags.Items.NETHER_TOOLS.getAllElements(), "nether_tools",
                     ToolMaterials.NETHER.getMaxUses(),
                     BigBreakMaterials.NETHER.getMaxUses(),
-                    LibConfigHandler.netherHarvestlevel.get(),
+                    ToolMaterials.NETHER.getHarvestLevel(),
                     getItemFromIngredient(BigBreakMaterials.NETHER.getRepairMaterial()).getName().getString());
             addValueInfoPage(registration, ModTags.Items.OBSIDIAN_TOOLS.getAllElements(), "obsidian_tools",
                     ToolMaterials.OBSIDIAN.getMaxUses(),
                     BigBreakMaterials.OBSIDIAN.getMaxUses(),
-                    LibConfigHandler.obsidianHarvestlevel.get(),
+                    ToolMaterials.OBSIDIAN.getHarvestLevel(),
                     getItemFromIngredient(BigBreakMaterials.OBSIDIAN.getRepairMaterial()).getName().getString());
             addValueInfoPage(registration, ModTags.Items.PAPER_TOOLS.getAllElements(), "paper_tools",
                     ToolMaterials.PAPER.getMaxUses(),
                     BigBreakMaterials.PAPER.getMaxUses(),
-                    LibConfigHandler.paperHarvestlevel.get(),
+                    ToolMaterials.PAPER.getHarvestLevel(),
                     getItemFromIngredient(BigBreakMaterials.PAPER.getRepairMaterial()).getName().getString());
             addValueInfoPage(registration, ModTags.Items.PRISMARINE_TOOLS.getAllElements(), "prismarine_tools",
                     ToolMaterials.PRISMARINE.getMaxUses(),
                     BigBreakMaterials.PRISMARINE.getMaxUses(),
-                    LibConfigHandler.prismarineHarvestlevel.get(),
+                    ToolMaterials.PRISMARINE.getHarvestLevel(),
                     getItemFromIngredient(BigBreakMaterials.PRISMARINE.getRepairMaterial()).getName().getString());
             addValueInfoPage(registration, ModTags.Items.QUARTZ_TOOLS.getAllElements(), "quartz_tools",
                     ToolMaterials.QUARTZ.getMaxUses(),
                     BigBreakMaterials.QUARTZ.getMaxUses(),
-                    LibConfigHandler.quartzHarvestlevel.get(),
+                    ToolMaterials.QUARTZ.getHarvestLevel(),
                     getItemFromIngredient(BigBreakMaterials.QUARTZ.getRepairMaterial()).getName().getString());
             addValueInfoPage(registration, ModTags.Items.REDSTONE_TOOLS.getAllElements(), "redstone_tools",
                     ToolMaterials.REDSTONE.getMaxUses(),
                     BigBreakMaterials.REDSTONE.getMaxUses(),
-                    LibConfigHandler.redstoneHarvestlevel.get(),
+                    ToolMaterials.REDSTONE.getHarvestLevel(),
                     getItemFromIngredient(BigBreakMaterials.REDSTONE.getRepairMaterial()).getName().getString());
             addValueInfoPage(registration, ModTags.Items.SLIME_TOOLS.getAllElements(), "slime_tools",
                     ToolMaterials.SLIME.getMaxUses(),
                     BigBreakMaterials.SLIME.getMaxUses(),
-                    LibConfigHandler.slimeHarvestlevel.get(),
+                    ToolMaterials.SLIME.getHarvestLevel(),
                     getItemFromIngredient(BigBreakMaterials.SLIME.getRepairMaterial()).getName().getString());
 
-            if (LibConfigHandler.extraDrop.get())
-                addValueInfoPage(registration, ModTags.Items.ALL_TOOLS.getAllElements(), "extra_drop", LibConfigHandler.extraDropChance.get() * 100);
+            if (FeatureConfig.ExtraDrop.enabled)
+                addValueInfoPage(registration, ModTags.Items.ALL_TOOLS.getAllElements(), "extra_drop", FeatureConfig.ExtraDrop.chance * 100);
 
-            if (LibConfigHandler.extraDamage.get()) {
-                double extraDamageChance = LibConfigHandler.extraDamageChance.get() * 100;
+            if (FeatureConfig.ExtraDamage.enabled) {
+                double extraDamageChance = FeatureConfig.ExtraDamage.chance * 100;
                 addValueInfoPage(registration, ModTags.Items.BONE_TOOLS.getAllElements(), "bone_damage", extraDamageChance);
                 addValueInfoPage(registration, ModTags.Items.ENDER_TOOLS.getAllElements(), "ender_damage", extraDamageChance);
                 addValueInfoPage(registration, ModTags.Items.FIERY_TOOLS.getAllElements(), "fiery_damage", extraDamageChance);
@@ -176,23 +175,23 @@ public class JeiCompat implements IModPlugin {
                 addValueInfoPage(registration, ModTags.Items.SLIME_TOOLS.getAllElements(), "slime_damage", extraDamageChance);
             }
 
-            if (LibConfigHandler.headDrop.get()) {
+            if (FeatureConfig.HeadDrop.enabled) {
                 addValueInfoPage(registration, ModTags.Items.BONE_TOOLS.getAllElements(), "bone_heads",
-                        LibConfigHandler.headDropChance.get() * 100);
+                        FeatureConfig.HeadDrop.chance * 100);
             }
 
-            if (LibConfigHandler.damageByPaperTools.get()) {
+            if (FeatureConfig.PaperDamage.enabled) {
                 addValueInfoPage(registration, ModTags.Items.PAPER_TOOLS.getAllElements(), "paper_damage",
-                        LibConfigHandler.damageByPaperToolsChance.get() * 100,
-                        (double) LibConfigHandler.minPaperDamage.get() / 2,
-                        (double) LibConfigHandler.maxPaperDamage.get() / 2);
+                        FeatureConfig.PaperDamage.chance * 100,
+                        FeatureConfig.PaperDamage.minDamage / 2,
+                        FeatureConfig.PaperDamage.maxDamage / 2);
             }
 
-            if (LibConfigHandler.autoSmelt.get()) {
+            if (FeatureConfig.autoSmelt) {
                 addInfoPage(registration, ModTags.Items.FIERY_TOOLS.getAllElements(), "fiery_smelt");
             }
 
-            if (LibConfigHandler.glowstoneDrops.get()) {
+            if (FeatureConfig.glowstoneDrops) {
                 addInfoPage(registration, ModTags.Items.GLOWSTONE_TOOLS.getAllElements(), "glowstone_drops");
             }
         }

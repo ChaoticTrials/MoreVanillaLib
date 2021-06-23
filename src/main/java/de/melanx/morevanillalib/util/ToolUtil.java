@@ -1,10 +1,12 @@
 package de.melanx.morevanillalib.util;
 
 import com.google.common.collect.Sets;
-import de.melanx.morevanillalib.LibConfigHandler;
+import de.melanx.morevanillalib.config.FeatureConfig;
+import de.melanx.morevanillalib.core.LibDamageSource;
 import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
@@ -21,29 +23,30 @@ import java.util.Set;
 
 public class ToolUtil {
 
+    // TODO 1.17 replace with tags
     public static final Set<Material> PICKAXE_MATERIALS = Sets.newHashSet(Material.ROCK, Material.ANVIL, Material.IRON);
     public static final Set<Material> AXE_MATERIALS = Sets.newHashSet(Material.WOOD, Material.NETHER_WOOD, Material.PLANTS, Material.TALL_PLANTS, Material.BAMBOO, Material.GOURD);
 
+    // TODO use loot modifier
     public static void moreDamage(LivingDamageEvent event) {
         if (event.getSource().getTrueSource() instanceof PlayerEntity) {
             Random rand = event.getEntityLiving().world.rand;
 
-            double chance = LibConfigHandler.extraDamageChance.get();
-            if (rand.nextDouble() < chance && LibConfigHandler.extraDamage.get()) {
-                float multiplier = (float) rand.nextInt(26) / 10 + 1;
+            if (FeatureConfig.ExtraDamage.enabled && rand.nextDouble() < FeatureConfig.ExtraDamage.chance) {
+                float multiplier = (float) (rand.nextFloat() * FeatureConfig.ExtraDamage.maxMultiplier);
                 event.setAmount(event.getAmount() * multiplier);
             }
         }
     }
 
+    // TODO use loot modifier
     public static void headDrop(LivingDropsEvent event, IItemProvider head) {
         ItemStack weapon = ((PlayerEntity) event.getSource().getTrueSource()).getHeldItemMainhand();
         if (!weapon.isEmpty()) {
             Random rand = event.getEntityLiving().world.rand;
             int looting = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, weapon);
 
-            double chance = LibConfigHandler.headDropChance.get();
-            if (LibConfigHandler.headDrop.get() && rand.nextDouble() < chance + looting) {
+            if (FeatureConfig.HeadDrop.enabled && rand.nextDouble() < FeatureConfig.HeadDrop.chance + looting) {
                 addDrop(event, new ItemStack(head));
             }
         }
@@ -56,10 +59,9 @@ public class ToolUtil {
     }
 
     public static void extraDrop(World world, BlockPos pos, IItemTier mat) {
-        double chance = LibConfigHandler.extraDropChance.get();
-        if (world.rand.nextDouble() < chance && LibConfigHandler.extraDrop.get()) {
+        if (FeatureConfig.ExtraDrop.enabled && world.rand.nextDouble() < FeatureConfig.ExtraDrop.chance) {
             Ingredient ingredient = mat.getRepairMaterial();
-            ItemStack stack = ingredient.acceptedItems[0].getStacks().iterator().next();
+            ItemStack stack = ingredient.getMatchingStacks()[0];
             world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), stack));
         }
     }
@@ -68,4 +70,7 @@ public class ToolUtil {
         return event.isRecentlyHit() && event.getSource().getTrueSource() != null && event.getSource().getTrueSource() instanceof PlayerEntity;
     }
 
+    public static void paperDamage(LivingEntity entity) {
+        entity.attackEntityFrom(LibDamageSource.PAPER_CUT, Math.max(FeatureConfig.PaperDamage.minDamage, entity.world.rand.nextFloat() * FeatureConfig.PaperDamage.maxDamage));
+    }
 }

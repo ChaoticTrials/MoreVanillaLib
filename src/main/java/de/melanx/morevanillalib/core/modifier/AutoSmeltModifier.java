@@ -1,7 +1,7 @@
 package de.melanx.morevanillalib.core.modifier;
 
 import com.google.gson.JsonObject;
-import de.melanx.morevanillalib.LibConfigHandler;
+import de.melanx.morevanillalib.config.FeatureConfig;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipe;
@@ -34,7 +34,7 @@ public class AutoSmeltModifier extends LootModifier {
     @Nonnull
     @Override
     protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
-        if (!LibConfigHandler.autoSmelt.get()) return generatedLoot;
+        if (!FeatureConfig.autoSmelt) return generatedLoot;
         return generatedLoot.stream().map(stack -> smelt(stack, context)).collect(Collectors.toList());
     }
 
@@ -46,7 +46,7 @@ public class AutoSmeltModifier extends LootModifier {
 
         @Override
         public JsonObject write(AutoSmeltModifier instance) {
-            return null;
+            return this.makeConditions(instance.conditions);
         }
     }
 }

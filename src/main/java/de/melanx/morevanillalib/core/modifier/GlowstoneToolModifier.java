@@ -1,7 +1,7 @@
 package de.melanx.morevanillalib.core.modifier;
 
 import com.google.gson.JsonObject;
-import de.melanx.morevanillalib.LibConfigHandler;
+import de.melanx.morevanillalib.config.FeatureConfig;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootContext;
@@ -22,7 +22,7 @@ public class GlowstoneToolModifier extends LootModifier {
     @Nonnull
     @Override
     protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
-        if (LibConfigHandler.glowstoneDrops.get()) {
+        if (FeatureConfig.glowstoneDrops) {
             generatedLoot.clear();
             ItemStack glowstone = new ItemStack(Items.GLOWSTONE_DUST);
             glowstone.setCount(4);
@@ -39,7 +39,7 @@ public class GlowstoneToolModifier extends LootModifier {
 
         @Override
         public JsonObject write(GlowstoneToolModifier instance) {
-            return null;
+            return this.makeConditions(instance.conditions);
         }
     }
 
