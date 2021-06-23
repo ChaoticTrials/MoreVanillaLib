@@ -17,6 +17,9 @@ public class FeatureConfig {
     @Config("Should glowstone tools always drop 4 glowstone dust when breaking glowstone blocks? (excluded by silk touch)")
     public static boolean glowstoneDrops = true;
 
+    @Config("Should enchantments be obtainable?")
+    public static boolean enchantments = true;
+
     @Group
     public static class ExtraDrop {
 
