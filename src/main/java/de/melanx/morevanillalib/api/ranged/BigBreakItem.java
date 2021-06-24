@@ -105,7 +105,7 @@ public class BigBreakItem extends BaseToolItem {
     @Override
     public void addInformation(@Nonnull ItemStack stack, @Nullable World world, @Nonnull List<ITextComponent> tooltip, @Nonnull ITooltipFlag flag) {
         if (!this.toolMaterial.isVanilla() && FeatureConfig.vanillaOnly) {
-            tooltip.add(new TranslationTextComponent("tooltip." + MoreVanillaLib.MODID + ".disabled_item").mergeStyle(TextFormatting.DARK_RED));
+            tooltip.add(new TranslationTextComponent("tooltip." + MoreVanillaLib.getInstance().modid + ".disabled_item").mergeStyle(TextFormatting.DARK_RED));
         } else {
             super.addInformation(stack, world, tooltip, flag);
         }

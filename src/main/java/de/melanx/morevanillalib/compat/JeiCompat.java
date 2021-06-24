@@ -24,11 +24,11 @@ import java.util.stream.Collectors;
 
 @JeiPlugin
 public class JeiCompat implements IModPlugin {
-    public static final ResourceLocation PLUGIN_UID = new ResourceLocation(MoreVanillaLib.MODID, "plugin/main");
+    public static final ResourceLocation PLUGIN_UID = new ResourceLocation(MoreVanillaLib.getInstance().modid, "plugin/main");
 
     private static void addInfoPage(IRecipeRegistration reg, Collection<Item> items, String name) {
         if (items.isEmpty()) return;
-        String key = getDescKey(new ResourceLocation(MoreVanillaLib.MODID, name));
+        String key = getDescKey(new ResourceLocation(MoreVanillaLib.getInstance().modid, name));
         List<ItemStack> stacks = items.stream().map(ItemStack::new).collect(Collectors.toList());
         reg.addIngredientInfo(stacks, VanillaTypes.ITEM, key);
     }
@@ -40,7 +40,7 @@ public class JeiCompat implements IModPlugin {
 
     private static void addValueInfoPage(IRecipeRegistration reg, Collection<Item> items, String name, Object... values) {
         if (items.isEmpty()) return;
-        String key = getDescKey(new ResourceLocation(MoreVanillaLib.MODID, name));
+        String key = getDescKey(new ResourceLocation(MoreVanillaLib.getInstance().modid, name));
         List<ItemStack> stacks = items.stream().map(ItemStack::new).collect(Collectors.toList());
         reg.addIngredientInfo(stacks, VanillaTypes.ITEM, I18n.format(key, values));
     }

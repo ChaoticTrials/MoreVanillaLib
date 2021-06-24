@@ -22,20 +22,20 @@ public enum BigBreakMaterials implements IConfigurableTier {
     DIAMOND(ItemTier.DIAMOND.getHarvestLevel(), ItemTier.DIAMOND.getMaxUses() * 7, ItemTier.DIAMOND.getEfficiency() / 3.5F, ItemTier.DIAMOND.getAttackDamage() + 3, -3.0F, ItemTier.DIAMOND.getEnchantability(), () -> Ingredient.fromTag(Tags.Items.GEMS_DIAMOND), () -> Ingredient.fromTag(Tags.Items.STORAGE_BLOCKS_DIAMOND), true),
     NETHERITE(ItemTier.NETHERITE.getHarvestLevel(), ItemTier.NETHERITE.getMaxUses() * 7, ItemTier.NETHERITE.getEfficiency() / 3.5F, ItemTier.NETHERITE.getAttackDamage() + 3, -3.5F, ItemTier.NETHERITE.getEnchantability(), () -> Ingredient.fromTag(Tags.Items.INGOTS_NETHERITE), () -> Ingredient.fromTag(Tags.Items.STORAGE_BLOCKS_NETHERITE), true),
 
-    BONE(ToolValueConfig.RangedTools.bone, () -> Ingredient.fromItems(Items.BONE_BLOCK)),
-    COAL(ToolValueConfig.RangedTools.coal, () -> Ingredient.fromTag(Tags.Items.STORAGE_BLOCKS_COAL)),
-    EMERALD(ToolValueConfig.RangedTools.emerald, () -> Ingredient.fromTag(Tags.Items.STORAGE_BLOCKS_EMERALD)),
-    ENDER(ToolValueConfig.RangedTools.ender, () -> Ingredient.fromTag(ModTags.Items.CLEAN_ENDSTONE)),
-    FIERY(ToolValueConfig.RangedTools.fiery, () -> Ingredient.fromItems(Items.MAGMA_BLOCK)),
-    GLOWSTONE(ToolValueConfig.RangedTools.glowstone, () -> Ingredient.fromItems(Items.GLOWSTONE)),
-    LAPIS(ToolValueConfig.RangedTools.lapis, () -> Ingredient.fromTag(Tags.Items.STORAGE_BLOCKS_LAPIS)),
-    NETHER(ToolValueConfig.RangedTools.nether, () -> Ingredient.fromItems(Items.NETHER_BRICKS)),
-    OBSIDIAN(ToolValueConfig.RangedTools.obsidian, () -> Ingredient.fromTag(Tags.Items.OBSIDIAN)),
-    PAPER(ToolValueConfig.RangedTools.paper, () -> Ingredient.fromTag(ModTags.Items.PAPER_BUNDLE)),
-    PRISMARINE(ToolValueConfig.RangedTools.prismarine, () -> Ingredient.fromItems(Items.PRISMARINE_BRICKS)),
-    QUARTZ(ToolValueConfig.RangedTools.quartz, () -> Ingredient.fromTag(Tags.Items.STORAGE_BLOCKS_QUARTZ)),
-    REDSTONE(ToolValueConfig.RangedTools.redstone, () -> Ingredient.fromTag(Tags.Items.STORAGE_BLOCKS_REDSTONE)),
-    SLIME(ToolValueConfig.RangedTools.slime, () -> Ingredient.fromItems(Items.SLIME_BLOCK));
+    BONE(ToolValueConfig.RangedTools.bone, () -> Ingredient.fromTag(Tags.Items.BONES), () -> Ingredient.fromItems(Items.BONE_BLOCK)),
+    COAL(ToolValueConfig.RangedTools.coal, () -> Ingredient.fromItems(Items.COAL), () -> Ingredient.fromTag(Tags.Items.STORAGE_BLOCKS_COAL)),
+    EMERALD(ToolValueConfig.RangedTools.emerald, () -> Ingredient.fromTag(Tags.Items.GEMS_EMERALD), () -> Ingredient.fromTag(Tags.Items.STORAGE_BLOCKS_EMERALD)),
+    ENDER(ToolValueConfig.RangedTools.ender, () -> Ingredient.fromTag(Tags.Items.ENDER_PEARLS), () -> Ingredient.fromTag(ModTags.Items.CLEAN_ENDSTONE)),
+    FIERY(ToolValueConfig.RangedTools.fiery, () -> Ingredient.fromItems(Items.MAGMA_BLOCK), () -> Ingredient.fromItems(Items.MAGMA_BLOCK)),
+    GLOWSTONE(ToolValueConfig.RangedTools.glowstone, () -> Ingredient.fromTag(Tags.Items.DUSTS_GLOWSTONE), () -> Ingredient.fromItems(Items.GLOWSTONE)),
+    LAPIS(ToolValueConfig.RangedTools.lapis, () -> Ingredient.fromTag(Tags.Items.GEMS_LAPIS), () -> Ingredient.fromTag(Tags.Items.STORAGE_BLOCKS_LAPIS)),
+    NETHER(ToolValueConfig.RangedTools.nether, () -> Ingredient.fromItems(Items.NETHER_BRICKS), () -> Ingredient.fromItems(Items.NETHER_BRICKS)),
+    OBSIDIAN(ToolValueConfig.RangedTools.obsidian, () -> Ingredient.fromTag(Tags.Items.OBSIDIAN), () -> Ingredient.fromTag(Tags.Items.OBSIDIAN)),
+    PAPER(ToolValueConfig.RangedTools.paper, () -> Ingredient.fromItems(Items.PAPER), () -> Ingredient.fromTag(ModTags.Items.PAPER_BUNDLE)),
+    PRISMARINE(ToolValueConfig.RangedTools.prismarine, () -> Ingredient.fromTag(Tags.Items.DUSTS_PRISMARINE), () -> Ingredient.fromItems(Items.PRISMARINE_BRICKS)),
+    QUARTZ(ToolValueConfig.RangedTools.quartz, () -> Ingredient.fromTag(Tags.Items.GEMS_QUARTZ), () -> Ingredient.fromTag(Tags.Items.STORAGE_BLOCKS_QUARTZ)),
+    REDSTONE(ToolValueConfig.RangedTools.redstone, () -> Ingredient.fromTag(Tags.Items.DUSTS_REDSTONE), () -> Ingredient.fromTag(Tags.Items.STORAGE_BLOCKS_REDSTONE)),
+    SLIME(ToolValueConfig.RangedTools.slime, () -> Ingredient.fromTag(Tags.Items.SLIMEBALLS), () -> Ingredient.fromItems(Items.SLIME_BLOCK));
 
     private final int harvestLevel;
     private final int durability;
@@ -91,30 +91,6 @@ public enum BigBreakMaterials implements IConfigurableTier {
         this.attackSpeed = delegate.getAttackSpeed();
         this.enchantability = delegate.getEnchantability();
         this.repairMaterial = new LazyValue<>(repairMaterial);
-        this.ingredient = new LazyValue<>(ingredient);
-        this.vanilla = false;
-    }
-
-    BigBreakMaterials(IConfigurableTier delegate, Supplier<Ingredient> ingredient, boolean vanilla) {
-        this.harvestLevel = delegate.getHarvestLevel();
-        this.durability = delegate.getMaxUses();
-        this.efficiency = delegate.getEfficiency();
-        this.attackDamage = delegate.getAttackDamage();
-        this.attackSpeed = delegate.getAttackSpeed();
-        this.enchantability = delegate.getEnchantability();
-        this.repairMaterial = new LazyValue<>(delegate::getRepairMaterial);
-        this.ingredient = new LazyValue<>(ingredient);
-        this.vanilla = vanilla;
-    }
-
-    BigBreakMaterials(IConfigurableTier delegate, Supplier<Ingredient> ingredient) {
-        this.harvestLevel = delegate.getHarvestLevel();
-        this.durability = delegate.getMaxUses();
-        this.efficiency = delegate.getEfficiency();
-        this.attackDamage = delegate.getAttackDamage();
-        this.attackSpeed = delegate.getAttackSpeed();
-        this.enchantability = delegate.getEnchantability();
-        this.repairMaterial = new LazyValue<>(delegate::getRepairMaterial);
         this.ingredient = new LazyValue<>(ingredient);
         this.vanilla = false;
     }

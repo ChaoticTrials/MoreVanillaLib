@@ -9,7 +9,7 @@ import net.minecraftforge.common.crafting.conditions.IConditionSerializer;
 
 public class VanillaCondition implements ICondition {
 
-    public static final ResourceLocation KEY = new ResourceLocation(MoreVanillaLib.MODID, "vanilla_only");
+    public static final ResourceLocation KEY = new ResourceLocation(MoreVanillaLib.getInstance().modid, "vanilla_only");
 
     @Override
     public ResourceLocation getID() {

@@ -4,34 +4,38 @@ import de.melanx.morevanillalib.api.IConfigurableTier;
 import de.melanx.morevanillalib.config.ToolValueConfig;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemTier;
+import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.util.LazyValue;
+import net.minecraftforge.common.Tags;
 
 import javax.annotation.Nonnull;
+import java.util.function.Supplier;
 
 public enum AIOTMaterials implements IConfigurableTier {
 
-    WOODEN(ItemTier.WOOD, -2.5F, true),
-    STONE(ItemTier.STONE, -2.6F, true),
-    IRON(ItemTier.IRON, -2.8F, true),
-    GOLDEN(ItemTier.GOLD, -2.5F, true),
-    DIAMOND(ItemTier.DIAMOND, -3.0F, true),
-    NETHERITE(ItemTier.NETHERITE, -3.5F, true),
+    WOODEN(ItemTier.WOOD, -2.5F, () -> Ingredient.fromTag(ItemTags.PLANKS), true),
+    STONE(ItemTier.STONE, -2.6F, () -> Ingredient.fromTag(Tags.Items.COBBLESTONE), true),
+    IRON(ItemTier.IRON, -2.8F, () -> Ingredient.fromTag(Tags.Items.INGOTS_IRON), true),
+    GOLDEN(ItemTier.GOLD, -2.5F, () -> Ingredient.fromTag(Tags.Items.INGOTS_GOLD), true),
+    DIAMOND(ItemTier.DIAMOND, -3.0F, () -> Ingredient.fromTag(Tags.Items.GEMS_DIAMOND), true),
+    NETHERITE(ItemTier.NETHERITE, -3.5F, () -> Ingredient.fromTag(Tags.Items.INGOTS_NETHERITE), true),
 
-    BONE(ToolValueConfig.AIOTs.bone),
-    COAL(ToolValueConfig.AIOTs.coal),
-    EMERALD(ToolValueConfig.AIOTs.emerald),
-    ENDER(ToolValueConfig.AIOTs.ender),
-    FIERY(ToolValueConfig.AIOTs.fiery),
-    GLOWSTONE(ToolValueConfig.AIOTs.glowstone),
-    LAPIS(ToolValueConfig.AIOTs.lapis),
-    NETHER(ToolValueConfig.AIOTs.nether),
-    OBSIDIAN(ToolValueConfig.AIOTs.obsidian),
-    PAPER(ToolValueConfig.AIOTs.paper),
-    PRISMARINE(ToolValueConfig.AIOTs.prismarine),
-    QUARTZ(ToolValueConfig.AIOTs.quartz),
-    REDSTONE(ToolValueConfig.AIOTs.redstone),
-    SLIME(ToolValueConfig.AIOTs.slime);
+    BONE(ToolValueConfig.AIOTs.bone, () -> Ingredient.fromTag(Tags.Items.BONES)),
+    COAL(ToolValueConfig.AIOTs.coal, () -> Ingredient.fromItems(Items.COAL)),
+    EMERALD(ToolValueConfig.AIOTs.emerald, () -> Ingredient.fromTag(Tags.Items.GEMS_EMERALD)),
+    ENDER(ToolValueConfig.AIOTs.ender, () -> Ingredient.fromTag(Tags.Items.ENDER_PEARLS)),
+    FIERY(ToolValueConfig.AIOTs.fiery, () -> Ingredient.fromItems(Items.MAGMA_BLOCK)),
+    GLOWSTONE(ToolValueConfig.AIOTs.glowstone, () -> Ingredient.fromTag(Tags.Items.DUSTS_GLOWSTONE)),
+    LAPIS(ToolValueConfig.AIOTs.lapis, () -> Ingredient.fromTag(Tags.Items.GEMS_LAPIS)),
+    NETHER(ToolValueConfig.AIOTs.nether, () -> Ingredient.fromItems(Items.NETHER_BRICKS)),
+    OBSIDIAN(ToolValueConfig.AIOTs.obsidian, () -> Ingredient.fromTag(Tags.Items.OBSIDIAN)),
+    PAPER(ToolValueConfig.AIOTs.paper, () -> Ingredient.fromItems(Items.PAPER)),
+    PRISMARINE(ToolValueConfig.AIOTs.prismarine, () -> Ingredient.fromTag(Tags.Items.DUSTS_PRISMARINE)),
+    QUARTZ(ToolValueConfig.AIOTs.quartz, () -> Ingredient.fromTag(Tags.Items.GEMS_QUARTZ)),
+    REDSTONE(ToolValueConfig.AIOTs.redstone, () -> Ingredient.fromTag(Tags.Items.DUSTS_REDSTONE)),
+    SLIME(ToolValueConfig.AIOTs.slime, () -> Ingredient.fromTag(Tags.Items.SLIMEBALLS));
 
     private final int harvestLevel;
     private final int durability;
@@ -40,58 +44,53 @@ public enum AIOTMaterials implements IConfigurableTier {
     private final float attackSpeed;
     private final int enchantability;
     private final LazyValue<Ingredient> repairMaterial;
-    private final String prefix;
     private final boolean vanilla;
     private final boolean morevanillatools;
 
-    AIOTMaterials(IItemTier delegate, float attackSpeed, boolean vanilla) {
+    AIOTMaterials(IItemTier delegate, float attackSpeed, Supplier<Ingredient> repairMaterial, boolean vanilla) {
         this.harvestLevel = delegate.getHarvestLevel();
         this.durability = delegate.getMaxUses();
         this.efficiency = delegate.getEfficiency();
         this.attackDamage = delegate.getAttackDamage();
         this.attackSpeed = attackSpeed;
         this.enchantability = delegate.getEnchantability();
-        this.repairMaterial = new LazyValue<>(delegate::getRepairMaterial);
-        this.prefix = this.name();
+        this.repairMaterial = new LazyValue<>(repairMaterial);
         this.vanilla = vanilla;
         this.morevanillatools = !vanilla;
     }
 
-    AIOTMaterials(IItemTier delegate, float attackSpeed) {
+    AIOTMaterials(IItemTier delegate, float attackSpeed, Supplier<Ingredient> repairMaterial) {
         this.harvestLevel = delegate.getHarvestLevel();
         this.durability = delegate.getMaxUses();
         this.efficiency = delegate.getEfficiency();
         this.attackDamage = delegate.getAttackDamage();
         this.attackSpeed = attackSpeed;
         this.enchantability = delegate.getEnchantability();
-        this.repairMaterial = new LazyValue<>(delegate::getRepairMaterial);
-        this.prefix = this.name();
+        this.repairMaterial = new LazyValue<>(repairMaterial);
         this.vanilla = false;
         this.morevanillatools = true;
     }
 
-    AIOTMaterials(IConfigurableTier delegate, boolean vanilla) {
+    AIOTMaterials(IConfigurableTier delegate, Supplier<Ingredient> repairMaterial, boolean vanilla) {
         this.harvestLevel = delegate.getHarvestLevel();
         this.durability = delegate.getMaxUses();
         this.efficiency = delegate.getEfficiency();
         this.attackDamage = delegate.getAttackDamage();
         this.attackSpeed = delegate.getAttackSpeed();
         this.enchantability = delegate.getEnchantability();
-        this.repairMaterial = new LazyValue<>(delegate::getRepairMaterial);
-        this.prefix = this.name();
+        this.repairMaterial = new LazyValue<>(repairMaterial);
         this.vanilla = vanilla;
         this.morevanillatools = !vanilla;
     }
 
-    AIOTMaterials(IConfigurableTier delegate) {
+    AIOTMaterials(IConfigurableTier delegate, Supplier<Ingredient> repairMaterial) {
         this.harvestLevel = delegate.getHarvestLevel();
         this.durability = delegate.getMaxUses();
         this.efficiency = delegate.getEfficiency();
         this.attackDamage = delegate.getAttackDamage();
         this.attackSpeed = delegate.getAttackSpeed();
         this.enchantability = delegate.getEnchantability();
-        this.repairMaterial = new LazyValue<>(delegate::getRepairMaterial);
-        this.prefix = this.name();
+        this.repairMaterial = new LazyValue<>(repairMaterial);
         this.vanilla = false;
         this.morevanillatools = true;
     }

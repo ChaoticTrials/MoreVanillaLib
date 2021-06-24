@@ -54,7 +54,7 @@ public class ModTags {
         }
 
         private static ITag.INamedTag<Item> modTag(String name) {
-            return net.minecraft.tags.ItemTags.makeWrapperTag(MoreVanillaLib.MODID + ":" + name);
+            return net.minecraft.tags.ItemTags.makeWrapperTag(MoreVanillaLib.getInstance().modid + ":" + name);
         }
     }
 
