@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 public class AutoSmeltModifier extends LootModifier {
 
-    AutoSmeltModifier(ILootCondition[] conditionsIn) {
+    public AutoSmeltModifier(ILootCondition[] conditionsIn) {
         super(conditionsIn);
     }
 

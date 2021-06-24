@@ -15,7 +15,7 @@ import java.util.List;
 
 public class GlowstoneToolModifier extends LootModifier {
 
-    protected GlowstoneToolModifier(ILootCondition[] conditionsIn) {
+    public GlowstoneToolModifier(ILootCondition[] conditionsIn) {
         super(conditionsIn);
     }
 

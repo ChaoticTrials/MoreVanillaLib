@@ -1,6 +1,6 @@
 package de.melanx.morevanillalib;
 
-import de.melanx.morevanillalib.util.ToolUtil;
+import de.melanx.morevanillalib.data.ModTags;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.MathHelper;
@@ -16,7 +16,7 @@ public class EventListener {
         Entity entity = event.getSource().getTrueSource();
         if (entity instanceof LivingEntity) {
             LivingEntity livingEntity = (LivingEntity) entity;
-            if (ToolUtil.isSlimeTool(livingEntity.getHeldItemMainhand().getItem()) || ToolUtil.isSlimeTool(livingEntity.getHeldItemOffhand().getItem())) {
+            if (ModTags.Items.SLIME_TOOLS.contains(livingEntity.getHeldItemMainhand().getItem()) || ModTags.Items.SLIME_TOOLS.contains(livingEntity.getHeldItemOffhand().getItem())) {
                 LivingEntity target = event.getEntityLiving();
                 target.applyKnockback(1.5F, MathHelper.sin((float) (entity.rotationYaw * Math.PI / 180)), -MathHelper.cos((float) (entity.rotationYaw * Math.PI / 180)));
             }
@@ -33,7 +33,7 @@ public class EventListener {
             return;
         }
 
-        if (ToolUtil.isSlimeTool(player.getHeldItemMainhand().getItem()) || ToolUtil.isSlimeTool(player.getHeldItemOffhand().getItem())) {
+        if (ModTags.Items.SLIME_TOOLS.contains(player.getHeldItemMainhand().getItem()) || ModTags.Items.SLIME_TOOLS.contains(player.getHeldItemOffhand().getItem())) {
             target.addVelocity(-MathHelper.sin((float) (player.rotationYaw * Math.PI / 180)) * 1.5F, 0.1D, MathHelper.cos((float) (player.rotationYaw * Math.PI / 180)) * 1.5F);
             player.setMotion(player.getMotion().mul(0.6, 1, 0.6));
             player.setSprinting(false);

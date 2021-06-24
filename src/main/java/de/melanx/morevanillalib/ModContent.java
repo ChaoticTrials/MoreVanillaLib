@@ -1,7 +1,6 @@
 package de.melanx.morevanillalib;
 
-import de.melanx.morevanillalib.core.modifier.AutoSmeltModifier;
-import de.melanx.morevanillalib.core.modifier.GlowstoneToolModifier;
+import de.melanx.morevanillalib.core.modifier.*;
 import de.melanx.morevanillalib.enchantments.LuckOfCheapRepairing;
 import io.github.noeppi_noeppi.libx.annotation.RegisterClass;
 import io.github.noeppi_noeppi.libx.mod.registration.BlockBase;
@@ -25,4 +24,7 @@ public class ModContent {
 
     public static final GlobalLootModifierSerializer<AutoSmeltModifier> autoSmelt = new AutoSmeltModifier.Serializer();
     public static final GlobalLootModifierSerializer<GlowstoneToolModifier> glowstoneDrops = new GlowstoneToolModifier.Serializer();
+    public static final GlobalLootModifierSerializer<DoubleDropModifier> doubleDrops = new DoubleDropModifier.Serializer();
+    public static final GlobalLootModifierSerializer<ExtraDropsModifier> extraDrops = new ExtraDropsModifier.Serializer();
+    public static final GlobalLootModifierSerializer<HeadDropModifier> headDrops = new HeadDropModifier.Serializer();
 }

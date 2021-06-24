@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "entries": [
+    "morevanillalib:glowstone_drops",
+    "morevanillalib:auto_smelt",
+    "morevanillalib:extra_drops",
+    "morevanillalib:head_drops",
+    "morevanillalib:double_drops"
+  ]
+}

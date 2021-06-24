@@ -1,7 +1,7 @@
 package de.melanx.morevanillalib.api;
 
 import com.google.common.collect.ImmutableSet;
-import de.melanx.morevanillalib.util.ToolUtil;
+import de.melanx.morevanillalib.data.ModTags;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemStack;
@@ -31,7 +31,7 @@ public class BaseToolItem extends ToolItem {
 
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        if (enchantment == Enchantments.KNOCKBACK && ToolUtil.isSlimeTool(stack.getItem())) {
+        if (enchantment == Enchantments.KNOCKBACK && ModTags.Items.SLIME_TOOLS.contains(stack.getItem())) {
             return false;
         }
 

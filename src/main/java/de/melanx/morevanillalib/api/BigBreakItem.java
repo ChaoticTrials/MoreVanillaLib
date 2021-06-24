@@ -57,21 +57,11 @@ public class BigBreakItem extends BaseToolItem {
     }
 
     @Override
-    public boolean hitEntity(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        ToolUtil.extraDrop(attacker.getEntityWorld(), target.getPosition(), this.getToolMaterial());
-        return super.hitEntity(stack, target, attacker);
-    }
-
-    @Override
     public boolean onBlockDestroyed(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity entityLiving) {
         if (!world.isRemote && state.getBlockHardness(world, pos) != 0.0F) {
             if (this.getToolMaterial() == BigBreakMaterials.PAPER && FeatureConfig.PaperDamage.enabled && world.rand.nextDouble() < FeatureConfig.PaperDamage.chance) {
                 ToolUtil.paperDamage(entityLiving);
             }
-        }
-
-        if (!this.canHarvestBlock(state)) {
-            ToolUtil.extraDrop(world, pos, this.getToolMaterial());
         }
 
         return super.onBlockDestroyed(stack, world, state, pos, entityLiving);

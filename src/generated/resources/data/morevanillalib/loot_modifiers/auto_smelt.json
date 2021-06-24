@@ -1,10 +1,9 @@
 {
-  "function": "morevanillatools:glowstone_drops",
   "conditions": [
     {
       "condition": "minecraft:match_tool",
       "predicate": {
-        "tag": "morevanillalib:tools/glowstone"
+        "tag": "morevanillalib:tools/fiery"
       }
     },
     {
@@ -22,10 +21,7 @@
           ]
         }
       }
-    },
-    {
-      "condition": "minecraft:block_state_property",
-      "block": "minecraft:glowstone"
     }
-  ]
+  ],
+  "type": "morevanillalib:auto_smelt"
 }

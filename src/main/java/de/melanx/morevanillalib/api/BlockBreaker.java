@@ -1,18 +1,10 @@
 package de.melanx.morevanillalib.api;
 
-import de.melanx.morevanillalib.config.FeatureConfig;
-import de.melanx.morevanillalib.util.ToolUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.IItemTier;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.network.IPacket;
 import net.minecraft.network.play.server.SChangeBlockPacket;
 import net.minecraft.tileentity.TileEntity;
@@ -49,7 +41,6 @@ public class BlockBreaker {
         if (!world.isRemote) {
             List<BlockPos> brokenBlocks = getBreakBlocks(world, player, radius, originPos);
             ItemStack heldItem = player.getHeldItemMainhand();
-            IItemTier toolMaterial = ((BigBreakItem) heldItem.getItem()).getToolMaterial();
             for (BlockPos pos : brokenBlocks) {
                 BlockState state = world.getBlockState(pos);
                 if (breakValidator.canBreak(state)) {
@@ -77,7 +68,6 @@ public class BlockBreaker {
                             state.getBlock().onPlayerDestroy(world, pos, state);
                             state.getBlock().harvestBlock(world, player, pos, state, tileEntity, heldItem);
                             state.getBlock().dropXpOnBlockBreak((ServerWorld) world, pos, event.getExpToDrop());
-                            spawnExtraDrops(toolMaterial, world, state.getBlock(), pos, heldItem);
 
                             world.removeBlock(pos, false);
                             world.playEvent(2001, pos, Block.getStateId(state));
@@ -86,68 +76,6 @@ public class BlockBreaker {
                     }
                 }
             }
-        }
-    }
-
-    private static void spawnExtraDrops(IItemTier toolMaterial, World world, Block block, BlockPos pos, ItemStack heldItem) {
-        if (EnchantmentHelper.getEnchantmentLevel(Enchantments.SILK_TOUCH, heldItem) >= 1) return;
-
-        ToolUtil.extraDrop(world, pos, toolMaterial);
-        if (FeatureConfig.DoubleDrop.enabledAll) {
-            switch ((BigBreakMaterials) toolMaterial) {
-                // TODO check ore tag, not just block
-                // TODO use loot modifier
-                case DIAMOND:
-                    if (block == Blocks.DIAMOND_ORE) {
-                        ItemStack drop = new ItemStack(Items.DIAMOND);
-                        if (FeatureConfig.DoubleDrop.Diamond.enabled && world.rand.nextDouble() < FeatureConfig.DoubleDrop.Diamond.chance) {
-                            world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));
-                        }
-                    }
-                case COAL:
-                    if (block == Blocks.COAL_ORE) {
-                        ItemStack drop = new ItemStack(Items.COAL);
-                        if (FeatureConfig.DoubleDrop.Coal.enabled && world.rand.nextDouble() < FeatureConfig.DoubleDrop.Coal.chance)
-                            world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));
-                    }
-                case EMERALD:
-                    if (block == Blocks.EMERALD_ORE) {
-                        ItemStack drop = new ItemStack(Items.EMERALD);
-                        if (FeatureConfig.DoubleDrop.Emerald.enabled && world.rand.nextDouble() < FeatureConfig.DoubleDrop.Emerald.chance)
-                            world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));
-                    }
-                case LAPIS:
-                    if (block == Blocks.LAPIS_ORE) {
-                        ItemStack drop = new ItemStack(Items.LAPIS_LAZULI);
-                        if (FeatureConfig.DoubleDrop.Lapis.enabled && world.rand.nextDouble() < FeatureConfig.DoubleDrop.Lapis.chance) {
-                            int i = world.rand.nextInt(3);
-                            drop.setCount(i + 1);
-                            world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));
-                        }
-                    }
-                case QUARTZ:
-                    if (block == Blocks.NETHER_QUARTZ_ORE) {
-                        ItemStack drop = new ItemStack(Items.QUARTZ);
-                        if (FeatureConfig.DoubleDrop.Quartz.enabled && world.rand.nextDouble() < FeatureConfig.DoubleDrop.Quartz.chance)
-                            world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));
-                    }
-                case REDSTONE:
-                    if (block == Blocks.REDSTONE_ORE) {
-                        ItemStack drop = new ItemStack(Items.REDSTONE);
-                        if (FeatureConfig.DoubleDrop.Redstone.enabled && world.rand.nextDouble() < FeatureConfig.DoubleDrop.Redstone.chance) {
-                            int i = world.rand.nextInt(3);
-                            drop.setCount(i + 1);
-                            world.addEntity(new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), drop));
-                        }
-                    }
-            }
-        }
-    }
-
-    private static void dropItems(World world, List<ItemStack> stacks, BlockPos pos) {
-        for (ItemStack stack : stacks) {
-            ItemEntity itemEntity = new ItemEntity(world, pos.getX(), pos.getY(), pos.getZ(), stack);
-            world.addEntity(itemEntity);
         }
     }
 

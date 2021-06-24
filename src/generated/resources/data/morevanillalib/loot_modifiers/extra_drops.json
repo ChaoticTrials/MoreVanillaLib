@@ -1,0 +1,11 @@
+{
+  "conditions": [
+    {
+      "condition": "minecraft:match_tool",
+      "predicate": {
+        "tag": "morevanillalib:tools"
+      }
+    }
+  ],
+  "type": "morevanillalib:extra_drops"
+}

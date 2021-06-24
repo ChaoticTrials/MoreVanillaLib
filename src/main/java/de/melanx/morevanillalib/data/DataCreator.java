@@ -20,6 +20,7 @@ public class DataCreator {
             BlockTagProviderBase blockTags = new ModTags.BlockTags(generator, helper);
             generator.addProvider(blockTags);
             generator.addProvider(new ModTags.ItemTags(generator, blockTags, helper));
+            generator.addProvider(new LootModifierProvider(generator));
             generator.addProvider(new LootTableProvider(generator));
             generator.addProvider(new RecipeProvider(generator));
         }
