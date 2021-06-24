@@ -1,43 +1,33 @@
 package de.melanx.morevanillalib.api.ranged;
 
-import de.melanx.morevanillalib.MoreVanillaLib;
 import de.melanx.morevanillalib.api.BaseToolItem;
 import de.melanx.morevanillalib.api.IConfigurableTier;
 import de.melanx.morevanillalib.config.FeatureConfig;
 import de.melanx.morevanillalib.util.ToolUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.util.List;
 import java.util.Set;
 
 public class BigBreakItem extends BaseToolItem {
-    private final IConfigurableTier toolMaterial;
     private final Set<Material> effectiveOnMaterial;
 
     public BigBreakItem(IConfigurableTier toolMaterial, Set<Material> effectiveOnMaterial, ToolType toolType) {
         super(toolMaterial, new Item.Properties().group(ItemGroup.TOOLS).addToolType(toolType, toolMaterial.getHarvestLevel()));
-        this.toolMaterial = toolMaterial;
         this.effectiveOnMaterial = effectiveOnMaterial;
     }
 
     @Override
-    public boolean canPlayerBreakBlockWhileHolding(BlockState state, World world, BlockPos pos, PlayerEntity player) {
+    public boolean canPlayerBreakBlockWhileHolding(@Nonnull BlockState state, @Nonnull World world, @Nonnull BlockPos pos, PlayerEntity player) {
         int radius = 1;
         if (player.isCrouching()) {
             radius = 0;
@@ -60,7 +50,7 @@ public class BigBreakItem extends BaseToolItem {
     }
 
     @Override
-    public boolean onBlockDestroyed(ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity entityLiving) {
+    public boolean onBlockDestroyed(@Nonnull ItemStack stack, World world, @Nonnull BlockState state, @Nonnull BlockPos pos, @Nonnull LivingEntity entityLiving) {
         if (!world.isRemote && state.getBlockHardness(world, pos) != 0.0F) {
             if (this.getToolMaterial() == BigBreakMaterials.PAPER && FeatureConfig.PaperDamage.enabled && world.rand.nextDouble() < FeatureConfig.PaperDamage.chance) {
                 ToolUtil.paperDamage(entityLiving);
@@ -71,7 +61,7 @@ public class BigBreakItem extends BaseToolItem {
     }
 
     @Override
-    public float getDestroySpeed(ItemStack stack, BlockState state) {
+    public float getDestroySpeed(@Nonnull ItemStack stack, @Nonnull BlockState state) {
         return effectiveOnMaterial.contains(state.getMaterial()) ? this.efficiency : super.getDestroySpeed(stack, state);
     }
 
@@ -82,32 +72,5 @@ public class BigBreakItem extends BaseToolItem {
         }
 
         return 0;
-    }
-
-    @Override
-    public void fillItemGroup(ItemGroup group, NonNullList<ItemStack> items) {
-        if (FeatureConfig.vanillaOnly) {
-            if (((BigBreakMaterials) this.getTier()).isVanilla()) {
-                addItem(group, items);
-            }
-        } else {
-            addItem(group, items);
-        }
-    }
-
-    private void addItem(ItemGroup group, NonNullList<ItemStack> items) {
-        if (group == ItemGroup.TOOLS || group == ItemGroup.SEARCH) {
-            ItemStack item = new ItemStack(this);
-            items.add(item);
-        }
-    }
-
-    @Override
-    public void addInformation(@Nonnull ItemStack stack, @Nullable World world, @Nonnull List<ITextComponent> tooltip, @Nonnull ITooltipFlag flag) {
-        if (!this.toolMaterial.isVanilla() && FeatureConfig.vanillaOnly) {
-            tooltip.add(new TranslationTextComponent("tooltip." + MoreVanillaLib.getInstance().modid + ".disabled_item").mergeStyle(TextFormatting.DARK_RED));
-        } else {
-            super.addInformation(stack, world, tooltip, flag);
-        }
     }
 }

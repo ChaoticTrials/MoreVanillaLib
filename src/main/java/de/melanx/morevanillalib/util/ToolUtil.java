@@ -1,7 +1,6 @@
 package de.melanx.morevanillalib.util;
 
 import com.google.common.collect.Sets;
-import de.melanx.morevanillalib.MoreVanillaLib;
 import de.melanx.morevanillalib.config.FeatureConfig;
 import de.melanx.morevanillalib.core.LibDamageSource;
 import net.minecraft.block.BlockState;
@@ -13,7 +12,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
@@ -90,9 +88,5 @@ public class ToolUtil {
         }
 
         return ActionResultType.PASS;
-    }
-
-    public static TranslationTextComponent getTooltip(String s, Object... replacements) {
-        return new TranslationTextComponent("tooltip." + MoreVanillaLib.getInstance().modid + "." + s, replacements);
     }
 }

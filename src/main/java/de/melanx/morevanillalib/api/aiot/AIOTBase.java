@@ -2,6 +2,7 @@ package de.melanx.morevanillalib.api.aiot;
 
 import de.melanx.morevanillalib.api.BaseToolItem;
 import de.melanx.morevanillalib.api.IConfigurableTier;
+import de.melanx.morevanillalib.util.ComponentUtil;
 import de.melanx.morevanillalib.util.ToolUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -63,11 +64,11 @@ public class AIOTBase extends BaseToolItem {
     public ActionResult<ItemStack> onItemRightClick(@Nonnull World world, @Nonnull PlayerEntity player, @Nonnull Hand hand) {
         ItemStack stack = player.getHeldItem(hand);
         if (!world.isRemote && player.isCrouching()) {
-            Style dark_blue = Style.EMPTY.setFormatting(TextFormatting.DARK_BLUE).setItalic(true);
-            Style aqua = Style.EMPTY.setFormatting(TextFormatting.AQUA).setItalic(true);
-            IFormattableTextComponent text = ToolUtil.getTooltip("toggleMode").appendString(": ").mergeStyle(dark_blue);
-            IFormattableTextComponent pathMode = ToolUtil.getTooltip("pathMode", Blocks.GRASS_PATH.getTranslatedName().getString()).mergeStyle(aqua);
-            IFormattableTextComponent hoeMode = ToolUtil.getTooltip("hoeMode").mergeStyle(aqua);
+            Style dark_blue = Style.EMPTY.setFormatting(TextFormatting.DARK_BLUE);
+            Style aqua = Style.EMPTY.setFormatting(TextFormatting.AQUA);
+            IFormattableTextComponent text = ComponentUtil.getTooltip("toggleMode").appendString(": ").mergeStyle(dark_blue);
+            IFormattableTextComponent pathMode = ComponentUtil.getTooltip("pathMode", Blocks.GRASS_PATH.getTranslatedName().getString()).mergeStyle(aqua);
+            IFormattableTextComponent hoeMode = ComponentUtil.getTooltip("hoeMode").mergeStyle(aqua);
 
             if (isHoemode(stack)) {
                 setHoemode(stack, false);
