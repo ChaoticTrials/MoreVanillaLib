@@ -1,6 +1,8 @@
-package de.melanx.morevanillalib.api;
+package de.melanx.morevanillalib.api.ranged;
 
 import de.melanx.morevanillalib.MoreVanillaLib;
+import de.melanx.morevanillalib.api.BaseToolItem;
+import de.melanx.morevanillalib.api.IConfigurableTier;
 import de.melanx.morevanillalib.config.FeatureConfig;
 import de.melanx.morevanillalib.util.ToolUtil;
 import net.minecraft.block.BlockState;
@@ -19,6 +21,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Set;
@@ -73,8 +76,8 @@ public class BigBreakItem extends BaseToolItem {
     }
 
     @Override
-    public int getBurnTime(ItemStack stack) {
-        if (this.getToolMaterial() == BigBreakMaterials.WOOD) {
+    public int getBurnTime(@Nonnull ItemStack stack) {
+        if (this.getToolMaterial() == BigBreakMaterials.WOODEN) {
             return 400;
         }
 
@@ -100,11 +103,11 @@ public class BigBreakItem extends BaseToolItem {
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    public void addInformation(@Nonnull ItemStack stack, @Nullable World world, @Nonnull List<ITextComponent> tooltip, @Nonnull ITooltipFlag flag) {
         if (!this.toolMaterial.isVanilla() && FeatureConfig.vanillaOnly) {
             tooltip.add(new TranslationTextComponent("tooltip." + MoreVanillaLib.MODID + ".disabled_item").mergeStyle(TextFormatting.DARK_RED));
         } else {
-            super.addInformation(stack, worldIn, tooltip, flagIn);
+            super.addInformation(stack, world, tooltip, flag);
         }
     }
 }

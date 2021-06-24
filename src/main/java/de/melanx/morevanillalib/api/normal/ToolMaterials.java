@@ -1,5 +1,6 @@
-package de.melanx.morevanillalib.api;
+package de.melanx.morevanillalib.api.normal;
 
+import de.melanx.morevanillalib.api.IConfigurableTier;
 import de.melanx.morevanillalib.config.ToolValueConfig;
 import de.melanx.morevanillalib.data.ModTags;
 import net.minecraft.item.Items;

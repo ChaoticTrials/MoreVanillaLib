@@ -53,5 +53,8 @@
   "jei.morevanillalib.prismarine_damage.desc": "Wenn du einen (Großen) Wächter mit einem dieser Werkzeuge tötest, machst du zu einer %d%%igen Chance bis zu 250%% mehr Schaden.",
   "jei.morevanillalib.slime_damage.desc": "Wenn du einen Schleim mit einem dieser Werkzeuge tötest, machst du zu einer %d%%igen Chance bis zu 250%% mehr Schaden.",
 
-  "tooltip.morevanillalib.disabled_item": "Dieses Werkzeug ist in den Einstellungen deaktiviert."
+  "tooltip.morevanillalib.disabled_item": "Dieses Werkzeug ist in den Einstellungen deaktiviert.",
+  "tooltip.morevanillalib.toggleMode": "Modus",
+  "tooltip.morevanillalib.pathMode": "%s erschaffen",
+  "tooltip.morevanillalib.hoeMode": "Acker bestellen"
 }

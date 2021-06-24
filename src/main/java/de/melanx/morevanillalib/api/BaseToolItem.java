@@ -1,11 +1,18 @@
 package de.melanx.morevanillalib.api;
 
 import com.google.common.collect.ImmutableSet;
+import de.melanx.morevanillalib.api.ranged.BigBreakMaterials;
 import de.melanx.morevanillalib.data.ModTags;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolItem;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class BaseToolItem extends ToolItem {
 
@@ -17,8 +24,8 @@ public class BaseToolItem extends ToolItem {
     }
 
     @Override
-    public int getBurnTime(ItemStack itemStack) {
-        if (this.toolMaterial == BigBreakMaterials.WOOD) {
+    public int getBurnTime(ItemStack stack) {
+        if (this.toolMaterial == BigBreakMaterials.WOODEN) {
             return 400;
         }
 
@@ -36,5 +43,11 @@ public class BaseToolItem extends ToolItem {
         }
 
         return super.canApplyAtEnchantingTable(stack, enchantment);
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
+
+        super.addInformation(stack, world, tooltip, flag);
     }
 }

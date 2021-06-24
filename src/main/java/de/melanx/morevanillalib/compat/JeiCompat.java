@@ -1,8 +1,8 @@
 package de.melanx.morevanillalib.compat;
 
 import de.melanx.morevanillalib.MoreVanillaLib;
-import de.melanx.morevanillalib.api.BigBreakMaterials;
-import de.melanx.morevanillalib.api.ToolMaterials;
+import de.melanx.morevanillalib.api.normal.ToolMaterials;
+import de.melanx.morevanillalib.api.ranged.BigBreakMaterials;
 import de.melanx.morevanillalib.config.FeatureConfig;
 import de.melanx.morevanillalib.data.ModTags;
 import mezz.jei.api.IModPlugin;
@@ -63,7 +63,7 @@ public class JeiCompat implements IModPlugin {
     public void registerRecipes(@Nonnull IRecipeRegistration registration) {
         addValueInfoPage(registration, ModTags.Items.WOOD_TOOLS.getAllElements(), "wood_tools",
                 ItemTier.WOOD.getMaxUses(),
-                BigBreakMaterials.WOOD.getMaxUses(),
+                BigBreakMaterials.WOODEN.getMaxUses(),
                 ItemTier.WOOD.getHarvestLevel(),
                 getItemFromIngredient(ItemTier.WOOD.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.STONE_TOOLS.getAllElements(), "stone_tools",
@@ -78,7 +78,7 @@ public class JeiCompat implements IModPlugin {
                 getItemFromIngredient(ItemTier.IRON.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.GOLD_TOOLS.getAllElements(), "gold_tools",
                 ItemTier.GOLD.getMaxUses(),
-                BigBreakMaterials.GOLD.getMaxUses(),
+                BigBreakMaterials.GOLDEN.getMaxUses(),
                 ItemTier.GOLD.getHarvestLevel(),
                 getItemFromIngredient(ItemTier.GOLD.getRepairMaterial()).getName().getString());
         addValueInfoPage(registration, ModTags.Items.DIAMOND_TOOLS.getAllElements(), "diamond_tools",

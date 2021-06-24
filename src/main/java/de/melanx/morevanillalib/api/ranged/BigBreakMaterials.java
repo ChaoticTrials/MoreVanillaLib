@@ -1,5 +1,6 @@
-package de.melanx.morevanillalib.api;
+package de.melanx.morevanillalib.api.ranged;
 
+import de.melanx.morevanillalib.api.IConfigurableTier;
 import de.melanx.morevanillalib.config.ToolValueConfig;
 import de.melanx.morevanillalib.data.ModTags;
 import net.minecraft.item.ItemTier;
@@ -14,10 +15,10 @@ import java.util.function.Supplier;
 
 public enum BigBreakMaterials implements IConfigurableTier {
 
-    WOOD(ItemTier.WOOD.getHarvestLevel(), ItemTier.WOOD.getMaxUses() * 7, ItemTier.WOOD.getEfficiency() / 3.5F, ItemTier.WOOD.getAttackDamage() + 3, -2.5F, ItemTier.WOOD.getEnchantability(), () -> Ingredient.fromTag(ItemTags.PLANKS), () -> Ingredient.fromTag(ItemTags.LOGS), true),
+    WOODEN(ItemTier.WOOD.getHarvestLevel(), ItemTier.WOOD.getMaxUses() * 7, ItemTier.WOOD.getEfficiency() / 3.5F, ItemTier.WOOD.getAttackDamage() + 3, -2.5F, ItemTier.WOOD.getEnchantability(), () -> Ingredient.fromTag(ItemTags.PLANKS), () -> Ingredient.fromTag(ItemTags.LOGS), true),
     STONE(ItemTier.STONE.getHarvestLevel(), ItemTier.STONE.getMaxUses() * 7, ItemTier.STONE.getEfficiency() / 3.5F, ItemTier.STONE.getAttackDamage() + 3, -2.6F, ItemTier.STONE.getEnchantability(), () -> Ingredient.fromTag(Tags.Items.COBBLESTONE), () -> Ingredient.fromTag(Tags.Items.STONE), true),
     IRON(ItemTier.IRON.getHarvestLevel(), ItemTier.IRON.getMaxUses() * 7, ItemTier.IRON.getEfficiency() / 3.5F, ItemTier.IRON.getAttackDamage() + 3, -2.8F, ItemTier.IRON.getEnchantability(), () -> Ingredient.fromTag(Tags.Items.INGOTS_IRON), () -> Ingredient.fromTag(Tags.Items.STORAGE_BLOCKS_IRON), true),
-    GOLD(ItemTier.GOLD.getHarvestLevel(), ItemTier.GOLD.getMaxUses() * 7, ItemTier.GOLD.getEfficiency() / 3.5F, ItemTier.GOLD.getAttackDamage() + 3, -2.5F, ItemTier.GOLD.getEnchantability(), () -> Ingredient.fromTag(Tags.Items.INGOTS_GOLD), () -> Ingredient.fromTag(Tags.Items.STORAGE_BLOCKS_GOLD), true),
+    GOLDEN(ItemTier.GOLD.getHarvestLevel(), ItemTier.GOLD.getMaxUses() * 7, ItemTier.GOLD.getEfficiency() / 3.5F, ItemTier.GOLD.getAttackDamage() + 3, -2.5F, ItemTier.GOLD.getEnchantability(), () -> Ingredient.fromTag(Tags.Items.INGOTS_GOLD), () -> Ingredient.fromTag(Tags.Items.STORAGE_BLOCKS_GOLD), true),
     DIAMOND(ItemTier.DIAMOND.getHarvestLevel(), ItemTier.DIAMOND.getMaxUses() * 7, ItemTier.DIAMOND.getEfficiency() / 3.5F, ItemTier.DIAMOND.getAttackDamage() + 3, -3.0F, ItemTier.DIAMOND.getEnchantability(), () -> Ingredient.fromTag(Tags.Items.GEMS_DIAMOND), () -> Ingredient.fromTag(Tags.Items.STORAGE_BLOCKS_DIAMOND), true),
     NETHERITE(ItemTier.NETHERITE.getHarvestLevel(), ItemTier.NETHERITE.getMaxUses() * 7, ItemTier.NETHERITE.getEfficiency() / 3.5F, ItemTier.NETHERITE.getAttackDamage() + 3, -3.5F, ItemTier.NETHERITE.getEnchantability(), () -> Ingredient.fromTag(Tags.Items.INGOTS_NETHERITE), () -> Ingredient.fromTag(Tags.Items.STORAGE_BLOCKS_NETHERITE), true),
 
@@ -43,7 +44,6 @@ public enum BigBreakMaterials implements IConfigurableTier {
     private final float attackSpeed;
     private final int enchantability;
     private final LazyValue<Ingredient> repairMaterial;
-    private final String prefix;
     private final LazyValue<Ingredient> ingredient;
     private final boolean vanilla;
 
@@ -55,7 +55,6 @@ public enum BigBreakMaterials implements IConfigurableTier {
         this.attackSpeed = attackSpeed;
         this.enchantability = enchantability;
         this.repairMaterial = new LazyValue<>(repairMaterial);
-        this.prefix = this.name();
         this.ingredient = new LazyValue<>(ingredient);
         this.vanilla = vanilla;
     }
@@ -68,7 +67,6 @@ public enum BigBreakMaterials implements IConfigurableTier {
         this.attackSpeed = attackSpeed;
         this.enchantability = enchantability;
         this.repairMaterial = new LazyValue<>(repairMaterial);
-        this.prefix = this.name();
         this.ingredient = new LazyValue<>(ingredient);
         this.vanilla = false;
     }
@@ -81,7 +79,6 @@ public enum BigBreakMaterials implements IConfigurableTier {
         this.attackSpeed = delegate.getAttackSpeed();
         this.enchantability = delegate.getEnchantability();
         this.repairMaterial = new LazyValue<>(repairMaterial);
-        this.prefix = this.name();
         this.ingredient = new LazyValue<>(ingredient);
         this.vanilla = vanilla;
     }
@@ -94,7 +91,6 @@ public enum BigBreakMaterials implements IConfigurableTier {
         this.attackSpeed = delegate.getAttackSpeed();
         this.enchantability = delegate.getEnchantability();
         this.repairMaterial = new LazyValue<>(repairMaterial);
-        this.prefix = this.name();
         this.ingredient = new LazyValue<>(ingredient);
         this.vanilla = false;
     }
@@ -107,7 +103,6 @@ public enum BigBreakMaterials implements IConfigurableTier {
         this.attackSpeed = delegate.getAttackSpeed();
         this.enchantability = delegate.getEnchantability();
         this.repairMaterial = new LazyValue<>(delegate::getRepairMaterial);
-        this.prefix = this.name();
         this.ingredient = new LazyValue<>(ingredient);
         this.vanilla = vanilla;
     }
@@ -120,7 +115,6 @@ public enum BigBreakMaterials implements IConfigurableTier {
         this.attackSpeed = delegate.getAttackSpeed();
         this.enchantability = delegate.getEnchantability();
         this.repairMaterial = new LazyValue<>(delegate::getRepairMaterial);
-        this.prefix = this.name();
         this.ingredient = new LazyValue<>(ingredient);
         this.vanilla = false;
     }
@@ -152,10 +146,6 @@ public enum BigBreakMaterials implements IConfigurableTier {
     @Override
     public Ingredient getRepairMaterial() {
         return this.repairMaterial.getValue();
-    }
-
-    public String getPrefix() {
-        return this.prefix;
     }
 
     public Ingredient getIngredient() {

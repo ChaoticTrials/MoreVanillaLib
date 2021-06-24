@@ -13,16 +13,12 @@ import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.annotation.Nonnull;
 
 @Mod("morevanillalib")
 public class MoreVanillaLib extends ModXRegistration {
 
-    public static final String MODID = "morevanillalib";
-    public static final Logger LOGGER = LogManager.getLogger(MODID);
     private static MoreVanillaLib instance;
 
     public MoreVanillaLib() {
@@ -41,12 +37,12 @@ public class MoreVanillaLib extends ModXRegistration {
     }
 
     @Override
-    protected void setup(FMLCommonSetupEvent fmlCommonSetupEvent) {
+    protected void setup(FMLCommonSetupEvent event) {
         CraftingHelper.register(VanillaCondition.SERIALIZER);
     }
 
     @Override
-    protected void clientSetup(FMLClientSetupEvent fmlClientSetupEvent) {
+    protected void clientSetup(FMLClientSetupEvent event) {
 
     }
 

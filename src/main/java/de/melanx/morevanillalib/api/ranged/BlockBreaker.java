@@ -1,5 +1,6 @@
-package de.melanx.morevanillalib.api;
+package de.melanx.morevanillalib.api.ranged;
 
+import de.melanx.morevanillalib.api.IBreakValidator;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
