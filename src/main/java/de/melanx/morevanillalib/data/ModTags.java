@@ -17,7 +17,7 @@ public class ModTags {
         public static final ITag.INamedTag<Block> CLEAN_ENDSTONE = tag("clean_endstone");
 
         private static ITag.INamedTag<Block> tag(@SuppressWarnings("SameParameterValue") String name) {
-            return net.minecraft.tags.BlockTags.makeWrapperTag("forge:" + name);
+            return net.minecraft.tags.BlockTags.bind("forge:" + name);
         }
     }
 
@@ -50,11 +50,11 @@ public class ModTags {
         public static final ITag.INamedTag<Item> ALL_TOOLS = modTag("tools");
 
         private static ITag.INamedTag<Item> tag(String name) {
-            return net.minecraft.tags.ItemTags.makeWrapperTag("forge:" + name);
+            return net.minecraft.tags.ItemTags.bind("forge:" + name);
         }
 
         private static ITag.INamedTag<Item> modTag(String name) {
-            return net.minecraft.tags.ItemTags.makeWrapperTag(MoreVanillaLib.getInstance().modid + ":" + name);
+            return net.minecraft.tags.ItemTags.bind(MoreVanillaLib.getInstance().modid + ":" + name);
         }
     }
 
@@ -65,10 +65,10 @@ public class ModTags {
 
         @Override
         protected void setup() {
-            getOrCreateBuilder(Blocks.CLEAN_ENDSTONE).add(ModContent.cleanEndStone);
+            tag(Blocks.CLEAN_ENDSTONE).add(ModContent.cleanEndStone);
 
             //noinspection unchecked
-            getOrCreateBuilder(Tags.Blocks.END_STONES).addTags(Blocks.CLEAN_ENDSTONE);
+            tag(Tags.Blocks.END_STONES).addTags(Blocks.CLEAN_ENDSTONE);
         }
     }
 
@@ -79,31 +79,31 @@ public class ModTags {
 
         @Override
         protected void setup() {
-            getOrCreateBuilder(Items.DUSTS_OBSIDIAN).add(ModContent.obsidianShard);
-            getOrCreateBuilder(Items.PAPER_BUNDLE).add(ModContent.paperBundle);
+            tag(Items.DUSTS_OBSIDIAN).add(ModContent.obsidianShard);
+            tag(Items.PAPER_BUNDLE).add(ModContent.paperBundle);
 
-            getOrCreateBuilder(Items.WOOD_TOOLS);
-            getOrCreateBuilder(Items.STONE_TOOLS);
-            getOrCreateBuilder(Items.IRON_TOOLS);
-            getOrCreateBuilder(Items.GOLD_TOOLS);
-            getOrCreateBuilder(Items.DIAMOND_TOOLS);
-            getOrCreateBuilder(Items.BONE_TOOLS);
-            getOrCreateBuilder(Items.COAL_TOOLS);
-            getOrCreateBuilder(Items.EMERALD_TOOLS);
-            getOrCreateBuilder(Items.ENDER_TOOLS);
-            getOrCreateBuilder(Items.FIERY_TOOLS);
-            getOrCreateBuilder(Items.GLOWSTONE_TOOLS);
-            getOrCreateBuilder(Items.LAPIS_TOOLS);
-            getOrCreateBuilder(Items.NETHER_TOOLS);
-            getOrCreateBuilder(Items.NETHERITE_TOOLS);
-            getOrCreateBuilder(Items.OBSIDIAN_TOOLS);
-            getOrCreateBuilder(Items.PAPER_TOOLS);
-            getOrCreateBuilder(Items.PRISMARINE_TOOLS);
-            getOrCreateBuilder(Items.QUARTZ_TOOLS);
-            getOrCreateBuilder(Items.REDSTONE_TOOLS);
-            getOrCreateBuilder(Items.SLIME_TOOLS);
+            tag(Items.WOOD_TOOLS);
+            tag(Items.STONE_TOOLS);
+            tag(Items.IRON_TOOLS);
+            tag(Items.GOLD_TOOLS);
+            tag(Items.DIAMOND_TOOLS);
+            tag(Items.BONE_TOOLS);
+            tag(Items.COAL_TOOLS);
+            tag(Items.EMERALD_TOOLS);
+            tag(Items.ENDER_TOOLS);
+            tag(Items.FIERY_TOOLS);
+            tag(Items.GLOWSTONE_TOOLS);
+            tag(Items.LAPIS_TOOLS);
+            tag(Items.NETHER_TOOLS);
+            tag(Items.NETHERITE_TOOLS);
+            tag(Items.OBSIDIAN_TOOLS);
+            tag(Items.PAPER_TOOLS);
+            tag(Items.PRISMARINE_TOOLS);
+            tag(Items.QUARTZ_TOOLS);
+            tag(Items.REDSTONE_TOOLS);
+            tag(Items.SLIME_TOOLS);
             //noinspection unchecked
-            getOrCreateBuilder(Items.ALL_TOOLS).addTags(Items.WOOD_TOOLS, Items.STONE_TOOLS, Items.IRON_TOOLS, Items.GOLD_TOOLS, Items.DIAMOND_TOOLS, Items.BONE_TOOLS, Items.COAL_TOOLS, Items.EMERALD_TOOLS, Items.ENDER_TOOLS, Items.FIERY_TOOLS, Items.GLOWSTONE_TOOLS, Items.LAPIS_TOOLS, Items.NETHER_TOOLS, Items.NETHERITE_TOOLS, Items.OBSIDIAN_TOOLS, Items.PRISMARINE_TOOLS, Items.QUARTZ_TOOLS, Items.REDSTONE_TOOLS, Items.SLIME_TOOLS);
+            tag(Items.ALL_TOOLS).addTags(Items.WOOD_TOOLS, Items.STONE_TOOLS, Items.IRON_TOOLS, Items.GOLD_TOOLS, Items.DIAMOND_TOOLS, Items.BONE_TOOLS, Items.COAL_TOOLS, Items.EMERALD_TOOLS, Items.ENDER_TOOLS, Items.FIERY_TOOLS, Items.GLOWSTONE_TOOLS, Items.LAPIS_TOOLS, Items.NETHER_TOOLS, Items.NETHERITE_TOOLS, Items.OBSIDIAN_TOOLS, Items.PRISMARINE_TOOLS, Items.QUARTZ_TOOLS, Items.REDSTONE_TOOLS, Items.SLIME_TOOLS);
 
             copy(Blocks.CLEAN_ENDSTONE, Items.CLEAN_ENDSTONE);
         }

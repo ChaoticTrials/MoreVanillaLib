@@ -15,7 +15,7 @@ import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 @RegisterClass
 public class ModContent {
 
-    public static final Block cleanEndStone = new BlockBase(MoreVanillaLib.getInstance(), AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(4.0F, 11.0F));
+    public static final Block cleanEndStone = new BlockBase(MoreVanillaLib.getInstance(), AbstractBlock.Properties.of(Material.STONE).strength(4.0F, 11.0F));
 
     public static final Item obsidianShard = new ItemBase(MoreVanillaLib.getInstance(), new Item.Properties());
     public static final Item paperBundle = new ItemBase(MoreVanillaLib.getInstance(), new Item.Properties());

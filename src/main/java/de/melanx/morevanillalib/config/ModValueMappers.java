@@ -26,26 +26,26 @@ public class ModValueMappers {
 
         @Override
         public IConfigurableTier fromJSON(JsonObject json, Class<?> elementType) {
-            int durability = JSONUtils.getInt(json, "durability");
-            float efficiency = JSONUtils.getFloat(json, "efficiency");
-            float attackDamage = JSONUtils.getFloat(json, "attackDamage");
-            float attackSpeed = JSONUtils.getFloat(json, "attackSpeed");
-            int harvestLevel = JSONUtils.getInt(json, "harvestLevel");
-            int enchantability = JSONUtils.getInt(json, "enchantability");
+            int durability = JSONUtils.getAsInt(json, "durability");
+            float speed = JSONUtils.getAsFloat(json, "speed");
+            float attackDamageBonus = JSONUtils.getAsFloat(json, "attackDamageBonus");
+            float attackSpeed = JSONUtils.getAsFloat(json, "attackSpeed");
+            int harvestLevel = JSONUtils.getAsInt(json, "harvestLevel");
+            int enchantmentValue = JSONUtils.getAsInt(json, "enchantmentValue");
             return new IConfigurableTier() {
                 @Override
-                public int getMaxUses() {
+                public int getUses() {
                     return durability;
                 }
 
                 @Override
-                public float getEfficiency() {
-                    return efficiency;
+                public float getSpeed() {
+                    return speed;
                 }
 
                 @Override
-                public float getAttackDamage() {
-                    return attackDamage;
+                public float getAttackDamageBonus() {
+                    return attackDamageBonus;
                 }
 
                 @Override
@@ -54,13 +54,13 @@ public class ModValueMappers {
                 }
 
                 @Override
-                public int getHarvestLevel() {
+                public int getLevel() {
                     return harvestLevel;
                 }
 
                 @Override
-                public int getEnchantability() {
-                    return enchantability;
+                public int getEnchantmentValue() {
+                    return enchantmentValue;
                 }
             };
         }
@@ -68,12 +68,12 @@ public class ModValueMappers {
         @Override
         public JsonObject toJSON(IConfigurableTier tier, Class<?> elementType) {
             JsonObject json = new JsonObject();
-            json.addProperty("durability", tier.getMaxUses());
-            json.addProperty("efficiency", tier.getEfficiency());
-            json.addProperty("attackDamage", tier.getAttackDamage());
+            json.addProperty("durability", tier.getUses());
+            json.addProperty("speed", tier.getSpeed());
+            json.addProperty("attackDamageBonus", tier.getAttackDamageBonus());
             json.addProperty("attackSpeed", tier.getAttackSpeed());
-            json.addProperty("harvestLevel", tier.getHarvestLevel());
-            json.addProperty("enchantability", tier.getEnchantability());
+            json.addProperty("harvestLevel", tier.getLevel());
+            json.addProperty("enchantmentValue", tier.getEnchantmentValue());
             return json;
         }
     };

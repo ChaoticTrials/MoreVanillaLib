@@ -8,26 +8,26 @@ import java.util.function.Supplier;
 
 public class ItemTier implements IConfigurableTier {
 
-    private ItemTier(int durability, float efficiency, float attackDamage, float attackSpeed, int harvestLevel, int enchantability, LazyValue<Ingredient> repairMaterial, LazyValue<Ingredient> craftingIngredient, String name, boolean vanilla, boolean aiot, boolean big) {
+    private ItemTier(int durability, float speed, float attackDamageBonus, float attackSpeed, int level, int enchantmentValue, LazyValue<Ingredient> repairIngredient, LazyValue<Ingredient> craftingIngredient, String name, boolean vanilla, boolean aiot, boolean big) {
         this.durability = aiot ? durability * 5 : big ? durability * 7 : durability;
-        this.efficiency = big ? efficiency / 3.5F : efficiency;
-        this.attackDamage = attackDamage;
+        this.speed = big ? speed / 3.5F : speed;
+        this.attackDamageBonus = attackDamageBonus;
         this.attackSpeed = big ? attackSpeed : attackSpeed * 1.2F;
-        this.harvestLevel = harvestLevel;
-        this.enchantability = enchantability;
-        this.repairMaterial = repairMaterial;
+        this.level = level;
+        this.enchantmentValue = enchantmentValue;
+        this.repairIngredient = repairIngredient;
         this.craftingIngredient = craftingIngredient;
         this.name = name;
         this.vanilla = vanilla;
     }
 
     private final int durability;
-    private final float efficiency;
-    private final float attackDamage;
+    private final float speed;
+    private final float attackDamageBonus;
     private final float attackSpeed;
-    private final int harvestLevel;
-    private final int enchantability;
-    private final LazyValue<Ingredient> repairMaterial;
+    private final int level;
+    private final int enchantmentValue;
+    private final LazyValue<Ingredient> repairIngredient;
     private final LazyValue<Ingredient> craftingIngredient;
     private final String name;
     private final boolean vanilla;
@@ -37,18 +37,18 @@ public class ItemTier implements IConfigurableTier {
     }
 
     @Override
-    public int getMaxUses() {
+    public int getUses() {
         return this.durability;
     }
 
     @Override
-    public float getEfficiency() {
-        return this.efficiency;
+    public float getSpeed() {
+        return this.speed;
     }
 
     @Override
-    public float getAttackDamage() {
-        return this.attackDamage;
+    public float getAttackDamageBonus() {
+        return this.attackDamageBonus;
     }
 
     @Override
@@ -57,25 +57,25 @@ public class ItemTier implements IConfigurableTier {
     }
 
     @Override
-    public int getHarvestLevel() {
-        return this.harvestLevel;
+    public int getLevel() {
+        return this.level;
     }
 
     @Override
-    public int getEnchantability() {
-        return this.enchantability;
+    public int getEnchantmentValue() {
+        return this.enchantmentValue;
     }
 
     @Nonnull
     @Override
-    public Ingredient getRepairMaterial() {
-        return this.repairMaterial.getValue();
+    public Ingredient getRepairIngredient() {
+        return this.repairIngredient.get();
     }
 
     @Nonnull
     @Override
     public Ingredient getCraftingIngredient() {
-        return this.craftingIngredient.getValue();
+        return this.craftingIngredient.get();
     }
 
     @Override
@@ -90,12 +90,12 @@ public class ItemTier implements IConfigurableTier {
 
     public static class Builder {
         private int durability = 1;
-        private float efficiency;
-        private float attackDamage;
+        private float speed;
+        private float attackDamageBonus;
         private float attackSpeed;
         private int harvestLevel;
-        private int enchantability;
-        private Supplier<Ingredient> repairMaterial = () -> Ingredient.EMPTY;
+        private int enchantmentValue;
+        private Supplier<Ingredient> repairIngredient = () -> Ingredient.EMPTY;
         private Supplier<Ingredient> craftingIngredient = () -> Ingredient.EMPTY;
         private String name = "";
         private boolean vanilla;
@@ -107,13 +107,13 @@ public class ItemTier implements IConfigurableTier {
             return this;
         }
 
-        public Builder efficiency(float efficiency) {
-            this.efficiency = efficiency;
+        public Builder speed(float speed) {
+            this.speed = speed;
             return this;
         }
 
-        public Builder attackDamage(float attackDamage) {
-            this.attackDamage = attackDamage;
+        public Builder attackDamageBonus(float attackDamageBonus) {
+            this.attackDamageBonus = attackDamageBonus;
             return this;
         }
 
@@ -127,13 +127,13 @@ public class ItemTier implements IConfigurableTier {
             return this;
         }
 
-        public Builder enchantability(int enchantability) {
-            this.enchantability = enchantability;
+        public Builder enchantmentValue(int enchantmentValue) {
+            this.enchantmentValue = enchantmentValue;
             return this;
         }
 
-        public Builder repairMaterial(Supplier<Ingredient> material) {
-            this.repairMaterial = material;
+        public Builder repairIngredient(Supplier<Ingredient> ingredient) {
+            this.repairIngredient = ingredient;
             return this;
         }
 
@@ -165,12 +165,12 @@ public class ItemTier implements IConfigurableTier {
         public Builder copy() {
             Builder builder = new Builder();
             builder.durability = this.durability;
-            builder.efficiency = this.efficiency;
-            builder.attackDamage = this.attackDamage;
+            builder.speed = this.speed;
+            builder.attackDamageBonus = this.attackDamageBonus;
             builder.attackSpeed = this.attackSpeed;
             builder.harvestLevel = this.harvestLevel;
-            builder.enchantability = this.enchantability;
-            builder.repairMaterial = this.repairMaterial;
+            builder.enchantmentValue = this.enchantmentValue;
+            builder.repairIngredient = this.repairIngredient;
             builder.craftingIngredient = this.craftingIngredient;
             builder.name = this.name;
             builder.vanilla = this.vanilla;
@@ -180,7 +180,7 @@ public class ItemTier implements IConfigurableTier {
         }
 
         public ItemTier build() {
-            return new ItemTier(this.durability, this.efficiency, this.attackDamage, this.attackSpeed, this.harvestLevel, this.enchantability, new LazyValue<>(this.repairMaterial), new LazyValue<>(this.craftingIngredient), this.name, this.vanilla, this.aiot, this.big);
+            return new ItemTier(this.durability, this.speed, this.attackDamageBonus, this.attackSpeed, this.harvestLevel, this.enchantmentValue, new LazyValue<>(this.repairIngredient), new LazyValue<>(this.craftingIngredient), this.name, this.vanilla, this.aiot, this.big);
         }
     }
 }

@@ -32,11 +32,11 @@ public class HeadDropModifier extends LootModifier {
     @Nonnull
     @Override
     protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
-        Entity target = context.get(LootParameters.THIS_ENTITY);
-        Entity killer = context.get(LootParameters.KILLER_ENTITY);
+        Entity target = context.getParamOrNull(LootParameters.THIS_ENTITY);
+        Entity killer = context.getParamOrNull(LootParameters.KILLER_ENTITY);
         if (target instanceof AbstractSkeletonEntity && killer instanceof LivingEntity) {
-            ItemStack weapon = ((LivingEntity) killer).getHeldItemMainhand();
-            int looting = EnchantmentHelper.getEnchantmentLevel(Enchantments.LOOTING, weapon);
+            ItemStack weapon = ((LivingEntity) killer).getMainHandItem();
+            int looting = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.MOB_LOOTING, weapon);
 
             if (ModTags.Items.BONE_TOOLS.contains(weapon.getItem()) && FeatureConfig.HeadDrop.enabled && context.getRandom().nextDouble() < FeatureConfig.HeadDrop.chance + (looting / 100F)) {
                 Item skull = null;

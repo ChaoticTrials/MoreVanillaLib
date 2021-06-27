@@ -25,16 +25,16 @@ public class ExtraDropsModifier extends GlowstoneToolModifier {
     @Nonnull
     @Override
     protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
-        ItemStack tool = context.get(LootParameters.TOOL);
+        ItemStack tool = context.getParamOrNull(LootParameters.TOOL);
         if (tool == null) {
-            Entity killer = context.get(LootParameters.KILLER_ENTITY);
+            Entity killer = context.getParamOrNull(LootParameters.KILLER_ENTITY);
             if (killer instanceof LivingEntity) {
-                tool = ((LivingEntity) killer).getHeldItemMainhand();
+                tool = ((LivingEntity) killer).getMainHandItem();
             }
         }
         if (tool != null && tool.getItem() instanceof ToolItem && FeatureConfig.ExtraDrop.enabled && context.getRandom().nextDouble() < FeatureConfig.ExtraDrop.chance) {
-            Ingredient repairMaterial = ((ToolItem) tool.getItem()).getTier().getRepairMaterial();
-            generatedLoot.add(repairMaterial.getMatchingStacks()[0].copy());
+            Ingredient repairIngredient = ((ToolItem) tool.getItem()).getTier().getRepairIngredient();
+            generatedLoot.add(repairIngredient.getItems()[0].copy());
         }
 
         return generatedLoot;
