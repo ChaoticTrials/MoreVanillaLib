@@ -12,11 +12,12 @@ import net.minecraft.loot.LootParameters;
 import net.minecraft.loot.conditions.ILootCondition;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
+import net.minecraftforge.common.loot.LootModifier;
 
 import javax.annotation.Nonnull;
 import java.util.List;
 
-public class ExtraDropsModifier extends GlowstoneToolModifier {
+public class ExtraDropsModifier extends LootModifier {
 
     public ExtraDropsModifier(ILootCondition[] conditionsIn) {
         super(conditionsIn);
