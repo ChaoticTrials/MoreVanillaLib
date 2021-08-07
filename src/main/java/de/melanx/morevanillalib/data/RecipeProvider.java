@@ -23,45 +23,45 @@ public class RecipeProvider extends RecipeProviderBase {
     }
 
     @Override
-    protected void buildShapelessRecipes(@Nonnull Consumer<IFinishedRecipe> consumer) {
+    protected void registerRecipes(@Nonnull Consumer<IFinishedRecipe> consumer) {
         compress(Items.OBSIDIAN, ModTags.Items.DUSTS_OBSIDIAN, consumer);
         compress(ModContent.paperBundle, Items.PAPER, consumer);
         decompress(ModContent.obsidianShard, Tags.Items.OBSIDIAN, consumer);
         decompress(Items.PAPER, ModTags.Items.PAPER_BUNDLE, consumer);
-        registerSmeltingRecipes(consumer, "smelting", IRecipeSerializer.SMELTING_RECIPE, 0.1F, 200);
-        registerSmeltingRecipes(consumer, "blasting", IRecipeSerializer.BLASTING_RECIPE, 0.1F, 100);
+        registerSmeltingRecipes(consumer, "smelting", IRecipeSerializer.SMELTING, 0.1F, 200);
+        registerSmeltingRecipes(consumer, "blasting", IRecipeSerializer.BLASTING, 0.1F, 100);
     }
 
     @SuppressWarnings("SameParameterValue")
     private void compress(Item result, ITag.INamedTag<Item> ingredient, Consumer<IFinishedRecipe> consumer) {
-        ShapedRecipeBuilder.shaped(result)
-                .pattern("XXX")
-                .pattern("XXX")
-                .pattern("XXX")
-                .define('X', ingredient)
-                .unlockedBy("has_material", has(ingredient))
-                .save(consumer, this.loc(result, "compress"));
+        ShapedRecipeBuilder.shapedRecipe(result)
+                .patternLine("XXX")
+                .patternLine("XXX")
+                .patternLine("XXX")
+                .key('X', ingredient)
+                .addCriterion("has_material", hasItem(ingredient))
+                .build(consumer, this.loc(result, "compress"));
     }
 
     @SuppressWarnings("SameParameterValue")
     private void compress(Item result, IItemProvider ingredient, Consumer<IFinishedRecipe> consumer) {
-        ShapedRecipeBuilder.shaped(result)
-                .pattern("XXX")
-                .pattern("XXX")
-                .pattern("XXX")
-                .define('X', ingredient)
-                .unlockedBy("has_material", has(ingredient))
-                .save(consumer, this.loc(result, "compress"));
+        ShapedRecipeBuilder.shapedRecipe(result)
+                .patternLine("XXX")
+                .patternLine("XXX")
+                .patternLine("XXX")
+                .key('X', ingredient)
+                .addCriterion("has_material", hasItem(ingredient))
+                .build(consumer, this.loc(result, "compress"));
     }
 
     private void decompress(Item result, ITag.INamedTag<Item> ingredient, Consumer<IFinishedRecipe> consumer) {
-        ShapelessRecipeBuilder.shapeless(result, 9)
-                .requires(ingredient)
-                .unlockedBy("has_material", has(ingredient))
-                .save(consumer, this.loc(result, "decompress"));
+        ShapelessRecipeBuilder.shapelessRecipe(result, 9)
+                .addIngredient(ingredient)
+                .addCriterion("has_material", hasItem(ingredient))
+                .build(consumer, this.loc(result, "decompress"));
     }
 
     private void registerSmeltingRecipes(Consumer<IFinishedRecipe> consumer, String method, CookingRecipeSerializer<?> serializer, float xp, int time) {
-        CookingRecipeBuilder.cooking(Ingredient.of(Items.END_STONE), ModContent.cleanEndStone, xp, time, serializer).unlockedBy("has_material", has(Items.END_STONE)).save(consumer, this.loc(ModContent.cleanEndStone, method));
+        CookingRecipeBuilder.cookingRecipe(Ingredient.fromItems(Items.END_STONE), ModContent.cleanEndStone, xp, time, serializer).addCriterion("has_material", hasItem(Items.END_STONE)).build(consumer, this.loc(ModContent.cleanEndStone, method));
     }
 }

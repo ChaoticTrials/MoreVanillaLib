@@ -13,12 +13,12 @@ public class EventListener {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void onEntityAttackFrom(LivingAttackEvent event) {
-        Entity entity = event.getSource().getEntity();
+        Entity entity = event.getSource().getTrueSource();
         if (entity instanceof LivingEntity) {
             LivingEntity livingEntity = (LivingEntity) entity;
-            if (ModTags.Items.SLIME_TOOLS.contains(livingEntity.getMainHandItem().getItem()) || ModTags.Items.SLIME_TOOLS.contains(livingEntity.getMainHandItem().getItem())) {
+            if (ModTags.Items.SLIME_TOOLS.contains(livingEntity.getHeldItemMainhand().getItem()) || ModTags.Items.SLIME_TOOLS.contains(livingEntity.getHeldItemOffhand().getItem())) {
                 LivingEntity target = event.getEntityLiving();
-                target.knockback(1.5F, MathHelper.sin((float) (entity.yRot * Math.PI / 180)), -MathHelper.cos((float) (entity.yRot * Math.PI / 180)));
+                target.applyKnockback(1.5F, MathHelper.sin((float) (entity.rotationYaw * Math.PI / 180)), -MathHelper.cos((float) (entity.rotationYaw * Math.PI / 180)));
             }
         }
     }
@@ -33,9 +33,9 @@ public class EventListener {
             return;
         }
 
-        if (ModTags.Items.SLIME_TOOLS.contains(player.getMainHandItem().getItem()) || ModTags.Items.SLIME_TOOLS.contains(player.getMainHandItem().getItem())) {
-            target.push(-MathHelper.sin((float) (player.yRot * Math.PI / 180)) * 1.5F, 0.1D, MathHelper.cos((float) (player.yRot * Math.PI / 180)) * 1.5F);
-            player.setDeltaMovement(player.getDeltaMovement().multiply(0.6, 1, 0.6));
+        if (ModTags.Items.SLIME_TOOLS.contains(player.getHeldItemMainhand().getItem()) || ModTags.Items.SLIME_TOOLS.contains(player.getHeldItemOffhand().getItem())) {
+            target.addVelocity(-MathHelper.sin((float) (player.rotationYaw * Math.PI / 180)) * 1.5F, 0.1D, MathHelper.cos((float) (player.rotationYaw * Math.PI / 180)) * 1.5F);
+            player.setMotion(player.getMotion().mul(0.6, 1, 0.6));
             player.setSprinting(false);
         }
     }

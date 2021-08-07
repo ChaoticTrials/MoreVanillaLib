@@ -30,53 +30,53 @@ public class DoubleDropModifier extends LootModifier {
     @Override
     protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
         //noinspection ConstantConditions
-        Item tool = context.getParamOrNull(LootParameters.TOOL).getItem();
+        Item tool = context.get(LootParameters.TOOL).getItem();
         if (FeatureConfig.DoubleDrop.enabledAll) {
-            BlockState state = context.getParamOrNull(LootParameters.BLOCK_STATE);
+            BlockState state = context.get(LootParameters.BLOCK_STATE);
 
             if (state != null) {
                 Block block = state.getBlock();
-                ServerWorld level = context.getLevel();
+                ServerWorld world = context.getWorld();
                 if (ModTags.Items.DIAMOND_TOOLS.contains(tool)) {
                     if (Tags.Blocks.ORES_DIAMOND.contains(block)) {
-                        if (FeatureConfig.DoubleDrop.Diamond.enabled && level.random.nextDouble() < FeatureConfig.DoubleDrop.Diamond.chance) {
+                        if (FeatureConfig.DoubleDrop.Diamond.enabled && world.rand.nextDouble() < FeatureConfig.DoubleDrop.Diamond.chance) {
                             ItemStack drop = new ItemStack(Items.DIAMOND);
                             generatedLoot.add(drop);
                         }
                     }
                 } else if (ModTags.Items.COAL_TOOLS.contains(tool)) {
                     if (Tags.Blocks.ORES_COAL.contains(block)) {
-                        if (FeatureConfig.DoubleDrop.Coal.enabled && level.random.nextDouble() < FeatureConfig.DoubleDrop.Coal.chance) {
+                        if (FeatureConfig.DoubleDrop.Coal.enabled && world.rand.nextDouble() < FeatureConfig.DoubleDrop.Coal.chance) {
                             ItemStack drop = new ItemStack(Items.COAL);
                             generatedLoot.add(drop);
                         }
                     }
                 } else if (ModTags.Items.EMERALD_TOOLS.contains(tool)) {
                     if (Tags.Blocks.ORES_EMERALD.contains(block)) {
-                        if (FeatureConfig.DoubleDrop.Emerald.enabled && level.random.nextDouble() < FeatureConfig.DoubleDrop.Emerald.chance) {
+                        if (FeatureConfig.DoubleDrop.Emerald.enabled && world.rand.nextDouble() < FeatureConfig.DoubleDrop.Emerald.chance) {
                             ItemStack drop = new ItemStack(Items.EMERALD);
                             generatedLoot.add(drop);
                         }
                     }
                 } else if (ModTags.Items.LAPIS_TOOLS.contains(tool)) {
                     if (Tags.Blocks.ORES_LAPIS.contains(block)) {
-                        if (FeatureConfig.DoubleDrop.Lapis.enabled && level.random.nextDouble() < FeatureConfig.DoubleDrop.Lapis.chance) {
-                            int i = level.random.nextInt(3);
+                        if (FeatureConfig.DoubleDrop.Lapis.enabled && world.rand.nextDouble() < FeatureConfig.DoubleDrop.Lapis.chance) {
+                            int i = world.rand.nextInt(3);
                             ItemStack drop = new ItemStack(Items.LAPIS_LAZULI, i);
                             generatedLoot.add(drop);
                         }
                     }
                 } else if (ModTags.Items.QUARTZ_TOOLS.contains(tool)) {
                     if (Tags.Blocks.ORES_QUARTZ.contains(block)) {
-                        if (FeatureConfig.DoubleDrop.Quartz.enabled && level.random.nextDouble() < FeatureConfig.DoubleDrop.Quartz.chance) {
+                        if (FeatureConfig.DoubleDrop.Quartz.enabled && world.rand.nextDouble() < FeatureConfig.DoubleDrop.Quartz.chance) {
                             ItemStack drop = new ItemStack(Items.QUARTZ);
                             generatedLoot.add(drop);
                         }
                     }
                 } else if (ModTags.Items.REDSTONE_TOOLS.contains(tool)) {
                     if (Tags.Blocks.ORES_REDSTONE.contains(block)) {
-                        if (FeatureConfig.DoubleDrop.Redstone.enabled && level.random.nextDouble() < FeatureConfig.DoubleDrop.Redstone.chance) {
-                            int i = level.random.nextInt(3);
+                        if (FeatureConfig.DoubleDrop.Redstone.enabled && world.rand.nextDouble() < FeatureConfig.DoubleDrop.Redstone.chance) {
+                            int i = world.rand.nextInt(3);
                             ItemStack drop = new ItemStack(Items.REDSTONE, i);
                             generatedLoot.add(drop);
                         }

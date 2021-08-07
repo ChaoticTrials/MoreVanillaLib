@@ -153,219 +153,219 @@ public class ToolValueConfig {
 
         private static final ItemTier.Builder WOOD = ItemTier.builder()
                 .durability(59)
-                .speed(2F)
-                .attackDamageBonus(3F)
+                .efficiency(2F)
+                .attackDamage(3F)
                 .attackSpeed(-2.5F)
                 .harvestLevel(0)
-                .enchantmentValue(15)
+                .enchantability(15)
                 .name("wood")
-                .repairIngredient(() -> Ingredient.of(Items.AIR))
-                .craftingIngredient(() -> Ingredient.of(Items.AIR));
+                .repairMaterial(() -> Ingredient.fromItems(Items.AIR))
+                .craftingIngredient(() -> Ingredient.fromItems(Items.AIR));
 
         private static final ItemTier.Builder STONE = ItemTier.builder()
                 .durability(131)
-                .speed(4F)
-                .attackDamageBonus(4F)
+                .efficiency(4F)
+                .attackDamage(4F)
                 .attackSpeed(-2.6F)
                 .harvestLevel(1)
-                .enchantmentValue(5)
+                .enchantability(5)
                 .name("stone")
-                .repairIngredient(() -> Ingredient.of(Items.AIR))
-                .craftingIngredient(() -> Ingredient.of(Items.AIR));
+                .repairMaterial(() -> Ingredient.fromItems(Items.AIR))
+                .craftingIngredient(() -> Ingredient.fromItems(Items.AIR));
 
         private static final ItemTier.Builder IRON = ItemTier.builder()
                 .durability(250)
-                .speed(6F)
-                .attackDamageBonus(5F)
+                .efficiency(6F)
+                .attackDamage(5F)
                 .attackSpeed(-2.8F)
                 .harvestLevel(2)
-                .enchantmentValue(14)
+                .enchantability(14)
                 .name("iron")
-                .repairIngredient(() -> Ingredient.of(Items.AIR))
-                .craftingIngredient(() -> Ingredient.of(Items.AIR));
+                .repairMaterial(() -> Ingredient.fromItems(Items.AIR))
+                .craftingIngredient(() -> Ingredient.fromItems(Items.AIR));
 
         private static final ItemTier.Builder GOLD = ItemTier.builder()
                 .durability(32)
-                .speed(12F)
-                .attackDamageBonus(5F)
+                .efficiency(12F)
+                .attackDamage(5F)
                 .attackSpeed(-2.5F)
                 .harvestLevel(0)
-                .enchantmentValue(22)
+                .enchantability(22)
                 .name("gold")
-                .repairIngredient(() -> Ingredient.of(Items.AIR))
-                .craftingIngredient(() -> Ingredient.of(Items.AIR));
+                .repairMaterial(() -> Ingredient.fromItems(Items.AIR))
+                .craftingIngredient(() -> Ingredient.fromItems(Items.AIR));
 
         private static final ItemTier.Builder DIAMOND = ItemTier.builder()
                 .durability(1561)
-                .speed(8F)
-                .attackDamageBonus(10F)
+                .efficiency(8F)
+                .attackDamage(10F)
                 .attackSpeed(-3F)
                 .harvestLevel(3)
-                .enchantmentValue(10)
+                .enchantability(10)
                 .name("diamond")
-                .repairIngredient(() -> Ingredient.of(Items.AIR))
-                .craftingIngredient(() -> Ingredient.of(Items.AIR));
+                .repairMaterial(() -> Ingredient.fromItems(Items.AIR))
+                .craftingIngredient(() -> Ingredient.fromItems(Items.AIR));
 
         private static final ItemTier.Builder NETHERITE = ItemTier.builder()
                 .durability(2031)
-                .speed(9F)
-                .attackDamageBonus(11F)
+                .efficiency(9F)
+                .attackDamage(11F)
                 .attackSpeed(-3.5F)
                 .harvestLevel(4)
-                .enchantmentValue(15).name("netherite").repairIngredient(() -> Ingredient.of(Items.AIR)).craftingIngredient(() -> Ingredient.of(Items.AIR));
+                .enchantability(15).name("netherite").repairMaterial(() -> Ingredient.fromItems(Items.AIR)).craftingIngredient(() -> Ingredient.fromItems(Items.AIR));
 
         private static final ItemTier.Builder BONE = ItemTier.builder()
                 .durability(176)
-                .speed(3.9F)
-                .attackDamageBonus(4F)
+                .efficiency(3.9F)
+                .attackDamage(4F)
                 .attackSpeed(-2F)
                 .harvestLevel(0)
-                .enchantmentValue(17)
+                .enchantability(17)
                 .name("bone")
-                .repairIngredient(() -> Ingredient.of(Tags.Items.BONES))
-                .craftingIngredient(() -> Ingredient.of(Tags.Items.BONES));
+                .repairMaterial(() -> Ingredient.fromTag(Tags.Items.BONES))
+                .craftingIngredient(() -> Ingredient.fromTag(Tags.Items.BONES));
 
         private static final ItemTier.Builder COAL = ItemTier.builder()
                 .durability(145)
-                .speed(3.9F)
-                .attackDamageBonus(2F)
+                .efficiency(3.9F)
+                .attackDamage(2F)
                 .attackSpeed(-2.6F)
                 .harvestLevel(0)
-                .enchantmentValue(17)
+                .enchantability(17)
                 .name("coal")
-                .repairIngredient(() -> Ingredient.of(Items.COAL))
-                .craftingIngredient(() -> Ingredient.of(Items.COAL));
+                .repairMaterial(() -> Ingredient.fromItems(Items.COAL))
+                .craftingIngredient(() -> Ingredient.fromItems(Items.COAL));
 
         private static final ItemTier.Builder EMERALD = ItemTier.builder()
                 .durability(1171)
-                .speed(8.2F)
-                .attackDamageBonus(11F)
+                .efficiency(8.2F)
+                .attackDamage(11F)
                 .attackSpeed(-3F)
                 .harvestLevel(2)
-                .enchantmentValue(35)
+                .enchantability(35)
                 .name("emerald")
-                .repairIngredient(() -> Ingredient.of(Tags.Items.GEMS_EMERALD))
-                .craftingIngredient(() -> Ingredient.of(Tags.Items.GEMS_EMERALD));
+                .repairMaterial(() -> Ingredient.fromTag(Tags.Items.GEMS_EMERALD))
+                .craftingIngredient(() -> Ingredient.fromTag(Tags.Items.GEMS_EMERALD));
 
         private static final ItemTier.Builder ENDER = ItemTier.builder()
                 .durability(666)
-                .speed(3.7F)
-                .attackDamageBonus(10F)
+                .efficiency(3.7F)
+                .attackDamage(10F)
                 .attackSpeed(-3.3F)
                 .harvestLevel(2)
-                .enchantmentValue(10)
+                .enchantability(10)
                 .name("ender")
-                .repairIngredient(() -> Ingredient.of(Tags.Items.ENDER_PEARLS))
-                .craftingIngredient(() -> Ingredient.of(Tags.Items.END_STONES));
+                .repairMaterial(() -> Ingredient.fromTag(Tags.Items.ENDER_PEARLS))
+                .craftingIngredient(() -> Ingredient.fromTag(Tags.Items.END_STONES));
 
         private static final ItemTier.Builder FIERY = ItemTier.builder()
                 .durability(127)
-                .speed(4F)
-                .attackDamageBonus(6F)
+                .efficiency(4F)
+                .attackDamage(6F)
                 .attackSpeed(-2.3F)
                 .harvestLevel(1)
-                .enchantmentValue(15)
+                .enchantability(15)
                 .name("fiery")
-                .repairIngredient(() -> Ingredient.of(Items.MAGMA_BLOCK))
-                .craftingIngredient(() -> Ingredient.of(Items.MAGMA_CREAM));
+                .repairMaterial(() -> Ingredient.fromItems(Items.MAGMA_BLOCK))
+                .craftingIngredient(() -> Ingredient.fromItems(Items.MAGMA_CREAM));
 
         private static final ItemTier.Builder GLOWSTONE = ItemTier.builder()
                 .durability(123)
-                .speed(3F)
-                .attackDamageBonus(5F)
+                .efficiency(3F)
+                .attackDamage(5F)
                 .attackSpeed(-2.3F)
                 .harvestLevel(1)
-                .enchantmentValue(35)
+                .enchantability(35)
                 .name("glowstone")
-                .repairIngredient(() -> Ingredient.of(Tags.Items.DUSTS_GLOWSTONE))
-                .craftingIngredient(() -> Ingredient.of(Tags.Items.DUSTS_GLOWSTONE));
+                .repairMaterial(() -> Ingredient.fromTag(Tags.Items.DUSTS_GLOWSTONE))
+                .craftingIngredient(() -> Ingredient.fromTag(Tags.Items.DUSTS_GLOWSTONE));
 
         private static final ItemTier.Builder LAPIS = ItemTier.builder()
                 .durability(173)
-                .speed(6.2F)
-                .attackDamageBonus(3F)
+                .efficiency(6.2F)
+                .attackDamage(3F)
                 .attackSpeed(-2.5F)
                 .harvestLevel(2)
-                .enchantmentValue(20)
+                .enchantability(20)
                 .name("lapis")
-                .repairIngredient(() -> Ingredient.of(Tags.Items.GEMS_LAPIS))
-                .craftingIngredient(() -> Ingredient.of(Tags.Items.GEMS_LAPIS));
+                .repairMaterial(() -> Ingredient.fromTag(Tags.Items.GEMS_LAPIS))
+                .craftingIngredient(() -> Ingredient.fromTag(Tags.Items.GEMS_LAPIS));
 
         private static final ItemTier.Builder NETHER = ItemTier.builder()
                 .durability(188)
-                .speed(3.9F)
-                .attackDamageBonus(4F)
+                .efficiency(3.9F)
+                .attackDamage(4F)
                 .attackSpeed(-2.1F)
                 .harvestLevel(1)
-                .enchantmentValue(66)
+                .enchantability(66)
                 .name("nether")
-                .repairIngredient(() -> Ingredient.of(Items.NETHER_BRICKS))
-                .craftingIngredient(() -> Ingredient.of(Tags.Items.NETHERRACK));
+                .repairMaterial(() -> Ingredient.fromItems(Items.NETHER_BRICKS))
+                .craftingIngredient(() -> Ingredient.fromTag(Tags.Items.NETHERRACK));
 
         private static final ItemTier.Builder OBSIDIAN = ItemTier.builder()
                 .durability(1337)
-                .speed(4.7F)
-                .attackDamageBonus(7F)
+                .efficiency(4.7F)
+                .attackDamage(7F)
                 .attackSpeed(-3.5F)
                 .harvestLevel(3)
-                .enchantmentValue(15)
+                .enchantability(15)
                 .name("obsidian")
-                .repairIngredient(() -> Ingredient.of(Tags.Items.OBSIDIAN))
-                .craftingIngredient(() -> Ingredient.of(ModTags.Items.DUSTS_OBSIDIAN));
+                .repairMaterial(() -> Ingredient.fromTag(Tags.Items.OBSIDIAN))
+                .craftingIngredient(() -> Ingredient.fromTag(ModTags.Items.DUSTS_OBSIDIAN));
 
         private static final ItemTier.Builder PAPER = ItemTier.builder()
                 .durability(13)
-                .speed(1.8F)
-                .attackDamageBonus(0F)
+                .efficiency(1.8F)
+                .attackDamage(0F)
                 .attackSpeed(-3F)
                 .harvestLevel(0)
-                .enchantmentValue(17)
+                .enchantability(17)
                 .name("paper")
-                .repairIngredient(() -> Ingredient.of(Items.PAPER))
-                .craftingIngredient(() -> Ingredient.of(Items.PAPER));
+                .repairMaterial(() -> Ingredient.fromItems(Items.PAPER))
+                .craftingIngredient(() -> Ingredient.fromItems(Items.PAPER));
 
         private static final ItemTier.Builder PRISMARINE = ItemTier.builder()
                 .durability(225)
-                .speed(6F)
-                .attackDamageBonus(6F)
+                .efficiency(6F)
+                .attackDamage(6F)
                 .attackSpeed(-2.3F)
                 .harvestLevel(2)
-                .enchantmentValue(20)
+                .enchantability(20)
                 .name("prismarine")
-                .repairIngredient(() -> Ingredient.of(Tags.Items.DUSTS_PRISMARINE))
-                .craftingIngredient(() -> Ingredient.of(Tags.Items.DUSTS_PRISMARINE));
+                .repairMaterial(() -> Ingredient.fromTag(Tags.Items.DUSTS_PRISMARINE))
+                .craftingIngredient(() -> Ingredient.fromTag(Tags.Items.DUSTS_PRISMARINE));
 
         private static final ItemTier.Builder QUARTZ = ItemTier.builder()
                 .durability(117)
-                .speed(3.9F)
-                .attackDamageBonus(5F)
+                .efficiency(3.9F)
+                .attackDamage(5F)
                 .attackSpeed(-2F)
                 .harvestLevel(1)
-                .enchantmentValue(18)
+                .enchantability(18)
                 .name("quartz")
-                .repairIngredient(() -> Ingredient.of(Tags.Items.GEMS_QUARTZ))
-                .craftingIngredient(() -> Ingredient.of(Tags.Items.GEMS_QUARTZ));
+                .repairMaterial(() -> Ingredient.fromTag(Tags.Items.GEMS_QUARTZ))
+                .craftingIngredient(() -> Ingredient.fromTag(Tags.Items.GEMS_QUARTZ));
 
         private static final ItemTier.Builder REDSTONE = ItemTier.builder()
                 .durability(173)
-                .speed(6.2F)
-                .attackDamageBonus(3F)
+                .efficiency(6.2F)
+                .attackDamage(3F)
                 .attackSpeed(-2.5F)
                 .harvestLevel(2)
-                .enchantmentValue(20)
+                .enchantability(20)
                 .name("redstone")
-                .repairIngredient(() -> Ingredient.of(Tags.Items.DUSTS_REDSTONE))
-                .craftingIngredient(() -> Ingredient.of(Tags.Items.DUSTS_REDSTONE));
+                .repairMaterial(() -> Ingredient.fromTag(Tags.Items.DUSTS_REDSTONE))
+                .craftingIngredient(() -> Ingredient.fromTag(Tags.Items.DUSTS_REDSTONE));
 
         private static final ItemTier.Builder SLIME = ItemTier.builder()
                 .durability(123)
-                .speed(5.2F)
-                .attackDamageBonus(7F)
+                .efficiency(5.2F)
+                .attackDamage(7F)
                 .attackSpeed(-3F)
                 .harvestLevel(1)
-                .enchantmentValue(20)
+                .enchantability(20)
                 .name("slime")
-                .repairIngredient(() -> Ingredient.of(Tags.Items.SLIMEBALLS))
-                .craftingIngredient(() -> Ingredient.of(Tags.Items.SLIMEBALLS));
+                .repairMaterial(() -> Ingredient.fromTag(Tags.Items.SLIMEBALLS))
+                .craftingIngredient(() -> Ingredient.fromTag(Tags.Items.SLIMEBALLS));
     }
 }

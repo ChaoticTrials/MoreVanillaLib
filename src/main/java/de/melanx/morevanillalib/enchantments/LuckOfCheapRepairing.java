@@ -16,13 +16,13 @@ public class LuckOfCheapRepairing extends DeactivatableEnchantment {
     }
 
     private void onAnvilRepair(AnvilUpdateEvent event) {
-        if (EnchantmentHelper.getItemEnchantmentLevel(this, event.getLeft()) > 0 && event.getRight() != ItemStack.EMPTY) {
+        if (EnchantmentHelper.getEnchantmentLevel(this, event.getLeft()) > 0 && event.getRight() != ItemStack.EMPTY) {
             event.getLeft().setRepairCost(0);
         }
     }
 
     @Override
-    public int getMinCost(int enchantmentLevel) {
+    public int getMinEnchantability(int enchantmentLevel) {
         return 18;
     }
 }

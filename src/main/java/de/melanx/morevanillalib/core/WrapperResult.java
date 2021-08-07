@@ -30,32 +30,32 @@ public class WrapperResult implements IFinishedRecipe {
     }
 
     @Override
-    public void serializeRecipeData(@Nonnull JsonObject json) {
-        delegate.serializeRecipeData(json);
+    public void serialize(@Nonnull JsonObject json) {
+        delegate.serialize(json);
         if (transform != null) {
             transform.accept(json);
         }
     }
 
     @Override
-    public ResourceLocation getId() {
-        return delegate.getId();
+    public ResourceLocation getID() {
+        return delegate.getID();
     }
 
     @Override
-    public IRecipeSerializer<?> getType() {
-        return type != null ? type : delegate.getType();
-    }
-
-    @Nullable
-    @Override
-    public JsonObject serializeAdvancement() {
-        return delegate.serializeAdvancement();
+    public IRecipeSerializer<?> getSerializer() {
+        return type != null ? type : delegate.getSerializer();
     }
 
     @Nullable
     @Override
-    public ResourceLocation getAdvancementId() {
-        return delegate.getAdvancementId();
+    public JsonObject getAdvancementJson() {
+        return delegate.getAdvancementJson();
+    }
+
+    @Nullable
+    @Override
+    public ResourceLocation getAdvancementID() {
+        return delegate.getAdvancementID();
     }
 }

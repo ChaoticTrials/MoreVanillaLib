@@ -6,22 +6,22 @@ import net.minecraft.item.crafting.Ingredient;
 import javax.annotation.Nonnull;
 
 public interface IConfigurableTier extends IItemTier {
-    int getUses();
+    int getMaxUses();
 
-    float getSpeed();
+    float getEfficiency();
 
-    float getAttackDamageBonus();
+    float getAttackDamage();
 
     default float getAttackSpeed() {
         return 0.0F;
     }
 
-    int getLevel();
+    int getHarvestLevel();
 
-    int getEnchantmentValue();
+    int getEnchantability();
 
     @Nonnull
-    default Ingredient getRepairIngredient() {
+    default Ingredient getRepairMaterial() {
         return Ingredient.EMPTY;
     }
 

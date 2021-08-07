@@ -25,7 +25,7 @@ public class MoreVanillaLib extends ModXRegistration {
         super("morevanillalib", new ItemGroup("morevanillalib") {
             @Nonnull
             @Override
-            public ItemStack makeIcon() {
+            public ItemStack createIcon() {
                 return new ItemStack(ModContent.obsidianShard);
             }
         });

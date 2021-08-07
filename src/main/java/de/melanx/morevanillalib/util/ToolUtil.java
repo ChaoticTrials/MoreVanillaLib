@@ -23,12 +23,12 @@ import java.util.Set;
 public class ToolUtil {
 
     // TODO 1.17 replace with tags
-    public static final Set<Material> PICKAXE_MATERIALS = Sets.newHashSet(Material.STONE, Material.HEAVY_METAL, Material.METAL);
-    public static final Set<Material> AXE_MATERIALS = Sets.newHashSet(Material.WOOD, Material.NETHER_WOOD, Material.PLANT, Material.REPLACEABLE_PLANT, Material.BAMBOO, Material.VEGETABLE);
+    public static final Set<Material> PICKAXE_MATERIALS = Sets.newHashSet(Material.ROCK, Material.ANVIL, Material.IRON);
+    public static final Set<Material> AXE_MATERIALS = Sets.newHashSet(Material.WOOD, Material.NETHER_WOOD, Material.PLANTS, Material.TALL_PLANTS, Material.BAMBOO, Material.GOURD);
 
     public static void moreDamage(LivingDamageEvent event) {
-        if (event.getSource().getEntity() instanceof PlayerEntity) {
-            Random rand = event.getEntityLiving().level.random;
+        if (event.getSource().getTrueSource() instanceof PlayerEntity) {
+            Random rand = event.getEntityLiving().world.rand;
 
             if (FeatureConfig.ExtraDamage.enabled && rand.nextDouble() < FeatureConfig.ExtraDamage.chance) {
                 float multiplier = (float) (rand.nextFloat() * FeatureConfig.ExtraDamage.maxMultiplier);
@@ -38,52 +38,52 @@ public class ToolUtil {
     }
 
     public static boolean isPlayerKill(LivingDropsEvent event) {
-        return event.isRecentlyHit() && event.getSource().getEntity() != null && event.getSource().getEntity() instanceof PlayerEntity;
+        return event.isRecentlyHit() && event.getSource().getTrueSource() != null && event.getSource().getTrueSource() instanceof PlayerEntity;
     }
 
     public static void paperDamage(LivingEntity entity) {
-        entity.hurt(LibDamageSource.PAPER_CUT, Math.max(FeatureConfig.PaperDamage.minDamage, entity.level.random.nextFloat() * FeatureConfig.PaperDamage.maxDamage));
+        entity.attackEntityFrom(LibDamageSource.PAPER_CUT, Math.max(FeatureConfig.PaperDamage.minDamage, entity.world.rand.nextFloat() * FeatureConfig.PaperDamage.maxDamage));
     }
 
     public static ActionResultType toolUse(ItemUseContext context, ToolType toolType) {
-        World level = context.getLevel();
+        World world = context.getWorld();
         PlayerEntity player = context.getPlayer();
-        BlockPos pos = context.getClickedPos();
-        ItemStack stack = context.getItemInHand();
-        Direction side = context.getClickedFace();
+        BlockPos pos = context.getPos();
+        ItemStack stack = context.getItem();
+        Direction side = context.getFace();
 
         if (player != null
-                && player.mayUseItemAt(pos, side, stack)
-                && ((side != Direction.DOWN && level.isEmptyBlock(pos.above())) || toolType == ToolType.AXE)) {
+                && player.canPlayerEdit(pos, side, stack)
+                && ((side != Direction.DOWN && world.isAirBlock(pos.up())) || toolType == ToolType.AXE)) {
 
-            BlockState state = level.getBlockState(pos);
-            BlockState modifiedState = state.getToolModifiedState(level, pos, player, stack, toolType);
+            BlockState state = world.getBlockState(pos);
+            BlockState modifiedState = state.getToolModifiedState(world, pos, player, stack, toolType);
             if (modifiedState != null) {
                 SoundEvent sound;
                 if (ToolType.AXE == toolType) {
-                    sound = SoundEvents.AXE_STRIP;
+                    sound = SoundEvents.ITEM_AXE_STRIP;
                 } else if (ToolType.SHOVEL == toolType) {
-                    sound = SoundEvents.SHOVEL_FLATTEN;
+                    sound = SoundEvents.ITEM_SHOVEL_FLATTEN;
                 } else {
-                    sound = SoundEvents.HOE_TILL;
+                    sound = SoundEvents.ITEM_HOE_TILL;
                 }
 
-                level.playSound(player, pos, sound, SoundCategory.BLOCKS, 1, 1);
-            } else if (state.getBlock() instanceof CampfireBlock && state.getValue(CampfireBlock.LIT)) {
-                if (!level.isClientSide) {
-                    level.levelEvent(player, 1009, pos, 0);
+                world.playSound(player, pos, sound, SoundCategory.BLOCKS, 1, 1);
+            } else if (state.getBlock() instanceof CampfireBlock && state.get(CampfireBlock.LIT)) {
+                if (!world.isRemote) {
+                    world.playEvent(player, 1009, pos, 0);
                 }
-                CampfireBlock.dowse(level, pos, state);
-                modifiedState = state.setValue(CampfireBlock.LIT, false);
+                CampfireBlock.extinguish(world, pos, state);
+                modifiedState = state.with(CampfireBlock.LIT, false);
             }
 
             if (modifiedState != null) {
-                if (!level.isClientSide) {
-                    level.setBlock(pos, modifiedState, 11);
-                    stack.hurtAndBreak(1, player, playerEntity -> playerEntity.broadcastBreakEvent(context.getHand()));
+                if (!world.isRemote) {
+                    world.setBlockState(pos, modifiedState, 11);
+                    stack.damageItem(1, player, playerEntity -> playerEntity.sendBreakAnimation(context.getHand()));
                 }
 
-                return ActionResultType.sidedSuccess(level.isClientSide);
+                return ActionResultType.successOrConsume(world.isRemote);
             }
         }
 

@@ -15,17 +15,17 @@ public class DeactivatableEnchantment extends Enchantment {
     }
 
     @Override
-    protected boolean checkCompatibility(@Nonnull Enchantment ench) {
-        return FeatureConfig.enchantments && super.checkCompatibility(ench);
+    protected boolean canApplyTogether(@Nonnull Enchantment ench) {
+        return FeatureConfig.enchantments && super.canApplyTogether(ench);
     }
 
     @Override
-    public boolean isTradeable() {
+    public boolean canVillagerTrade() {
         return FeatureConfig.enchantments;
     }
 
     @Override
-    public boolean isDiscoverable() {
+    public boolean canGenerateInLoot() {
         return FeatureConfig.enchantments;
     }
 

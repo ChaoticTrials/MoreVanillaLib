@@ -33,46 +33,46 @@ public class BlockBreaker {
      * Breaks blocks within the given radius on the axis the player is facing.
      * If the player is facing the X axis and the radius is 1, a 3x3 area will be destroyed on the X axis.
      *
-     * @param level          world the player is in
+     * @param world          world the player is in
      * @param player         the player
      * @param radius         radius to break
      * @param breakValidator check to see if a block can be broken
      */
-    public static void breakInRadius(World level, PlayerEntity player, int radius, BlockPos originPos, IBreakValidator breakValidator) {
-        if (!level.isClientSide) {
-            List<BlockPos> brokenBlocks = getBreakBlocks(level, player, radius, originPos);
-            ItemStack heldItem = player.getMainHandItem();
+    public static void breakInRadius(World world, PlayerEntity player, int radius, BlockPos originPos, IBreakValidator breakValidator) {
+        if (!world.isRemote) {
+            List<BlockPos> brokenBlocks = getBreakBlocks(world, player, radius, originPos);
+            ItemStack heldItem = player.getHeldItemMainhand();
             for (BlockPos pos : brokenBlocks) {
-                BlockState state = level.getBlockState(pos);
+                BlockState state = world.getBlockState(pos);
                 if (breakValidator.canBreak(state)) {
                     ServerPlayerEntity serverPlayer = (ServerPlayerEntity) player;
-                    if (player.abilities.instabuild) {
-                        if (state.removedByPlayer(level, pos, player, true, state.getFluidState()))
-                            state.getBlock().destroy(level, pos, state);
+                    if (player.abilities.isCreativeMode) {
+                        if (state.removedByPlayer(world, pos, player, true, state.getFluidState()))
+                            state.getBlock().onPlayerDestroy(world, pos, state);
                     } else {
-                        BlockEvent.BreakEvent event = new BlockEvent.BreakEvent(level, pos, state, player);
+                        BlockEvent.BreakEvent event = new BlockEvent.BreakEvent(world, pos, state, player);
                         MinecraftForge.EVENT_BUS.post(event);
 
                         if (event.isCanceled()) {
                             // Forge copy
-                            serverPlayer.connection.send(new SChangeBlockPacket(level, pos));
-                            TileEntity tile = level.getBlockEntity(pos);
+                            serverPlayer.connection.sendPacket(new SChangeBlockPacket(world, pos));
+                            TileEntity tile = world.getTileEntity(pos);
                             if (tile != null) {
                                 IPacket<?> packet = tile.getUpdatePacket();
                                 if (packet != null) {
-                                    serverPlayer.connection.send(packet);
+                                    serverPlayer.connection.sendPacket(packet);
                                 }
                             }
                         } else {
-                            heldItem.getItem().mineBlock(heldItem, level, state, pos, player);
-                            TileEntity tileEntity = level.getBlockEntity(pos);
-                            state.getBlock().destroy(level, pos, state);
-                            state.getBlock().playerDestroy(level, player, pos, state, tileEntity, heldItem);
-                            state.getBlock().popExperience((ServerWorld) level, pos, event.getExpToDrop());
+                            heldItem.getItem().onBlockDestroyed(heldItem, world, state, pos, player);
+                            TileEntity tileEntity = world.getTileEntity(pos);
+                            state.getBlock().onPlayerDestroy(world, pos, state);
+                            state.getBlock().harvestBlock(world, player, pos, state, tileEntity, heldItem);
+                            state.getBlock().dropXpOnBlockBreak((ServerWorld) world, pos, event.getExpToDrop());
 
-                            level.removeBlock(pos, false);
-                            level.levelEvent(2001, pos, Block.getId(state));
-                            serverPlayer.connection.send(new SChangeBlockPacket(level, pos));
+                            world.removeBlock(pos, false);
+                            world.playEvent(2001, pos, Block.getStateId(state));
+                            serverPlayer.connection.sendPacket(new SChangeBlockPacket(world, pos));
                         }
                     }
                 }
@@ -83,22 +83,22 @@ public class BlockBreaker {
     /**
      * Returns a list of the blocks that would be broken in breakInRadius, but doesn't break them.
      *
-     * @param level  world of player
+     * @param world  world of player
      * @param player player breaking
      * @param radius radius to break in
      * @return a list of blocks that would be broken with the given radius and tool
      */
-    public static List<BlockPos> getBreakBlocks(World level, PlayerEntity player, int radius, BlockPos originPosition) {
+    public static List<BlockPos> getBreakBlocks(World world, PlayerEntity player, int radius, BlockPos originPosition) {
         ArrayList<BlockPos> potentialBrokenBlocks = new ArrayList<>();
 
         Vector3d eyePosition = player.getEyePosition(1);
-        Vector3d rotation = player.getViewVector(1);
+        Vector3d rotation = player.getLook(1);
         Vector3d combined = eyePosition.add(rotation.x * 5, rotation.y * 5, rotation.z * 5);
 
-        BlockRayTraceResult rayTraceResult = level.clip(new RayTraceContext(eyePosition, combined, RayTraceContext.BlockMode.OUTLINE, RayTraceContext.FluidMode.NONE, player));
+        BlockRayTraceResult rayTraceResult = world.rayTraceBlocks(new RayTraceContext(eyePosition, combined, RayTraceContext.BlockMode.OUTLINE, RayTraceContext.FluidMode.NONE, player));
 
         if (rayTraceResult.getType() == RayTraceResult.Type.BLOCK) {
-            Direction.Axis axis = rayTraceResult.getDirection().getAxis();
+            Direction.Axis axis = rayTraceResult.getFace().getAxis();
             ArrayList<BlockPos> positions = new ArrayList<>();
 
             for (int x = -radius; x <= radius; x++) {
@@ -112,15 +112,15 @@ public class BlockBreaker {
             for (BlockPos pos : positions) {
                 if (axis == Direction.Axis.Y) {
                     if (pos.getY() == 0) {
-                        potentialBrokenBlocks.add(originPosition.offset(pos));
+                        potentialBrokenBlocks.add(originPosition.add(pos));
                     }
                 } else if (axis == Direction.Axis.X) {
                     if (pos.getX() == 0) {
-                        potentialBrokenBlocks.add(originPosition.offset(pos));
+                        potentialBrokenBlocks.add(originPosition.add(pos));
                     }
                 } else if (axis == Direction.Axis.Z) {
                     if (pos.getZ() == 0) {
-                        potentialBrokenBlocks.add(originPosition.offset(pos));
+                        potentialBrokenBlocks.add(originPosition.add(pos));
                     }
                 }
             }

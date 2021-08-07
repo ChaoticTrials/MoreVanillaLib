@@ -26,25 +26,25 @@ public class AIOTBase extends BaseToolItem {
 
     public AIOTBase(IConfigurableTier tier, Properties properties) {
         super(tier, properties
-                .addToolType(ToolType.PICKAXE, tier.getLevel())
-                .addToolType(ToolType.AXE, tier.getLevel())
-                .addToolType(ToolType.SHOVEL, tier.getLevel())
-                .addToolType(ToolType.HOE, tier.getLevel()));
+                .addToolType(ToolType.PICKAXE, tier.getHarvestLevel())
+                .addToolType(ToolType.AXE, tier.getHarvestLevel())
+                .addToolType(ToolType.SHOVEL, tier.getHarvestLevel())
+                .addToolType(ToolType.HOE, tier.getHarvestLevel()));
     }
 
     @Override
     public boolean canApplyAtEnchantingTable(@Nonnull ItemStack stack, @Nonnull Enchantment enchantment) {
-        return super.canApplyAtEnchantingTable(stack, enchantment) || enchantment.category.canEnchant(Items.DIAMOND_SWORD);
+        return super.canApplyAtEnchantingTable(stack, enchantment) || enchantment.type.canEnchantItem(Items.DIAMOND_SWORD);
     }
 
     @Nonnull
     @Override
-    public ActionResultType useOn(@Nonnull ItemUseContext context) {
+    public ActionResultType onItemUse(@Nonnull ItemUseContext context) {
         PlayerEntity player = context.getPlayer();
 
         if (player == null) return ActionResultType.PASS;
 
-        ItemStack item = context.getItemInHand();
+        ItemStack item = context.getItem();
         boolean hoemode = isHoemode(item);
 
         ActionResultType axeResult = ToolUtil.toolUse(context, ToolType.AXE);
@@ -61,29 +61,29 @@ public class AIOTBase extends BaseToolItem {
 
     @Nonnull
     @Override
-    public ActionResult<ItemStack> use(@Nonnull World level, @Nonnull PlayerEntity player, @Nonnull Hand hand) {
-        ItemStack stack = player.getItemInHand(hand);
-        if (!level.isClientSide && player.isCrouching()) {
-            Style dark_blue = Style.EMPTY.applyLegacyFormat(TextFormatting.DARK_BLUE);
-            Style aqua = Style.EMPTY.applyLegacyFormat(TextFormatting.AQUA);
-            IFormattableTextComponent text = ComponentUtil.getTooltip("toggleMode").append(": ").withStyle(dark_blue);
-            IFormattableTextComponent pathMode = ComponentUtil.getTooltip("pathMode", Blocks.GRASS_PATH.getName().getString()).withStyle(aqua);
-            IFormattableTextComponent hoeMode = ComponentUtil.getTooltip("hoeMode").withStyle(aqua);
+    public ActionResult<ItemStack> onItemRightClick(@Nonnull World world, @Nonnull PlayerEntity player, @Nonnull Hand hand) {
+        ItemStack stack = player.getHeldItem(hand);
+        if (!world.isRemote && player.isCrouching()) {
+            Style dark_blue = Style.EMPTY.setFormatting(TextFormatting.DARK_BLUE);
+            Style aqua = Style.EMPTY.setFormatting(TextFormatting.AQUA);
+            IFormattableTextComponent text = ComponentUtil.getTooltip("toggleMode").appendString(": ").mergeStyle(dark_blue);
+            IFormattableTextComponent pathMode = ComponentUtil.getTooltip("pathMode", Blocks.GRASS_PATH.getTranslatedName().getString()).mergeStyle(aqua);
+            IFormattableTextComponent hoeMode = ComponentUtil.getTooltip("hoeMode").mergeStyle(aqua);
 
             if (isHoemode(stack)) {
                 setHoemode(stack, false);
-                text = text.append(pathMode);
+                text = text.appendSibling(pathMode);
             } else {
                 setHoemode(stack, true);
-                text = text.append(hoeMode);
+                text = text.appendSibling(hoeMode);
             }
 
-            player.displayClientMessage(text, true);
+            player.sendStatusMessage(text, true);
 
-            return ActionResult.success(stack);
+            return ActionResult.resultSuccess(stack);
         }
 
-        return super.use(level, player, hand);
+        return super.onItemRightClick(world, player, hand);
     }
 
     private static void setHoemode(ItemStack stack, boolean b) {
@@ -96,10 +96,10 @@ public class AIOTBase extends BaseToolItem {
 
     @Override
     public float getDestroySpeed(@Nonnull ItemStack stack, @Nonnull BlockState state) {
-        if (state.is(Blocks.COBWEB)) {
+        if (state.matchesBlock(Blocks.COBWEB)) {
             return 15.0F;
         } else {
-            return state.getBlock().getHarvestTool(state) == null || this.getToolTypes(stack).contains(state.getBlock().getHarvestTool(state)) ? this.speed : 1.0F;
+            return state.getBlock().getHarvestTool(state) == null || this.getToolTypes(stack).contains(state.getBlock().getHarvestTool(state)) ? this.efficiency : 1.0F;
         }
     }
 }

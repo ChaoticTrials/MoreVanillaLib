@@ -39,15 +39,14 @@ public class BaseToolItem extends ToolItem {
         return 0;
     }
 
-
     @Override
-    public void fillItemCategory(ItemGroup group, NonNullList<ItemStack> items) {
+    public void fillItemGroup(ItemGroup group, NonNullList<ItemStack> items) {
         if (FeatureConfig.vanillaOnly) {
             if (this.toolMaterial.isVanilla() || this.toolMaterial instanceof ToolMaterials) {
-                super.fillItemCategory(group, items);
+                super.fillItemGroup(group, items);
             }
         } else {
-            super.fillItemCategory(group, items);
+            super.fillItemGroup(group, items);
         }
     }
 
@@ -65,19 +64,19 @@ public class BaseToolItem extends ToolItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable World level, List<ITextComponent> tooltip, ITooltipFlag flag) {
+    public void addInformation(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flag) {
         if (!this.toolMaterial.isVanilla() && FeatureConfig.vanillaOnly && !(this.toolMaterial instanceof ToolMaterials)) {
-            tooltip.add(ComponentUtil.getTooltip("disabled_item").withStyle(TextFormatting.DARK_RED));
+            tooltip.add(ComponentUtil.getTooltip("disabled_item").mergeStyle(TextFormatting.DARK_RED));
         } else {
             if (Screen.hasShiftDown()) {
-                tooltip.add(ComponentUtil.getTooltip("durability", this.toolMaterial.getUses()).withStyle(TextFormatting.GRAY));
-                tooltip.add(ComponentUtil.getTooltip("harvest_level", this.toolMaterial.getLevel()).withStyle(TextFormatting.GRAY));
-                tooltip.add(ComponentUtil.getTooltip("repairing_item", this.toolMaterial.getRepairIngredient().getItems()[0].getItem().getDescription().getString()).withStyle(TextFormatting.GRAY));
+                tooltip.add(ComponentUtil.getTooltip("durability", this.toolMaterial.getMaxUses()).mergeStyle(TextFormatting.GRAY));
+                tooltip.add(ComponentUtil.getTooltip("harvest_level", this.toolMaterial.getHarvestLevel()).mergeStyle(TextFormatting.GRAY));
+                tooltip.add(ComponentUtil.getTooltip("repairing_item", this.toolMaterial.getRepairMaterial().getMatchingStacks()[0].getItem().getName().getString()).mergeStyle(TextFormatting.GRAY));
             } else {
-                tooltip.add(ComponentUtil.getTooltip("more_information").withStyle(TextFormatting.ITALIC, TextFormatting.GRAY));
+                tooltip.add(ComponentUtil.getTooltip("more_information").mergeStyle(TextFormatting.ITALIC, TextFormatting.GRAY));
             }
         }
 
-        super.appendHoverText(stack, level, tooltip, flag);
+        super.addInformation(stack, world, tooltip, flag);
     }
 }

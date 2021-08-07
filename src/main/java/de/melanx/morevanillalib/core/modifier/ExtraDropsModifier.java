@@ -26,16 +26,16 @@ public class ExtraDropsModifier extends LootModifier {
     @Nonnull
     @Override
     protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
-        ItemStack tool = context.getParamOrNull(LootParameters.TOOL);
+        ItemStack tool = context.get(LootParameters.TOOL);
         if (tool == null) {
-            Entity killer = context.getParamOrNull(LootParameters.KILLER_ENTITY);
+            Entity killer = context.get(LootParameters.KILLER_ENTITY);
             if (killer instanceof LivingEntity) {
-                tool = ((LivingEntity) killer).getMainHandItem();
+                tool = ((LivingEntity) killer).getHeldItemMainhand();
             }
         }
         if (tool != null && tool.getItem() instanceof ToolItem && FeatureConfig.ExtraDrop.enabled && context.getRandom().nextDouble() < FeatureConfig.ExtraDrop.chance) {
-            Ingredient repairIngredient = ((ToolItem) tool.getItem()).getTier().getRepairIngredient();
-            generatedLoot.add(repairIngredient.getItems()[0].copy());
+            Ingredient repairMaterial = ((ToolItem) tool.getItem()).getTier().getRepairMaterial();
+            generatedLoot.add(repairMaterial.getMatchingStacks()[0].copy());
         }
 
         return generatedLoot;

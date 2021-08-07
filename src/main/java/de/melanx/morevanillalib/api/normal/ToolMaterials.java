@@ -13,82 +13,82 @@ import java.util.function.Supplier;
 
 public enum ToolMaterials implements IConfigurableTier {
 
-    BONE(ToolValueConfig.NormalTools.bone, () -> Ingredient.of(Tags.Items.BONES), () -> Ingredient.of(Tags.Items.BONES)),
-    COAL(ToolValueConfig.NormalTools.coal, () -> Ingredient.of(Items.COAL), () -> Ingredient.of(Items.COAL)),
-    EMERALD(ToolValueConfig.NormalTools.emerald, () -> Ingredient.of(Tags.Items.GEMS_EMERALD), () -> Ingredient.of(Tags.Items.GEMS_EMERALD)),
-    ENDER(ToolValueConfig.NormalTools.ender, () -> Ingredient.of(Tags.Items.ENDER_PEARLS), () -> Ingredient.of(Tags.Items.END_STONES)),
-    FIERY(ToolValueConfig.NormalTools.fiery, () -> Ingredient.of(Items.MAGMA_BLOCK), () -> Ingredient.of(Items.MAGMA_CREAM)),
-    GLOWSTONE(ToolValueConfig.NormalTools.glowstone, () -> Ingredient.of(Tags.Items.DUSTS_GLOWSTONE), () -> Ingredient.of(Tags.Items.DUSTS_GLOWSTONE)),
-    LAPIS(ToolValueConfig.NormalTools.lapis, () -> Ingredient.of(Tags.Items.GEMS_LAPIS), () -> Ingredient.of(Tags.Items.GEMS_LAPIS)),
-    NETHER(ToolValueConfig.NormalTools.nether, () -> Ingredient.of(Items.NETHER_BRICKS), () -> Ingredient.of(Tags.Items.NETHERRACK)),
-    OBSIDIAN(ToolValueConfig.NormalTools.obsidian, () -> Ingredient.of(Tags.Items.OBSIDIAN), () -> Ingredient.of(ModTags.Items.DUSTS_OBSIDIAN)),
-    PAPER(ToolValueConfig.NormalTools.paper, () -> Ingredient.of(Items.PAPER), () -> Ingredient.of(Items.PAPER)),
-    PRISMARINE(ToolValueConfig.NormalTools.prismarine, () -> Ingredient.of(Tags.Items.DUSTS_PRISMARINE), () -> Ingredient.of(Tags.Items.DUSTS_PRISMARINE)),
-    QUARTZ(ToolValueConfig.NormalTools.quartz, () -> Ingredient.of(Tags.Items.GEMS_QUARTZ), () -> Ingredient.of(Tags.Items.GEMS_QUARTZ)),
-    REDSTONE(ToolValueConfig.NormalTools.redstone, () -> Ingredient.of(Tags.Items.DUSTS_REDSTONE), () -> Ingredient.of(Tags.Items.DUSTS_REDSTONE)),
-    SLIME(ToolValueConfig.NormalTools.slime, () -> Ingredient.of(Tags.Items.SLIMEBALLS), () -> Ingredient.of(Tags.Items.SLIMEBALLS));
+    BONE(ToolValueConfig.NormalTools.bone, () -> Ingredient.fromTag(Tags.Items.BONES), () -> Ingredient.fromTag(Tags.Items.BONES)),
+    COAL(ToolValueConfig.NormalTools.coal, () -> Ingredient.fromItems(Items.COAL), () -> Ingredient.fromItems(Items.COAL)),
+    EMERALD(ToolValueConfig.NormalTools.emerald, () -> Ingredient.fromTag(Tags.Items.GEMS_EMERALD), () -> Ingredient.fromTag(Tags.Items.GEMS_EMERALD)),
+    ENDER(ToolValueConfig.NormalTools.ender, () -> Ingredient.fromTag(Tags.Items.ENDER_PEARLS), () -> Ingredient.fromTag(Tags.Items.END_STONES)),
+    FIERY(ToolValueConfig.NormalTools.fiery, () -> Ingredient.fromItems(Items.MAGMA_BLOCK), () -> Ingredient.fromItems(Items.MAGMA_CREAM)),
+    GLOWSTONE(ToolValueConfig.NormalTools.glowstone, () -> Ingredient.fromTag(Tags.Items.DUSTS_GLOWSTONE), () -> Ingredient.fromTag(Tags.Items.DUSTS_GLOWSTONE)),
+    LAPIS(ToolValueConfig.NormalTools.lapis, () -> Ingredient.fromTag(Tags.Items.GEMS_LAPIS), () -> Ingredient.fromTag(Tags.Items.GEMS_LAPIS)),
+    NETHER(ToolValueConfig.NormalTools.nether, () -> Ingredient.fromItems(Items.NETHER_BRICKS), () -> Ingredient.fromTag(Tags.Items.NETHERRACK)),
+    OBSIDIAN(ToolValueConfig.NormalTools.obsidian, () -> Ingredient.fromTag(Tags.Items.OBSIDIAN), () -> Ingredient.fromTag(ModTags.Items.DUSTS_OBSIDIAN)),
+    PAPER(ToolValueConfig.NormalTools.paper, () -> Ingredient.fromItems(Items.PAPER), () -> Ingredient.fromItems(Items.PAPER)),
+    PRISMARINE(ToolValueConfig.NormalTools.prismarine, () -> Ingredient.fromTag(Tags.Items.DUSTS_PRISMARINE), () -> Ingredient.fromTag(Tags.Items.DUSTS_PRISMARINE)),
+    QUARTZ(ToolValueConfig.NormalTools.quartz, () -> Ingredient.fromTag(Tags.Items.GEMS_QUARTZ), () -> Ingredient.fromTag(Tags.Items.GEMS_QUARTZ)),
+    REDSTONE(ToolValueConfig.NormalTools.redstone, () -> Ingredient.fromTag(Tags.Items.DUSTS_REDSTONE), () -> Ingredient.fromTag(Tags.Items.DUSTS_REDSTONE)),
+    SLIME(ToolValueConfig.NormalTools.slime, () -> Ingredient.fromTag(Tags.Items.SLIMEBALLS), () -> Ingredient.fromTag(Tags.Items.SLIMEBALLS));
 
     private final int durability;
-    private final float speed;
-    private final float attackDamageBonus;
+    private final float efficiency;
+    private final float attackDamage;
     private final int harvestLevel;
-    private final int enchantmentValue;
-    private final LazyValue<Ingredient> repairIngredient;
-    private final LazyValue<Ingredient> craftingIngredient;
+    private final int enchantability;
+    private final LazyValue<Ingredient> repairMaterial;
+    private final LazyValue<Ingredient> ingredient;
 
-    ToolMaterials(int durability, double speed, float attackDamage, int harvestLevel, int enchantmentValue, Supplier<Ingredient> repairIngredient, Supplier<Ingredient> craftingIngredient) {
+    ToolMaterials(int durability, double efficiency, float attackDamage, int harvestLevel, int enchantability, Supplier<Ingredient> repairMaterial, Supplier<Ingredient> ingredient) {
         this.durability = durability;
-        this.speed = (float) speed;
-        this.attackDamageBonus = attackDamage;
+        this.efficiency = (float) efficiency;
+        this.attackDamage = attackDamage;
         this.harvestLevel = harvestLevel;
-        this.enchantmentValue = enchantmentValue;
-        this.repairIngredient = new LazyValue<>(repairIngredient);
-        this.craftingIngredient = new LazyValue<>(craftingIngredient);
+        this.enchantability = enchantability;
+        this.repairMaterial = new LazyValue<>(repairMaterial);
+        this.ingredient = new LazyValue<>(ingredient);
     }
 
-    ToolMaterials(IConfigurableTier delegate, Supplier<Ingredient> repairIngredient, Supplier<Ingredient> craftingIngredient) {
-        this.durability = delegate.getUses();
-        this.speed = delegate.getSpeed();
-        this.attackDamageBonus = delegate.getAttackDamageBonus();
-        this.harvestLevel = delegate.getLevel();
-        this.enchantmentValue = delegate.getEnchantmentValue();
-        this.repairIngredient = new LazyValue<>(repairIngredient);
-        this.craftingIngredient = new LazyValue<>(craftingIngredient);
+    ToolMaterials(IConfigurableTier delegate, Supplier<Ingredient> repairMaterial, Supplier<Ingredient> ingredient) {
+        this.durability = delegate.getMaxUses();
+        this.efficiency = delegate.getEfficiency();
+        this.attackDamage = delegate.getAttackDamage();
+        this.harvestLevel = delegate.getHarvestLevel();
+        this.enchantability = delegate.getEnchantability();
+        this.repairMaterial = new LazyValue<>(repairMaterial);
+        this.ingredient = new LazyValue<>(ingredient);
     }
 
     @Override
-    public int getUses() {
+    public int getMaxUses() {
         return this.durability;
     }
 
     @Override
-    public float getSpeed() {
-        return this.speed;
+    public float getEfficiency() {
+        return this.efficiency;
     }
 
     @Override
-    public float getAttackDamageBonus() {
-        return this.attackDamageBonus;
+    public float getAttackDamage() {
+        return this.attackDamage;
     }
 
     @Override
-    public int getLevel() {
+    public int getHarvestLevel() {
         return this.harvestLevel;
     }
 
     @Override
-    public int getEnchantmentValue() {
-        return this.enchantmentValue;
+    public int getEnchantability() {
+        return this.enchantability;
     }
 
     @Nonnull
     @Override
-    public Ingredient getRepairIngredient() {
-        return this.repairIngredient.get();
+    public Ingredient getRepairMaterial() {
+        return this.repairMaterial.getValue();
     }
 
-    public Ingredient getCraftingIngredient() {
-        return this.craftingIngredient.get();
+    public Ingredient getIngredient() {
+        return this.ingredient.getValue();
     }
 
 }
