@@ -88,6 +88,11 @@ public class ItemTier implements IConfigurableTier {
         return this.vanilla;
     }
 
+    @Override
+    public IConfigurableTier getOrigin() {
+        return this;
+    }
+
     public static class Builder {
         private int durability = 1;
         private float speed;

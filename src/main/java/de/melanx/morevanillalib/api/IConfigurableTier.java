@@ -37,4 +37,6 @@ public interface IConfigurableTier extends Tier {
     default boolean isVanilla() {
         return false;
     }
+
+    IConfigurableTier getOrigin();
 }

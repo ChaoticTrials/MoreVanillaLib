@@ -6,6 +6,7 @@ import de.melanx.morevanillalib.data.ModTags;
 import io.github.noeppi_noeppi.libx.annotation.config.RegisterConfig;
 import io.github.noeppi_noeppi.libx.config.Config;
 import io.github.noeppi_noeppi.libx.config.Group;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.Tags;
@@ -197,8 +198,8 @@ public class ToolValueConfig {
                 .harvestLevel(0)
                 .enchantmentValue(15)
                 .name("wood")
-                .repairIngredient(() -> Ingredient.of(Items.AIR))
-                .craftingIngredient(() -> Ingredient.of(Items.AIR));
+                .repairIngredient(() -> Ingredient.of(ItemTags.PLANKS))
+                .craftingIngredient(() -> Ingredient.of(ItemTags.PLANKS));
 
         private static final ItemTier.Builder STONE = ItemTier.builder()
                 .durability(131)
@@ -208,8 +209,8 @@ public class ToolValueConfig {
                 .harvestLevel(1)
                 .enchantmentValue(5)
                 .name("stone")
-                .repairIngredient(() -> Ingredient.of(Items.AIR))
-                .craftingIngredient(() -> Ingredient.of(Items.AIR));
+                .repairIngredient(() -> Ingredient.of(ItemTags.STONE_TOOL_MATERIALS))
+                .craftingIngredient(() -> Ingredient.of(ItemTags.STONE_CRAFTING_MATERIALS));
 
         private static final ItemTier.Builder IRON = ItemTier.builder()
                 .durability(250)
@@ -219,8 +220,8 @@ public class ToolValueConfig {
                 .harvestLevel(2)
                 .enchantmentValue(14)
                 .name("iron")
-                .repairIngredient(() -> Ingredient.of(Items.AIR))
-                .craftingIngredient(() -> Ingredient.of(Items.AIR));
+                .repairIngredient(() -> Ingredient.of(Tags.Items.INGOTS_IRON))
+                .craftingIngredient(() -> Ingredient.of(Tags.Items.INGOTS_IRON));
 
         private static final ItemTier.Builder GOLD = ItemTier.builder()
                 .durability(32)
@@ -230,8 +231,8 @@ public class ToolValueConfig {
                 .harvestLevel(0)
                 .enchantmentValue(22)
                 .name("gold")
-                .repairIngredient(() -> Ingredient.of(Items.AIR))
-                .craftingIngredient(() -> Ingredient.of(Items.AIR));
+                .repairIngredient(() -> Ingredient.of(Tags.Items.INGOTS_GOLD))
+                .craftingIngredient(() -> Ingredient.of(Tags.Items.INGOTS_GOLD));
 
         private static final ItemTier.Builder DIAMOND = ItemTier.builder()
                 .durability(1561)
@@ -241,8 +242,8 @@ public class ToolValueConfig {
                 .harvestLevel(3)
                 .enchantmentValue(10)
                 .name("diamond")
-                .repairIngredient(() -> Ingredient.of(Items.AIR))
-                .craftingIngredient(() -> Ingredient.of(Items.AIR));
+                .repairIngredient(() -> Ingredient.of(Tags.Items.GEMS_DIAMOND))
+                .craftingIngredient(() -> Ingredient.of(Tags.Items.GEMS_DIAMOND));
 
         private static final ItemTier.Builder NETHERITE = ItemTier.builder()
                 .durability(2031)
@@ -250,7 +251,10 @@ public class ToolValueConfig {
                 .attackDamage(11F)
                 .attackSpeed(-3.5F)
                 .harvestLevel(4)
-                .enchantmentValue(15).name("netherite").repairIngredient(() -> Ingredient.of(Items.AIR)).craftingIngredient(() -> Ingredient.of(Items.AIR));
+                .enchantmentValue(15)
+                .name("netherite")
+                .repairIngredient(() -> Ingredient.of(Tags.Items.INGOTS_NETHERITE))
+                .craftingIngredient(() -> Ingredient.of(Tags.Items.INGOTS_NETHERITE));
 
         private static final ItemTier.Builder BONE = ItemTier.builder()
                 .durability(176)

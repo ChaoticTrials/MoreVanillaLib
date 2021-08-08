@@ -19,6 +19,7 @@ import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
+import javax.annotation.Nullable;
 import java.util.Random;
 
 public class ToolUtil {
@@ -38,8 +39,10 @@ public class ToolUtil {
         return event.isRecentlyHit() && event.getSource().getEntity() != null && event.getSource().getEntity() instanceof Player;
     }
 
-    public static void paperDamage(LivingEntity entity) {
-        entity.hurt(LibDamageSource.PAPER_CUT, Math.max(FeatureConfig.PaperDamage.minDamage, entity.level.random.nextFloat() * FeatureConfig.PaperDamage.maxDamage));
+    public static void paperDamage(@Nullable LivingEntity entity) {
+        if (entity != null) {
+            entity.hurt(LibDamageSource.PAPER_CUT, Math.max(FeatureConfig.PaperDamage.minDamage, entity.level.random.nextFloat() * FeatureConfig.PaperDamage.maxDamage));
+        }
     }
 
     public static InteractionResult toolUse(UseOnContext context, ToolType toolType) {

@@ -15,6 +15,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -22,6 +23,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ToolType;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class AIOTBase extends BaseToolItem {
 
@@ -98,5 +100,14 @@ public class AIOTBase extends BaseToolItem {
         } else {
             return state.getBlock().getHarvestTool(state) == null || this.getToolTypes(stack).contains(state.getBlock().getHarvestTool(state)) ? this.speed : 1.0F;
         }
+    }
+
+    @Override
+    public int getBurnTime(@Nonnull ItemStack stack, @Nullable RecipeType<?> recipeType) {
+        if (this.getToolMaterial() == AIOTMaterials.WOODEN) {
+            return 400;
+        }
+
+        return 0;
     }
 }

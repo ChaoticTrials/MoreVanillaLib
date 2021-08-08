@@ -2,11 +2,8 @@ package de.melanx.morevanillalib.api.ranged;
 
 import de.melanx.morevanillalib.api.BaseToolItem;
 import de.melanx.morevanillalib.api.IConfigurableTier;
-import de.melanx.morevanillalib.config.FeatureConfig;
-import de.melanx.morevanillalib.util.ToolUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.Tag;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -45,17 +42,6 @@ public class RangeItem extends BaseToolItem {
         }
 
         return true;
-    }
-
-    @Override
-    public boolean mineBlock(@Nonnull ItemStack stack, Level level, @Nonnull BlockState state, @Nonnull BlockPos pos, @Nonnull LivingEntity entityLiving) {
-        if (!level.isClientSide && state.getDestroySpeed(level, pos) != 0.0F) {
-            if (this.getToolMaterial() == RangeMaterials.PAPER && FeatureConfig.PaperDamage.enabled && level.random.nextDouble() < FeatureConfig.PaperDamage.chance) {
-                ToolUtil.paperDamage(entityLiving);
-            }
-        }
-
-        return super.mineBlock(stack, level, state, pos, entityLiving);
     }
 
     @Override
