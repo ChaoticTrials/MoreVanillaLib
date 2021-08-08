@@ -3,7 +3,7 @@ package de.melanx.morevanillalib.core.crafting;
 import com.google.gson.JsonObject;
 import de.melanx.morevanillalib.MoreVanillaLib;
 import de.melanx.morevanillalib.config.FeatureConfig;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.crafting.conditions.ICondition;
 import net.minecraftforge.common.crafting.conditions.IConditionSerializer;
 

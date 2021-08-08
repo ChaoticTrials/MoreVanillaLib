@@ -1,11 +1,10 @@
 package de.melanx.morevanillalib.data;
 
-import io.github.noeppi_noeppi.libx.data.provider.BlockTagProviderBase;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
 @Mod.EventBusSubscriber(modid = "morevanillalib", bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DataCreator {
@@ -16,9 +15,7 @@ public class DataCreator {
         ExistingFileHelper helper = event.getExistingFileHelper();
 
         if (event.includeServer()) {
-            BlockTagProviderBase blockTags = new ModTags.BlockTags(generator, helper);
-            generator.addProvider(blockTags);
-            generator.addProvider(new ModTags.ItemTags(generator, blockTags, helper));
+            generator.addProvider(new ModTags(generator, helper));
             generator.addProvider(new LootModifierProvider(generator));
             generator.addProvider(new LootTableProvider(generator));
             generator.addProvider(new RecipeProvider(generator));

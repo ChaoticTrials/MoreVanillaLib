@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion = "[35,)"
+loaderVersion = "[37,)"
 license = "Apache-2.0"
 
 [[mods]]
@@ -13,18 +13,26 @@ Lib mod for my Vanilla mods:
 - MoreVanillaTools
 - Vanilla Excavators
 - Vanilla Hammers
+- Vanilla AIOTs
 '''
 
 [[dependencies.morevanillalib]]
     modId="forge"
     mandatory=true
-    versionRange="[35,)"
+    versionRange="[37,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.morevanillalib]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.4, 1.17)"
+    versionRange="[1.17.1, 1.18)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.morevanillalib]]
+    modId="libx"
+    mandatory=true
+    versionRange="[1.17.1-2.0.5,)"
     ordering="NONE"
     side="BOTH"

@@ -1,27 +1,27 @@
 package de.melanx.morevanillalib.api;
 
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.crafting.Ingredient;
 
 import javax.annotation.Nonnull;
 
-public interface IConfigurableTier extends IItemTier {
-    int getMaxUses();
+public interface IConfigurableTier extends Tier {
+    int getUses();
 
-    float getEfficiency();
+    float getSpeed();
 
-    float getAttackDamage();
+    float getAttackDamageBonus();
 
     default float getAttackSpeed() {
         return 0.0F;
     }
 
-    int getHarvestLevel();
+    int getLevel();
 
-    int getEnchantability();
+    int getEnchantmentValue();
 
     @Nonnull
-    default Ingredient getRepairMaterial() {
+    default Ingredient getRepairIngredient() {
         return Ingredient.EMPTY;
     }
 

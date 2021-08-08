@@ -1,9 +1,9 @@
 package de.melanx.morevanillalib;
 
 import de.melanx.morevanillalib.data.ModTags;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -13,12 +13,10 @@ public class EventListener {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void onEntityAttackFrom(LivingAttackEvent event) {
-        Entity entity = event.getSource().getTrueSource();
-        if (entity instanceof LivingEntity) {
-            LivingEntity livingEntity = (LivingEntity) entity;
-            if (ModTags.Items.SLIME_TOOLS.contains(livingEntity.getHeldItemMainhand().getItem()) || ModTags.Items.SLIME_TOOLS.contains(livingEntity.getHeldItemOffhand().getItem())) {
+        if (event.getSource().getEntity() instanceof LivingEntity entity) {
+            if (ModTags.Items.SLIME_TOOLS.contains(entity.getMainHandItem().getItem()) || ModTags.Items.SLIME_TOOLS.contains(entity.getOffhandItem().getItem())) {
                 LivingEntity target = event.getEntityLiving();
-                target.applyKnockback(1.5F, MathHelper.sin((float) (entity.rotationYaw * Math.PI / 180)), -MathHelper.cos((float) (entity.rotationYaw * Math.PI / 180)));
+                target.knockback(1.5F, Mth.sin((float) (entity.yRot * Math.PI / 180)), -Mth.cos((float) (entity.yRot * Math.PI / 180)));
             }
         }
     }
@@ -33,9 +31,9 @@ public class EventListener {
             return;
         }
 
-        if (ModTags.Items.SLIME_TOOLS.contains(player.getHeldItemMainhand().getItem()) || ModTags.Items.SLIME_TOOLS.contains(player.getHeldItemOffhand().getItem())) {
-            target.addVelocity(-MathHelper.sin((float) (player.rotationYaw * Math.PI / 180)) * 1.5F, 0.1D, MathHelper.cos((float) (player.rotationYaw * Math.PI / 180)) * 1.5F);
-            player.setMotion(player.getMotion().mul(0.6, 1, 0.6));
+        if (ModTags.Items.SLIME_TOOLS.contains(player.getMainHandItem().getItem()) || ModTags.Items.SLIME_TOOLS.contains(player.getOffhandItem().getItem())) {
+            target.push(-Mth.sin((float) (player.yRot * Math.PI / 180)) * 1.5F, 0.1D, Mth.cos((float) (player.yRot * Math.PI / 180)) * 1.5F);
+            player.setDeltaMovement(player.getDeltaMovement().multiply(0.6, 1, 0.6));
             player.setSprinting(false);
         }
     }
