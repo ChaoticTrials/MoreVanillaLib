@@ -27,8 +27,6 @@ public class MoreVanillaLib extends ModXRegistration {
             }
         });
         instance = this;
-//        ModValueMappers.registerValueMappers();
-//        ConfigManager.registerConfig(new ResourceLocation("morevanillalib", "tools"), ToolValueConfig.class, false);
 
         MinecraftForge.EVENT_BUS.register(new EventListener());
     }

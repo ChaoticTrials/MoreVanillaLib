@@ -14,7 +14,7 @@ import java.util.function.Supplier;
 
 public enum RangeMaterials implements IConfigurableTier {
 
-    WOODEN(ToolValueConfig.RangedTools.bone, () -> Ingredient.of(ItemTags.PLANKS), () -> Ingredient.of(ItemTags.LOGS), true),
+    WOODEN(ToolValueConfig.RangedTools.wood, () -> Ingredient.of(ItemTags.PLANKS), () -> Ingredient.of(ItemTags.LOGS), true),
     STONE(ToolValueConfig.RangedTools.stone, () -> Ingredient.of(Tags.Items.COBBLESTONE), () -> Ingredient.of(Tags.Items.STONE), true),
     IRON(ToolValueConfig.RangedTools.iron, () -> Ingredient.of(Tags.Items.INGOTS_IRON), () -> Ingredient.of(Tags.Items.STORAGE_BLOCKS_IRON), true),
     GOLDEN(ToolValueConfig.RangedTools.gold, () -> Ingredient.of(Tags.Items.INGOTS_GOLD), () -> Ingredient.of(Tags.Items.STORAGE_BLOCKS_GOLD), true),
