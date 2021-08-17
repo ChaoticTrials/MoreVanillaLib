@@ -191,6 +191,7 @@ public class ToolValueConfig {
     private static class RawToolMaterials {
 
         private static final ItemTier.Builder WOOD = ItemTier.builder()
+                .vanilla()
                 .durability(59)
                 .speed(2F)
                 .attackDamage(3F)
@@ -202,6 +203,7 @@ public class ToolValueConfig {
                 .craftingIngredient(() -> Ingredient.of(ItemTags.PLANKS));
 
         private static final ItemTier.Builder STONE = ItemTier.builder()
+                .vanilla()
                 .durability(131)
                 .speed(4F)
                 .attackDamage(4F)
@@ -213,6 +215,7 @@ public class ToolValueConfig {
                 .craftingIngredient(() -> Ingredient.of(ItemTags.STONE_CRAFTING_MATERIALS));
 
         private static final ItemTier.Builder IRON = ItemTier.builder()
+                .vanilla()
                 .durability(250)
                 .speed(6F)
                 .attackDamage(5F)
@@ -224,6 +227,7 @@ public class ToolValueConfig {
                 .craftingIngredient(() -> Ingredient.of(Tags.Items.INGOTS_IRON));
 
         private static final ItemTier.Builder GOLD = ItemTier.builder()
+                .vanilla()
                 .durability(32)
                 .speed(12F)
                 .attackDamage(5F)
@@ -235,6 +239,7 @@ public class ToolValueConfig {
                 .craftingIngredient(() -> Ingredient.of(Tags.Items.INGOTS_GOLD));
 
         private static final ItemTier.Builder DIAMOND = ItemTier.builder()
+                .vanilla()
                 .durability(1561)
                 .speed(8F)
                 .attackDamage(10F)
@@ -246,6 +251,7 @@ public class ToolValueConfig {
                 .craftingIngredient(() -> Ingredient.of(Tags.Items.GEMS_DIAMOND));
 
         private static final ItemTier.Builder NETHERITE = ItemTier.builder()
+                .vanilla()
                 .durability(2031)
                 .speed(9F)
                 .attackDamage(11F)
