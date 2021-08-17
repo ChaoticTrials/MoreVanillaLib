@@ -10,7 +10,6 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
-import net.minecraft.tags.Tag;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.CreativeModeTab;
@@ -21,32 +20,48 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.ToolAction;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Set;
 
 public class BaseToolItem extends DiggerItem {
 
     protected final IConfigurableTier toolMaterial;
+    protected final Set<ToolAction> toolActions;
 
-    public BaseToolItem(IConfigurableTier tier, Tag<Block> blocks, Properties properties) {
-        super(0, tier.getAttackSpeed(), tier, blocks, properties);
+    public BaseToolItem(IConfigurableTier tier, ToolType toolType, Properties properties) {
+        super(0, tier.getAttackSpeed(), tier, toolType.getBlocks(), properties);
         this.toolMaterial = tier;
+        this.toolActions = toolType.getToolActions();
     }
 
     @Override
     public InteractionResult useOn(UseOnContext context) {
         InteractionResult result = super.useOn(context);
 
-        if (!context.getLevel().isClientSide && ModTags.Items.PAPER_TOOLS.contains(this) && FeatureConfig.PaperDamage.enabled
-                && context.getLevel().random.nextDouble() < FeatureConfig.PaperDamage.chance) {
+        for (ToolAction action : this.toolActions) {
+            if (result != InteractionResult.PASS) {
+                break;
+            }
+
+            result = ToolUtil.toolUse(context, action);
+        }
+
+        if (result != InteractionResult.PASS && !context.getLevel().isClientSide && ModTags.Items.PAPER_TOOLS.contains(this)
+                && FeatureConfig.PaperDamage.enabled && context.getLevel().random.nextDouble() < FeatureConfig.PaperDamage.chance) {
             ToolUtil.paperDamage(context.getPlayer());
         }
 
         return result;
+    }
+
+    @Override
+    public boolean canPerformAction(ItemStack stack, ToolAction toolAction) {
+        return this.toolActions.contains(toolAction);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package de.melanx.morevanillalib.util;
 
+import com.google.common.collect.Sets;
 import de.melanx.morevanillalib.config.FeatureConfig;
 import de.melanx.morevanillalib.core.LibDamageSource;
 import net.minecraft.core.BlockPos;
@@ -15,14 +16,27 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.ToolType;
+import net.minecraftforge.common.ToolAction;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 
 import javax.annotation.Nullable;
 import java.util.Random;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static net.minecraftforge.common.ToolActions.*;
 
 public class ToolUtil {
+
+    public static final Set<ToolAction> DEFAULT_AIOT_ACTIONS = Stream.of(
+            AXE_DIG, AXE_STRIP, AXE_SCRAPE, AXE_WAX_OFF,
+            HOE_DIG, /*TODO HOE_TILL,*/
+            SHOVEL_DIG, SHOVEL_FLATTEN,
+            PICKAXE_DIG,
+            SWORD_DIG
+    ).collect(Collectors.toCollection(Sets::newIdentityHashSet));
 
     public static void moreDamage(LivingDamageEvent event) {
         if (event.getSource().getEntity() instanceof Player) {
@@ -45,7 +59,7 @@ public class ToolUtil {
         }
     }
 
-    public static InteractionResult toolUse(UseOnContext context, ToolType toolType) {
+    public static InteractionResult toolUse(UseOnContext context, ToolAction toolAction) {
         Level level = context.getLevel();
         Player player = context.getPlayer();
         BlockPos pos = context.getClickedPos();
@@ -54,15 +68,21 @@ public class ToolUtil {
 
         if (player != null
                 && player.mayUseItemAt(pos, side, stack)
-                && ((side != Direction.DOWN && level.isEmptyBlock(pos.above())) || toolType == ToolType.AXE)) {
+                && ((side != Direction.DOWN && level.isEmptyBlock(pos.above())) || AXE_STRIP == toolAction)) {
 
             BlockState state = level.getBlockState(pos);
-            BlockState modifiedState = state.getToolModifiedState(level, pos, player, stack, toolType);
+            BlockState modifiedState = state.getToolModifiedState(level, pos, player, stack, toolAction);
             if (modifiedState != null) {
                 SoundEvent sound;
-                if (ToolType.AXE == toolType) {
-                    sound = SoundEvents.AXE_STRIP;
-                } else if (ToolType.SHOVEL == toolType) {
+                if (DEFAULT_AXE_ACTIONS.contains(toolAction)) {
+                    if (toolAction == AXE_STRIP) {
+                        sound = SoundEvents.AXE_STRIP;
+                    } else if (toolAction == AXE_SCRAPE) {
+                        sound = SoundEvents.AXE_SCRAPE;
+                    } else {
+                        sound = SoundEvents.AXE_WAX_OFF;
+                    }
+                } else if (DEFAULT_SHOVEL_ACTIONS.contains(toolAction)) {
                     sound = SoundEvents.SHOVEL_FLATTEN;
                 } else {
                     sound = SoundEvents.HOE_TILL;

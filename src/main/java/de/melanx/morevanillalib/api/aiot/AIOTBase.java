@@ -2,12 +2,13 @@ package de.melanx.morevanillalib.api.aiot;
 
 import de.melanx.morevanillalib.api.BaseToolItem;
 import de.melanx.morevanillalib.api.IConfigurableTier;
-import de.melanx.morevanillalib.data.ModTags;
+import de.melanx.morevanillalib.api.ToolType;
 import de.melanx.morevanillalib.util.ComponentUtil;
 import de.melanx.morevanillalib.util.ToolUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -19,8 +20,8 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.ToolType;
+import net.minecraftforge.common.ToolAction;
+import net.minecraftforge.common.ToolActions;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -28,7 +29,7 @@ import javax.annotation.Nullable;
 public class AIOTBase extends BaseToolItem {
 
     public AIOTBase(IConfigurableTier tier, Properties properties) {
-        super(tier, ModTags.Blocks.MINEABLE_WITH_AIOT, properties);
+        super(tier, ToolType.AIOT, properties);
     }
 
     @Override
@@ -46,12 +47,22 @@ public class AIOTBase extends BaseToolItem {
         ItemStack item = context.getItemInHand();
         boolean hoemode = isHoemode(item);
 
-        InteractionResult axeResult = ToolUtil.toolUse(context, ToolType.AXE);
+        InteractionResult axeResult = InteractionResult.PASS;
+        for (ToolAction action : ToolActions.DEFAULT_AXE_ACTIONS) {
+            if (axeResult != InteractionResult.PASS) {
+                break;
+            }
+
+            axeResult = ToolUtil.toolUse(context, action);
+        }
+
         if (axeResult == InteractionResult.PASS) {
             if (hoemode) {
-                return ToolUtil.toolUse(context, ToolType.HOE);
+                /*return ToolUtil.toolUse(context, ToolActions.HOE_TILL);*/
+                player.displayClientMessage(new TextComponent("Tilling currently not supported."), true);
+                return ToolUtil.toolUse(context, ToolActions.SHOVEL_FLATTEN);
             } else {
-                return ToolUtil.toolUse(context, ToolType.SHOVEL);
+                return ToolUtil.toolUse(context, ToolActions.SHOVEL_FLATTEN);
             }
         }
 
@@ -93,14 +104,14 @@ public class AIOTBase extends BaseToolItem {
         return stack.isEmpty() || !stack.getOrCreateTag().contains("hoemode") || stack.getOrCreateTag().getBoolean("hoemode");
     }
 
-    @Override
-    public float getDestroySpeed(@Nonnull ItemStack stack, @Nonnull BlockState state) {
-        if (state.is(Blocks.COBWEB)) {
-            return 15.0F;
-        } else {
-            return state.getBlock().getHarvestTool(state) == null || this.getToolTypes(stack).contains(state.getBlock().getHarvestTool(state)) ? this.speed : 1.0F;
-        }
-    }
+//    @Override
+//    public float getDestroySpeed(@Nonnull ItemStack stack, @Nonnull BlockState state) {
+//        if (state.is(Blocks.COBWEB)) {
+//            return 15.0F;
+//        } else {
+//            return state.getBlock().getHarvestTool(state) == null || this.getToolTypes(stack).contains(state.getBlock().getHarvestTool(state)) ? this.speed : 1.0F;
+//        }
+//    }
 
     @Override
     public int getBurnTime(@Nonnull ItemStack stack, @Nullable RecipeType<?> recipeType) {

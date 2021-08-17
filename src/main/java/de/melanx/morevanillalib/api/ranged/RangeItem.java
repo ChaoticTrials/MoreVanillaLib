@@ -2,14 +2,13 @@ package de.melanx.morevanillalib.api.ranged;
 
 import de.melanx.morevanillalib.api.BaseToolItem;
 import de.melanx.morevanillalib.api.IConfigurableTier;
+import de.melanx.morevanillalib.api.ToolType;
 import net.minecraft.core.BlockPos;
-import net.minecraft.tags.Tag;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nonnull;
@@ -17,8 +16,8 @@ import javax.annotation.Nullable;
 
 public class RangeItem extends BaseToolItem {
 
-    public RangeItem(IConfigurableTier toolMaterial, Tag<Block> mineable, Item.Properties properties) {
-        super(toolMaterial, mineable, properties);
+    public RangeItem(IConfigurableTier toolMaterial, ToolType toolType, Item.Properties properties) {
+        super(toolMaterial, toolType, properties);
     }
 
     @Override
