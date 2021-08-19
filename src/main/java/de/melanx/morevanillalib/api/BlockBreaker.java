@@ -7,6 +7,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
+import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -24,6 +25,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.BlockEvent;
 
@@ -168,7 +170,10 @@ public class BlockBreaker {
 
         Vector3d eyePosition = player.getEyePosition(1);
         Vector3d rotation = player.getLook(1);
-        Vector3d combined = eyePosition.add(rotation.x * 5, rotation.y * 5, rotation.z * 5);
+        ModifiableAttributeInstance reachAttribute = player.getAttribute(ForgeMod.REACH_DISTANCE.get());
+        //noinspection ConstantConditions
+        double reach = reachAttribute.getValue();
+        Vector3d combined = eyePosition.add(rotation.x * reach, rotation.y * reach, rotation.z * reach);
 
         BlockRayTraceResult rayTraceResult = world.rayTraceBlocks(new RayTraceContext(eyePosition, combined, RayTraceContext.BlockMode.OUTLINE, RayTraceContext.FluidMode.NONE, player));
 
