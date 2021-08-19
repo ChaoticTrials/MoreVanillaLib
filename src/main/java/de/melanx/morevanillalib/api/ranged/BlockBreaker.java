@@ -7,6 +7,7 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientboundBlockUpdatePacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
@@ -17,6 +18,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.BlockEvent;
 
@@ -91,11 +93,14 @@ public class BlockBreaker {
     public static List<BlockPos> getBreakBlocks(Level level, Player player, int radius, BlockPos originPosition) {
         ArrayList<BlockPos> potentialBrokenBlocks = new ArrayList<>();
 
-        Vec3 eyePosition = player.getEyePosition(1);
+        Vec3 eyePosition = player.getEyePosition();
         Vec3 rotation = player.getViewVector(1);
-        Vec3 combined = eyePosition.add(rotation.x * 5, rotation.y * 5, rotation.z * 5);
+        AttributeInstance attribute = player.getAttribute(ForgeMod.REACH_DISTANCE.get());
+        //noinspection ConstantConditions
+        double reach = attribute.getValue();
+        Vec3 combined = eyePosition.add(rotation.x * reach, rotation.y * reach, rotation.z * reach);
 
-        BlockHitResult rayTraceResult = level.clip(new ClipContext(eyePosition, combined, ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, player));
+        BlockHitResult rayTraceResult = level.clip(new ClipContext(player.getEyePosition(), combined, ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, player));
 
         if (rayTraceResult.getType() == HitResult.Type.BLOCK) {
             Direction.Axis axis = rayTraceResult.getDirection().getAxis();

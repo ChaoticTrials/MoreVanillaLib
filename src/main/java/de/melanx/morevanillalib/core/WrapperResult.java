@@ -37,11 +37,13 @@ public class WrapperResult implements FinishedRecipe {
         }
     }
 
+    @Nonnull
     @Override
     public ResourceLocation getId() {
         return this.delegate.getId();
     }
 
+    @Nonnull
     @Override
     public RecipeSerializer<?> getType() {
         return this.type != null ? this.type : this.delegate.getType();
