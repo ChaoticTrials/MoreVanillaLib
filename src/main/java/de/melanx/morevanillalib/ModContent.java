@@ -2,6 +2,7 @@ package de.melanx.morevanillalib;
 
 import de.melanx.morevanillalib.core.modifier.*;
 import de.melanx.morevanillalib.enchantments.LuckOfCheapRepairing;
+import de.melanx.morevanillalib.enchantments.PowerOfTheDepth;
 import io.github.noeppi_noeppi.libx.annotation.registration.RegisterClass;
 import io.github.noeppi_noeppi.libx.base.BlockBase;
 import io.github.noeppi_noeppi.libx.base.ItemBase;
@@ -21,6 +22,7 @@ public class ModContent {
     public static final Item paperBundle = new ItemBase(MoreVanillaLib.getInstance(), new Item.Properties());
 
     public static final Enchantment repairingLuck = new LuckOfCheapRepairing();
+    public static final Enchantment powerOfTheDepth = new PowerOfTheDepth();
 
     public static final GlobalLootModifierSerializer<AutoSmeltModifier> autoSmelt = new AutoSmeltModifier.Serializer();
     public static final GlobalLootModifierSerializer<GlowstoneToolModifier> glowstoneDrops = new GlowstoneToolModifier.Serializer();

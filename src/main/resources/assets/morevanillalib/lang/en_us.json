@@ -8,6 +8,8 @@
 
   "enchantment.morevanillalib.repairing_luck": "Luck of Cheap Repairing",
   "enchantment.morevanillalib.repairing_luck.desc": "Reduces the repair costs in the anvil to a minimum.",
+  "enchantment.morevanillalib.power_of_the_depth": "Power of the Depth",
+  "enchantment.morevanillalib.power_of_the_depth.desc": "Increases the mining depth for Hammers and Excavators.",
 
   "death.attack.paperCut": "%1$s was cut to death with paper",
 

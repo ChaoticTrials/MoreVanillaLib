@@ -8,6 +8,8 @@
 
   "enchantment.morevanillalib.repairing_luck": "Glück der billigen Reparatur",
   "enchantment.morevanillalib.repairing_luck.desc": "Verringert die Reperaturkosten im Amboss auf ein Minimum.",
+  "enchantment.morevanillalib.power_of_the_depth": "Kraft der Tiefe",
+  "enchantment.morevanillalib.power_of_the_depth.desc": "Erhöht die Abbautiefe für Hämmer und Ausgraber.",
 
   "death.attack.paperCut": "%1$s wurde durch Papier niedergestreckt.",
 
