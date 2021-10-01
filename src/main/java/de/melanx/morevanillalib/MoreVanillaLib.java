@@ -14,7 +14,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import javax.annotation.Nonnull;
 
 @Mod("morevanillalib")
-public class MoreVanillaLib extends ModXRegistration {
+public final class MoreVanillaLib extends ModXRegistration {
 
     private static MoreVanillaLib instance;
 
