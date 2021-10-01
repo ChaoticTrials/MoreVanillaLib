@@ -3,7 +3,9 @@ package de.melanx.morevanillalib.config;
 import com.google.gson.JsonObject;
 import de.melanx.morevanillalib.api.IConfigurableTier;
 import io.github.noeppi_noeppi.libx.annotation.config.RegisterMapper;
+import io.github.noeppi_noeppi.libx.config.ValidatorInfo;
 import io.github.noeppi_noeppi.libx.config.ValueMapper;
+import io.github.noeppi_noeppi.libx.config.gui.ConfigEditor;
 import net.minecraft.util.GsonHelper;
 
 @RegisterMapper
@@ -70,5 +72,37 @@ public class ItemTier implements ValueMapper<IConfigurableTier, JsonObject> {
         json.addProperty("harvestLevel", tier.getLevel());
         json.addProperty("enchantmentValue", tier.getEnchantmentValue());
         return json;
+    }
+
+    @Override
+    public ConfigEditor<IConfigurableTier> createEditor(ValidatorInfo<?> validator) {
+        return ConfigEditor.unsupported(
+                new IConfigurableTier() {
+                    @Override
+                    public int getUses() {
+                        return 0;
+                    }
+
+                    @Override
+                    public float getSpeed() {
+                        return 0;
+                    }
+
+                    @Override
+                    public float getAttackDamageBonus() {
+                        return 0;
+                    }
+
+                    @Override
+                    public int getLevel() {
+                        return 0;
+                    }
+
+                    @Override
+                    public int getEnchantmentValue() {
+                        return 0;
+                    }
+                }
+        );
     }
 }
