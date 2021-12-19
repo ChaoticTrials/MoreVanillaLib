@@ -19,7 +19,7 @@ public final class MoreVanillaLib extends ModXRegistration {
     private static MoreVanillaLib instance;
 
     public MoreVanillaLib() {
-        super("morevanillalib", new CreativeModeTab("morevanillalib") {
+        super(new CreativeModeTab("morevanillalib") {
             @Nonnull
             @Override
             public ItemStack makeIcon() {

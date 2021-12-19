@@ -52,7 +52,7 @@ public class BlockBreaker {
                     if (breakValidator.canBreak(state)) {
                         ServerPlayer serverPlayer = (ServerPlayer) player;
                         if (player.getAbilities().instabuild) {
-                            if (state.removedByPlayer(level, pos, player, true, state.getFluidState()))
+                            if (state.onDestroyedByPlayer(level, pos, player, true, state.getFluidState()))
                                 state.getBlock().destroy(level, pos, state);
                         } else {
                             BlockEvent.BreakEvent event = new BlockEvent.BreakEvent(level, pos, state, player);
