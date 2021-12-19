@@ -2,7 +2,9 @@ package de.melanx.morevanillalib.data;
 
 import de.melanx.morevanillalib.ModContent;
 import de.melanx.morevanillalib.MoreVanillaLib;
+import io.github.noeppi_noeppi.libx.annotation.data.Datagen;
 import io.github.noeppi_noeppi.libx.data.provider.CommonTagsProviderBase;
+import io.github.noeppi_noeppi.libx.mod.ModX;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -12,10 +14,11 @@ import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
+@Datagen
 public class ModTags extends CommonTagsProviderBase {
 
-    public ModTags(DataGenerator generator, ExistingFileHelper helper) {
-        super(MoreVanillaLib.getInstance(), generator, helper);
+    public ModTags(ModX mod, DataGenerator generator, ExistingFileHelper helper) {
+        super(mod, generator, helper);
     }
 
     @SuppressWarnings("unchecked")
@@ -48,25 +51,25 @@ public class ModTags extends CommonTagsProviderBase {
         this.item(Items.SLIME_TOOLS);
         //noinspection unchecked
         this.item(Items.ALL_TOOLS).addTags(
-            Items.WOOD_TOOLS,
-            Items.STONE_TOOLS,
-            Items.IRON_TOOLS,
-            Items.GOLD_TOOLS,
-            Items.DIAMOND_TOOLS,
-            Items.NETHERITE_TOOLS,
-            Items.BONE_TOOLS,
-            Items.COAL_TOOLS,
-            Items.EMERALD_TOOLS,
-            Items.ENDER_TOOLS,
-            Items.FIERY_TOOLS,
-            Items.GLOWSTONE_TOOLS,
-            Items.LAPIS_TOOLS,
-            Items.NETHER_TOOLS,
-            Items.OBSIDIAN_TOOLS,
-            Items.PRISMARINE_TOOLS,
-            Items.QUARTZ_TOOLS,
-            Items.REDSTONE_TOOLS,
-            Items.SLIME_TOOLS
+                Items.WOOD_TOOLS,
+                Items.STONE_TOOLS,
+                Items.IRON_TOOLS,
+                Items.GOLD_TOOLS,
+                Items.DIAMOND_TOOLS,
+                Items.NETHERITE_TOOLS,
+                Items.BONE_TOOLS,
+                Items.COAL_TOOLS,
+                Items.EMERALD_TOOLS,
+                Items.ENDER_TOOLS,
+                Items.FIERY_TOOLS,
+                Items.GLOWSTONE_TOOLS,
+                Items.LAPIS_TOOLS,
+                Items.NETHER_TOOLS,
+                Items.OBSIDIAN_TOOLS,
+                Items.PRISMARINE_TOOLS,
+                Items.QUARTZ_TOOLS,
+                Items.REDSTONE_TOOLS,
+                Items.SLIME_TOOLS
         );
 
         this.copyBlock(Blocks.CLEAN_ENDSTONE, Items.CLEAN_ENDSTONE);

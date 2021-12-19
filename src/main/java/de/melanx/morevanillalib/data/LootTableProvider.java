@@ -1,13 +1,15 @@
 package de.melanx.morevanillalib.data;
 
 import de.melanx.morevanillalib.ModContent;
-import de.melanx.morevanillalib.MoreVanillaLib;
+import io.github.noeppi_noeppi.libx.annotation.data.Datagen;
 import io.github.noeppi_noeppi.libx.data.provider.BlockLootProviderBase;
+import io.github.noeppi_noeppi.libx.mod.ModX;
 import net.minecraft.data.DataGenerator;
 
+@Datagen
 public class LootTableProvider extends BlockLootProviderBase {
-    public LootTableProvider(DataGenerator generator) {
-        super(MoreVanillaLib.getInstance(), generator);
+    public LootTableProvider(ModX mod, DataGenerator generator) {
+        super(mod, generator);
     }
 
     @Override
