@@ -1,6 +1,5 @@
 package de.melanx.morevanillalib.util;
 
-import com.google.common.collect.Sets;
 import de.melanx.morevanillalib.config.FeatureConfig;
 import de.melanx.morevanillalib.core.LibDamageSource;
 import net.minecraft.core.BlockPos;
@@ -12,8 +11,11 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ToolAction;
@@ -23,20 +25,20 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import javax.annotation.Nullable;
 import java.util.Random;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static net.minecraftforge.common.ToolActions.*;
 
 public class ToolUtil {
 
-    public static final Set<ToolAction> DEFAULT_AIOT_ACTIONS = Stream.of(
+    public static final ToolAction HOE_TILL = ToolAction.get("till");
+    public static final Set<ToolAction> DEFAULT_HOE_ACTIONS = Set.of(HOE_DIG, HOE_TILL);
+    public static final Set<ToolAction> DEFAULT_AIOT_ACTIONS = Set.of(
             AXE_DIG, AXE_STRIP, AXE_SCRAPE, AXE_WAX_OFF,
-            HOE_DIG, /*TODO HOE_TILL,*/
+            HOE_DIG, HOE_TILL,
             SHOVEL_DIG, SHOVEL_FLATTEN,
             PICKAXE_DIG,
             SWORD_DIG
-    ).collect(Collectors.toCollection(Sets::newIdentityHashSet));
+    );
 
     public static void moreDamage(LivingDamageEvent event) {
         if (event.getSource().getEntity() instanceof Player) {
@@ -72,6 +74,13 @@ public class ToolUtil {
 
             BlockState state = level.getBlockState(pos);
             BlockState modifiedState = state.getToolModifiedState(level, pos, player, stack, toolAction);
+            if (toolAction == HOE_TILL) {
+                modifiedState = ToolUtil.getHoeTillingState(state, context);
+                if (state.getBlock() == Blocks.ROOTED_DIRT) {
+                    Block.popResourceFromFace(level, pos, side, new ItemStack(Items.HANGING_ROOTS));
+                }
+            }
+
             if (modifiedState != null) {
                 SoundEvent sound;
                 if (DEFAULT_AXE_ACTIONS.contains(toolAction)) {
@@ -108,5 +117,23 @@ public class ToolUtil {
         }
 
         return InteractionResult.PASS;
+    }
+
+    public static BlockState getHoeTillingState(BlockState state, UseOnContext context) {
+        Block block = state.getBlock();
+        if (block == Blocks.ROOTED_DIRT) {
+            return Blocks.DIRT.defaultBlockState();
+        }
+        if (context.getClickedFace() != Direction.DOWN && context.getLevel().getBlockState(context.getClickedPos().above()).isAir()) {
+            if (block == Blocks.GRASS_BLOCK || block == Blocks.DIRT_PATH || block == Blocks.DIRT) {
+                return Blocks.FARMLAND.defaultBlockState();
+            }
+
+            if (block == Blocks.COARSE_DIRT) {
+                return Blocks.DIRT.defaultBlockState();
+            }
+        }
+
+        return null;
     }
 }

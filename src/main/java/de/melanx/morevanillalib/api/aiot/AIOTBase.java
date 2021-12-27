@@ -8,7 +8,6 @@ import de.melanx.morevanillalib.util.ToolUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -58,9 +57,7 @@ public class AIOTBase extends BaseToolItem {
 
         if (axeResult == InteractionResult.PASS) {
             if (hoemode) {
-                /*return ToolUtil.toolUse(context, ToolActions.HOE_TILL);*/
-                player.displayClientMessage(new TextComponent("Tilling currently not supported."), true);
-                return ToolUtil.toolUse(context, ToolActions.SHOVEL_FLATTEN);
+                return ToolUtil.toolUse(context, ToolUtil.HOE_TILL);
             } else {
                 return ToolUtil.toolUse(context, ToolActions.SHOVEL_FLATTEN);
             }
