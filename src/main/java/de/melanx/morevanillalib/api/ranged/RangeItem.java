@@ -23,7 +23,7 @@ public class RangeItem extends BaseToolItem {
     @Override
     public boolean canAttackBlock(@Nonnull BlockState state, @Nonnull Level level, @Nonnull BlockPos pos, Player player) {
         int radius = 1;
-        if (player.isCrouching()) {
+        if (player.isShiftKeyDown()) {
             radius = 0;
         }
 
