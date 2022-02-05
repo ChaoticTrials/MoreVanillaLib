@@ -12,7 +12,7 @@ import java.util.function.Supplier;
 public class ItemTier implements IConfigurableTier {
 
     private ItemTier(int durability, float efficiency, float attackDamage, float attackSpeed, int harvestLevel, int enchantmentValue, LazyValue<Ingredient> repairMaterial, LazyValue<Ingredient> craftingIngredient, String name, boolean vanilla, boolean aiot, boolean big) {
-        this.durability = aiot ? durability * 5 : big ? durability * 7 : durability;
+        this.durability = aiot ? durability * 4 : big ? durability * 7 : durability;
         this.efficiency = big ? efficiency / 3.5F : efficiency;
         this.attackDamage = attackDamage;
         this.attackSpeed = big ? attackSpeed : attackSpeed * 1.2F;
