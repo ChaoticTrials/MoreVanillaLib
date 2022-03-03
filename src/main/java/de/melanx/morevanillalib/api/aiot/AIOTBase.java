@@ -8,6 +8,7 @@ import de.melanx.morevanillalib.util.ToolUtil;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
@@ -19,6 +20,8 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.ToolAction;
 import net.minecraftforge.common.ToolActions;
 
@@ -101,14 +104,15 @@ public class AIOTBase extends BaseToolItem {
         return stack.isEmpty() || !stack.getOrCreateTag().contains("hoemode") || stack.getOrCreateTag().getBoolean("hoemode");
     }
 
-//    @Override
-//    public float getDestroySpeed(@Nonnull ItemStack stack, @Nonnull BlockState state) {
-//        if (state.is(Blocks.COBWEB)) {
-//            return 15.0F;
-//        } else {
-//            return state.getBlock().getHarvestTool(state) == null || this.getToolTypes(stack).contains(state.getBlock().getHarvestTool(state)) ? this.speed : 1.0F;
-//        }
-//    }
+    @Override
+    public float getDestroySpeed(@Nonnull ItemStack stack, @Nonnull BlockState state) {
+        if (state.is(Blocks.COBWEB)) {
+            return 15.0F;
+        } else {
+            Material material = state.getMaterial();
+            return !state.is(this.blocks) && material != Material.PLANT && material != Material.REPLACEABLE_PLANT && !state.is(BlockTags.LEAVES) && material != Material.VEGETABLE ? 1.0F : this.speed;
+        }
+    }
 
     @Override
     public int getBurnTime(@Nonnull ItemStack stack, @Nullable RecipeType<?> recipeType) {

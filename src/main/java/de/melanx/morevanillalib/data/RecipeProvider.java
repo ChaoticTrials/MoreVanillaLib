@@ -9,7 +9,7 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -38,7 +38,7 @@ public class RecipeProvider extends RecipeProviderBase {
     }
 
     @SuppressWarnings("SameParameterValue")
-    private void compress(Item result, Tag.Named<Item> ingredient, Consumer<FinishedRecipe> consumer) {
+    private void compress(Item result, TagKey<Item> ingredient, Consumer<FinishedRecipe> consumer) {
         ShapedRecipeBuilder.shaped(result)
                 .pattern("XXX")
                 .pattern("XXX")
@@ -59,7 +59,7 @@ public class RecipeProvider extends RecipeProviderBase {
                 .save(consumer, this.loc(result, "compress"));
     }
 
-    private void decompress(Item result, Tag.Named<Item> ingredient, Consumer<FinishedRecipe> consumer) {
+    private void decompress(Item result, TagKey<Item> ingredient, Consumer<FinishedRecipe> consumer) {
         ShapelessRecipeBuilder.shapeless(result, 9)
                 .requires(ingredient)
                 .unlockedBy("has_material", has(ingredient))

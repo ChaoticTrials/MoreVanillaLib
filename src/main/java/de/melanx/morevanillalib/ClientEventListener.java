@@ -59,7 +59,7 @@ public class ClientEventListener {
         BlockHitResult blockTrace = event.getTarget();
         BlockPos origin = blockTrace.getBlockPos();
         BlockState state = level.getBlockState(origin);
-        if (!((DiggerItem) tool.getItem()).blocks.contains(state.getBlock())) {
+        if (!state.is(((DiggerItem) tool.getItem()).blocks)) {
             return;
         }
 
@@ -133,7 +133,7 @@ public class ClientEventListener {
 
         // determine extra blocks to highlight
         BlockState state = level.getBlockState(origin);
-        if (!((DiggerItem) tool.getItem()).blocks.contains(state.getBlock())) {
+        if (!state.is(((DiggerItem) tool.getItem()).blocks)) {
             return;
         }
 

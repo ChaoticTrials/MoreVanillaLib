@@ -14,7 +14,7 @@ public class EventListener {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void onEntityAttackFrom(LivingAttackEvent event) {
         if (event.getSource().getEntity() instanceof LivingEntity entity) {
-            if (ModTags.Items.SLIME_TOOLS.contains(entity.getMainHandItem().getItem()) || ModTags.Items.SLIME_TOOLS.contains(entity.getOffhandItem().getItem())) {
+            if (entity.getMainHandItem().is(ModTags.Items.SLIME_TOOLS) || entity.getOffhandItem().is(ModTags.Items.SLIME_TOOLS)) {
                 LivingEntity target = event.getEntityLiving();
                 target.knockback(1.5F, Mth.sin((float) (entity.yRot * Math.PI / 180)), -Mth.cos((float) (entity.yRot * Math.PI / 180)));
             }
@@ -31,7 +31,7 @@ public class EventListener {
             return;
         }
 
-        if (ModTags.Items.SLIME_TOOLS.contains(player.getMainHandItem().getItem()) || ModTags.Items.SLIME_TOOLS.contains(player.getOffhandItem().getItem())) {
+        if (player.getMainHandItem().is(ModTags.Items.SLIME_TOOLS) || player.getOffhandItem().is(ModTags.Items.SLIME_TOOLS)) {
             target.push(-Mth.sin((float) (player.yRot * Math.PI / 180)) * 1.5F, 0.1D, Mth.cos((float) (player.yRot * Math.PI / 180)) * 1.5F);
             player.setDeltaMovement(player.getDeltaMovement().multiply(0.6, 1, 0.6));
             player.setSprinting(false);

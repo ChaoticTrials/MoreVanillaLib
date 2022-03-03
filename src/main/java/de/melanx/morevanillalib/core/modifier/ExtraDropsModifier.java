@@ -33,6 +33,7 @@ public class ExtraDropsModifier extends LootModifier {
                 tool = ((LivingEntity) killer).getMainHandItem();
             }
         }
+
         if (tool != null && tool.getItem() instanceof DiggerItem && FeatureConfig.ExtraDrop.enabled && context.getRandom().nextDouble() < FeatureConfig.ExtraDrop.chance) {
             Ingredient repairMaterial = ((DiggerItem) tool.getItem()).getTier().getRepairIngredient();
             generatedLoot.add(repairMaterial.getItems()[0].copy());

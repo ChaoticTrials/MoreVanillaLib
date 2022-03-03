@@ -3,7 +3,7 @@ package de.melanx.morevanillalib.api;
 import de.melanx.morevanillalib.data.ModTags;
 import de.melanx.morevanillalib.util.ToolUtil;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.ToolAction;
 import net.minecraftforge.common.ToolActions;
@@ -17,15 +17,15 @@ public enum ToolType {
     PICKAXE(BlockTags.MINEABLE_WITH_PICKAXE, ToolActions.DEFAULT_PICKAXE_ACTIONS),
     SHOVEL(BlockTags.MINEABLE_WITH_SHOVEL, ToolActions.DEFAULT_SHOVEL_ACTIONS);
 
-    private final Tag<Block> blocks;
+    private final TagKey<Block> blocks;
     private final Set<ToolAction> toolActions;
 
-    ToolType(Tag<Block> blocks, Set<ToolAction> toolActions) {
+    ToolType(TagKey<Block> blocks, Set<ToolAction> toolActions) {
         this.blocks = blocks;
         this.toolActions = toolActions;
     }
 
-    public Tag<Block> getBlocks() {
+    public TagKey<Block> getBlocks() {
         return this.blocks;
     }
 

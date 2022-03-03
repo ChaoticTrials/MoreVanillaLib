@@ -28,6 +28,7 @@ public class GlowstoneToolModifier extends LootModifier {
             glowstone.setCount(4);
             generatedLoot.add(glowstone);
         }
+
         return generatedLoot;
     }
 

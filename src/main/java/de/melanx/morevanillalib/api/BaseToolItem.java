@@ -51,7 +51,7 @@ public class BaseToolItem extends DiggerItem {
             result = ToolUtil.toolUse(context, action);
         }
 
-        if (result != InteractionResult.PASS && !context.getLevel().isClientSide && ModTags.Items.PAPER_TOOLS.contains(this)
+        if (result != InteractionResult.PASS && !context.getLevel().isClientSide && context.getItemInHand().is(ModTags.Items.PAPER_TOOLS)
                 && FeatureConfig.PaperDamage.enabled && context.getLevel().random.nextDouble() < FeatureConfig.PaperDamage.chance) {
             ToolUtil.paperDamage(context.getPlayer());
         }
@@ -68,7 +68,7 @@ public class BaseToolItem extends DiggerItem {
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         boolean result = super.hurtEnemy(stack, target, attacker);
 
-        if (!target.level.isClientSide && ModTags.Items.PAPER_TOOLS.contains(this) && FeatureConfig.PaperDamage.enabled
+        if (!target.level.isClientSide && stack.is(ModTags.Items.PAPER_TOOLS) && FeatureConfig.PaperDamage.enabled
                 && target.level.random.nextDouble() < FeatureConfig.PaperDamage.chance) {
             ToolUtil.paperDamage(attacker);
         }
@@ -80,7 +80,7 @@ public class BaseToolItem extends DiggerItem {
     public boolean mineBlock(@Nonnull ItemStack stack, @Nonnull Level level, @Nonnull BlockState state, @Nonnull BlockPos pos, @Nonnull LivingEntity entityLiving) {
         boolean result = super.mineBlock(stack, level, state, pos, entityLiving);
 
-        if (!level.isClientSide && state.getDestroySpeed(level, pos) != 0.0F && ModTags.Items.PAPER_TOOLS.contains(this)
+        if (!level.isClientSide && state.getDestroySpeed(level, pos) != 0.0F && stack.is(ModTags.Items.PAPER_TOOLS)
                 && FeatureConfig.PaperDamage.enabled && level.random.nextDouble() < FeatureConfig.PaperDamage.chance) {
             ToolUtil.paperDamage(entityLiving);
         }
@@ -105,7 +105,7 @@ public class BaseToolItem extends DiggerItem {
 
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        if (enchantment == Enchantments.KNOCKBACK && ModTags.Items.SLIME_TOOLS.contains(stack.getItem())) {
+        if (enchantment == Enchantments.KNOCKBACK && stack.is(ModTags.Items.SLIME_TOOLS)) {
             return false;
         }
 

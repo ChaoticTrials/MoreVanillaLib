@@ -6,9 +6,10 @@ import io.github.noeppi_noeppi.libx.annotation.data.Datagen;
 import io.github.noeppi_noeppi.libx.data.provider.CommonTagsProviderBase;
 import io.github.noeppi_noeppi.libx.mod.ModX;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.Tags;
@@ -49,7 +50,6 @@ public class ModTags extends CommonTagsProviderBase {
         this.item(Items.QUARTZ_TOOLS);
         this.item(Items.REDSTONE_TOOLS);
         this.item(Items.SLIME_TOOLS);
-        //noinspection unchecked
         this.item(Items.ALL_TOOLS).addTags(
                 Items.WOOD_TOOLS,
                 Items.STONE_TOOLS,
@@ -92,48 +92,48 @@ public class ModTags extends CommonTagsProviderBase {
     }
 
     public static class Blocks {
-        public static final Tag.Named<Block> CLEAN_ENDSTONE = tag("clean_endstone");
-        public static final Tag.Named<Block> MINEABLE_WITH_AIOT = tag("mineable/aiot");
+        public static final TagKey<Block> CLEAN_ENDSTONE = tag("clean_endstone");
+        public static final TagKey<Block> MINEABLE_WITH_AIOT = tag("mineable/aiot");
 
-        private static Tag.Named<Block> tag(String name) {
-            return BlockTags.bind("forge:" + name);
+        private static TagKey<Block> tag(String name) {
+            return BlockTags.create(new ResourceLocation("forge", name));
         }
     }
 
     public static class Items {
-        public static final Tag.Named<Item> CLEAN_ENDSTONE = tag("clean_endstone");
+        public static final TagKey<Item> CLEAN_ENDSTONE = tag("clean_endstone");
 
-        public static final Tag.Named<Item> DUSTS_OBSIDIAN = tag("dusts/obsidian");
-        public static final Tag.Named<Item> PAPER_BUNDLE = tag("paper_bundle");
+        public static final TagKey<Item> DUSTS_OBSIDIAN = tag("dusts/obsidian");
+        public static final TagKey<Item> PAPER_BUNDLE = tag("paper_bundle");
 
-        public static final Tag.Named<Item> WOOD_TOOLS = modTag("tools/wood");
-        public static final Tag.Named<Item> STONE_TOOLS = modTag("tools/stone");
-        public static final Tag.Named<Item> IRON_TOOLS = modTag("tools/iron");
-        public static final Tag.Named<Item> GOLD_TOOLS = modTag("tools/gold");
-        public static final Tag.Named<Item> DIAMOND_TOOLS = modTag("tools/diamond");
-        public static final Tag.Named<Item> BONE_TOOLS = modTag("tools/bone");
-        public static final Tag.Named<Item> COAL_TOOLS = modTag("tools/coal");
-        public static final Tag.Named<Item> EMERALD_TOOLS = modTag("tools/emerald");
-        public static final Tag.Named<Item> ENDER_TOOLS = modTag("tools/ender");
-        public static final Tag.Named<Item> FIERY_TOOLS = modTag("tools/fiery");
-        public static final Tag.Named<Item> GLOWSTONE_TOOLS = modTag("tools/glowstone");
-        public static final Tag.Named<Item> LAPIS_TOOLS = modTag("tools/lapis");
-        public static final Tag.Named<Item> NETHER_TOOLS = modTag("tools/nether");
-        public static final Tag.Named<Item> NETHERITE_TOOLS = modTag("tools/netherite");
-        public static final Tag.Named<Item> OBSIDIAN_TOOLS = modTag("tools/obsidian");
-        public static final Tag.Named<Item> PAPER_TOOLS = modTag("tools/paper");
-        public static final Tag.Named<Item> PRISMARINE_TOOLS = modTag("tools/prismarine");
-        public static final Tag.Named<Item> QUARTZ_TOOLS = modTag("tools/quartz");
-        public static final Tag.Named<Item> REDSTONE_TOOLS = modTag("tools/redstone");
-        public static final Tag.Named<Item> SLIME_TOOLS = modTag("tools/slime");
-        public static final Tag.Named<Item> ALL_TOOLS = modTag("tools");
+        public static final TagKey<Item> WOOD_TOOLS = modTag("tools/wood");
+        public static final TagKey<Item> STONE_TOOLS = modTag("tools/stone");
+        public static final TagKey<Item> IRON_TOOLS = modTag("tools/iron");
+        public static final TagKey<Item> GOLD_TOOLS = modTag("tools/gold");
+        public static final TagKey<Item> DIAMOND_TOOLS = modTag("tools/diamond");
+        public static final TagKey<Item> BONE_TOOLS = modTag("tools/bone");
+        public static final TagKey<Item> COAL_TOOLS = modTag("tools/coal");
+        public static final TagKey<Item> EMERALD_TOOLS = modTag("tools/emerald");
+        public static final TagKey<Item> ENDER_TOOLS = modTag("tools/ender");
+        public static final TagKey<Item> FIERY_TOOLS = modTag("tools/fiery");
+        public static final TagKey<Item> GLOWSTONE_TOOLS = modTag("tools/glowstone");
+        public static final TagKey<Item> LAPIS_TOOLS = modTag("tools/lapis");
+        public static final TagKey<Item> NETHER_TOOLS = modTag("tools/nether");
+        public static final TagKey<Item> NETHERITE_TOOLS = modTag("tools/netherite");
+        public static final TagKey<Item> OBSIDIAN_TOOLS = modTag("tools/obsidian");
+        public static final TagKey<Item> PAPER_TOOLS = modTag("tools/paper");
+        public static final TagKey<Item> PRISMARINE_TOOLS = modTag("tools/prismarine");
+        public static final TagKey<Item> QUARTZ_TOOLS = modTag("tools/quartz");
+        public static final TagKey<Item> REDSTONE_TOOLS = modTag("tools/redstone");
+        public static final TagKey<Item> SLIME_TOOLS = modTag("tools/slime");
+        public static final TagKey<Item> ALL_TOOLS = modTag("tools");
 
-        private static Tag.Named<Item> tag(String name) {
-            return ItemTags.bind("forge:" + name);
+        private static TagKey<Item> tag(String name) {
+            return ItemTags.create(new ResourceLocation("forge", name));
         }
 
-        private static Tag.Named<Item> modTag(String name) {
-            return ItemTags.bind(MoreVanillaLib.getInstance().modid + ":" + name);
+        private static TagKey<Item> modTag(String name) {
+            return ItemTags.create(MoreVanillaLib.getInstance().resource(name));
         }
     }
 }

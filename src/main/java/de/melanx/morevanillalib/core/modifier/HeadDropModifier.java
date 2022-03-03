@@ -38,7 +38,7 @@ public class HeadDropModifier extends LootModifier {
             ItemStack weapon = ((LivingEntity) killer).getMainHandItem();
             int looting = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.MOB_LOOTING, weapon);
 
-            if (ModTags.Items.BONE_TOOLS.contains(weapon.getItem()) && FeatureConfig.HeadDrop.enabled && context.getRandom().nextDouble() < FeatureConfig.HeadDrop.chance + (looting / 100F)) {
+            if (weapon.is(ModTags.Items.BONE_TOOLS) && FeatureConfig.HeadDrop.enabled && context.getRandom().nextDouble() < FeatureConfig.HeadDrop.chance + (looting / 100F)) {
                 Item skull = null;
                 if (target instanceof WitherSkeleton) {
                     skull = Items.WITHER_SKELETON_SKULL;
