@@ -11,8 +11,8 @@ import java.util.function.Supplier;
 
 public class ItemTier implements IConfigurableTier {
 
-    private ItemTier(int durability, float efficiency, float attackDamage, float attackSpeed, int harvestLevel, int enchantmentValue, LazyValue<Ingredient> repairMaterial, LazyValue<Ingredient> craftingIngredient, String name, boolean vanilla, boolean aiot, boolean big) {
-        this.durability = aiot ? durability * 4 : big ? durability * 7 : durability;
+    private ItemTier(int durability, float efficiency, float attackDamage, float attackSpeed, int harvestLevel, int enchantmentValue, LazyValue<Ingredient> repairMaterial, LazyValue<Ingredient> craftingIngredient, String name, boolean vanilla, boolean big) {
+        this.durability = big ? durability * 7 : durability;
         this.efficiency = big ? efficiency / 3.5F : efficiency;
         this.attackDamage = attackDamage;
         this.attackSpeed = attackSpeed;
@@ -102,7 +102,6 @@ public class ItemTier implements IConfigurableTier {
         private Supplier<Ingredient> craftingIngredient = () -> Ingredient.EMPTY;
         private String name = "";
         private boolean vanilla;
-        private boolean aiot;
         private boolean big;
 
         public Builder durability(int durability) {
@@ -150,11 +149,6 @@ public class ItemTier implements IConfigurableTier {
             return this;
         }
 
-        public Builder aiot() {
-            this.aiot = true;
-            return this;
-        }
-
         public Builder big() {
             this.big = true;
             return this;
@@ -177,15 +171,14 @@ public class ItemTier implements IConfigurableTier {
             builder.craftingIngredient = this.craftingIngredient;
             builder.name = this.name;
             builder.vanilla = this.vanilla;
-            builder.aiot = this.aiot;
             builder.big = this.big;
             return builder;
         }
 
         public ItemTier build() {
-            ItemTier tier = new ItemTier(this.durability, this.speed, this.attackDamage, this.aiot ? -2.4F : this.attackSpeed, this.harvestLevel, this.enchantmentValue, new LazyValue<>(this.repairIngredient), new LazyValue<>(this.craftingIngredient), this.name, this.vanilla, this.aiot, this.big);
+            ItemTier tier = new ItemTier(this.durability, this.speed, this.attackDamage, this.attackSpeed, this.harvestLevel, this.enchantmentValue, new LazyValue<>(this.repairIngredient), new LazyValue<>(this.craftingIngredient), this.name, this.vanilla, this.big);
             if (!this.vanilla) {
-                String name = this.name + (this.big || this.aiot ? "_" + (this.aiot ? "aiot" : "big") : "");
+                String name = this.name + (this.big ? "big" : "");
                 TierSortingRegistry.registerTier(tier, new ResourceLocation("morevanillalib", name), List.of(), List.of());
             }
             return tier;
