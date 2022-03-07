@@ -1,6 +1,7 @@
 modLoader="javafml"
 loaderVersion = "[40,)"
 license = "Apache-2.0"
+issueTrackerURL = "https://www.github.com/MelanX/MoreVanillaLib/issues/"
 
 [[mods]]
 modId="morevanillalib"
@@ -34,5 +35,5 @@ Lib mod for my Vanilla mods:
     modId="libx"
     mandatory=true
     versionRange="[1.18.2-3.2.0,)"
-    ordering="NONE"
+    ordering="AFTER"
     side="BOTH"
