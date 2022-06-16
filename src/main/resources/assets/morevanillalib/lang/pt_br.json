@@ -1,0 +1,29 @@
+{
+  "itemGroup.morevanillalib": "MoreVanillaLib",
+
+  "death.attack.paperCut": "%1$s foi cortado até a morte com papel",
+
+  "jei.morevanillalib.bone_heads.desc": "Se você matar um esqueleto (murchar), há %d%% de chance de cair a cabeça.",
+  "jei.morevanillalib.extra_drop.desc": "Se você usar uma dessas ferramentas, o item de reparo correspondente será descartado com uma chance de %d%%.",
+  "jei.morevanillalib.fiery_smelt.desc": "Se você quebrar blocos que podem ser fundidos com essas ferramentas, você os recebe já como itens fundidos.",
+  "jei.morevanillalib.glowstone_drops.desc": "Se você quebrar a pedra luminosa com essas ferramentas, você sempre obterá 4 pó de pedra luminosa.",
+  "jei.morevanillalib.paper_damage.desc": "Se você usar essas ferramentas, há uma chance de %d%% de causar %d a %d danos de corações.",
+
+  "jei.morevanillalib.coal_double_drop.desc": "Se você usar esta ferramenta, há uma chance de %d%% de receber um pedaço de carvão se você minerar um minério de carvão.",
+  "jei.morevanillalib.diamond_double_drop.desc": "Se você usar esta ferramenta, há uma chance de %d%% de receber um diamante se você minerar um minério de diamante.",
+  "jei.morevanillalib.emerald_double_drop.desc": "Se você usar esta ferramenta, há uma chance de %d%% de obter uma gema de esmeralda se você minerar um minério de esmeralda.",
+  "jei.morevanillalib.lapis_double_drop.desc": "Se você usar esta ferramenta, há uma chance de %d%% de obter até 3 gemas de lápis-lazúli se você minerar um minério de lápis-lazúli.",
+  "jei.morevanillalib.quartz_double_drop.desc": "Se você usar esta ferramenta, há uma chance de %d%% de obter um pedaço de quartzo se você minerar um minério de quartzo do nether.",
+  "jei.morevanillalib.redstone_double_drop.desc": "Se você usar esta ferramenta, há uma chance de %d%% de receber até 3 pó de redstone se você minerar um minério de redstone.",
+
+  "jei.morevanillalib.bone_damage.desc": "Se você matar um esqueleto (murchar) com essas ferramentas, você tem %d%% de chance de causar até %d%% mais dano.",
+  "jei.morevanillalib.ender_damage.desc": "Se você matar um enderman com essas ferramentas, você tem %d%% de chance de causar até %d%% mais dano.",
+  "jei.morevanillalib.fiery_damage.desc": "Se você matar um cubo de magma com essas ferramentas, você tem %d%% de chance de causar até %d%% mais dano.",
+  "jei.morevanillalib.prismarine_damage.desc": "Se você matar um guardião (ancião) com essas ferramentas, você tem %d%% de chance de causar até %d%% mais dano.",
+  "jei.morevanillalib.slime_damage.desc": "Se você matar um slime com essas ferramentas, você tem %d%% de chance de causar até %d%% mais dano.",
+
+  "tooltip.morevanillalib.durability": "Durabilidade: %s",
+  "tooltip.morevanillalib.harvest_level": "Nível de Colheita: %s",
+  "tooltip.morevanillalib.repairing_item": "Reparando Item: %s",
+  "tooltip.morevanillalib.more_information": "Pressione Shift para mais informações"
+}
