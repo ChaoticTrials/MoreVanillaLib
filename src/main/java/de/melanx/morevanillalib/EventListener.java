@@ -1,40 +1,68 @@
 package de.melanx.morevanillalib;
 
 import de.melanx.morevanillalib.data.ModTags;
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
+import de.melanx.morevanillalib.util.ToolUtil;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
+import net.minecraft.world.entity.monster.*;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class EventListener {
 
-    @SubscribeEvent(priority = EventPriority.LOWEST)
-    public void onEntityAttackFrom(LivingAttackEvent event) {
-        if (event.getSource().getEntity() instanceof LivingEntity entity) {
-            if (entity.getMainHandItem().is(ModTags.Items.SLIME_TOOLS) || entity.getOffhandItem().is(ModTags.Items.SLIME_TOOLS)) {
-                LivingEntity target = event.getEntityLiving();
-                target.knockback(1.5F, Mth.sin((float) (entity.yRot * Math.PI / 180)), -Mth.cos((float) (entity.yRot * Math.PI / 180)));
-            }
+    @SubscribeEvent
+    public void onBlockBreak(BlockEvent.BreakEvent event) {
+        Player player = event.getPlayer();
+        ItemStack item = player.getMainHandItem();
+        if (FeatureConfig.PaperDamage.enabled && item.is(ModTags.Items.PAPER_TOOLS)
+                && player.level.random.nextDouble() < FeatureConfig.PaperDamage.chance
+                && event.getState().getDestroySpeed(player.level, event.getPos()) != 0.0f) {
+            ToolUtil.paperDamage(player);
         }
     }
 
-    @SubscribeEvent(priority = EventPriority.LOWEST)
-    public void onPlayerAttackEntity(AttackEntityEvent event) {
-        LivingEntity player = event.getPlayer();
-        Entity target = event.getTarget();
+    @SubscribeEvent
+    public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
+        Player player = event.getPlayer();
+        if (!player.level.isClientSide
+                && player.getMainHandItem().is(ModTags.Items.PAPER_TOOLS)
+                && FeatureConfig.PaperDamage.enabled
+                && player.level.random.nextDouble() < FeatureConfig.PaperDamage.chance
+                && event.getUseItem() == Event.Result.ALLOW) {
+            ToolUtil.paperDamage(player);
+        }
+    }
 
-        // Living entities are handled by `onEntityAttackFrom`
-        if (target instanceof LivingEntity) {
+    @SubscribeEvent
+    public void onPlayerAttackTarget(AttackEntityEvent event) {
+        if (event.getTarget() instanceof LivingEntity target
+                && !target.level.isClientSide
+                && event.getPlayer().getMainHandItem().is(ModTags.Items.PAPER_TOOLS)
+                && FeatureConfig.PaperDamage.enabled
+                && target.level.random.nextDouble() < FeatureConfig.PaperDamage.chance) {
+            ToolUtil.paperDamage(event.getPlayer());
+        }
+    }
+
+    @SubscribeEvent
+    public void onLivingDamage(LivingDamageEvent event) {
+        if (!(event.getSource().getEntity() instanceof Player player)) {
             return;
         }
 
-        if (player.getMainHandItem().is(ModTags.Items.SLIME_TOOLS) || player.getOffhandItem().is(ModTags.Items.SLIME_TOOLS)) {
-            target.push(-Mth.sin((float) (player.yRot * Math.PI / 180)) * 1.5F, 0.1D, Mth.cos((float) (player.yRot * Math.PI / 180)) * 1.5F);
-            player.setDeltaMovement(player.getDeltaMovement().multiply(0.6, 1, 0.6));
-            player.setSprinting(false);
+        LivingEntity entity = event.getEntityLiving();
+        ItemStack item = player.getMainHandItem();
+        if ((item.is(ModTags.Items.BONE_TOOLS) && entity instanceof AbstractSkeleton)
+                || (item.is(ModTags.Items.ENDER_TOOLS) && (entity instanceof EnderMan || entity instanceof Endermite))
+                || (item.is(ModTags.Items.FIERY_TOOLS) && entity instanceof MagmaCube)
+                || (item.is(ModTags.Items.PRISMARINE_TOOLS) && entity instanceof Guardian)
+                || (item.is(ModTags.Items.SLIME_TOOLS) && (entity instanceof Slime && !(entity instanceof MagmaCube)))) {
+            ToolUtil.moreDamage(event);
         }
     }
 }

@@ -1,7 +1,8 @@
 package de.melanx.morevanillalib.core.modifier;
 
 import com.google.gson.JsonObject;
-import de.melanx.morevanillalib.config.FeatureConfig;
+import de.melanx.morevanillalib.FeatureConfig;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
@@ -14,8 +15,6 @@ import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.items.ItemHandlerHelper;
 
 import javax.annotation.Nonnull;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class AutoSmeltModifier extends LootModifier {
 
@@ -33,9 +32,11 @@ public class AutoSmeltModifier extends LootModifier {
 
     @Nonnull
     @Override
-    protected List<ItemStack> doApply(List<ItemStack> generatedLoot, LootContext context) {
+    protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
         if (!FeatureConfig.autoSmelt) return generatedLoot;
-        return generatedLoot.stream().map(stack -> smelt(stack, context)).collect(Collectors.toList());
+        ObjectArrayList<ItemStack> ret = new ObjectArrayList<>();
+        generatedLoot.forEach(stack -> ret.add(smelt(stack, context)));
+        return ret;
     }
 
     public static class Serializer extends GlobalLootModifierSerializer<AutoSmeltModifier> {

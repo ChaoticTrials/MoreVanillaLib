@@ -1,16 +1,6 @@
 {
   "itemGroup.morevanillalib": "MoreVanillaLib",
 
-  "item.morevanillalib.obsidian_shard": "Obsidian Shard",
-  "item.morevanillalib.paper_bundle": "Bundle of Paper",
-
-  "block.morevanillalib.clean_end_stone": "Clean Endstone",
-
-  "enchantment.morevanillalib.repairing_luck": "Luck of Cheap Repairing",
-  "enchantment.morevanillalib.repairing_luck.desc": "Reduces the repair costs in the anvil to a minimum.",
-  "enchantment.morevanillalib.power_of_the_depth": "Power of the Depth",
-  "enchantment.morevanillalib.power_of_the_depth.desc": "Increases the mining depth for Hammers and Excavators.",
-
   "death.attack.paperCut": "%1$s was cut to death with paper",
 
   "jei.morevanillalib.bone_heads.desc": "If you kill a (wither) skeleton, there is a %d%% chance to get a head dropped.",
@@ -31,11 +21,6 @@
   "jei.morevanillalib.fiery_damage.desc": "If you kill a magma slime with these tools, you have a %d%% chance to make up to %d%% more damage.",
   "jei.morevanillalib.prismarine_damage.desc": "If you kill a (elder) guardian with these tools, you have a %d%% chance to make up to %d%% more damage.",
   "jei.morevanillalib.slime_damage.desc": "If you kill a slime with these tools, you have a %d%% chance to make up to %d%% more damage.",
-
-  "tooltip.morevanillalib.disabled_item": "This item is disabled in config.",
-  "tooltip.morevanillalib.toggleMode": "Mode",
-  "tooltip.morevanillalib.pathMode": "Create %s",
-  "tooltip.morevanillalib.hoeMode": "Till soil",
 
   "tooltip.morevanillalib.durability": "Durability: %s",
   "tooltip.morevanillalib.harvest_level": "Harvest Level: %s",

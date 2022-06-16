@@ -1,14 +1,6 @@
 {
   "itemGroup.morevanillalib": "MoreVanillaLib",
 
-  "item.morevanillalib.obsidian_shard": "Обсидиановый осколок",
-  "item.morevanillalib.paper_bundle": "Стопка бумаги",
-
-  "block.morevanillalib.clean_end_stone": "Чистый эндерняк",
-
-  "enchantment.morevanillalib.repairing_luck": "Удача дешёвого ремонта",
-  "enchantment.morevanillalib.repairing_luck.desc": "Снижает затраты на ремонт в наковальне до минимума.",
-
   "death.attack.paperCut": "%1$s был изрезан до смерти бумагой",
 
   "jei.morevanillalib.bone_heads.desc": "Если вы убьёте скелета или визер-скелета, есть %d%% шанс выпадения головы.",

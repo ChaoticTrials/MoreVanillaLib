@@ -1,4 +1,5 @@
 {
+  "type": "morevanillalib:extra_drops",
   "conditions": [
     {
       "condition": "minecraft:match_tool",
@@ -6,6 +7,5 @@
         "tag": "morevanillalib:tools"
       }
     }
-  ],
-  "type": "morevanillalib:extra_drops"
+  ]
 }

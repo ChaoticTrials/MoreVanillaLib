@@ -1,4 +1,4 @@
 {
-  "conditions": [],
-  "type": "morevanillalib:head_drops"
+  "type": "morevanillalib:head_drops",
+  "conditions": []
 }

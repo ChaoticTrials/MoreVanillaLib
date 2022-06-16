@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion = "[40,)"
+loaderVersion = "[41,)"
 license = "Apache-2.0"
 issueTrackerURL = "https://www.github.com/MelanX/MoreVanillaLib/issues/"
 
@@ -10,30 +10,29 @@ displayName="MoreVanillaLib"
 updateJSONURL="https://assets.melanx.de/updates/morevanillalib.json"
 authors="MelanX"
 description='''
-Lib mod for my Vanilla mods:
+Lib mod which expands features for my Vanilla mods:
 - MoreVanillaTools
-- Vanilla Excavators
-- Vanilla Hammers
+- Simply Tools
 - Vanilla AIOTs
 '''
 
 [[dependencies.morevanillalib]]
     modId="forge"
     mandatory=true
-    versionRange="[40,)"
+    versionRange="[41,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.morevanillalib]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18.2, 1.19)"
+    versionRange="[1.19, 1.20)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.morevanillalib]]
     modId="libx"
     mandatory=true
-    versionRange="[1.18.2-3.2.0,)"
+    versionRange="[1.19-4.0.1,)"
     ordering="AFTER"
     side="BOTH"

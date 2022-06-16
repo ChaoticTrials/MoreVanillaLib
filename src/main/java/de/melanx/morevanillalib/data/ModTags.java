@@ -1,19 +1,15 @@
 package de.melanx.morevanillalib.data;
 
-import de.melanx.morevanillalib.ModContent;
 import de.melanx.morevanillalib.MoreVanillaLib;
-import io.github.noeppi_noeppi.libx.annotation.data.Datagen;
-import io.github.noeppi_noeppi.libx.data.provider.CommonTagsProviderBase;
-import io.github.noeppi_noeppi.libx.mod.ModX;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import org.moddingx.libx.annotation.data.Datagen;
+import org.moddingx.libx.datagen.provider.CommonTagsProviderBase;
+import org.moddingx.libx.mod.ModX;
 
 @Datagen
 public class ModTags extends CommonTagsProviderBase {
@@ -25,11 +21,6 @@ public class ModTags extends CommonTagsProviderBase {
     @SuppressWarnings("unchecked")
     @Override
     public void setup() {
-        this.block(BlockTags.MINEABLE_WITH_PICKAXE).add(ModContent.cleanEndStone);
-
-        this.block(Tags.Blocks.END_STONES).addTags(Blocks.CLEAN_ENDSTONE);
-        this.block(Blocks.MINEABLE_WITH_AIOT).addTags(BlockTags.MINEABLE_WITH_AXE, BlockTags.MINEABLE_WITH_HOE, BlockTags.MINEABLE_WITH_PICKAXE, BlockTags.MINEABLE_WITH_SHOVEL);
-
         this.item(Items.WOOD_TOOLS);
         this.item(Items.STONE_TOOLS);
         this.item(Items.IRON_TOOLS);
@@ -71,41 +62,9 @@ public class ModTags extends CommonTagsProviderBase {
                 Items.REDSTONE_TOOLS,
                 Items.SLIME_TOOLS
         );
-
-        this.copyBlock(Blocks.CLEAN_ENDSTONE, Items.CLEAN_ENDSTONE);
-    }
-
-    @Override
-    public void defaultBlockTags(Block block) {
-        if (block == ModContent.cleanEndStone) {
-            this.block(Blocks.CLEAN_ENDSTONE).add(ModContent.cleanEndStone);
-        }
-    }
-
-    @Override
-    public void defaultItemTags(Item item) {
-        if (item == ModContent.obsidianShard) {
-            this.item(Items.DUSTS_OBSIDIAN).add(item);
-        } else if (item == ModContent.paperBundle) {
-            this.item(Items.PAPER_BUNDLE).add(item);
-        }
-    }
-
-    public static class Blocks {
-        public static final TagKey<Block> CLEAN_ENDSTONE = tag("clean_endstone");
-        public static final TagKey<Block> MINEABLE_WITH_AIOT = tag("mineable/aiot");
-
-        private static TagKey<Block> tag(String name) {
-            return BlockTags.create(new ResourceLocation("forge", name));
-        }
     }
 
     public static class Items {
-        public static final TagKey<Item> CLEAN_ENDSTONE = tag("clean_endstone");
-
-        public static final TagKey<Item> DUSTS_OBSIDIAN = tag("dusts/obsidian");
-        public static final TagKey<Item> PAPER_BUNDLE = tag("paper_bundle");
-
         public static final TagKey<Item> WOOD_TOOLS = modTag("tools/wood");
         public static final TagKey<Item> STONE_TOOLS = modTag("tools/stone");
         public static final TagKey<Item> IRON_TOOLS = modTag("tools/iron");

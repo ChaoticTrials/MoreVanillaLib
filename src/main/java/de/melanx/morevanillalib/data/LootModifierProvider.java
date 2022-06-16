@@ -3,7 +3,6 @@ package de.melanx.morevanillalib.data;
 import de.melanx.morevanillalib.ModContent;
 import de.melanx.morevanillalib.MoreVanillaLib;
 import de.melanx.morevanillalib.core.modifier.*;
-import io.github.noeppi_noeppi.libx.annotation.data.Datagen;
 import net.minecraft.advancements.critereon.EnchantmentPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
@@ -12,6 +11,7 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.predicates.*;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
+import org.moddingx.libx.annotation.data.Datagen;
 
 @Datagen
 public class LootModifierProvider extends GlobalLootModifierProvider {

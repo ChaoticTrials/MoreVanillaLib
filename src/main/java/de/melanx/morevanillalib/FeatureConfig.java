@@ -1,15 +1,13 @@
-package de.melanx.morevanillalib.config;
+package de.melanx.morevanillalib;
 
-import io.github.noeppi_noeppi.libx.annotation.config.RegisterConfig;
-import io.github.noeppi_noeppi.libx.config.Config;
-import io.github.noeppi_noeppi.libx.config.Group;
-import io.github.noeppi_noeppi.libx.config.validator.DoubleRange;
+import org.moddingx.libx.annotation.config.RegisterConfig;
+import org.moddingx.libx.config.Config;
+import org.moddingx.libx.config.Group;
+import org.moddingx.libx.config.validate.DoubleRange;
+import org.moddingx.libx.config.validate.FloatRange;
 
 @RegisterConfig(value = "features")
 public class FeatureConfig {
-
-    @Config("Should Vanilla Excavators/Hammers and Vanilla AIOT only add tools with existing vanilla material tools?")
-    public static boolean vanillaOnly = false;
 
     @Config("Should fiery tools automatically smelt blocks while mining?")
     public static boolean autoSmelt = true;
@@ -17,14 +15,11 @@ public class FeatureConfig {
     @Config("Should glowstone tools always drop 4 glowstone dust when breaking glowstone blocks? (excluded by silk touch)")
     public static boolean glowstoneDrops = true;
 
-    @Config("Should enchantments be obtainable?")
-    public static boolean enchantments = true;
-
     @Group
     public static class ExtraDrop {
 
         @Config("Should tools drop corresponding materials when being used?")
-        public static boolean enabled = false;
+        public static boolean enabled = true;
 
         @Config("Chance (1 = 100%, 0 = 0%)")
         @DoubleRange(min = 0)
@@ -43,11 +38,11 @@ public class FeatureConfig {
         public static boolean enabled = true;
 
         @Config("Value to multiply with dealt damage.")
-        @DoubleRange(max = 10.0)
+        @DoubleRange(min = 0, max = 10.0)
         public static double maxMultiplier = 2.5;
 
         @Config("Chance (1 = 100%, 0 = 0%)")
-        @DoubleRange(min = 0)
+        @DoubleRange(min = 0, max = 1)
         public static double chance = 0.2;
     }
 
@@ -58,7 +53,7 @@ public class FeatureConfig {
         public static boolean enabled = true;
 
         @Config("Chance (1 = 100%, 0 = 0%)")
-        @DoubleRange(min = 0)
+        @DoubleRange(min = 0, max = 1)
         public static double chance = 0.05;
     }
 
@@ -69,13 +64,15 @@ public class FeatureConfig {
         public static boolean enabled = true;
 
         @Config("Chance (1 = 100%, 0 = 0%)")
-        @DoubleRange(min = 0)
+        @DoubleRange(min = 0, max = 1)
         public static double chance = 0.1;
 
         @Config("Minimum damage amount. 1 = 0.5 hearts")
+        @FloatRange(min = 0)
         public static float minDamage = 0.5F;
 
         @Config("Maximum damage amount. 5 = 2.5 hearts")
+        @FloatRange(min = 0)
         public static float maxDamage = 2.5F;
     }
 
@@ -85,7 +82,7 @@ public class FeatureConfig {
         @Config({"Should ores drop more materials when mined with corresponding tool?",
                 "This is to disable all values. If enabled, you can toggle each resource at you wish.",
                 "Example: Coal Ore mined with Coal Pickaxe drops more than 1 coal."})
-        public static boolean enabledAll = false;
+        public static boolean enabledAll = true;
 
         @Group
         public static class Diamond {
@@ -94,7 +91,7 @@ public class FeatureConfig {
             public static boolean enabled = true;
 
             @Config("Chance (1 = 100%, 0 = 0%)")
-            @DoubleRange(min = 0)
+            @DoubleRange(min = 0, max = 1)
             public static double chance = 0.001;
         }
 
@@ -105,7 +102,7 @@ public class FeatureConfig {
             public static boolean enabled = true;
 
             @Config("Chance (1 = 100%, 0 = 0%)")
-            @DoubleRange(min = 0)
+            @DoubleRange(min = 0, max = 1)
             public static double chance = 0.2;
         }
 
@@ -116,7 +113,7 @@ public class FeatureConfig {
             public static boolean enabled = true;
 
             @Config("Chance (1 = 100%, 0 = 0%)")
-            @DoubleRange(min = 0)
+            @DoubleRange(min = 0, max = 1)
             public static double chance = 0.001;
         }
 
@@ -127,7 +124,7 @@ public class FeatureConfig {
             public static boolean enabled = true;
 
             @Config("Chance (1 = 100%, 0 = 0%)")
-            @DoubleRange(min = 0)
+            @DoubleRange(min = 0, max = 1)
             public static double chance = 0.2;
         }
 
@@ -138,7 +135,7 @@ public class FeatureConfig {
             public static boolean enabled = true;
 
             @Config("Chance (1 = 100%, 0 = 0%)")
-            @DoubleRange(min = 0)
+            @DoubleRange(min = 0, max = 1)
             public static double chance = 0.2;
         }
 
@@ -149,7 +146,7 @@ public class FeatureConfig {
             public static boolean enabled = true;
 
             @Config("Chance (1 = 100%, 0 = 0%)")
-            @DoubleRange(min = 0)
+            @DoubleRange(min = 0, max = 1)
             public static double chance = 0.2;
         }
     }

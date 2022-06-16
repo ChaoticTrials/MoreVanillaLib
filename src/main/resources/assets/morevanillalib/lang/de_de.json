@@ -1,16 +1,6 @@
 {
   "itemGroup.morevanillalib": "MoreVanillaLib",
 
-  "item.morevanillalib.obsidian_shard": "Obsidianscherbe",
-  "item.morevanillalib.paper_bundle": "Papierbündel",
-
-  "block.morevanillalib.clean_end_stone": "Reiner Endstein",
-
-  "enchantment.morevanillalib.repairing_luck": "Glück der billigen Reparatur",
-  "enchantment.morevanillalib.repairing_luck.desc": "Verringert die Reperaturkosten im Amboss auf ein Minimum.",
-  "enchantment.morevanillalib.power_of_the_depth": "Kraft der Tiefe",
-  "enchantment.morevanillalib.power_of_the_depth.desc": "Erhöht die Abbautiefe für Hämmer und Ausgraber.",
-
   "death.attack.paperCut": "%1$s wurde durch Papier niedergestreckt.",
 
   "jei.morevanillalib.bone_heads.desc": "Wenn du ein (Wither-)Skelett mit einem dieser Werkzeuge tötest, hast du eien %d%%ige Chance, einen Kopf zu bekommen.",
@@ -31,11 +21,6 @@
   "jei.morevanillalib.fiery_damage.desc": "Wenn du einen Magmaschleim mit einem dieser Werkzeuge tötest, machst du zu einer %d%%igen Chance bis zu %d%% mehr Schaden.",
   "jei.morevanillalib.prismarine_damage.desc": "Wenn du einen (Großen) Wächter mit einem dieser Werkzeuge tötest, machst du zu einer %d%%igen Chance bis zu %d%% mehr Schaden.",
   "jei.morevanillalib.slime_damage.desc": "Wenn du einen Schleim mit einem dieser Werkzeuge tötest, machst du zu einer %d%%igen Chance bis zu %d%% mehr Schaden.",
-
-  "tooltip.morevanillalib.disabled_item": "Dieses Werkzeug ist in den Einstellungen deaktiviert.",
-  "tooltip.morevanillalib.toggleMode": "Modus",
-  "tooltip.morevanillalib.pathMode": "%s erschaffen",
-  "tooltip.morevanillalib.hoeMode": "Acker bestellen",
 
   "tooltip.morevanillalib.durability": "Haltbarkeit: %s",
   "tooltip.morevanillalib.harvest_level": "Abbaulevel: %s",

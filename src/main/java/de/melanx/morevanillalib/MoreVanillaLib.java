@@ -1,19 +1,11 @@
 package de.melanx.morevanillalib;
 
-import de.melanx.morevanillalib.core.crafting.VanillaCondition;
-import io.github.noeppi_noeppi.libx.mod.registration.ModXRegistration;
-import io.github.noeppi_noeppi.libx.mod.registration.RegistrationBuilder;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.loading.FMLEnvironment;
-
-import javax.annotation.Nonnull;
+import org.moddingx.libx.mod.ModXRegistration;
+import org.moddingx.libx.registration.RegistrationBuilder;
 
 @Mod("morevanillalib")
 public final class MoreVanillaLib extends ModXRegistration {
@@ -21,24 +13,14 @@ public final class MoreVanillaLib extends ModXRegistration {
     private static MoreVanillaLib instance;
 
     public MoreVanillaLib() {
-        super(new CreativeModeTab("morevanillalib") {
-            @Nonnull
-            @Override
-            public ItemStack makeIcon() {
-                return new ItemStack(ModContent.obsidianShard);
-            }
-        });
         instance = this;
 
         MinecraftForge.EVENT_BUS.register(new EventListener());
-        if (FMLEnvironment.dist == Dist.CLIENT) {
-            MinecraftForge.EVENT_BUS.register(new ClientEventListener());
-        }
     }
 
     @Override
     protected void setup(FMLCommonSetupEvent event) {
-        CraftingHelper.register(VanillaCondition.SERIALIZER);
+
     }
 
     @Override
@@ -52,6 +34,6 @@ public final class MoreVanillaLib extends ModXRegistration {
 
     @Override
     protected void initRegistration(RegistrationBuilder builder) {
-        builder.setVersion(1);
+        builder.build();
     }
 }
