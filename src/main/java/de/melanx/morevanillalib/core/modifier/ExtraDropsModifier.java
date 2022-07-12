@@ -1,9 +1,9 @@
 package de.melanx.morevanillalib.core.modifier;
 
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import de.melanx.morevanillalib.FeatureConfig;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.DiggerItem;
@@ -12,12 +12,14 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
+import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 
 import javax.annotation.Nonnull;
 
 public class ExtraDropsModifier extends LootModifier {
+
+    public static final Codec<ExtraDropsModifier> CODEC = RecordCodecBuilder.create(instance -> codecStart(instance).apply(instance, ExtraDropsModifier::new));
 
     public ExtraDropsModifier(LootItemCondition[] conditionsIn) {
         super(conditionsIn);
@@ -42,16 +44,8 @@ public class ExtraDropsModifier extends LootModifier {
         return generatedLoot;
     }
 
-    public static class Serializer extends GlobalLootModifierSerializer<ExtraDropsModifier> {
-
-        @Override
-        public ExtraDropsModifier read(ResourceLocation name, JsonObject json, LootItemCondition[] conditions) {
-            return new ExtraDropsModifier(conditions);
-        }
-
-        @Override
-        public JsonObject write(ExtraDropsModifier instance) {
-            return this.makeConditions(instance.conditions);
-        }
+    @Override
+    public Codec<? extends IGlobalLootModifier> codec() {
+        return CODEC;
     }
 }

@@ -1,15 +1,15 @@
 package de.melanx.morevanillalib;
 
+import com.mojang.serialization.Codec;
 import de.melanx.morevanillalib.core.modifier.*;
-import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
 import org.moddingx.libx.annotation.registration.RegisterClass;
 
-@RegisterClass(registry = "LOOT_MODIFIER_SERIALIZERS")
+@RegisterClass(registry = "GLOBAL_LOOT_MODIFIER_SERIALIZERS")
 public class ModContent {
 
-    public static final GlobalLootModifierSerializer<AutoSmeltModifier> autoSmelt = new AutoSmeltModifier.Serializer();
-    public static final GlobalLootModifierSerializer<GlowstoneToolModifier> glowstoneDrops = new GlowstoneToolModifier.Serializer();
-    public static final GlobalLootModifierSerializer<DoubleDropModifier> doubleDrops = new DoubleDropModifier.Serializer();
-    public static final GlobalLootModifierSerializer<ExtraDropsModifier> extraDrops = new ExtraDropsModifier.Serializer();
-    public static final GlobalLootModifierSerializer<HeadDropModifier> headDrops = new HeadDropModifier.Serializer();
+    public static final Codec<AutoSmeltModifier> autoSmelt = AutoSmeltModifier.CODEC;
+    public static final Codec<GlowstoneToolModifier> glowstoneDrops = GlowstoneToolModifier.CODEC;
+    public static final Codec<DoubleDropModifier> doubleDrops = DoubleDropModifier.CODEC;
+    public static final Codec<ExtraDropsModifier> extraDrops = ExtraDropsModifier.CODEC;
+    public static final Codec<HeadDropModifier> headDrops = HeadDropModifier.CODEC;
 }

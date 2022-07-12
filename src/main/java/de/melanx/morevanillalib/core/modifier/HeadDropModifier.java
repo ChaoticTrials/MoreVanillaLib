@@ -1,10 +1,10 @@
 package de.melanx.morevanillalib.core.modifier;
 
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import de.melanx.morevanillalib.FeatureConfig;
 import de.melanx.morevanillalib.data.ModTags;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.AbstractSkeleton;
@@ -13,17 +13,18 @@ import net.minecraft.world.entity.monster.WitherSkeleton;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraftforge.common.loot.GlobalLootModifierSerializer;
+import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 
 import javax.annotation.Nonnull;
 
 public class HeadDropModifier extends LootModifier {
+
+    public static final Codec<HeadDropModifier> CODEC = RecordCodecBuilder.create(instance -> codecStart(instance).apply(instance, HeadDropModifier::new));
 
     public HeadDropModifier(LootItemCondition[] conditionsIn) {
         super(conditionsIn);
@@ -36,7 +37,7 @@ public class HeadDropModifier extends LootModifier {
         Entity killer = context.getParamOrNull(LootContextParams.KILLER_ENTITY);
         if (target instanceof AbstractSkeleton && killer instanceof LivingEntity) {
             ItemStack weapon = ((LivingEntity) killer).getMainHandItem();
-            int looting = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.MOB_LOOTING, weapon);
+            int looting = weapon.getEnchantmentLevel(Enchantments.MOB_LOOTING);
 
             if (weapon.is(ModTags.Items.BONE_TOOLS) && FeatureConfig.HeadDrop.enabled && context.getRandom().nextDouble() < FeatureConfig.HeadDrop.chance + (looting / 100F)) {
                 Item skull = null;
@@ -55,16 +56,8 @@ public class HeadDropModifier extends LootModifier {
         return generatedLoot;
     }
 
-    public static class Serializer extends GlobalLootModifierSerializer<HeadDropModifier> {
-
-        @Override
-        public HeadDropModifier read(ResourceLocation name, JsonObject json, LootItemCondition[] conditions) {
-            return new HeadDropModifier(conditions);
-        }
-
-        @Override
-        public JsonObject write(HeadDropModifier instance) {
-            return this.makeConditions(instance.conditions);
-        }
+    @Override
+    public Codec<? extends IGlobalLootModifier> codec() {
+        return CODEC;
     }
 }

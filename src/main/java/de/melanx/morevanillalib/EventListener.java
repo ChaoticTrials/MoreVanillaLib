@@ -9,7 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -28,7 +28,7 @@ public class EventListener {
 
     @SubscribeEvent
     public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
-        Player player = event.getPlayer();
+        Player player = event.getEntity();
         if (!player.level.isClientSide
                 && player.getMainHandItem().is(ModTags.Items.PAPER_TOOLS)
                 && FeatureConfig.PaperDamage.enabled
@@ -42,10 +42,10 @@ public class EventListener {
     public void onPlayerAttackTarget(AttackEntityEvent event) {
         if (event.getTarget() instanceof LivingEntity target
                 && !target.level.isClientSide
-                && event.getPlayer().getMainHandItem().is(ModTags.Items.PAPER_TOOLS)
+                && event.getEntity().getMainHandItem().is(ModTags.Items.PAPER_TOOLS)
                 && FeatureConfig.PaperDamage.enabled
                 && target.level.random.nextDouble() < FeatureConfig.PaperDamage.chance) {
-            ToolUtil.paperDamage(event.getPlayer());
+            ToolUtil.paperDamage(event.getEntity());
         }
     }
 
@@ -55,7 +55,7 @@ public class EventListener {
             return;
         }
 
-        LivingEntity entity = event.getEntityLiving();
+        LivingEntity entity = event.getEntity();
         ItemStack item = player.getMainHandItem();
         if ((item.is(ModTags.Items.BONE_TOOLS) && entity instanceof AbstractSkeleton)
                 || (item.is(ModTags.Items.ENDER_TOOLS) && (entity instanceof EnderMan || entity instanceof Endermite))

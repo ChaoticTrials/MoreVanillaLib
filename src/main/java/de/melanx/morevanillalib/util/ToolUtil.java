@@ -13,7 +13,7 @@ public class ToolUtil {
 
     public static void moreDamage(LivingDamageEvent event) {
         if (event.getSource().getEntity() instanceof Player) {
-            RandomSource rand = event.getEntityLiving().level.random;
+            RandomSource rand = event.getEntity().level.random;
 
             if (FeatureConfig.ExtraDamage.enabled && rand.nextDouble() < FeatureConfig.ExtraDamage.chance) {
                 float multiplier = (float) (rand.nextFloat() * FeatureConfig.ExtraDamage.maxMultiplier);
