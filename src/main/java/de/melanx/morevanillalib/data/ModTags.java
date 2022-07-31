@@ -29,6 +29,7 @@ public class ModTags extends CommonTagsProviderBase {
         this.item(Items.NETHERITE_TOOLS);
         this.item(Items.BONE_TOOLS);
         this.item(Items.COAL_TOOLS);
+        this.item(Items.COPPER_TOOLS);
         this.item(Items.EMERALD_TOOLS);
         this.item(Items.ENDER_TOOLS);
         this.item(Items.FIERY_TOOLS);
@@ -50,6 +51,7 @@ public class ModTags extends CommonTagsProviderBase {
                 Items.NETHERITE_TOOLS,
                 Items.BONE_TOOLS,
                 Items.COAL_TOOLS,
+                Items.COPPER_TOOLS,
                 Items.EMERALD_TOOLS,
                 Items.ENDER_TOOLS,
                 Items.FIERY_TOOLS,
@@ -72,6 +74,7 @@ public class ModTags extends CommonTagsProviderBase {
         public static final TagKey<Item> DIAMOND_TOOLS = modTag("tools/diamond");
         public static final TagKey<Item> BONE_TOOLS = modTag("tools/bone");
         public static final TagKey<Item> COAL_TOOLS = modTag("tools/coal");
+        public static final TagKey<Item> COPPER_TOOLS = modTag("tools/copper");
         public static final TagKey<Item> EMERALD_TOOLS = modTag("tools/emerald");
         public static final TagKey<Item> ENDER_TOOLS = modTag("tools/ender");
         public static final TagKey<Item> FIERY_TOOLS = modTag("tools/fiery");
