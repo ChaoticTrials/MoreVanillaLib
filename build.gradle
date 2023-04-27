@@ -8,7 +8,7 @@ apply plugin: 'org.moddingx.modgradle.cursedep'
 repositories {
     maven {
         name = "JEI"
-        url = "https://dvs1.progwml6.com/files/maven/"
+        url = "https://maven.blamejared.com/"
     }
     maven {
         name = "LibX"
@@ -22,8 +22,8 @@ repositories {
 }
 
 dependencies {
-    annotationProcessor fg.deobf("org.moddingx:LibX:1.19.1-4.1.1")
+    annotationProcessor fg.deobf("org.moddingx:LibX:1.19.4-4.4.4")
 
-    implementation fg.deobf("org.moddingx:LibX:1.19.1-4.1.1")
-    compileOnly fg.deobf("mezz.jei:jei-1.19.1-forge:11.2.0.241")
+    implementation fg.deobf("org.moddingx:LibX:1.19.4-4.4.4")
+    compileOnly fg.deobf("mezz.jei:jei-1.19.4-forge:13.1.0.6")
 }

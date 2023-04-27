@@ -1,24 +1,19 @@
 package de.melanx.morevanillalib.data;
 
 import de.melanx.morevanillalib.MoreVanillaLib;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import org.moddingx.libx.annotation.data.Datagen;
-import org.moddingx.libx.datagen.provider.CommonTagsProviderBase;
-import org.moddingx.libx.mod.ModX;
+import org.moddingx.libx.datagen.DatagenContext;
+import org.moddingx.libx.datagen.provider.tags.CommonTagsProviderBase;
 
-@Datagen
 public class ModTags extends CommonTagsProviderBase {
 
-    public ModTags(ModX mod, DataGenerator generator, ExistingFileHelper helper) {
-        super(mod, generator, helper);
+    public ModTags(DatagenContext context) {
+        super(context);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public void setup() {
         this.item(Items.WOOD_TOOLS);
@@ -42,6 +37,7 @@ public class ModTags extends CommonTagsProviderBase {
         this.item(Items.QUARTZ_TOOLS);
         this.item(Items.REDSTONE_TOOLS);
         this.item(Items.SLIME_TOOLS);
+        //noinspection unchecked
         this.item(Items.ALL_TOOLS).addTags(
                 Items.WOOD_TOOLS,
                 Items.STONE_TOOLS,

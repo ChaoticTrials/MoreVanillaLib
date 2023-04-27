@@ -5,18 +5,16 @@ import de.melanx.morevanillalib.core.modifier.*;
 import net.minecraft.advancements.critereon.EnchantmentPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.predicates.*;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
-import org.moddingx.libx.annotation.data.Datagen;
+import org.moddingx.libx.datagen.DatagenContext;
 
-@Datagen
 public class LootModifierProvider extends GlobalLootModifierProvider {
 
-    public LootModifierProvider(DataGenerator generator) {
-        super(generator, MoreVanillaLib.getInstance().modid);
+    public LootModifierProvider(DatagenContext context) {
+        super(context.output(), MoreVanillaLib.getInstance().modid);
     }
 
     @Override

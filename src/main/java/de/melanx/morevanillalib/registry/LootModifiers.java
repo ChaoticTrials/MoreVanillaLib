@@ -1,11 +1,11 @@
-package de.melanx.morevanillalib;
+package de.melanx.morevanillalib.registry;
 
 import com.mojang.serialization.Codec;
 import de.melanx.morevanillalib.core.modifier.*;
 import org.moddingx.libx.annotation.registration.RegisterClass;
 
 @RegisterClass(registry = "GLOBAL_LOOT_MODIFIER_SERIALIZERS")
-public class ModContent {
+public class LootModifiers {
 
     public static final Codec<AutoSmeltModifier> autoSmelt = AutoSmeltModifier.CODEC;
     public static final Codec<GlowstoneToolModifier> glowstoneDrops = GlowstoneToolModifier.CODEC;

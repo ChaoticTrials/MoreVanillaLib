@@ -1,0 +1,6 @@
+{
+  "death_message_type": "intentional_game_design",
+  "exhaustion": 0.0,
+  "message_id": "paperCut",
+  "scaling": "when_caused_by_living_non_player"
+}

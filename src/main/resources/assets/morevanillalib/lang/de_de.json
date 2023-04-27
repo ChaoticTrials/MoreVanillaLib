@@ -1,7 +1,5 @@
 {
-  "itemGroup.morevanillalib": "MoreVanillaLib",
-
-  "death.attack.paperCut": "%1$s wurde durch Papier niedergestreckt.",
+  "death.attack.paperCut.message": "%1$s wurde durch Papier niedergestreckt.",
 
   "jei.morevanillalib.bone_heads.desc": "Wenn du ein (Wither-)Skelett mit einem dieser Werkzeuge tötest, hast du eien %d%%ige Chance, einen Kopf zu bekommen.",
   "jei.morevanillalib.extra_drop.desc": "Wenn du eins dieser Werkzeuge benutzt, wird zu einer %d%%igen Chance ein Reparaturitem fallengelassen.",

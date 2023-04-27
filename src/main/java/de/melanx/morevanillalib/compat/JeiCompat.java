@@ -9,7 +9,7 @@ import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -105,7 +105,7 @@ public class JeiCompat implements IModPlugin {
     private Collection<Item> getValues(TagKey<Item> key) {
         Set<Item> items = Sets.newHashSet();
         //noinspection deprecation
-        for (Holder<Item> itemHolder : Registry.ITEM.getTagOrEmpty(key)) {
+        for (Holder<Item> itemHolder : BuiltInRegistries.ITEM.getTagOrEmpty(key)) {
             items.add(itemHolder.value());
         }
 
