@@ -2,7 +2,7 @@
   "type": "morevanillalib:double_drops",
   "conditions": [
     {
-      "condition": "minecraft:alternative",
+      "condition": "minecraft:any_of",
       "terms": [
         {
           "condition": "minecraft:match_tool",

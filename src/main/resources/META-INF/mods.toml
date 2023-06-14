@@ -1,11 +1,11 @@
 modLoader="javafml"
-loaderVersion = "[45,)"
+loaderVersion="[${fml},)"
 license = "Apache-2.0"
 issueTrackerURL = "https://www.github.com/MelanX/MoreVanillaLib/issues/"
 
 [[mods]]
 modId="morevanillalib"
-version="${file.jarVersion}"
+version="${version}"
 displayName="MoreVanillaLib"
 updateJSONURL="https://assets.melanx.de/updates/morevanillalib.json"
 authors="MelanX"
@@ -19,20 +19,20 @@ Lib mod which expands features for my Vanilla mods:
 [[dependencies.morevanillalib]]
     modId="forge"
     mandatory=true
-    versionRange="[45.0.49,)"
+    versionRange="[${forge},)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.morevanillalib]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19.4, 1.20)"
+    versionRange="[${minecraft},)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.morevanillalib]]
     modId="libx"
     mandatory=true
-    versionRange="[1.19.4-4.4.4,)"
+    versionRange="[1.20.1-5.0.0,)"
     ordering="AFTER"
     side="BOTH"

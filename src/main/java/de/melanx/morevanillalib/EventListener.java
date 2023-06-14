@@ -20,8 +20,8 @@ public class EventListener {
         Player player = event.getPlayer();
         ItemStack item = player.getMainHandItem();
         if (FeatureConfig.PaperDamage.enabled && item.is(ModTags.Items.PAPER_TOOLS)
-                && player.level.random.nextDouble() < FeatureConfig.PaperDamage.chance
-                && event.getState().getDestroySpeed(player.level, event.getPos()) != 0.0f) {
+                && player.level().random.nextDouble() < FeatureConfig.PaperDamage.chance
+                && event.getState().getDestroySpeed(player.level(), event.getPos()) != 0.0f) {
             ToolUtil.paperDamage(player);
         }
     }
@@ -29,10 +29,10 @@ public class EventListener {
     @SubscribeEvent
     public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
         Player player = event.getEntity();
-        if (!player.level.isClientSide
+        if (!player.level().isClientSide
                 && player.getMainHandItem().is(ModTags.Items.PAPER_TOOLS)
                 && FeatureConfig.PaperDamage.enabled
-                && player.level.random.nextDouble() < FeatureConfig.PaperDamage.chance
+                && player.level().random.nextDouble() < FeatureConfig.PaperDamage.chance
                 && event.getUseItem() == Event.Result.ALLOW) {
             ToolUtil.paperDamage(player);
         }
@@ -41,10 +41,10 @@ public class EventListener {
     @SubscribeEvent
     public void onPlayerAttackTarget(AttackEntityEvent event) {
         if (event.getTarget() instanceof LivingEntity target
-                && !target.level.isClientSide
+                && !target.level().isClientSide
                 && event.getEntity().getMainHandItem().is(ModTags.Items.PAPER_TOOLS)
                 && FeatureConfig.PaperDamage.enabled
-                && target.level.random.nextDouble() < FeatureConfig.PaperDamage.chance) {
+                && target.level().random.nextDouble() < FeatureConfig.PaperDamage.chance) {
             ToolUtil.paperDamage(event.getEntity());
         }
     }

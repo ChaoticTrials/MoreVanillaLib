@@ -29,7 +29,7 @@ public class LootModifierProvider extends GlobalLootModifierProvider {
                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.GLOWSTONE).build()
         }));
         this.add("double_drops", new DoubleDropModifier(new LootItemCondition[]{
-                AlternativeLootItemCondition.alternative(
+                AnyOfCondition.anyOf(
                         MatchTool.toolMatches(ItemPredicate.Builder.item().of(ModTags.Items.DIAMOND_TOOLS)),
                         MatchTool.toolMatches(ItemPredicate.Builder.item().of(ModTags.Items.COAL_TOOLS)),
                         MatchTool.toolMatches(ItemPredicate.Builder.item().of(ModTags.Items.EMERALD_TOOLS)),

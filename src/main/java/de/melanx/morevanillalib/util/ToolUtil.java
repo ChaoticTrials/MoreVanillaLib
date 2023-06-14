@@ -18,7 +18,7 @@ public class ToolUtil {
 
     public static void moreDamage(LivingDamageEvent event) {
         if (event.getSource().getEntity() instanceof Player) {
-            RandomSource rand = event.getEntity().level.random;
+            RandomSource rand = event.getEntity().level().random;
 
             if (FeatureConfig.ExtraDamage.enabled && rand.nextDouble() < FeatureConfig.ExtraDamage.chance) {
                 float multiplier = (float) (rand.nextFloat() * FeatureConfig.ExtraDamage.maxMultiplier);
@@ -28,9 +28,9 @@ public class ToolUtil {
     }
 
     public static void paperDamage(@Nullable LivingEntity entity) {
-        if (entity != null && entity.level instanceof ServerLevel level) {
+        if (entity != null && entity.level() instanceof ServerLevel level) {
             Registry<DamageType> damageRegistry = level.getServer().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE);
-            entity.hurt(new DamageSource(damageRegistry.getHolderOrThrow(DamageTypesProvider.PAPER_CUT)), Math.max(FeatureConfig.PaperDamage.minDamage, entity.level.random.nextFloat() * FeatureConfig.PaperDamage.maxDamage));
+            entity.hurt(new DamageSource(damageRegistry.getHolderOrThrow(DamageTypesProvider.PAPER_CUT)), Math.max(FeatureConfig.PaperDamage.minDamage, entity.level().random.nextFloat() * FeatureConfig.PaperDamage.maxDamage));
         }
     }
 }
