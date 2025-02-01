@@ -1,6 +1,6 @@
 package de.melanx.morevanillalib.core.modifier;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import de.melanx.morevanillalib.FeatureConfig;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
@@ -12,14 +12,14 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraftforge.common.loot.IGlobalLootModifier;
-import net.minecraftforge.common.loot.LootModifier;
+import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
+import net.neoforged.neoforge.common.loot.LootModifier;
 
 import javax.annotation.Nonnull;
 
 public class ExtraDropsModifier extends LootModifier {
 
-    public static final Codec<ExtraDropsModifier> CODEC = RecordCodecBuilder.create(instance -> codecStart(instance).apply(instance, ExtraDropsModifier::new));
+    public static final MapCodec<ExtraDropsModifier> CODEC = RecordCodecBuilder.mapCodec(instance -> codecStart(instance).apply(instance, ExtraDropsModifier::new));
 
     public ExtraDropsModifier(LootItemCondition[] conditionsIn) {
         super(conditionsIn);
@@ -30,7 +30,7 @@ public class ExtraDropsModifier extends LootModifier {
     protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
         ItemStack tool = context.getParamOrNull(LootContextParams.TOOL);
         if (tool == null) {
-            Entity killer = context.getParamOrNull(LootContextParams.KILLER_ENTITY);
+            Entity killer = context.getParamOrNull(LootContextParams.ATTACKING_ENTITY);
             if (killer instanceof LivingEntity) {
                 tool = ((LivingEntity) killer).getMainHandItem();
             }
@@ -44,8 +44,9 @@ public class ExtraDropsModifier extends LootModifier {
         return generatedLoot;
     }
 
+    @Nonnull
     @Override
-    public Codec<? extends IGlobalLootModifier> codec() {
+    public MapCodec<? extends IGlobalLootModifier> codec() {
         return CODEC;
     }
 }

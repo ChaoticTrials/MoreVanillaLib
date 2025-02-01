@@ -3,10 +3,10 @@ package de.melanx.morevanillalib;
 import de.melanx.morevanillalib.data.DamageTypesProvider;
 import de.melanx.morevanillalib.data.LootModifierProvider;
 import de.melanx.morevanillalib.data.ModTags;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.common.NeoForge;
 import org.moddingx.libx.datagen.DatagenSystem;
 import org.moddingx.libx.mod.ModXRegistration;
 import org.moddingx.libx.registration.RegistrationBuilder;
@@ -19,7 +19,7 @@ public final class MoreVanillaLib extends ModXRegistration {
     public MoreVanillaLib() {
         instance = this;
 
-        MinecraftForge.EVENT_BUS.register(new EventListener());
+        NeoForge.EVENT_BUS.register(new EventListener());
         DatagenSystem.create(this, system -> {
             system.addRegistryProvider(DamageTypesProvider::new);
             system.addDataProvider(LootModifierProvider::new);

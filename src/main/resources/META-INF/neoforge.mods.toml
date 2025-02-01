@@ -1,0 +1,46 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="${mod.license}"
+issueTrackerURL="${mod.issue_url}"
+
+[[mods]]
+modId="${mod.modid}"
+version="${mod.version}"
+displayName="${mod.name}"
+displayURL="${mod.source_url}"
+updateJSONURL="https://assets.melanx.de/updates/morevanillalib.json"
+authors="MelanX"
+description='''
+Lib mod which expands features for my Vanilla mods:
+- MoreVanillaTools
+- Simply Tools
+- Vanilla AIOTs
+'''
+
+[[dependencies.${mod.modid}]]
+    modId="neoforge"
+    mandatory=true
+    versionRange="[${mod.neoforge},)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod.modid}]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[${mod.minecraft},)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod.modid}]]
+    modId="libx"
+    mandatory=true
+    versionRange="[1.21.1-6.0.0,)"
+    ordering="AFTER"
+    side="BOTH"
+
+
+[[dependencies.${mod.modid}]]
+    modId="jei"
+    mandatory=false
+    ordering="BEFORE"
+    side="BOTH"

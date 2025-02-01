@@ -6,12 +6,11 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.event.level.BlockEvent;
-import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.level.BlockEvent;
 
 public class EventListener {
 
@@ -33,7 +32,7 @@ public class EventListener {
                 && player.getMainHandItem().is(ModTags.Items.PAPER_TOOLS)
                 && FeatureConfig.PaperDamage.enabled
                 && player.level().random.nextDouble() < FeatureConfig.PaperDamage.chance
-                && event.getUseItem() == Event.Result.ALLOW) {
+                && event.getUseItem().isTrue()) {
             ToolUtil.paperDamage(player);
         }
     }
@@ -50,7 +49,7 @@ public class EventListener {
     }
 
     @SubscribeEvent
-    public void onLivingDamage(LivingDamageEvent event) {
+    public void onLivingDamage(LivingDamageEvent.Pre event) {
         if (!(event.getSource().getEntity() instanceof Player player)) {
             return;
         }

@@ -1,24 +1,70 @@
-buildscript {
-    apply from: 'https://moddingx.github.io/ModUtils/v5/buildscript.gradle', to: buildscript
+plugins {
+    id 'org.moddingx.modgradle.meta' version '5.0.2'
 }
-
-apply from: 'https://moddingx.github.io/ModUtils/v5/mod.gradle'
-apply plugin: 'org.moddingx.modgradle.cursedep'
 
 repositories {
     maven {
-        name = "JEI"
-        url = "https://maven.blamejared.com/"
+        url = "https://modmaven.dev/"
     }
-    maven {
-        name = "LibX"
-        url = "https://maven.melanx.de/"
+}
+
+var baseVersion = '21.1'
+var libxVersion = '1.21.1-6.0.0'
+var jeiVersion = '19.21.0.247'
+
+mod.configure {
+    modid 'morevanillalib'
+    group 'de.melanx'
+    versioning {
+        base baseVersion
+        maven 'https://maven.melanx.de/release'
+    }
+
+    neoforge "${baseVersion}.115"
+
+    license 'The Apache License, Version 2.0'
+    github 'ChaoticTrials/MoreVanillaLib'
+
+    artifacts {
+        sources {
+            publishToRepositories()
+        }
+    }
+
+    changelog {
+        def lines = defaultChangelog.toString().split('\n')
+        def filteredChangelog = lines.findAll { !it.startsWith('- [meta]') }.join('\n')
+
+        return filteredChangelog
+    }
+
+
+    publishing {
+        maven {
+            name 'melanx'
+            url 'https://maven.melanx.de/release'
+            credentials(PasswordCredentials)
+        }
+    }
+
+    upload {
+        all {
+            type 'release'
+            require 'libx'
+            optional 'jei'
+        }
+        curseforge {
+            projectId 367254
+        }
+        modrinth {
+            projectId 'CtNNDljK'
+        }
     }
 }
 
 dependencies {
-    annotationProcessor fg.deobf("org.moddingx:LibX:1.20.1-5.0.0")
+    annotationProcessor "org.moddingx:LibX:${libxVersion}"
 
-    implementation fg.deobf("org.moddingx:LibX:1.20.1-5.0.0")
-    compileOnly fg.deobf("mezz.jei:jei-1.20.1-forge:15.0.0.12")
+    implementation "org.moddingx:LibX:${libxVersion}"
+    implementation "mezz.jei:jei-1.${baseVersion}-neoforge:${jeiVersion}"
 }

@@ -10,19 +10,19 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 
 import javax.annotation.Nullable;
 
 public class ToolUtil {
 
-    public static void moreDamage(LivingDamageEvent event) {
-        if (event.getSource().getEntity() instanceof Player) {
+    public static void moreDamage(LivingDamageEvent.Pre event) {
+        if (event.getEntity() instanceof Player) {
             RandomSource rand = event.getEntity().level().random;
 
             if (FeatureConfig.ExtraDamage.enabled && rand.nextDouble() < FeatureConfig.ExtraDamage.chance) {
                 float multiplier = (float) (rand.nextFloat() * FeatureConfig.ExtraDamage.maxMultiplier);
-                event.setAmount(event.getAmount() * multiplier);
+                event.setNewDamage(event.getOriginalDamage() * multiplier);
             }
         }
     }

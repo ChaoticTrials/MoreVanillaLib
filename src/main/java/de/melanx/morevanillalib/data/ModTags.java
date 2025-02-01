@@ -87,7 +87,7 @@ public class ModTags extends CommonTagsProviderBase {
         public static final TagKey<Item> ALL_TOOLS = modTag("tools");
 
         private static TagKey<Item> tag(String name) {
-            return ItemTags.create(new ResourceLocation("forge", name));
+            return ItemTags.create(ResourceLocation.fromNamespaceAndPath("forge", name));
         }
 
         private static TagKey<Item> modTag(String name) {

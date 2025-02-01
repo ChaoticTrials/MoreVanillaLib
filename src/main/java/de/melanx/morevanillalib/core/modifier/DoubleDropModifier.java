@@ -1,6 +1,6 @@
 package de.melanx.morevanillalib.core.modifier;
 
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import de.melanx.morevanillalib.FeatureConfig;
 import de.melanx.morevanillalib.data.ModTags;
@@ -12,16 +12,16 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.loot.IGlobalLootModifier;
-import net.minecraftforge.common.loot.LootModifier;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
+import net.neoforged.neoforge.common.loot.LootModifier;
 
 import javax.annotation.Nonnull;
 
 public class DoubleDropModifier extends LootModifier {
 
 
-    public static final Codec<DoubleDropModifier> CODEC = RecordCodecBuilder.create(instance -> codecStart(instance).apply(instance, DoubleDropModifier::new));
+    public static final MapCodec<DoubleDropModifier> CODEC = RecordCodecBuilder.mapCodec(instance -> codecStart(instance).apply(instance, DoubleDropModifier::new));
 
     public DoubleDropModifier(LootItemCondition[] conditionsIn) {
         super(conditionsIn);
@@ -29,7 +29,7 @@ public class DoubleDropModifier extends LootModifier {
 
     @Nonnull
     @Override
-    protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
+    protected ObjectArrayList<ItemStack> doApply(@Nonnull ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
         ItemStack tool = context.getParamOrNull(LootContextParams.TOOL);
 
         if (tool == null) {
@@ -92,8 +92,9 @@ public class DoubleDropModifier extends LootModifier {
         return generatedLoot;
     }
 
+    @Nonnull
     @Override
-    public Codec<? extends IGlobalLootModifier> codec() {
+    public MapCodec<? extends IGlobalLootModifier> codec() {
         return CODEC;
     }
 }

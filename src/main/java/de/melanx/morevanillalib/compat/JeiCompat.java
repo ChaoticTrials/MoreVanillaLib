@@ -27,11 +27,11 @@ import java.util.stream.Collectors;
 
 @JeiPlugin
 public class JeiCompat implements IModPlugin {
-    public static final ResourceLocation PLUGIN_UID = new ResourceLocation(MoreVanillaLib.getInstance().modid, "plugin/main");
+    public static final ResourceLocation PLUGIN_UID = ResourceLocation.fromNamespaceAndPath(MoreVanillaLib.getInstance().modid, "plugin/main");
 
     private static void addInfoPage(IRecipeRegistration reg, Collection<Item> items, String name) {
         if (items.isEmpty()) return;
-        Component component = getDescKey(new ResourceLocation(MoreVanillaLib.getInstance().modid, name));
+        Component component = getDescKey(ResourceLocation.fromNamespaceAndPath(MoreVanillaLib.getInstance().modid, name));
         List<ItemStack> stacks = items.stream().map(ItemStack::new).collect(Collectors.toList());
         reg.addIngredientInfo(stacks, VanillaTypes.ITEM_STACK, component);
     }
@@ -43,7 +43,7 @@ public class JeiCompat implements IModPlugin {
 
     private static void addValueInfoPage(IRecipeRegistration reg, Collection<Item> items, String name, Object... values) {
         if (items.isEmpty()) return;
-        Component component = getDescKey(new ResourceLocation(MoreVanillaLib.getInstance().modid, name), values);
+        Component component = getDescKey(ResourceLocation.fromNamespaceAndPath(MoreVanillaLib.getInstance().modid, name), values);
         List<ItemStack> stacks = items.stream().map(ItemStack::new).collect(Collectors.toList());
         reg.addIngredientInfo(stacks, VanillaTypes.ITEM_STACK, component);
     }
@@ -104,7 +104,6 @@ public class JeiCompat implements IModPlugin {
 
     private Collection<Item> getValues(TagKey<Item> key) {
         Set<Item> items = Sets.newHashSet();
-        //noinspection deprecation
         for (Holder<Item> itemHolder : BuiltInRegistries.ITEM.getTagOrEmpty(key)) {
             items.add(itemHolder.value());
         }

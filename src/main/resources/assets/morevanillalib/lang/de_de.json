@@ -23,5 +23,29 @@
   "tooltip.morevanillalib.durability": "Haltbarkeit: %s",
   "tooltip.morevanillalib.harvest_level": "Abbaulevel: %s",
   "tooltip.morevanillalib.repairing_item": "Reparaturitem: %s",
-  "tooltip.morevanillalib.more_information": "Drücke Shift für mehr Informationen"
+  "tooltip.morevanillalib.more_information": "Drücke Shift für mehr Informationen",
+
+  "tag.item.morevanillalib.tools": "MoreVanillaTools",
+  "tag.item.morevanillalib.tools.bone": "Knochenwerkzeuge",
+  "tag.item.morevanillalib.tools.coal": "Kohlewerkzeuge",
+  "tag.item.morevanillalib.tools.copper": "Kupferwerkzeuge",
+  "tag.item.morevanillalib.tools.diamond": "Diamantwerkzeuge",
+  "tag.item.morevanillalib.tools.emerald": "Smaragdwerkzeuge",
+  "tag.item.morevanillalib.tools.ender": "Enderwerkzeuge",
+  "tag.item.morevanillalib.tools.fiery": "Feurigewerkzeuge",
+  "tag.item.morevanillalib.tools.glowstone": "Glowstonewerkzeuge",
+  "tag.item.morevanillalib.tools.gold": "Goldwerkzeuge",
+  "tag.item.morevanillalib.tools.iron": "Eisenwerkzeuge",
+  "tag.item.morevanillalib.tools.lapis": "Lapislazuliwerkzeuge",
+  "tag.item.morevanillalib.tools.nether": "Netherwerkzeuge",
+  "tag.item.morevanillalib.tools.netherite": "Netheritwerkzeuge",
+  "tag.item.morevanillalib.tools.obsidian": "Obsidianwerkzeuge",
+  "tag.item.morevanillalib.tools.paper": "Papierwerkzeuge",
+  "tag.item.morevanillalib.tools.prismarine": "Prismarinwerkzeuge",
+  "tag.item.morevanillalib.tools.quartz": "Quarzwerkzeuge",
+  "tag.item.morevanillalib.tools.redstone": "Redstonewerkzeuge",
+  "tag.item.morevanillalib.tools.slime": "Schleimwerkzeuge",
+  "tag.item.morevanillalib.tools.stone": "Steinwerkzeuge",
+  "tag.item.morevanillalib.tools.wood": "Holzwerkzeuge"
+
 }
