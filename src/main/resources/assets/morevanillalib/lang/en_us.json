@@ -21,7 +21,6 @@
   "jei.morevanillalib.slime_damage.desc": "If you kill a slime with these tools, you have a %d%% chance to make up to %d%% more damage.",
 
   "tooltip.morevanillalib.durability": "Durability: %s",
-  "tooltip.morevanillalib.harvest_level": "Harvest Level: %s",
   "tooltip.morevanillalib.repairing_item": "Repairing Item: %s",
   "tooltip.morevanillalib.more_information": "Press Shift for more information",
 

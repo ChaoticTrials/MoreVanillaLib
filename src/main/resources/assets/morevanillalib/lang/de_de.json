@@ -21,7 +21,6 @@
   "jei.morevanillalib.slime_damage.desc": "Wenn du einen Schleim mit einem dieser Werkzeuge tötest, machst du zu einer %d%%igen Chance bis zu %d%% mehr Schaden.",
 
   "tooltip.morevanillalib.durability": "Haltbarkeit: %s",
-  "tooltip.morevanillalib.harvest_level": "Abbaulevel: %s",
   "tooltip.morevanillalib.repairing_item": "Reparaturitem: %s",
   "tooltip.morevanillalib.more_information": "Drücke Shift für mehr Informationen",
 

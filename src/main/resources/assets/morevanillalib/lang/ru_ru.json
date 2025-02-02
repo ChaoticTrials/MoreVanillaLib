@@ -21,6 +21,5 @@
   "jei.morevanillalib.slime_damage.desc": "У вас есть %d%% шанс нанести на %d%% больше урона слизню с помощью этих инструментов.",
 
   "tooltip.morevanillalib.durability": "Прочность: %s",
-  "tooltip.morevanillalib.harvest_level": "Уровень добычи: %s",
   "tooltip.morevanillalib.repairing_item": "Предмет для починки: %s"
 }
