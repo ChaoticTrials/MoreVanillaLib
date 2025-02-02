@@ -2,7 +2,7 @@ package de.melanx.morevanillalib.core.modifier;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import de.melanx.morevanillalib.FeatureConfig;
+import de.melanx.morevanillalib.config.FeatureConfig;
 import de.melanx.morevanillalib.data.ModTags;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.world.entity.Entity;
@@ -39,7 +39,7 @@ public class HeadDropModifier extends LootModifier {
             ItemStack weapon = ((LivingEntity) killer).getMainHandItem();
             int looting = weapon.getEnchantmentLevel(context.getLevel().registryAccess().holderOrThrow(Enchantments.LOOTING));
 
-            if (weapon.is(ModTags.Items.BONE_TOOLS) && FeatureConfig.HeadDrop.enabled && context.getRandom().nextDouble() < FeatureConfig.HeadDrop.chance + (looting / 100F)) {
+            if (weapon.is(ModTags.Items.BONE_TOOLS) && FeatureConfig.headDrop.test(context.getRandom(), looting / 100F)) {
                 Item skull = null;
                 if (target instanceof WitherSkeleton) {
                     skull = Items.WITHER_SKELETON_SKULL;

@@ -1,8 +1,8 @@
 package de.melanx.morevanillalib.compat;
 
 import com.google.common.collect.Sets;
-import de.melanx.morevanillalib.FeatureConfig;
 import de.melanx.morevanillalib.MoreVanillaLib;
+import de.melanx.morevanillalib.config.FeatureConfig;
 import de.melanx.morevanillalib.data.ModTags;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -68,12 +68,12 @@ public class JeiCompat implements IModPlugin {
 
     @Override
     public void registerRecipes(@Nonnull IRecipeRegistration registration) {
-        if (FeatureConfig.ExtraDrop.enabled) {
-            addValueInfoPage(registration, this.getValues(ModTags.Items.ALL_TOOLS), "extra_drop", FeatureConfig.ExtraDrop.chance * 100);
+        if (FeatureConfig.extraDrop.enabled()) {
+            addValueInfoPage(registration, this.getValues(ModTags.Items.ALL_TOOLS), "extra_drop", FeatureConfig.extraDrop.getChance() * 100);
         }
 
-        if (FeatureConfig.ExtraDamage.enabled) {
-            double extraDamageChance = FeatureConfig.ExtraDamage.chance * 100;
+        if (FeatureConfig.ExtraDamage.chance.enabled()) {
+            double extraDamageChance = FeatureConfig.ExtraDamage.chance.getChance() * 100;
             addValueInfoPage(registration, this.getValues(ModTags.Items.BONE_TOOLS), "bone_damage", extraDamageChance, FeatureConfig.ExtraDamage.maxMultiplier * 100);
             addValueInfoPage(registration, this.getValues(ModTags.Items.ENDER_TOOLS), "ender_damage", extraDamageChance, FeatureConfig.ExtraDamage.maxMultiplier * 100);
             addValueInfoPage(registration, this.getValues(ModTags.Items.FIERY_TOOLS), "fiery_damage", extraDamageChance, FeatureConfig.ExtraDamage.maxMultiplier * 100);
@@ -81,14 +81,14 @@ public class JeiCompat implements IModPlugin {
             addValueInfoPage(registration, this.getValues(ModTags.Items.SLIME_TOOLS), "slime_damage", extraDamageChance, FeatureConfig.ExtraDamage.maxMultiplier * 100);
         }
 
-        if (FeatureConfig.HeadDrop.enabled) {
+        if (FeatureConfig.headDrop.enabled()) {
             addValueInfoPage(registration, this.getValues(ModTags.Items.BONE_TOOLS), "bone_heads",
-                    FeatureConfig.HeadDrop.chance * 100);
+                    FeatureConfig.headDrop.getChance() * 100);
         }
 
-        if (FeatureConfig.PaperDamage.enabled) {
+        if (FeatureConfig.PaperDamage.chance.enabled()) {
             addValueInfoPage(registration, this.getValues(ModTags.Items.PAPER_TOOLS), "paper_damage",
-                    FeatureConfig.PaperDamage.chance * 100,
+                    FeatureConfig.PaperDamage.chance.getChance() * 100,
                     FeatureConfig.PaperDamage.minDamage,
                     FeatureConfig.PaperDamage.maxDamage);
         }

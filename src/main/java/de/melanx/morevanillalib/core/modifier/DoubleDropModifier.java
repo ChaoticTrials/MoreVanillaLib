@@ -2,7 +2,7 @@ package de.melanx.morevanillalib.core.modifier;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import de.melanx.morevanillalib.FeatureConfig;
+import de.melanx.morevanillalib.config.FeatureConfig;
 import de.melanx.morevanillalib.data.ModTags;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.server.level.ServerLevel;
@@ -43,28 +43,28 @@ public class DoubleDropModifier extends LootModifier {
                 ServerLevel level = context.getLevel();
                 if (tool.is(ModTags.Items.DIAMOND_TOOLS)) {
                     if (state.is(Tags.Blocks.ORES_DIAMOND)) {
-                        if (FeatureConfig.DoubleDrop.Diamond.enabled && level.random.nextDouble() < FeatureConfig.DoubleDrop.Diamond.chance) {
+                        if (FeatureConfig.DoubleDrop.diamond.test(level.random)) {
                             ItemStack drop = new ItemStack(Items.DIAMOND);
                             generatedLoot.add(drop);
                         }
                     }
                 } else if (tool.is(ModTags.Items.COAL_TOOLS)) {
                     if (state.is(Tags.Blocks.ORES_COAL)) {
-                        if (FeatureConfig.DoubleDrop.Coal.enabled && level.random.nextDouble() < FeatureConfig.DoubleDrop.Coal.chance) {
+                        if (FeatureConfig.DoubleDrop.coal.test(level.random)) {
                             ItemStack drop = new ItemStack(Items.COAL);
                             generatedLoot.add(drop);
                         }
                     }
                 } else if (tool.is(ModTags.Items.EMERALD_TOOLS)) {
                     if (state.is(Tags.Blocks.ORES_EMERALD)) {
-                        if (FeatureConfig.DoubleDrop.Emerald.enabled && level.random.nextDouble() < FeatureConfig.DoubleDrop.Emerald.chance) {
+                        if (FeatureConfig.DoubleDrop.emerald.test(level.random)) {
                             ItemStack drop = new ItemStack(Items.EMERALD);
                             generatedLoot.add(drop);
                         }
                     }
                 } else if (tool.is(ModTags.Items.LAPIS_TOOLS)) {
                     if (state.is(Tags.Blocks.ORES_LAPIS)) {
-                        if (FeatureConfig.DoubleDrop.Lapis.enabled && level.random.nextDouble() < FeatureConfig.DoubleDrop.Lapis.chance) {
+                        if (FeatureConfig.DoubleDrop.lapis.test(level.random)) {
                             int i = level.random.nextInt(3);
                             ItemStack drop = new ItemStack(Items.LAPIS_LAZULI, i);
                             generatedLoot.add(drop);
@@ -72,14 +72,14 @@ public class DoubleDropModifier extends LootModifier {
                     }
                 } else if (tool.is(ModTags.Items.QUARTZ_TOOLS)) {
                     if (state.is(Tags.Blocks.ORES_QUARTZ)) {
-                        if (FeatureConfig.DoubleDrop.Quartz.enabled && level.random.nextDouble() < FeatureConfig.DoubleDrop.Quartz.chance) {
+                        if (FeatureConfig.DoubleDrop.quartz.test(level.random)) {
                             ItemStack drop = new ItemStack(Items.QUARTZ);
                             generatedLoot.add(drop);
                         }
                     }
                 } else if (tool.is(ModTags.Items.REDSTONE_TOOLS)) {
                     if (state.is(Tags.Blocks.ORES_REDSTONE)) {
-                        if (FeatureConfig.DoubleDrop.Redstone.enabled && level.random.nextDouble() < FeatureConfig.DoubleDrop.Redstone.chance) {
+                        if (FeatureConfig.DoubleDrop.redstone.test(level.random)) {
                             int i = level.random.nextInt(3);
                             ItemStack drop = new ItemStack(Items.REDSTONE, i);
                             generatedLoot.add(drop);

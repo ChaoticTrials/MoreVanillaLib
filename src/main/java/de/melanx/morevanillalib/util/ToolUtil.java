@@ -1,6 +1,6 @@
 package de.melanx.morevanillalib.util;
 
-import de.melanx.morevanillalib.FeatureConfig;
+import de.melanx.morevanillalib.config.FeatureConfig;
 import de.melanx.morevanillalib.data.DamageTypesProvider;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
@@ -20,7 +20,7 @@ public class ToolUtil {
         if (event.getEntity() instanceof Player) {
             RandomSource rand = event.getEntity().level().random;
 
-            if (FeatureConfig.ExtraDamage.enabled && rand.nextDouble() < FeatureConfig.ExtraDamage.chance) {
+            if (FeatureConfig.ExtraDamage.chance.test(rand)) {
                 float multiplier = (float) (rand.nextFloat() * FeatureConfig.ExtraDamage.maxMultiplier);
                 event.setNewDamage(event.getOriginalDamage() * multiplier);
             }

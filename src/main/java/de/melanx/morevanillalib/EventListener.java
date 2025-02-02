@@ -1,5 +1,6 @@
 package de.melanx.morevanillalib;
 
+import de.melanx.morevanillalib.config.FeatureConfig;
 import de.melanx.morevanillalib.data.ModTags;
 import de.melanx.morevanillalib.util.ToolUtil;
 import net.minecraft.world.entity.LivingEntity;
@@ -18,8 +19,7 @@ public class EventListener {
     public void onBlockBreak(BlockEvent.BreakEvent event) {
         Player player = event.getPlayer();
         ItemStack item = player.getMainHandItem();
-        if (FeatureConfig.PaperDamage.enabled && item.is(ModTags.Items.PAPER_TOOLS)
-                && player.level().random.nextDouble() < FeatureConfig.PaperDamage.chance
+        if (FeatureConfig.PaperDamage.chance.test(player.level().random) && item.is(ModTags.Items.PAPER_TOOLS)
                 && event.getState().getDestroySpeed(player.level(), event.getPos()) != 0.0f) {
             ToolUtil.paperDamage(player);
         }
@@ -30,8 +30,7 @@ public class EventListener {
         Player player = event.getEntity();
         if (!player.level().isClientSide
                 && player.getMainHandItem().is(ModTags.Items.PAPER_TOOLS)
-                && FeatureConfig.PaperDamage.enabled
-                && player.level().random.nextDouble() < FeatureConfig.PaperDamage.chance
+                && FeatureConfig.PaperDamage.chance.test(player.level().random)
                 && event.getUseItem().isTrue()) {
             ToolUtil.paperDamage(player);
         }
@@ -42,8 +41,7 @@ public class EventListener {
         if (event.getTarget() instanceof LivingEntity target
                 && !target.level().isClientSide
                 && event.getEntity().getMainHandItem().is(ModTags.Items.PAPER_TOOLS)
-                && FeatureConfig.PaperDamage.enabled
-                && target.level().random.nextDouble() < FeatureConfig.PaperDamage.chance) {
+                && FeatureConfig.PaperDamage.chance.test(target.level().random)) {
             ToolUtil.paperDamage(event.getEntity());
         }
     }

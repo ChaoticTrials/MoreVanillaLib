@@ -2,7 +2,7 @@ package de.melanx.morevanillalib.core.modifier;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import de.melanx.morevanillalib.FeatureConfig;
+import de.melanx.morevanillalib.config.FeatureConfig;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -36,7 +36,7 @@ public class ExtraDropsModifier extends LootModifier {
             }
         }
 
-        if (tool != null && tool.getItem() instanceof DiggerItem && FeatureConfig.ExtraDrop.enabled && context.getRandom().nextDouble() < FeatureConfig.ExtraDrop.chance) {
+        if (tool != null && tool.getItem() instanceof DiggerItem && FeatureConfig.extraDrop.test(context.getRandom().nextDouble())) {
             Ingredient repairMaterial = ((DiggerItem) tool.getItem()).getTier().getRepairIngredient();
             generatedLoot.add(repairMaterial.getItems()[0].copy());
         }

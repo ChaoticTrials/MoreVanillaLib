@@ -2,7 +2,7 @@ package de.melanx.morevanillalib.core.modifier;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import de.melanx.morevanillalib.FeatureConfig;
+import de.melanx.morevanillalib.config.FeatureConfig;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
