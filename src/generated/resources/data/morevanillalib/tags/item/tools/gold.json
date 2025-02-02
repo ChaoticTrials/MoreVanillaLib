@@ -1,3 +1,9 @@
 {
-  "values": []
+  "values": [
+    "minecraft:golden_shovel",
+    "minecraft:golden_pickaxe",
+    "minecraft:golden_axe",
+    "minecraft:golden_hoe",
+    "minecraft:golden_sword"
+  ]
 }

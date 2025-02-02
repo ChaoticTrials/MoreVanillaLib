@@ -60,6 +60,48 @@ public class ModTags extends CommonTagsProviderBase {
                 Items.REDSTONE_TOOLS,
                 Items.SLIME_TOOLS
         );
+
+        this.item(Items.WOOD_TOOLS)
+                .add(net.minecraft.world.item.Items.WOODEN_SHOVEL)
+                .add(net.minecraft.world.item.Items.WOODEN_PICKAXE)
+                .add(net.minecraft.world.item.Items.WOODEN_AXE)
+                .add(net.minecraft.world.item.Items.WOODEN_HOE)
+                .add(net.minecraft.world.item.Items.WOODEN_SWORD);
+
+        this.item(Items.STONE_TOOLS)
+                .add(net.minecraft.world.item.Items.STONE_SHOVEL)
+                .add(net.minecraft.world.item.Items.STONE_PICKAXE)
+                .add(net.minecraft.world.item.Items.STONE_AXE)
+                .add(net.minecraft.world.item.Items.STONE_HOE)
+                .add(net.minecraft.world.item.Items.STONE_SWORD);
+
+        this.item(Items.IRON_TOOLS)
+                .add(net.minecraft.world.item.Items.IRON_SHOVEL)
+                .add(net.minecraft.world.item.Items.IRON_PICKAXE)
+                .add(net.minecraft.world.item.Items.IRON_AXE)
+                .add(net.minecraft.world.item.Items.IRON_HOE)
+                .add(net.minecraft.world.item.Items.IRON_SWORD);
+
+        this.item(Items.GOLD_TOOLS)
+                .add(net.minecraft.world.item.Items.GOLDEN_SHOVEL)
+                .add(net.minecraft.world.item.Items.GOLDEN_PICKAXE)
+                .add(net.minecraft.world.item.Items.GOLDEN_AXE)
+                .add(net.minecraft.world.item.Items.GOLDEN_HOE)
+                .add(net.minecraft.world.item.Items.GOLDEN_SWORD);
+
+        this.item(Items.DIAMOND_TOOLS)
+                .add(net.minecraft.world.item.Items.DIAMOND_SHOVEL)
+                .add(net.minecraft.world.item.Items.DIAMOND_PICKAXE)
+                .add(net.minecraft.world.item.Items.DIAMOND_AXE)
+                .add(net.minecraft.world.item.Items.DIAMOND_HOE)
+                .add(net.minecraft.world.item.Items.DIAMOND_SWORD);
+
+        this.item(Items.NETHERITE_TOOLS)
+                .add(net.minecraft.world.item.Items.NETHERITE_SHOVEL)
+                .add(net.minecraft.world.item.Items.NETHERITE_PICKAXE)
+                .add(net.minecraft.world.item.Items.NETHERITE_AXE)
+                .add(net.minecraft.world.item.Items.NETHERITE_HOE)
+                .add(net.minecraft.world.item.Items.NETHERITE_SWORD);
     }
 
     public static class Items {
