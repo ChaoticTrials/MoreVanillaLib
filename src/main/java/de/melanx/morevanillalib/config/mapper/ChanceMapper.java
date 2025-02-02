@@ -32,7 +32,7 @@ public class ChanceMapper implements ValueMapper<Chance, JsonElement> {
 
         @Override
         public boolean isValid(String str) {
-            return str.chars().filter(chr -> chr == '.').count() <= 1 && Double.parseDouble(str) >= 0 && Double.parseDouble(str) <= 1;
+            return !str.isBlank() && str.chars().filter(chr -> chr == '.').count() <= 1 && !str.equals(".") && Double.parseDouble(str) >= 0 && Double.parseDouble(str) <= 1;
         }
 
         @Override
