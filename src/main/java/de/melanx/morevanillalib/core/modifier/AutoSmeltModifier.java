@@ -26,7 +26,7 @@ public class AutoSmeltModifier extends LootModifier {
         return context.getLevel().getRecipeManager().getRecipeFor(RecipeType.SMELTING, new SingleRecipeInput(stack), context.getLevel())
                 .map(recipe -> recipe.value().getResultItem(context.getLevel().registryAccess()))
                 .filter(itemStack -> !itemStack.isEmpty())
-                .map(itemStack -> itemStack.copyWithCount(stack.getCount() + itemStack.getCount()))
+                .map(itemStack -> itemStack.copyWithCount(stack.getCount() * itemStack.getCount()))
                 .orElse(stack);
     }
 
