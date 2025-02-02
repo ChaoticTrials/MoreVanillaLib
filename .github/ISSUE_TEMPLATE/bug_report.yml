@@ -18,6 +18,16 @@ body:
       placeholder: eg. 21.1.0
     validations:
       required: true
+  - type: dropdown
+    id: extension
+    attributes:
+      label: Main extension mod
+      options:
+        - MoreVanillaTools
+        - Simply Tools
+        - Vanilla AIOTs
+    validations:
+      required: false
   - type: input
     id: forge-version
     attributes:
