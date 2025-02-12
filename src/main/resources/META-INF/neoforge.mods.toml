@@ -38,7 +38,6 @@ Lib mod which expands features for my Vanilla mods:
     ordering="AFTER"
     side="BOTH"
 
-
 [[dependencies.${mod.modid}]]
     modId="jei"
     mandatory=false
