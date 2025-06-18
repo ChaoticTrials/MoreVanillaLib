@@ -19,27 +19,27 @@ Lib mod which expands features for my Vanilla mods:
 
 [[dependencies.${mod.modid}]]
     modId="neoforge"
-    mandatory=true
+    type="required"
     versionRange="[${mod.neoforge},)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.${mod.modid}]]
     modId="minecraft"
-    mandatory=true
+    type="required"
     versionRange="[${mod.minecraft},)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.${mod.modid}]]
     modId="libx"
-    mandatory=true
+    type="required"
     versionRange="[1.21.1-6.0.0,)"
     ordering="AFTER"
     side="BOTH"
 
 [[dependencies.${mod.modid}]]
     modId="jei"
-    mandatory=false
+    type="optional"
     ordering="BEFORE"
     side="BOTH"
